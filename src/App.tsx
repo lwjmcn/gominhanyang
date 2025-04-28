@@ -1,7 +1,14 @@
-export default function App() {
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Counter from './store/pages/Counter'
+
+function App() {
   return (
-    <div>
-      <h1>Hello, world!</h1>
-    </div>
-  );
+    <BrowserRouter>
+      <Routes>
+        <Route path="/counter" element={<Counter />} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
+
+export default App;
