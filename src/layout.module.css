@@ -39,12 +39,11 @@ body {
     'Segoe UI Symbol',
     sans-serif;
 }
-a,
+
 button {
   display: block;
   margin: 0 auto;
   text-align: center;
-  text-decoration: none;
   cursor: pointer;
   height: 6rem;
   font-size: 3rem;
@@ -57,6 +56,11 @@ button {
   &:active {
     background-color: #ff9900;
   }
+}
+
+a {
+  cursor: pointer;
+  font-size: 2rem;
 }
 
 h1 {
@@ -72,4 +76,39 @@ h2 {
 p {
   font-size: 2.5rem;
   white-space: pre-wrap;
+}
+
+input {
+  padding: 1rem;
+  border: 0.2rem solid #ddd;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  color: #333;
+  transition: border-color 0.2s;
+
+  &:focus {
+    border-color: #f8c464;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(248, 196, 100, 0.1);
+  }
+  &:placeholder {
+    color: #ddd;
+  }
+}
+
+input[type='radio'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 2rem;
+  height: 2rem;
+  border: 0.4rem solid #ccc;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  &:checked {
+    background-color: #f8c464;
+    border: 0.4rem solid white;
+    box-shadow: 0 0 0 0.3rem #f8c464;
+  }
 }

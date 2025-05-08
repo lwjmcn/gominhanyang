@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20rem;
+  padding: 6rem;
+}
+
+.logo {
+  display: block;
+  width: 30rem;
+  height: 30rem;
+  margin: 3rem;
+}
+
+.nicknameInput {
+  width: 100%;
+}
+
+.loginButton {
+  width: 100%;
+  margin: 2rem 0;
+}
