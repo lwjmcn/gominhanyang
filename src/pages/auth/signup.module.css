@@ -1,0 +1,11 @@
+.genderAge {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 2rem 0;
+  justify-content: space-between;
+}
+
+.genderAge > div {
+  flex: 1;
+}
