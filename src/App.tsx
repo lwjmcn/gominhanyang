@@ -16,6 +16,7 @@ import LetterSharePage from './pages/post/send/LetterShare';
 import LetterCompletePage from './pages/post/send/LetterComplete';
 import LetterListPage from './pages/post/save/LetterList';
 import LetterDetailPage from './pages/post/save/LetterDetail';
+import ResponseListPage from './pages/beach/response/ResponseList';
 
 function App() {
   return (
@@ -30,8 +31,9 @@ function App() {
             <Route element={<ProtectedRoute />}>
               <Route path="/" element={<BeachPage />} />
               <Route path="/settings" element={<SettingPage />} />
-              <Route path="/response/:responseId" element={<ResponseWritePage />} />
-              <Route path="/response/:responseId/complete" element={<ResponseCompletePage />} />
+              <Route path="/responses" element={<ResponseListPage />} />
+              <Route path="/responses/:responseId" element={<ResponseWritePage />} />
+              <Route path="/responses/:responseId/complete" element={<ResponseCompletePage />} />
 
               <Route path="/items" element={<ItemListPage />} />
 
