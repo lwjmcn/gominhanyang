@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  align-items: center;
+  padding: 3rem;
+}
+
+.backButton {
+  margin-right: auto;
+  width: 4rem;
+  height: 4rem;
+}
+.title {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 500;
+  margin: 0;
+}
+.nextButton {
+  margin-left: auto;
+  width: 4rem;
+  height: 4rem;
+}
+
+.nextButton,
+.backButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 2rem;
+  color: #000;
+}

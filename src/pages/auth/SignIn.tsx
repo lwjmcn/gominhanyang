@@ -22,7 +22,7 @@ export default function SignInPage() {
       <img className={styles.logo} src="https://placehold.co/400x400" alt="" />
       <input className={styles.nicknameInput} type="text" placeholder="닉네임" />
       <button className={styles.loginButton} onClick={handleLogin}>
-        Login
+        로그인
       </button>
       <Link to="/signup">회원가입</Link>
     </div>
