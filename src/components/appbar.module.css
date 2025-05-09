@@ -16,10 +16,11 @@
   font-weight: 500;
   margin: 0;
 }
-.nextButton {
+.nextButtonContainer {
   margin-left: auto;
   width: 4rem;
   height: 4rem;
+  z-index: 505;
 }
 
 .nextButton,

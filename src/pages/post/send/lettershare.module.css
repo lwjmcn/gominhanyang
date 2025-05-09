@@ -1,0 +1,16 @@
+.container {
+  margin: 0 auto;
+  margin-top: 20%;
+  text-align: center;
+}
+
+.shareButton {
+  margin: 4rem auto;
+  width: 90%;
+  height: 16rem;
+  display: flex;
+  align-items: center;
+}
+.shareButton > img {
+  margin: 4rem;
+}
