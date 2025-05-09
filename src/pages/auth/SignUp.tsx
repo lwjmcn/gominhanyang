@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './auth.module.css';
-import styles2 from './SignUp.module.css';
+import styles2 from './signup.module.css';
 import { useToastStore } from '@/store/toast';
 
 export default function SignUpPage() {
