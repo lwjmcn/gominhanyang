@@ -1,6 +1,6 @@
 .container {
   padding: 2rem;
-  height: calc(100% - 40rem);
+  height: calc(100% - 30rem);
 }
 .tabList {
   display: flex;
@@ -38,4 +38,5 @@
   padding: 2rem;
   border: 0.5rem solid #f8c464;
   height: 100%;
+  overflow: auto;
 }
