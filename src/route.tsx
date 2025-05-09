@@ -18,6 +18,7 @@ import LetterListPage from './pages/post/save/LetterList';
 import LetterCompletePage from './pages/post/send/LetterComplete';
 import LetterSharePage from './pages/post/send/LetterShare';
 import LetterWritePage from './pages/post/send/LetterWrite';
+import ReceivedLetterDetailPage from './pages/beach/received/letter/ReceivedLetterDetail';
 
 export const ProtectedRoute = () => {
   const { isAuth } = useAuthStore();
@@ -46,7 +47,8 @@ export default function AppRoutes() {
           <Route path="/received/responses" element={<ReceivedResponseListPage />} />
           <Route path="/received/responses/:responseId" element={<ReceivedResponseDetailPage />} />
           <Route path="/received/letters" element={<ReceivedLetterListPage />} />
-          <Route path="/received/letters/:letterId" element={<ResponseWritePage />} />
+          <Route path="/received/letters/:letterId" element={<ReceivedLetterDetailPage />} />
+          <Route path="/received/letters/:letterId/write" element={<ResponseWritePage />} />
           <Route path="/received/letters/:letterId/complete" element={<ResponseCompletePage />} />
 
           <Route path="/items" element={<ItemListPage />} />

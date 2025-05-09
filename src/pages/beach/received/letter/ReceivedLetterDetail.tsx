@@ -1,7 +1,7 @@
 import Appbar from '@/components/Appbar';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-export default function ResponseWritePage() {
+export default function ReceivedLetterDetailPage() {
   const { letterId } = useParams();
 
   const navigate = useNavigate();
@@ -20,9 +20,8 @@ export default function ResponseWritePage() {
         <p>{letter.date}</p>
         <h2>{letter.title}</h2>
         <p>{letter.content}</p>
-        <hr />
-        <p>LetterWrite 컴포넌트 분리해서 가져오자~</p>
-        <button onClick={() => navigate(`/received/letters/${letterId}/complete`)}>전송하기</button>
+
+        <button onClick={() => navigate(`/received/letters/${letterId}/write`)}>답장하기</button>
       </div>
     </>
   );

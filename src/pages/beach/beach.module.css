@@ -47,7 +47,7 @@
 }
 .navContainer {
   position: fixed;
-  bottom: 0;
+  bottom: 4rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

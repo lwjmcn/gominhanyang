@@ -1,0 +1,41 @@
+.container {
+  padding: 2rem;
+  height: calc(100% - 40rem);
+}
+.tabList {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: -0.5rem;
+}
+
+.tabButton {
+  padding-bottom: 2rem;
+  width: 100%;
+  background-color: #fff;
+  color: #000;
+  font-size: 2rem;
+  border: none;
+  border-bottom: 0.5rem solid #f8c464;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  cursor: pointer;
+  transition:
+    border-color 0.3s,
+    color 0.3s;
+}
+
+.active {
+  background-color: #f8c464;
+  border-bottom-color: transparent;
+  font-weight: bold;
+  color: #fff;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3개 열, 동일한 너비 */
+  gap: 2rem; /* 아이템 간 간격 */
+  padding: 2rem;
+  border: 0.5rem solid #f8c464;
+  height: 100%;
+}
