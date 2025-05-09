@@ -73,6 +73,7 @@ h2 {
   font-weight: 800;
 }
 
+label,
 p {
   font-size: 2.5rem;
   white-space: pre-wrap;
@@ -111,4 +112,20 @@ input[type='radio'] {
     border: 0.4rem solid white;
     box-shadow: 0 0 0 0.3rem #f8c464;
   }
+}
+
+select {
+  padding: 1rem;
+  font-size: 2rem;
+  border: 2px solid #f8c464;
+  border-radius: 1rem;
+  :focus {
+    border-color: #ff9900;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 94, 94, 0.5);
+  }
+}
+option {
+  font-size: 2rem;
+  padding: 10px;
 }

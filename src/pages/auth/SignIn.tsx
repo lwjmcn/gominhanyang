@@ -1,6 +1,6 @@
 import { useAuthStore } from '@/store/auth';
 import { Link, replace, useNavigate } from 'react-router-dom';
-import styles from './signin.module.css';
+import styles from './auth.module.css';
 
 export default function SignInPage() {
   const navigate = useNavigate();
@@ -24,9 +24,7 @@ export default function SignInPage() {
       <button className={styles.loginButton} onClick={handleLogin}>
         Login
       </button>
-      <Link to="/signup" style={{ display: 'block', margin: '10px 0' }}>
-        회원가입
-      </Link>
+      <Link to="/signup">회원가입</Link>
     </div>
   );
 }
