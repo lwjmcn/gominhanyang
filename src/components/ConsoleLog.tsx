@@ -46,6 +46,7 @@ export default function ConsoleLog() {
         overflowY: 'auto',
         padding: '8px',
         zIndex: 9999,
+        pointerEvents: 'none',
       }}
     >
       {logs.map((log, idx) => (
