@@ -79,6 +79,12 @@ p {
   white-space: pre-wrap;
 }
 
+caption {
+  font-size: 1.9rem;
+  color: #717171;
+  white-space: pre-wrap;
+}
+
 input {
   padding: 1rem;
   border: 0.2rem solid #ddd;
@@ -128,4 +134,45 @@ select {
 option {
   font-size: 2rem;
   padding: 10px;
+}
+
+.modal-button-container {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+.modal-button-container > button {
+  width: 50%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 2rem;
+  &:nth-of-type(2) {
+    background-color: #ddd;
+    color: #333;
+  }
+}
+.nav-button-container {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+.nav-button-container > button {
+  flex: 1;
+  height: fit-content;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.wide-button {
+  width: 100%;
+  flex-grow: 1;
 }
