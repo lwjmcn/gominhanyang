@@ -53,9 +53,9 @@ button {
   color: #fff;
   background-color: #f8c464;
   transition: background-color 3s ease;
-  &:active {
-    background-color: #ff9900;
-  }
+}
+button:active {
+  background-color: #ff9900;
 }
 
 a {
@@ -98,7 +98,7 @@ input {
     outline: none;
     box-shadow: 0 0 0 2px rgba(248, 196, 100, 0.1);
   }
-  &:placeholder {
+  ::placeholder {
     color: #ddd;
   }
 }

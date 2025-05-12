@@ -26,11 +26,11 @@ export default function SignUpPage() {
         <div className={styles2.genderContainer}>
           <p>성별</p>
           <div>
-            <input type="radio" value="남" />
+            <input type="radio" name="gender" value="남" />
             <label>남</label>
-            <input type="radio" value="여" />
+            <input type="radio" name="gender" value="여" />
             <label>여</label>
-            <input type="radio" value="기타" />
+            <input type="radio" name="gender" value="기타" />
             <label>기타</label>
           </div>
         </div>
