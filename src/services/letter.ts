@@ -1,12 +1,18 @@
-import api from '@/lib/api';
+import axios from '@/lib/axios';
 
-// sendLetter 함수: 편지를 API로 전송
-export const sendLetter = async (data: {
+export async function sendLetter(data: {
   from: string;
-  to: 'random' | 'volunteer' | 'self';
+  to: 'random' | string;
   content: string;
   emotion: string;
-}) => {
-  const res = await api.post('/letter/send', data);
-  return res.data;
-};
+}) {
+  try {
+    const res = await axios.post('/api/letters', data);
+    return res.data;
+  } catch (err: any) {
+    if (err.response?.status === 400 && err.response?.data?.error) {
+      throw new Error(err.response.data.error); // 예: "유효하지 않은 수신 타입"
+    }
+    throw new Error('편지 전송 실패');
+  }
+}
