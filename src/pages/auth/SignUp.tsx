@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import styles from './auth.module.css';
 import styles2 from './signup.module.css';
 import { useToastStore } from '@/store/toast';
-import { signup } from '@/services/auth';
+import { signup } from '@/lib/api/auth';
 
 export default function SignUpPage() {
   const navigate = useNavigate();
