@@ -1,0 +1,178 @@
+@font-face {
+  font-family: 'Pretendard Variable';
+  src: url('/font/PretendardVariable.woff2') format('woff2');
+}
+.layout {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.main {
+  flex: 1;
+  overflow-y: auto;
+  background-color: #ffffff;
+}
+.footer {
+  height: 4rem;
+  font-size: 1.4rem;
+  text-align: center;
+  color: #717171;
+}
+
+body {
+  font-family:
+    'Pretendard Variable',
+    Pretendard,
+    -apple-system,
+    BlinkMacSystemFont,
+    system-ui,
+    Roboto,
+    'Helvetica Neue',
+    'Segoe UI',
+    'Apple SD Gothic Neo',
+    'Noto Sans KR',
+    'Malgun Gothic',
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    sans-serif;
+}
+
+button {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  cursor: pointer;
+  height: 6rem;
+  font-size: 2.5rem;
+  line-height: 6rem;
+  border: none;
+  border-radius: 1.5rem;
+  color: #fff;
+  background-color: #f8c464;
+  transition: background-color 3s ease;
+}
+button:active {
+  background-color: #ff9900;
+}
+
+a {
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+h1 {
+  font-size: 5rem;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 4rem;
+  font-weight: 800;
+}
+
+label,
+p {
+  font-size: 2.5rem;
+  white-space: pre-wrap;
+}
+
+caption {
+  font-size: 1.9rem;
+  color: #717171;
+  white-space: pre-wrap;
+}
+
+input {
+  padding: 1rem;
+  border: 0.2rem solid #ddd;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  color: #333;
+  transition: border-color 0.2s;
+
+  &:focus {
+    border-color: #f8c464;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(248, 196, 100, 0.1);
+  }
+  ::placeholder {
+    color: #ddd;
+  }
+}
+
+input[type='radio'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 2rem;
+  height: 2rem;
+  border: 0.4rem solid #ccc;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  &:checked {
+    background-color: #f8c464;
+    border: 0.4rem solid white;
+    box-shadow: 0 0 0 0.3rem #f8c464;
+  }
+}
+
+select {
+  padding: 1rem;
+  font-size: 2rem;
+  border: 2px solid #f8c464;
+  border-radius: 1rem;
+  :focus {
+    border-color: #ff9900;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 94, 94, 0.5);
+  }
+}
+option {
+  font-size: 2rem;
+  padding: 10px;
+}
+
+.modal-button-container {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+.modal-button-container > button {
+  width: 50%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 2rem;
+  &:nth-of-type(2) {
+    background-color: #ddd;
+    color: #333;
+  }
+}
+.nav-button-container {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+.nav-button-container > button {
+  flex: 1;
+  height: fit-content;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.wide-button {
+  width: 100%;
+  flex-grow: 1;
+}
