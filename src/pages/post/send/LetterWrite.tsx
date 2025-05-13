@@ -7,7 +7,7 @@ import StopWriteModal from './components/StopWriteModal';
 import CompleteWriteModal from './components/CompleteWriteModal';
 
 export default function LetterWritePage() {
-  const nextButtonIcon = <img src="https://placehold.co/50x50" alt="question" />;
+  const nextButtonIcon = <img src="/icons/otterhelp.svg" alt="question" />;
 
   const [length, setLength] = useState(0);
 
@@ -45,8 +45,9 @@ export default function LetterWritePage() {
             value="save"
             checked={sendType === `save`}
             onChange={e => setSendType(e.target.value)}
-          />
-          <label htmlFor="option1">Option 1</label>
+          /> 
+          <img src="/icons/office/writeletter_archive.svg" alt="보관함" />
+          <label htmlFor="option1">보관함</label>
           <input
             type="radio"
             id="option2"
@@ -55,7 +56,8 @@ export default function LetterWritePage() {
             checked={sendType === `random`}
             onChange={e => setSendType(e.target.value)}
           />
-          <label htmlFor="option2">Option 2</label>
+          <img src="/icons/office/writeletter_anonymous.svg" alt="익명" />
+          <label htmlFor="option2">익명 친구</label>
           <input
             type="radio"
             id="option3"
@@ -64,16 +66,17 @@ export default function LetterWritePage() {
             checked={sendType === `send`}
             onChange={e => setSendType(e.target.value)}
           />
-          <label htmlFor="option3">Option 3</label>
+          <img src="/icons/office/writeletter_ongi.svg" alt="온기" />
+          <label htmlFor="option3">온기우체부</label>
         </div>
-        {/* divider */}
+          {<img src="/icons/office/divider.svg"></img>}
         <hr />
         <div className={styles.emotionContainer}>
-          <img src="https://placehold.co/100x100" alt="emotion1" />
-          <img src="https://placehold.co/100x100" alt="emotion2" />
-          <img src="https://placehold.co/100x100" alt="emotion3" />
-          <img src="https://placehold.co/100x100" alt="emotion3" />
-          <img src="https://placehold.co/100x100" alt="emotion3" />
+          <img src="/icons/office/emo_angry_unselected.svg" alt="angry" />
+          <img src="/icons/office/emo_sad_unselected.svg" alt="sad" />
+          <img src="/icons/office/emo_neutral_unselected.svg" alt="neutral" />
+          <img src="/icons/office/emo_veryhappy_unselected.svg" alt="veryhappy" />
+          <img src="/icons/office/emo_happy_unselected.svg" alt="happy" />
         </div>
         <caption className={styles.caution}>
           ⚠️ 편지 작성 시 유의사항{'\n'}

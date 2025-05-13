@@ -1,58 +1,156 @@
+
 .container {
-  width: 100%;
-  height: calc(100% - 160px);
+  background-image: url('/icons/office/lightgreenbg.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  font-family: 'font', sans-serif;
+  padding: 2rem 1rem;
 }
+
 .radioContainer {
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 2rem;
+  margin-top: 1rem;
 }
+
+.radioContainer input[type="radio"] {
+  width: 24px;
+  height: 24px;
+  accent-color: #ffcc66;
+}
+
+.radioContainer img {
+  width: 50px;
+  height: 50px;
+}
+
+.radioContainer label {
+  font-size: 1.2rem;
+  margin: 0 1rem;
+  color: #000;
+  font-weight: bold;
+}
+
+.divider {
+  display: block;
+  width: 90%;
+  height: 700px;
+  margin: 1rem auto;
+}
+
 .emotionContainer {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 5rem;
-  margin: 2rem;
+  gap: 2.5rem;
+  margin: 2rem 0;
 }
+
+.emotionContainer img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  transition: transform 0.2s;
+}
+
+.emotionContainer img:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
 .caution {
   display: block;
+  white-space: pre-line;
   text-align: left;
-  margin: 2rem;
+  font-size: 1rem;
+  margin: 1.5rem 2rem 0 2rem;
 }
+
 .flexGrowWrapper {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
+
 .letterInput {
-  flex-grow: 1;
-  display: block;
-  margin: 0 auto;
-  font-size: 2rem;
-  width: 90%;
-  height: 100%;
-  font-family: Pretendard;
+  background-image: url('/icons/office/letterbg.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  outline: none;
   resize: none;
-  ::placeholder {
-    font-size: inherit;
-  }
+  width: 90%;
+  max-width: 600px;
+  height: 520px;
+  padding: 5rem 3rem 3rem 3rem;
+  font-size: 1.2rem;
+  font-family: 'font', sans-serif;
+  line-height: 1.8;
 }
+
+.letterInput::placeholder {
+  color: #999;
+  font-size: 1rem;
+}
+
 .letterInputCount {
   text-align: right;
+  margin-top: 0.5rem;
   margin-right: 5%;
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: #717171;
 }
+
 .completeContainer {
   display: flex;
   align-items: center;
-  margin: 2rem;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 700px;
+  margin-top: 1rem;
 }
+
 .completeButton {
-  width: 12rem;
-  border-radius: 5rem;
+  width: 80px;
+  height: 80px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.completeButton:hover {
+  transform: scale(1.05);
+}
+
+.rewardText {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  text-align: left;
+  white-space: pre-line;
+  margin-left: 1rem;
+}
+
+.noticeContainer {
+  width: 90%;
+  max-width: 600px;
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.7;
+}
+.notice {
+  margin-bottom: 1.2rem;
+}
+.reward {
+  font-weight: normal;
 }

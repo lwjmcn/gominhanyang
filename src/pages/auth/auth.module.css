@@ -21,3 +21,61 @@
   width: 100%;
   margin: 2rem 0;
 }
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fdf1c8; 
+  height: 100vh;
+  justify-content: center;
+  font-family: 'SongeulFont', sans-serif;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.logo {
+  width: 160px;
+  height: auto;
+  margin-bottom: 2rem;
+}
+
+.nicknameInput {
+  width: 240px;
+  padding: 0.8rem 1rem;
+  border: none;
+  border-radius: 1rem;
+  background-color: #fffcee;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.loginButton {
+  width: 240px;
+  padding: 0.8rem 1rem;
+  background-color: #dcc8f2;
+  border: none;
+  border-radius: 1rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #000;
+  margin-bottom: 1rem;
+  transition: background-color 0.2s;
+}
+
+.loginButton:hover {
+  background-color: #c9b3eb;
+}
+
+.link {
+  font-size: 0.9rem;
+  color: #222;
+  text-decoration: underline;
+  margin-top: 0.5rem;
+}

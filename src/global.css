@@ -1,7 +1,6 @@
 @font-face {
   font-family: 'Font';
-  src: url('/font/font.ttf') format('truetype');
-}
+  src: url('/font/font.ttf') format('truetype');}
 .layout {
   width: 100%;
   height: 100%;
