@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'Pretendard Variable';
-  src: url('/font/PretendardVariable.woff2') format('woff2');
+  font-family: 'Font';
+  src: url('/font/font.ttf') format('truetype');
 }
 .layout {
   width: 100%;
