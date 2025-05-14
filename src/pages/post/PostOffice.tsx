@@ -21,7 +21,7 @@ export default function PostOfficePage() {
             편지작성
           </button>
           <button onClick={() => navigate('/letters')}>
-            <img src="/icons/office/office_gotoarchive.svg" alt="storage" />
+            <img src="/icons/office/office_gotoarchive.webp" alt="storage" />
             편지보관함
           </button>
         </div>
