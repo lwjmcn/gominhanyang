@@ -1,60 +1,73 @@
+/* letterwrite.module.css - 시각 피드백 반영 완성본 */
+
 .container {
+  min-height: 100vh;
+  width: 100vw;
   background-image: url('/icons/office/lightgreenbg.webp');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  font-family: 'font', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'font', sans-serif;
-  padding: 1.5rem 0.5rem;
   gap: 1rem;
+  padding: 1.5rem 1rem 4rem 1rem; /* ✅ 하단 여백 확보 */
+  box-sizing: border-box;
 }
-
 
 .radioContainer {
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 2rem;
-  margin-top: 1rem;
+  align-items: center;
+  gap: 2.5rem;
+  margin-top: 0.5rem;
+}
+
+.radioContainer label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
 }
 
 .radioContainer input[type="radio"] {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   accent-color: #ffcc66;
 }
 
 .radioContainer img {
-  width: 50px;
-  height: 50px;
-}
-
-.radioContainer label {
-  font-size: 1.2rem;
-  margin: 0 1rem;
-  color: #000;
-  font-weight: bold;
+  width: 36px;
+  height: 36px;
 }
 
 .dividerLine {
-  width: 80%;
-  max-width: 700px;
-  height: 4px;
-  background-color: #6c8c6b;
-  margin: 1.5rem auto 1.2rem auto;
+  width: 90%;
+  max-width: 580px;
+  height: 3px;
+  background-color: #4e774c;
   border-radius: 2px;
 }
 
+.emotionContainer {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 0.5rem;
+}
 
 .emotionContainer img {
-  width: 100px;
-  height: 100px;
-  margin: 0;
-  padding: 0;
+  width: 54px;
+  height: 54px;
   object-fit: contain;
-  transition: transform 0.2s;
+  background-color: transparent;
+  border-radius: 50%;
+  transition: transform 0.2s, border 0.2s;
 }
 
 .emotionContainer img:hover {
@@ -62,20 +75,28 @@
   cursor: pointer;
 }
 
+.selectedEmotion {
+  border: 2px solid #ffcc66;
+  background-color: rgba(255, 204, 102, 0.2);
+}
+
 .caution {
-  display: block;
-  white-space: pre-line;
+  max-width: 90%;
+  font-size: 1.1rem;
   text-align: left;
-  font-size: 1rem;
-  margin: 1.5rem 2rem 0 2rem;
+  white-space: pre-line;
+  color: #222;
+  line-height: 1.6;
+  margin-top: 0.5rem;
 }
 
 .flexGrowWrapper {
-  flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 0.5rem;
   width: 100%;
+  margin-bottom: 2rem;
 }
 
 .letterInput {
@@ -83,74 +104,63 @@
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center;
+  width: 90%;
+  max-width: 580px;
+  height: 500px;
   border: none;
   outline: none;
   resize: none;
-  width: 90%;
-  max-width: 600px;
-  height: 520px;
   padding: 5rem 3rem 3rem 3rem;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-family: 'font', sans-serif;
-  line-height: 1.8;
+  color: #333;
+  line-height: 2;
 }
 
 .letterInput::placeholder {
-  color: #999;
-  font-size: 1rem;
+  color: #aaa;
+  font-size: 1.1rem;
 }
 
 .letterInputCount {
   text-align: right;
-  margin-top: 0.5rem;
-  margin-right: 5%;
+  width: 90%;
+  max-width: 580px;
   font-size: 1rem;
   color: #717171;
 }
 
 .completeContainer {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   width: 90%;
-  max-width: 700px;
-  margin-top: 1rem;
+  max-width: 580px;
+  margin-top: 2rem;
+}
+
+.rewardText {
+  font-size: 1.1rem;
+  color: #444;
+  white-space: pre-line;
+  text-align: left;
+  line-height: 1.6;
+  flex: 1;
 }
 
 .completeButton {
-  width: 80px;
-  height: 80px;
-  border: none;
+  width: 32px; /* ✅ 작게 */
+  height: 32px;
   background: none;
+  border: none;
   cursor: pointer;
   transition: transform 0.2s;
+  margin-bottom: 1.2rem; /* ✅ 바닥과 거리 주기 */
+  margin-right: 0.5rem;
 }
 
 .completeButton:hover {
   transform: scale(1.05);
-}
-
-.rewardText {
-  font-size: 1rem;
-  line-height: 1.5rem;
-  text-align: left;
-  white-space: pre-line;
-  margin-left: 1rem;
-}
-
-.noticeContainer {
-  width: 90%;
-  max-width: 600px;
-  margin-top: 1rem;
-  font-size: 1rem;
-  color: #333;
-  line-height: 1.7;
-}
-.notice {
-  margin-bottom: 1.2rem;
-}
-.reward {
-  font-weight: normal;
 }
 
 @font-face {

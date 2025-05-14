@@ -73,14 +73,14 @@ export default function LetterWritePage() {
           </label>
         </div>
 
-        <img src="/icons/office/divider.webp" alt="divider" className={styles.divider} />
+        <img src="/icons/office/divider.webp" alt="divider" className={styles.dividerLine} />
 
         <div className={styles.emotionContainer}>
           <img src="/icons/office/emo_angry_unselected.webp" alt="angry" />
           <img src="/icons/office/emo_sad_unselected.webp" alt="sad" />
           <img src="/icons/office/emo_neutral_unselected.webp" alt="neutral" />
-          <img src="/icons/office/emo_veryhappy_unselected.webp" alt="veryhappy" />
           <img src="/icons/office/emo_happy_unselected.webp" alt="happy" />
+          <img src="/icons/office/emo_veryhappy_unselected.webp" alt="veryhappy" />
         </div>
 
         <p className={styles.caution}>

@@ -2,7 +2,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;  /* ✅ 위부터 시작 */
+  justify-content: flex-start;
   align-items: center;
   background-image: url('/icons/office/officebg.webp');
   background-size: cover;
@@ -11,17 +11,13 @@
   padding: 2rem 1rem;
 }
 
-.topSpacer {
-  height: 20%;
-}
-
 .navButtonContainer {
   display: flex;
   flex-direction: row;
   gap: 2rem;
   align-items: center;
   justify-content: center;
-  margin-top: 80rem; /* ✅ 여기가 핵심: 높이면 아래로, 줄이면 위로 */
+  margin-top: 80rem;
   z-index: 10;
 }
 
