@@ -23,11 +23,17 @@
   z-index: 505;
 }
 
-.nextButton,
-.backButton {
+.nextButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 2rem;
-  color: #000;
+}
+
+.nextButton img {
+  width: 150px;
+  height: 150px;
 }

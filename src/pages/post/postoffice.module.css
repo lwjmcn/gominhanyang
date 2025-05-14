@@ -1,33 +1,51 @@
 .container {
-  height: 90%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 5rem;
-  padding: 0 5%;
-}
-.speechBubble {
+  background-image: url('/icons/office/officebg.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   position: relative;
-  background: #f0f0f0;
-  border-radius: 12rem;
-  padding: 3rem 4rem;
-  width: 36rem;
-  box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.2);
-  ::after {
-    content: '';
-    position: absolute;
-    top: 13.5rem;
-    left: -0.5rem;
-    width: 0;
-    height: 0;
-    border: 5rem solid transparent;
-    border-right-color: #f0f0f0;
-  }
+  padding: 2rem;
 }
-.speechBubble h4 {
-  font-size: 3rem;
-  font-weight: 500;
-  height: 6rem;
+
+
+.speechContainer {
+  position: relative;
+  width: 320px;         /* 말풍선 SVG 크기 맞춰서 조절 */
+  height: 200px;
+  margin-top: -6rem;     /* 위로 띄우고 싶다면 조절 가능 */
+  z-index: 2;
+}
+
+
+.speechText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #000;
+  white-space: pre-line;
+  padding: 0 1rem;
+}
+
+
+.nav-button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: rem; /* 말풍선 아래로 간격 */
+  z-index: 2;
+  align-items: center;
+
+  position: relative;
+  z-index: 10;
+  transform: translateY(4rem);
 }
