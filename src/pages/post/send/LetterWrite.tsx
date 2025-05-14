@@ -42,7 +42,7 @@ export default function LetterWritePage() {
               checked={sendType === 'save'}
               onChange={e => setSendType(e.target.value)}
             />
-            <img src="/icons/office/writeletter_archive.svg" alt="보관함" />
+            <img src="/icons/office/writeletter_archive.webp" alt="보관함" />
             <span>보관함</span>
           </label>
 
@@ -55,7 +55,7 @@ export default function LetterWritePage() {
               checked={sendType === 'random'}
               onChange={e => setSendType(e.target.value)}
             />
-            <img src="/icons/office/writeletter_anonymous.svg" alt="익명 친구" />
+            <img src="/icons/office/writeletter_anonymous.webp" alt="익명 친구" />
             <span>익명 친구</span>
           </label>
 
@@ -68,19 +68,19 @@ export default function LetterWritePage() {
               checked={sendType === 'send'}
               onChange={e => setSendType(e.target.value)}
             />
-            <img src="/icons/office/writeletter_ongi.svg" alt="온기우체부" />
+            <img src="/icons/office/writeletter_ongi.webp" alt="온기우체부" />
             <span>온기우체부</span>
           </label>
         </div>
 
-        <img src="/icons/office/divider.svg" alt="divider" className={styles.divider} />
+        <img src="/icons/office/divider.webp" alt="divider" className={styles.divider} />
 
         <div className={styles.emotionContainer}>
-          <img src="/icons/office/emo_angry_unselected.svg" alt="angry" />
-          <img src="/icons/office/emo_sad_unselected.svg" alt="sad" />
-          <img src="/icons/office/emo_neutral_unselected.svg" alt="neutral" />
-          <img src="/icons/office/emo_veryhappy_unselected.svg" alt="veryhappy" />
-          <img src="/icons/office/emo_happy_unselected.svg" alt="happy" />
+          <img src="/icons/office/emo_angry_unselected.webp" alt="angry" />
+          <img src="/icons/office/emo_sad_unselected.webp" alt="sad" />
+          <img src="/icons/office/emo_neutral_unselected.webp" alt="neutral" />
+          <img src="/icons/office/emo_veryhappy_unselected.webp" alt="veryhappy" />
+          <img src="/icons/office/emo_happy_unselected.webp" alt="happy" />
         </div>
 
         <p className={styles.caution}>
@@ -104,7 +104,7 @@ export default function LetterWritePage() {
               🎁 마음을 담아 길게 써주시면, 작은 보상을 드려요.
             </p>
             <button className={styles.completeButton} onClick={() => setOpenCompleteWrite(true)}>
-              <img src="/icons/office/sendbutton.svg" alt="complete" />
+              <img src="/icons/sendbutton.webp" alt="complete" />
             </button>
           </div>
         </div>

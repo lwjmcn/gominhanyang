@@ -49,11 +49,11 @@
 }
 
 .archive {
-  background-image: url('/icons/office/choose_recipient_archive.svg');
+  background-image: url('/icons/office/choose_recipient_archive.webp');
 }
 .sea {
-  background-image: url('/icons/office/choose_recipient_float_sea.svg');
+  background-image: url('/icons/office/choose_recipient_float_sea.webp');
 }
 .ongi {
-  background-image: url('/icons/office/choose_recipient_ongi.svg');
+  background-image: url('/icons/office/choose_recipient_ongi.webp');
 }

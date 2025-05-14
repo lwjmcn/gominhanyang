@@ -14,13 +14,13 @@ export default function SpeechModal({
     <div className={styles.overlay}>
       <div className={styles.container}>
         {/* 말풍선 이미지 */}
-        <img src="/icons/office/help_balloon.svg" alt="말풍선" className={styles.balloon}/>
+        <img src="/icons/office/help_balloon.webp" alt="말풍선" className={styles.balloon}/>
 
         {/* 텍스트 & 버튼들이 올라가는 레이어 */}
         <div className={styles.inner}>
           {/* 닫기 버튼 */}
           <button className={styles.closeButton} onClick={onClose}>
-            <img src="/icons/office/help_cancel.svg" alt="닫기" />
+            <img src="/icons/office/help_cancel.webp" alt="닫기" />
           </button>
 
           {/* 텍스트 */}
@@ -32,7 +32,7 @@ export default function SpeechModal({
 
           {/* 새로고침 버튼 */}
           <button className={styles.refreshButton} onClick={onRefresh}>
-            <img src="/icons/office/help_refresh.svg" alt="새로고침" />
+            <img src="/icons/office/help_refresh.webp" alt="새로고침" />
           </button>
         </div>
       </div>

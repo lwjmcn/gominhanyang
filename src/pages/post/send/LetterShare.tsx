@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 export default function LetterSharePage() {
   const navigate = useNavigate();
 
-  // 🔧 뒤로 가기 버튼 함수
   const goback = () => {
     navigate(-1);
   };

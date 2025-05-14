@@ -1,6 +1,5 @@
-
 .container {
-  background-image: url('/icons/office/lightgreenbg.svg');
+  background-image: url('/icons/office/lightgreenbg.webp');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -8,8 +7,10 @@
   flex-direction: column;
   align-items: center;
   font-family: 'font', sans-serif;
-  padding: 2rem 1rem;
+  padding: 1.5rem 0.5rem;
+  gap: 1rem;
 }
+
 
 .radioContainer {
   display: flex;
@@ -39,7 +40,7 @@
 
 .dividerLine {
   width: 80%;
-  max-width: 700px;        /* 감정 이모지 컨테이너보다 더 큼 */
+  max-width: 700px;
   height: 4px;
   background-color: #6c8c6b;
   margin: 1.5rem auto 1.2rem auto;
@@ -50,6 +51,8 @@
 .emotionContainer img {
   width: 100px;
   height: 100px;
+  margin: 0;
+  padding: 0;
   object-fit: contain;
   transition: transform 0.2s;
 }
@@ -76,7 +79,7 @@
 }
 
 .letterInput {
-  background-image: url('/icons/office/letterbg.svg');
+  background-image: url('/icons/office/letterbg.webp');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center;
