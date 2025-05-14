@@ -1,19 +1,27 @@
 import { useAuthStore } from '@/store/auth';
-import { Link, replace, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './auth.module.css';
+import { login } from '@/lib/api/auth';
+import { LoginResponseDto } from '@/lib/dto/user.response.dto';
+import { ResponseBody } from '@/lib/response_dto';
 
 export default function SignInPage() {
   const navigate = useNavigate();
-  const { isAuth, login } = useAuthStore();
+  const { isAuth, setLogin } = useAuthStore();
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     console.log('Login button clicked');
 
-    // Handle login logic here
-
-    console.log('Login successful');
-    login();
-    navigate('/', { replace: true });
+    // TODO: LOGIN API NOT WORKING, CORS? 백엔드 확인 필요
+    await login({ nickname: 'test' }).then((responseBody: ResponseBody<LoginResponseDto>) => {
+      if (!responseBody) {
+        console.log('Login error');
+        return;
+      }
+      console.log('Login successful', responseBody);
+      setLogin();
+      navigate('/', { replace: true });
+    });
   };
 
   return (

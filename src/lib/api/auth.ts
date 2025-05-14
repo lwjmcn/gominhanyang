@@ -1,26 +1,32 @@
-import axios from '@/lib/axios';
+import axios from 'axios';
+import { axiosInstance, errorHandler, responseHandler } from '../axios';
+import { LoginRequestDto, SignupRequestDto, UpdateUserRequestDto } from '../dto/user.request.dto';
+import {
+  LoginResponseDto,
+  SignupResponseDto,
+  UpdateUserResponseDto,
+} from '../dto/user.response.dto';
 
-export async function signup(data: {
-  nickname: string;
-  age: number;
-  gender: '남성' | '여성';
-  address: string;
-  phone: string;
-}) {
-  const res = await axios.post('/api/users/signup', data);
-  return res.data;
-}
+const AUTH_API_URL = `${import.meta.env.VITE_API_URL}/users`;
 
-export async function login(data: { nickname: string }) {
-  const res = await axios.post('/api/users/login', data);
-  return res.data;
-}
-
-export async function updateUser(data: {
-  nickname: string;
-  address: string;
-  phone: string;
-}) {
-  const res = await axios.patch('/api/users/update', data);
-  return res.data;
-}
+export const signup = async (requestBody: SignupRequestDto) => {
+  const result = await axios
+    .post(`${AUTH_API_URL}/send`, requestBody)
+    .then(responseHandler<SignupResponseDto>)
+    .catch(errorHandler);
+  return result;
+};
+export const login = async (requestBody: LoginRequestDto) => {
+  const result = await axios
+    .post(`${AUTH_API_URL}/login`, requestBody)
+    .then(responseHandler<LoginResponseDto>)
+    .catch(errorHandler);
+  return result;
+};
+export const updateUser = async (requestBody: UpdateUserRequestDto) => {
+  const result = await axiosInstance
+    .patch(`${AUTH_API_URL}/update`, requestBody)
+    .then(responseHandler<UpdateUserResponseDto>)
+    .catch(errorHandler);
+  return result;
+};

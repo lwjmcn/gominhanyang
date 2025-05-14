@@ -1,30 +1,40 @@
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 
-const instance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || 'https://api.example.com',
-  timeout: 5000,
-  headers: {
-    'Content-Type': 'application/json',
-  },
+import { AxiosResponse } from 'axios';
+import { ResponseDto } from './response_dto';
+export const responseHandler = <T>(response: AxiosResponse) => {
+  const responseBody: T = response.data;
+
+  const { message } = responseBody as ResponseDto;
+  if (message == 'NO PERMISSION') {
+    alert('로그인 후 이용해주세요.');
+    window.location.href = '/signin';
+  }
+
+  return responseBody;
+};
+
+export const errorHandler = (error: AxiosError) => {
+  console.error('ERROR:', error);
+  return null;
+};
+
+export const axiosInstance = axios.create({
+  baseURL: import.meta.env.VITE_API_URL,
+  withCredentials: true,
 });
-
-instance.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+axiosInstance.interceptors.request.use(
+  config => {
+    // axios 요청 시 헤더에 accessToken을 추가
+    const accessToken = localStorage.getItem('accessToken');
+    if (accessToken) {
+      config.headers.Authorization = `Bearer ${accessToken}`;
     }
     return config;
   },
-  (error) => Promise.reject(error)
-);
-
-instance.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    console.error('API Error:', error.response?.data || error.message);
+  error => {
+    // 요청 에러 처리
+    console.error('Request Error:', error);
     return Promise.reject(error);
-  }
+  },
 );
-
-export default instance;
