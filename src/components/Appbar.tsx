@@ -7,6 +7,7 @@ interface AppbarProps {
   nextButtonText?: string;
   onBackPress?: () => void;
   onNextPress?: () => void;
+  showBackButton?: boolean;
 }
 
 export default function Appbar({
@@ -15,6 +16,7 @@ export default function Appbar({
   nextButtonText,
   onBackPress,
   onNextPress,
+  showBackButton = true,
 }: AppbarProps) {
   const navigate = useNavigate();
   return (
@@ -24,9 +26,9 @@ export default function Appbar({
         onClick={() => {
           onBackPress ? onBackPress() : navigate(-1);
         }}
-      >
-        ◀
-      </button>
+        >
+          <img src="/icons/goback.webp" alt="뒤로가기" />
+        </button>
       <h2 className={styles.title}>{title}</h2>
       <div className={styles.nextButtonContainer}>
         {nextButtonIcon && (

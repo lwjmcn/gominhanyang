@@ -1,39 +1,50 @@
-.gridContainer {
+.pageContainer {
+  min-height: 100vh;
+  width: 100%;
   background-image: url('/icons/office/lightgreenbg.webp');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2rem;
+}
+
+.gridContainer {
+  display: flex;
+  flex-direction: column;
   gap: 1.5rem;
   align-items: center;
-  margin-top: 2rem;
+  padding-bottom: 10rem;
 }
 
+.gridContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4 rem;
+  align-items: center;
+}
 
+/* ✅ 질문 텍스트 스타일 */
 .question {
-  font-size: 20px;
+  font-size: 70px;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 20px;
-  font-family: 'Pretendard', sans-serif;
+  margin-bottom: 5 rem;
+  font-family: 'font', sans-serif;
 }
-
-
-
-
-
-
 
 .shareButton {
   position: relative;
   width: 600px;
-  height: 200px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  height: 220px;
   border: none;
   background-color: transparent;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
   font-family: 'font';
   cursor: pointer;
 }
@@ -41,11 +52,13 @@
 .buttonText {
   position: absolute;
   top: 50%;
-  left: 60%;
+  left: 65%;
   transform: translate(-50%, -50%);
-  font-size: 2.2rem;
+  font-size: 4rem;
   color: #333;
   white-space: nowrap;
+  font-family: 'font', sans-serif;
+  font-weight: 500;
 }
 
 .archive {
