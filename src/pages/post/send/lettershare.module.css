@@ -1,16 +1,40 @@
-.container {
-  margin: 0 auto;
-  margin-top: 20%;
-  text-align: center;
+.gridContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  margin-top: 2rem;
 }
 
 .shareButton {
-  margin: 4rem auto;
-  width: 90%;
-  height: 16rem;
-  display: flex;
-  align-items: center;
+  position: relative;
+  width: 300px;
+  height: 120px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  background-color: transparent;
+  font-family: 'font';
+  cursor: pointer;
 }
-.shareButton > img {
-  margin: 4rem;
+
+.buttonText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.1rem;
+  color: #333;
+  white-space: nowrap;
+}
+
+.archive {
+  background-image: url('/icons/office/choose_recipient_archive.svg');
+}
+.sea {
+  background-image: url('/icons/office/choose_recipient_float_sea.svg');
+}
+.ongi {
+  background-image: url('/icons/office/choose_recipient_ongi.svg');
 }

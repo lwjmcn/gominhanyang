@@ -28,25 +28,21 @@ export default function LetterSharePage() {
     console.log('Sent to 온기우체부!');
     handleNextPage('send');
   };
-
   return (
     <>
       <Appbar title="" />
-      <div className={styles.container}>
-        <h2>편지를 누구에게 띄울까요?</h2>
-        <button className={styles.shareButton} onClick={handleSave}>
-          <img src="https://placehold.co/50x50" alt="save" />
-          나만의 보관함에 담기
-        </button>
-        <button className={styles.shareButton} onClick={handleRandom}>
-          <img src="https://placehold.co/50x50" alt="random" />
-          바다에 띄우기
-        </button>
-        <button className={styles.shareButton} onClick={handleSend}>
-          <img src="https://placehold.co/50x50" alt="send" />
-          온기 우체부에게 보내기
-        </button>
-      </div>
+      <div className={styles.gridContainer}>
+  <button className={`${styles.shareButton} ${styles.archive}`} onClick={handleSave}>
+    <span className={styles.buttonText}>나만의 보관함에 간직하기</span>
+  </button>
+  <button className={`${styles.shareButton} ${styles.sea}`} onClick={handleRandom}>
+    <span className={styles.buttonText}>바다 위 익명 친구에게 띄우기</span>
+  </button>
+  <button className={`${styles.shareButton} ${styles.ongi}`} onClick={handleSend}>
+    <span className={styles.buttonText}>온기 우체부에게 전송하기</span>
+  </button>
+</div>
+
     </>
   );
 }
