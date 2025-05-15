@@ -1,11 +1,83 @@
-.genderAge {
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('/icons/login/yellowbg.webp');
+  background-size: cover;
+  background-position: center;
   display: flex;
-  flex-direction: row;
-  width: 100%;
-  margin: 2rem 0;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'font', sans-serif;
+  padding-top: 3rem;
+  position: relative;
 }
 
-.genderAge > div {
-  flex: 1;
+.backButton {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: none;
+  border: none;
+}
+
+.title {
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+
+.label {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.nicknameInput {
+  width: 260px;
+  margin-bottom: 1.5rem;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 2rem;
+}
+
+.genderBox,
+.ageBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.genderBtns {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.arrow {
+  width: 18px;
+  height: 18px;
+  margin-bottom: 0.2rem;
+}
+
+.ageBtn {
+  width: 100px;
+}
+
+.signupButton {
+  background-color: #e6d6f7;
+  border: none;
+  padding: 0.6rem 2rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: 'font';
+}
+
+.loginLink {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  text-decoration: underline;
 }
