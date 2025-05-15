@@ -19,6 +19,7 @@ import LetterCompletePage from './pages/post/send/LetterComplete';
 import LetterSharePage from './pages/post/send/LetterShare';
 import LetterWritePage from './pages/post/send/LetterWrite';
 import ReceivedLetterDetailPage from './pages/beach/received/letter/ReceivedLetterDetail';
+import ApiTestPage from './pages/test/ApiTest';
 
 export const ProtectedRoute = () => {
   const { isAuth } = useAuthStore();
@@ -39,6 +40,7 @@ export default function AppRoutes() {
         <Route element={<PublicRoute />}>
           <Route path="/signin" element={<SignInPage />} />
           <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/test" element={<ApiTestPage />} />
         </Route>
         <Route element={<ProtectedRoute />}>
           <Route path="/" element={<BeachPage />} />

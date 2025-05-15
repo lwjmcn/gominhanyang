@@ -5,7 +5,7 @@ import { useToastStore } from '@/store/toast';
 
 export default function SignUpPage() {
   const navigate = useNavigate();
-  const { setMessage, setShow } = useToastStore();
+  const { showToast } = useToastStore();
 
   const handleSignup = () => {
     console.log('signup button clicked');
@@ -14,8 +14,7 @@ export default function SignUpPage() {
 
     console.log('signup successful');
 
-    setMessage('가입이 완료되었습니다.');
-    setShow(true);
+    showToast('가입이 완료되었습니다.');
     navigate('/signin');
   };
   return (
