@@ -1,166 +1,74 @@
-/* letterwrite.module.css - 시각 피드백 반영 완성본 */
-
 .container {
-  min-height: 100vh;
-  width: 100vw;
-  background-image: url('/icons/office/lightgreenbg.webp');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  font-family: 'font', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  padding: 1.5rem 1rem 4rem 1rem; /* ✅ 하단 여백 확보 */
+  justify-content: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+  font-family: 'NotoSansKR', sans-serif;
+}
+
+.letterContainer {
+  width: 90%;
+  max-width: 600px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
   box-sizing: border-box;
 }
 
-.radioContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2.5rem;
-  margin-top: 0.5rem;
-}
-
-.radioContainer label {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: #333;
-  cursor: pointer;
-}
-
-.radioContainer input[type="radio"] {
-  width: 20px;
-  height: 20px;
-  accent-color: #ffcc66;
-}
-
-.radioContainer img {
-  width: 36px;
-  height: 36px;
-}
-
-.dividerLine {
-  width: 90%;
-  max-width: 580px;
-  height: 3px;
-  background-color: #4e774c;
-  border-radius: 2px;
-}
-
-.emotionContainer {
-  display: flex;
-  justify-content: center;
-  gap: 1.2rem;
-  margin-top: 0.5rem;
-}
-
-.emotionContainer img {
-  width: 54px;
-  height: 54px;
-  object-fit: contain;
-  background-color: transparent;
-  border-radius: 50%;
-  transition: transform 0.2s, border 0.2s;
-}
-
-.emotionContainer img:hover {
-  transform: scale(1.1);
-  cursor: pointer;
-}
-
-.selectedEmotion {
-  border: 2px solid #ffcc66;
-  background-color: rgba(255, 204, 102, 0.2);
-}
-
-.caution {
-  max-width: 90%;
-  font-size: 1.1rem;
-  text-align: left;
-  white-space: pre-line;
-  color: #222;
-  line-height: 1.6;
-  margin-top: 0.5rem;
-}
-
-.flexGrowWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  width: 100%;
-  margin-bottom: 2rem;
-}
-
 .letterInput {
-  background-image: url('/icons/office/letterbg.webp');
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 90%;
-  max-width: 580px;
-  height: 500px;
+  width: 100%;
+  height: 400px;
   border: none;
   outline: none;
   resize: none;
-  padding: 5rem 3rem 3rem 3rem;
-  font-size: 1.3rem;
-  font-family: 'font', sans-serif;
-  color: #333;
-  line-height: 2;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  padding: 1rem;
+  box-sizing: border-box;
+  background-image: url('/icons/office/letterbg.webp');
+  background-size: cover;
+  background-position: center;
+  font-family: 'NotoSansKR', sans-serif;
 }
 
 .letterInput::placeholder {
   color: #aaa;
-  font-size: 1.1rem;
 }
 
-.letterInputCount {
-  text-align: right;
-  width: 90%;
-  max-width: 580px;
-  font-size: 1rem;
-  color: #717171;
-}
-
-.completeContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 90%;
-  max-width: 580px;
-  margin-top: 2rem;
+.caution {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 1rem;
+  white-space: pre-line;
 }
 
 .rewardText {
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   color: #444;
+  margin-top: 1rem;
   white-space: pre-line;
-  text-align: left;
-  line-height: 1.6;
-  flex: 1;
 }
 
-.completeButton {
-  width: 32px; /* ✅ 작게 */
-  height: 32px;
+.sendButton {
+  display: block;
+  margin-left: auto;
+  margin-top: 1rem;
   background: none;
   border: none;
   cursor: pointer;
   transition: transform 0.2s;
-  margin-bottom: 1.2rem; /* ✅ 바닥과 거리 주기 */
-  margin-right: 0.5rem;
 }
 
-.completeButton:hover {
-  transform: scale(1.05);
+.sendButton:hover {
+  transform: scale(1.1);
+}
+
+.sendButton img {
+  width: 32px;
+  height: 32px;
 }
 
 @font-face {
