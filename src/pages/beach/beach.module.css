@@ -1,19 +1,45 @@
-.postImage {
-  display: block;
-  width: 40rem;
-  height: 40rem;
-  margin: 30rem auto;
+.container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.pointContainer {
-  position: fixed;
+.background {
+  position: absolute;
   top: 0;
   left: 0;
-  margin: 2rem;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.centerText {
+  position: fixed;
+  top: 20rem;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 3rem;
+  font-family: 'font', sans-serif;
+  color: #333;
+  z-index: 10;
+  white-space: pre-line;
+  line-height: 2;
+}
+
+
+/* 고정된 포인트 UI */
+.pointContainer {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
+  z-index: 10;
 }
 
 .cylinder {
@@ -39,22 +65,27 @@
   border-bottom-right-radius: 36px;
 }
 
+/* 우측 상단 설정 버튼 */
 .settingButton {
   position: fixed;
-  top: 0;
-  right: 0;
-  margin: 2rem;
+  top: 4rem;
+  right: 3rem;
+  z-index: 10;
 }
+
+/* 하단 네비게이션 아이콘 버튼들 */
 .navContainer {
   position: fixed;
-  bottom: 4rem;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  gap: 2rem;
-  margin: 2rem;
-  & > button {
-    width: 30%;
-  }
+  gap: 7rem;
+  z-index: 10;
+}
+
+.navContainer img {
+  width: 10rem;
+  height: 10rem;
+  cursor: pointer;
 }
