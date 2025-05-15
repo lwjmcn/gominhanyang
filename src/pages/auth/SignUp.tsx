@@ -64,14 +64,10 @@ export default function SignUpPage() {
         {/* 나이대 */}
         <div className={styles2.ageBox}>
           <p className={styles2.label}>나이대</p>
-          <img src="/icons/login/age_arrow.webp" alt="화살표" className={styles2.arrow} />
+          <img src="/icons/login/goback.webp" alt="화살표" className={styles2.arrow} />
           <img src="/icons/login/insert_age.webp" alt="나이대 버튼" className={styles2.ageBtn} />
         </div>
       </div>
-<<<<<<< HEAD
-    );
-  }
-=======
 
       <button className={styles2.signupButton} onClick={handleSignup}>
         가입하기
@@ -81,4 +77,4 @@ export default function SignUpPage() {
     </div>
   );
 }
->>>>>>> fdd07a6 (beach change)
+
