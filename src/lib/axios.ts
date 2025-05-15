@@ -1,40 +1,98 @@
 import axios, { AxiosError } from 'axios';
-
 import { AxiosResponse } from 'axios';
-import { ResponseDto } from './response_dto';
-export const responseHandler = <T>(response: AxiosResponse) => {
-  const responseBody: T = response.data;
+import { ApiResponse, ErrorResponse } from './response_dto';
+import { API_BASE_URL } from './constants/api';
+import { ERROR_MESSAGES } from './constants/messages';
 
-  const { message } = responseBody as ResponseDto;
-  if (message == 'NO PERMISSION') {
-    alert('로그인 후 이용해주세요.');
-    window.location.href = '/signin';
-  }
+const logger = {
+  request: (config: any) => {
+    console.log('[API 요청]', {
+      url: config.url,
+      method: config.method,
+      data: config.data,
+      headers: config.headers,
+      timestamp: new Date().toISOString(),
+    });
+  },
+  response: (response: AxiosResponse) => {
+    console.log('[API 응답]', {
+      url: response.config.url,
+      status: response.status,
+      data: response.data,
+      timestamp: new Date().toISOString(),
+    });
+  },
+  error: (error: AxiosError) => {
+    console.error('[API 에러]', {
+      url: error.config?.url,
+      status: error.response?.status,
+      data: error.response?.data,
+      message: error.message,
+      timestamp: new Date().toISOString(),
+    });
+  },
+};
 
+export const responseHandler = <T>(response: AxiosResponse): ApiResponse<T> => {
+  logger.response(response);
+  const responseBody = response.data;
   return responseBody;
 };
 
-export const errorHandler = (error: AxiosError) => {
-  console.error('ERROR:', error);
-  return null;
+export const errorHandler = (error: AxiosError): ErrorResponse => {
+  logger.error(error);
+
+  const errorResponse = error.response?.data as ErrorResponse;
+  if (errorResponse?.error) {
+    return errorResponse;
+  }
+
+  // HTTP 상태 코드별 기본 에러 메시지
+  switch (error.response?.status) {
+    case 400:
+      return { error: ERROR_MESSAGES.HTTP.BAD_REQUEST };
+    case 401:
+      sessionStorage.removeItem('accessToken');
+      window.location.href = '/signin';
+      return { error: ERROR_MESSAGES.HTTP.UNAUTHORIZED };
+    case 403:
+      return { error: ERROR_MESSAGES.HTTP.FORBIDDEN };
+    case 404:
+      return { error: ERROR_MESSAGES.HTTP.NOT_FOUND };
+    case 500:
+      return { error: ERROR_MESSAGES.HTTP.SERVER_ERROR };
+    default:
+      return { error: ERROR_MESSAGES.HTTP.UNKNOWN };
+  }
 };
 
 export const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: API_BASE_URL,
   withCredentials: true,
+  headers: {
+    Version: 'HTTP/1.1',
+  },
 });
+
 axiosInstance.interceptors.request.use(
   config => {
-    // axios 요청 시 헤더에 accessToken을 추가
-    const accessToken = localStorage.getItem('accessToken');
+    logger.request(config);
+    const accessToken = sessionStorage.getItem('accessToken');
     if (accessToken) {
       config.headers.Authorization = `Bearer ${accessToken}`;
     }
     return config;
   },
   error => {
-    // 요청 에러 처리
-    console.error('Request Error:', error);
+    logger.error(error);
+    return Promise.reject(error);
+  },
+);
+
+axiosInstance.interceptors.response.use(
+  response => response,
+  error => {
+    logger.response(error);
     return Promise.reject(error);
   },
 );
