@@ -1,33 +1,47 @@
 .container {
-  height: 90%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-image: url('/icons/office/officebg.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 2rem 1rem;
+}
+
+.navButtonContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 80rem;
+  z-index: 10;
+}
+
+
+
+.navButton {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 5rem;
-  padding: 0 5%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
-.speechBubble {
-  position: relative;
-  background: #f0f0f0;
-  border-radius: 12rem;
-  padding: 3rem 4rem;
-  width: 36rem;
-  box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.2);
-  ::after {
-    content: '';
-    position: absolute;
-    top: 13.5rem;
-    left: -0.5rem;
-    width: 0;
-    height: 0;
-    border: 5rem solid transparent;
-    border-right-color: #f0f0f0;
-  }
+
+.navButton img {
+  width: 400px;
+  height: auto;
+  margin-bottom: 0.5rem;
 }
-.speechBubble h4 {
-  font-size: 3rem;
-  font-weight: 500;
-  height: 6rem;
+
+.navButton span {
+  font-size: 4rem;
+  font-family: 'font', sans-serif;
+  color: #333;
   text-align: center;
 }

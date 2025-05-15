@@ -1,23 +1,107 @@
-.container {
+.background {
+  background-image: url('/icons/login/complete_with_otter.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  font-family: 'font', sans-serif;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 10rem;
+  color: #000;
+  margin-top: 15rem;
+}
+
+.bottomBox {
+  position: absolute;
+  bottom: 33rem;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20%;
-  padding: 6rem;
-}
-
-.logo {
-  display: block;
-  width: 30rem;
-  height: 30rem;
-  margin: 3rem;
-}
-
-.nicknameInput {
   width: 100%;
+  max-width: 320px;
+  padding: 2rem 1rem;
+}
+
+
+.inputContainer {
+  width: 100%;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.label {
+  font-size: 3rem;
+  margin-left: 0.5rem;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+.inputWrapper {
+  position: relative;
+  width: 100%;
+  height: 100px;
+}
+
+.inputBg,
+.loginImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.inputField {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background: transparent;
+  border: none;
+  font-size: 5rem;
+  text-align: center;
+  padding: 0 1rem;
+  font-family: 'font';
+  outline: none;
 }
 
 .loginButton {
+  position: relative;
   width: 100%;
-  margin: 2rem 0;
+  height: 100px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 20 rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.loginText {
+  position: absolute;
+  color: #000;
+  font-size: 2.5rem;
+  font-weight: bold;
+  pointer-events: none;
+}
+
+.signupLink {
+  font-size: 4rem;
+  text-decoration: underline;
+  color: #000;
+  margin-top: 1.5rem;
+  align-self: center;
 }

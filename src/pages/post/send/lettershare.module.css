@@ -1,16 +1,72 @@
-.container {
-  margin: 0 auto;
-  margin-top: 20%;
+.pageContainer {
+  min-height: 100vh;
+  width: 100%;
+  background-image: url('/icons/office/lightgreenbg.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2rem;
+}
+
+.gridContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  padding-bottom: 10rem;
+}
+
+.gridContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4 rem;
+  align-items: center;
+}
+
+/* ✅ 질문 텍스트 스타일 */
+.question {
+  font-size: 70px;
+  font-weight: bold;
   text-align: center;
+  margin-bottom: 5 rem;
+  font-family: 'font', sans-serif;
 }
 
 .shareButton {
-  margin: 4rem auto;
-  width: 90%;
-  height: 16rem;
-  display: flex;
-  align-items: center;
+  position: relative;
+  width: 600px;
+  height: 220px;
+  border: none;
+  background-color: transparent;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: 'font';
+  cursor: pointer;
 }
-.shareButton > img {
-  margin: 4rem;
+
+.buttonText {
+  position: absolute;
+  top: 50%;
+  left: 65%;
+  transform: translate(-50%, -50%);
+  font-size: 4rem;
+  color: #333;
+  white-space: nowrap;
+  font-family: 'font', sans-serif;
+  font-weight: 500;
+}
+
+.archive {
+  background-image: url('/icons/office/choose_recipient_archive.webp');
+}
+.sea {
+  background-image: url('/icons/office/choose_recipient_float_sea.webp');
+}
+.ongi {
+  background-image: url('/icons/office/choose_recipient_ongi.webp');
 }

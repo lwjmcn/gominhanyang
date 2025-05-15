@@ -1,0 +1,78 @@
+.modalContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .paperBox {
+    background: #fff6dc;
+    border: 4px solid #f2cf6c;
+    border-radius: 16px;
+    padding: 24px;
+    width: 90%;
+    max-width: 400px;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .icon {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .description {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .checkList {
+    margin: 16px 0;
+    font-size: 15px;
+  }
+  
+  .warningBox {
+    background-color: #ffe5e5;
+    border: 1px solid #ff7777;
+    padding: 12px;
+    margin: 16px 0;
+    font-size: 14px;
+    color: #a33;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .inlineIcon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .buttonRow {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .confirmButton,
+  .submitButton {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .confirmButton {
+    background-color: #fff5cc;
+  }
+  
+  .submitButton {
+    background-color: #ccf5d6;
+  }
+  

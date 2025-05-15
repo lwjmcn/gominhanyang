@@ -7,48 +7,77 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(2px);
-  z-index: 500;
-}
-
-.content {
-  position: absolute;
-  height: fit-content;
-  top: 10rem;
-  right: 2rem;
+  z-index: 1000;
   display: flex;
-  background-color: #fff;
-  padding: 2rem 3rem;
-  border-radius: 4rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  width: 65%;
-  animation: fadeIn 0.2s ease-in-out;
-  /* 왼쪽 상단 말풍선 */
-  ::after {
-    content: '';
-    position: absolute;
-    top: -2rem;
-    right: 3rem;
-    width: 0;
-    height: 0;
-    border-left: 3rem solid transparent;
-    border-bottom: 3rem solid #fff;
-  }
-}
-.content h2 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-.content p {
-  font-size: 2rem;
+  justify-content: center;
+  align-items: center;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+.container {
+  position: relative;
+  width: 500px; /* 말풍선 이미지 너비에 맞게 조정 */
+  height: auto;
+}
+
+/* 말풍선 이미지 */
+.balloon {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+/* 텍스트를 이미지 위에 올림 */
+.textBlock {
+  position: absolute;
+  top: 80px;
+  left: 40px;
+  right: 40px;
+  text-align: left;
+  font-family: 'Font', sans-serif;
+  font-size: 1.8rem;
+  line-height: 2.6rem;
+  color: #222;
+  pointer-events: none;
+
+}
+
+.line {
+  margin: 0.6rem 0;
+  white-space: pre-line;
+}
+
+/* 닫기 버튼 (X) - 좌상단 */
+.closeButton {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.closeButton img {
+  width: 28px;
+  height: 28px;
+}
+
+/* 새로고침 버튼 🔃 - 우하단 */
+.refreshButton {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.refreshButton img {
+  width: 28px;
+  height: 28px;
+}
+
+@font-face {
+  font-family: 'Font'; /* 원하는 이름으로 */
+  src: url('/font/font.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
