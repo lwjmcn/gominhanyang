@@ -1,13 +1,19 @@
 import { useState } from 'react';
 import styles from './beach.module.css';
 import { useNavigate } from 'react-router-dom';
+
 export default function BeachPage() {
   const navigate = useNavigate();
   const [pointFill, setPointFill] = useState(60);
+
   return (
-    <div>
+    <div className={styles.container}>
+      {/* 배경 이미지 */}
+      <img src="/icons/main/main_firststart.webp" alt="배경" className={styles.background} />
+
+      {/* 포인트 바 */}
       <div className={styles.pointContainer}>
-        <img src="https://placehold.co/100x100" alt="shell" />
+        <img src="/icons/main/main_shellreward.webp" alt="shell" />
         <div className={styles.cylinder}>
           <div
             className={styles.cylinderFill}
@@ -15,16 +21,21 @@ export default function BeachPage() {
           />
         </div>
       </div>
+
+      {/* 설정 버튼 */}
       <div className={styles.settingButton} onClick={() => navigate('/settings')}>
-        <img src="https://placehold.co/100x100" alt="setting" />
+        <img src="/icons/main/main_settings.webp" alt="setting" />
       </div>
+      <div className={styles.centerText}>
+  <p>마음의 항해에 온 걸 환영해요.<br />오늘의 기분을 들려줄래요?</p>
+</div>
 
-      <img className={styles.postImage} src="https://placehold.co/400x400" alt="post-office" />
 
+      {/* 네비게이션 버튼 */}
       <div className={styles.navContainer}>
-        <button onClick={() => navigate('/post')}>내 편지 열람 & 편지 작성</button>
-        <button onClick={() => navigate('/received')}>누군가의 이야기 & 답장 본내기</button>
-        <button onClick={() => navigate('/items')}>아이템 보관함</button>
+        <img src="/icons/main/main_gotosea.webp" alt="바다로" onClick={() => navigate('/post')} />
+        <img src="/icons/main/main_archive.webp" alt="보관함" onClick={() => navigate('/received')} />
+        <img src="/icons/main/main_postoffice.webp" alt="우체국" onClick={() => navigate('/items')} />
       </div>
     </div>
   );
