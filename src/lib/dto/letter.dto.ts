@@ -43,7 +43,7 @@ export interface ReplyLetterRequestDto {
 export interface ReplyLetterResponseDto extends BaseResponse {}
 
 export interface RepliedLettersResponseDto extends BaseResponse {
-  replied_letters: RepliedLetter[];
+  'replied-to-me': RepliedLetter[];
 }
 
 export interface ReplyOptionsResponseDto extends BaseResponse {

@@ -7,6 +7,8 @@ export interface GrantRewardRequestDto {
 
 export interface GrantRewardResponseDto extends BaseResponse {
   action: ActionType;
+  leveled_up: boolean;
+  level: number;
   new_items: RewardItem[];
 }
 
