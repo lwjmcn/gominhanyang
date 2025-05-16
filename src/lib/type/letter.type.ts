@@ -23,7 +23,7 @@ export interface Letter {
   from: string;
   from_nickname: string;
   title: string;
-  emotion: string;
+  emotion: EmotionType;
   created_at: string;
 }
 export interface Reply {

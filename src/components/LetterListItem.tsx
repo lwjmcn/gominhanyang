@@ -1,9 +1,10 @@
+import { EmotionType } from '@/lib/type/letter.type';
 import styles from './letterlistitem.module.css';
 
 interface Letter {
   _id: string;
   title: string;
-  emotion: string;
+  emotion: EmotionType;
   created_at: string;
 }
 interface LetterListItemProps {
