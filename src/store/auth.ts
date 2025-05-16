@@ -7,7 +7,10 @@ interface AuthState {
 }
 
 export const useAuthStore = create<AuthState>(set => ({
-  isAuth: false,
+  isAuth: sessionStorage.getItem('accessToken') !== null,
   setLogin: () => set({ isAuth: true }),
-  setLogout: () => set({ isAuth: false }),
+  setLogout: () => {
+    sessionStorage.removeItem('accessToken');
+    set({ isAuth: false });
+  },
 }));
