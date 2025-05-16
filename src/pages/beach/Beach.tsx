@@ -33,9 +33,9 @@ export default function BeachPage() {
 
       {/* 네비게이션 버튼 */}
       <div className={styles.navContainer}>
+      <img src="/icons/main/main_postoffice.webp" alt="우체국" onClick={() => navigate('/items')} />
         <img src="/icons/main/main_gotosea.webp" alt="바다로" onClick={() => navigate('/post')} />
         <img src="/icons/main/main_archive.webp" alt="보관함" onClick={() => navigate('/received')} />
-        <img src="/icons/main/main_postoffice.webp" alt="우체국" onClick={() => navigate('/items')} />
       </div>
     </div>
   );

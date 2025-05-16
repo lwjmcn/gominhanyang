@@ -1,5 +1,5 @@
 import Appbar from '@/components/Appbar';
-import LetterListItem from '@/components/LetterListItem';
+import LetterListItem from '../../../../components/LetterListItem';
 import { Link, useNavigate } from 'react-router-dom';
 
 export default function ReceivedLetterListPage() {

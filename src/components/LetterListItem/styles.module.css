@@ -1,0 +1,44 @@
+.container {
+  background-image: url('/icons/sea/floatinglist_listbg.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 10px;
+  position: relative;
+  min-height: 80px;
+  cursor: pointer;
+}
+
+.title {
+  font-size: 2rem;
+  margin: 0;
+  color: #333;
+}
+
+.date {
+  font-size: 1.6rem;
+  color: #666;
+  margin: 5px 0;
+}
+
+.emoji {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.emoji.happy {
+  background-image: url('/icons/office/emo_happy_unselected.webp');
+}
+
+.emoji.smile {
+  background-image: url('/icons/office/emo_veryhappy_unselected.webp');
+} 

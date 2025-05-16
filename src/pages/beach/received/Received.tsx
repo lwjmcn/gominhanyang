@@ -1,32 +1,57 @@
-import Appbar from '@/components/Appbar';
-import styles from '../../post/postoffice.module.css';
 import { useNavigate } from 'react-router-dom';
-export default function ReceivedPage() {
+import styles from './received.module.css';
+
+interface ReceiveProps {
+  readLetterText?: string;
+  viewRepliesText?: string;
+}
+
+export default function Receive({ 
+  readLetterText = '흘러온 편지 읽기',
+  viewRepliesText = '내게 온 답장 보기'
+}: ReceiveProps) {
   const navigate = useNavigate();
 
+  const handleBack = () => {
+    navigate(-1);
+  };
+
+  const handleReadLetter = () => {
+    navigate('/read-letter');
+  };
+
+  const handleViewReplies = () => {
+    navigate('/view-replies');
+  };
+
   return (
-    <>
-      <Appbar title="" />
-
-      <div className={styles.container}>
-        <div className={styles.speechBubble}>
-          <div className={styles.bubbleText}>
-            <h4>OO 님,{'\n'}어떤 이야기를 들어보실래요?</h4>
-          </div>
-        </div>
-        <img src="https://placehold.co/600x600" alt="officer" />
-
-        <div className="nav-button-container">
-          <button onClick={() => navigate('/received/letters')}>
-            <img src="https://placehold.co/50x50" alt="letter" />
-            흘러온 편지
-          </button>
-          <button onClick={() => navigate('/received/responses')}>
-            <img src="https://placehold.co/50x50" alt="storage" />
-            받은 답장
-          </button>
-        </div>
+    <div className={styles.container}>
+      <button 
+        className={styles.backButton}
+        onClick={handleBack}
+        aria-label="Go back"
+      />
+      
+      <div className={styles.otterContainer}>
+        <div className={styles.otter} />
       </div>
-    </>
+
+      <div className={styles.seaItemsContainer}>
+        <div className={styles.paperBoat} />
+        <div className={styles.bottle} />
+      </div>
+
+      <div className={styles.buttonContainer}>
+        <button className={styles.button} onClick={handleReadLetter}>
+          <div className={styles.buttonBackground} />
+          <span className={styles.buttonText}>{readLetterText}</span>
+        </button>
+
+        <button className={styles.button} onClick={handleViewReplies}>
+          <div className={styles.buttonBackground} />
+          <span className={styles.buttonText}>{viewRepliesText}</span>
+        </button>
+      </div>
+    </div>
   );
 }
