@@ -9,7 +9,6 @@ import {
 } from '../dto/user.dto';
 import { ApiResponse, isErrorResponse } from '../response_dto';
 import { API_ENDPOINTS } from '../constants/api';
-import { SUCCESS_MESSAGES } from '../constants/messages';
 
 const saveToken = (token: string) => {
   sessionStorage.setItem('accessToken', token);

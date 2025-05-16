@@ -69,9 +69,6 @@ export const errorHandler = (error: AxiosError): ErrorResponse => {
 export const axiosInstance = axios.create({
   baseURL: API_BASE_URL,
   withCredentials: true,
-  headers: {
-    Version: 'HTTP/1.1',
-  },
 });
 
 axiosInstance.interceptors.request.use(

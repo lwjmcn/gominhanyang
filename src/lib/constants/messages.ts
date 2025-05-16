@@ -22,15 +22,3 @@ export const ERROR_MESSAGES = {
     TOO_LONG: (field: string, max: number) => `${field}은(는) ${max}자를 초과할 수 없습니다.`,
   },
 } as const;
-
-export const SUCCESS_MESSAGES = {
-  AUTH: {
-    LOGIN_SUCCESS: '로그인되었습니다.',
-    LOGOUT_SUCCESS: '로그아웃되었습니다.',
-    SIGNUP_SUCCESS: '회원가입이 완료되었습니다.',
-  },
-  ITEM: {
-    USE_SUCCESS: '아이템을 사용했습니다.',
-    OBTAIN_SUCCESS: '아이템을 획득했습니다.',
-  },
-} as const;
