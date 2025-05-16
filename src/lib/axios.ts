@@ -92,7 +92,7 @@ axiosInstance.interceptors.request.use(
 axiosInstance.interceptors.response.use(
   response => response,
   error => {
-    logger.response(error);
+    logger.error(error);
     return Promise.reject(error);
   },
 );
