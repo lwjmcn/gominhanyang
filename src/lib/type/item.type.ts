@@ -1,7 +1,7 @@
 export enum CategoryType {
-  SHELL = 'shell',
-  STICKER = 'sticker',
-  FISH = 'fish',
+  SHELL = '조개 목걸이',
+  STICKER = '온기 스티커',
+  OCEAN = '등대 미니어처',
 }
 
 export interface Item {

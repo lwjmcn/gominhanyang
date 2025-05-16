@@ -1,6 +1,7 @@
 export enum ActionType {
-  WRITE = 'write_letters',
-  REPLY = 'reply_letters',
+  WRITE = 'write_letter',
+  REPLY = 'reply_letter',
+  WRITE_LONG = 'long_letter_bonus',
 }
 
 export interface RewardItem {

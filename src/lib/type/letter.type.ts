@@ -13,14 +13,15 @@ export enum EmotionType {
 }
 
 export enum StatusType {
-  UNREAD = 'unread',
-  READ = 'read',
+  SENT = 'sent',
   REPLIED = 'replied',
+  AUTO_REPLIED = 'auto_replied',
 }
 
 export interface Letter {
   _id: string;
   from: string;
+  from_nickname: string;
   title: string;
   emotion: string;
   created_at: string;
@@ -34,6 +35,7 @@ export interface Reply {
 }
 export interface LetterDetail extends Letter {
   to: string;
+  to_nickname: string;
   content: string;
   saved: boolean;
 }

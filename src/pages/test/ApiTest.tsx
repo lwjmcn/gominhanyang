@@ -19,7 +19,7 @@ import { getMyItems, getItemDetail, useItem, unuseItem } from '@/lib/api/item';
 import { generateQuestion, getHelpQuestion } from '@/lib/api/question';
 import { grantReward, getMyReward } from '@/lib/api/reward';
 import { isErrorResponse } from '@/lib/response_dto';
-import { GenderType } from '@/lib/type/user,type';
+import { GenderType } from '@/lib/type/user.type';
 import { EmotionType, SendType } from '@/lib/type/letter.type';
 import { ActionType } from '@/lib/type/reward.type';
 
@@ -50,14 +50,14 @@ export default function ApiTestPage() {
   const sampleData = {
     user: {
       signup: {
-        nickname: '테스트유저',
+        nickname: 'master01',
         age: 25,
         gender: GenderType.MALE,
         address: '서울시 강남구',
         phone: '010-1234-5678',
       },
       login: {
-        nickname: '테스트유저',
+        nickname: 'master01',
       },
       update: {
         nickname: '수정된닉네임',
@@ -74,14 +74,14 @@ export default function ApiTestPage() {
         emotion: EmotionType.EXCITED,
       },
       reply: {
-        letter_id: 'd56cd6c2-993e-4957-adbe-12e325547582',
+        letter_id: '6826aaaaffff000000000013',
         content: '답장 테스트입니다.',
         reply: '답장 내용입니다.',
       },
     },
     item: {
       use: {
-        item_id: '66401d5e74cfeb20b1ac1234',
+        item_id: '6824778b33b3799bb8c13001',
       },
     },
     question: {
@@ -143,17 +143,13 @@ export default function ApiTestPage() {
             랜덤 편지 조회
           </button>
           <button
-            onClick={() =>
-              handleApiCall(() => getLetterDetail('d56cd6c2-993e-4957-adbe-12e325547582'))
-            }
+            onClick={() => handleApiCall(() => getLetterDetail('6826aaaaffff000000000013'))}
             disabled={isLoading}
           >
             편지 상세 조회
           </button>
           <button
-            onClick={() =>
-              handleApiCall(() => getReplyOptions('34e50e5c-3d5f-4b98-abc2-c4786fa9d8f5'))
-            }
+            onClick={() => handleApiCall(() => getReplyOptions('6826aaaaffff000000000013'))}
             disabled={isLoading}
           >
             답장 옵션 조회
@@ -188,7 +184,7 @@ export default function ApiTestPage() {
             내 아이템 조회
           </button>
           <button
-            onClick={() => handleApiCall(() => getItemDetail('66401d5e74cfeb20b1ac1234'))}
+            onClick={() => handleApiCall(() => getItemDetail('6824778b33b3799bb8c13001'))}
             disabled={isLoading}
           >
             아이템 상세 조회
