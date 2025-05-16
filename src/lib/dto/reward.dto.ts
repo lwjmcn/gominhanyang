@@ -1,4 +1,4 @@
-import { ApiResponse, BaseResponse } from '../response_dto';
+import { BaseResponse } from '../response_dto';
 import { ActionType, RewardItem } from '../type/reward.type';
 
 export interface GrantRewardRequestDto {
