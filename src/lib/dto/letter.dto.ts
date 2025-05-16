@@ -26,7 +26,7 @@ export interface RandomLettersResponseDto extends BaseResponse {
   unread_letters: Letter[];
 }
 
-export interface GetCommentsResponseDto {
+export interface GetCommentsResponseDto extends BaseResponse {
   comments: Reply[];
 }
 
