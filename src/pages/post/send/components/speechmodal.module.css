@@ -10,13 +10,15 @@
   z-index: 1000;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .container {
   position: relative;
+  top: 50px;
   width: 500px; /* 말풍선 이미지 너비에 맞게 조정 */
   height: auto;
+  margin-top: 32px;
 }
 
 /* 말풍선 이미지 */

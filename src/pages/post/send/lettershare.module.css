@@ -9,56 +9,54 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 2rem;
+  /* padding-top: 4rem; */
 }
 
 .gridContainer {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
   align-items: center;
-  padding-bottom: 10rem;
-}
-
-.gridContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 4 rem;
-  align-items: center;
+  padding-bottom: 6rem;
+  gap: 3rem;
+  height: 80vh;
+  justify-content: center;
 }
 
 /* ✅ 질문 텍스트 스타일 */
 .question {
-  font-size: 70px;
+  font-size: 2.2rem;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 5 rem;
+  margin-bottom: 2rem;
   font-family: 'font', sans-serif;
 }
 
 .shareButton {
   position: relative;
-  width: 600px;
-  height: 220px;
-  border: none;
+  width: 70vw;
+  height: 20vh;
   background-color: transparent;
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center;
-  font-family: 'font';
   cursor: pointer;
+  border: none;
 }
 
 .buttonText {
   position: absolute;
   top: 50%;
-  left: 65%;
+  left: 60%;
   transform: translate(-50%, -50%);
-  font-size: 4rem;
+  font-size: 1.8rem;
   color: #333;
-  white-space: nowrap;
+  white-space: pre-line;
   font-family: 'font', sans-serif;
+  font-size: 3rem;
   font-weight: 500;
+  width: 80%;
+  text-align: center;
+  line-height: 1.3;
 }
 
 .archive {
@@ -69,4 +67,29 @@
 }
 .ongi {
   background-image: url('/icons/office/choose_recipient_ongi.webp');
+}
+
+.bg {
+  min-height: 100vh;
+  width: 100vw;
+  position: relative;
+  background-image: url('/icons/office/lightgreenbg.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  width: 98%;
+  max-width: 1400px;
+  background: #eaf5e1;
+  border-radius: 24px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  padding: 3.5rem 3.5rem 2.5rem 3.5rem;
+  align-items: center;
+  border: 2.5px solid #d2e3c8;
+  margin-top: 0;
+  height: 100vh;
 }

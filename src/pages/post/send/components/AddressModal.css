@@ -4,23 +4,27 @@
   align-items: center;
   position: fixed;
   z-index: 2000;
-  top: 0; left: 0; width: 100%; height: 100%;
+  top: 0; left: 0; width: 100vw; min-height: 100vh;
   background: rgba(0,0,0,0.18);
   overflow-y: auto;
 }
 
 .paperBox {
-  width: 90%;
+  width: 90vw;
+  height: 60vh;
+  max-width: 700px;
+  min-width: 320px;
+  min-height: 340px;
   background: url('/icons/office/readletter_letter.webp') center 40px/95% auto no-repeat, #fffbe6;
   background-blend-mode: lighten;
   border: 3px solid #f2cf6c;
   border-radius: 18px;
-  padding: 40px 20px 20px 20px;
+  padding: 60px 32px 32px 32px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.13);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
+  gap: 18px;
   overflow-y: auto;
   box-sizing: border-box;
   flex-shrink: 0;
@@ -28,20 +32,20 @@
 }
 
 .header {
-  font-size: 1.6rem;
+  font-size: 2.1rem;
   font-family: inherit;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 14px;
+  margin-bottom: 18px;
   line-height: 1.1;
 }
 
 .description, .checkList {
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   color: #333;
   text-align: center;
-  margin-bottom: 10px;
-  line-height: 1.4;
+  margin-bottom: 12px;
+  line-height: 1.5;
   font-family: inherit;
 }
 
@@ -49,19 +53,18 @@
   background: url('/icons/office/submitpopup_warning.webp') center/cover no-repeat, #ffe5e5;
   border: 1px solid #ff7777;
   color: #a33;
-  font-size: 1rem;
+  font-size: 1.1rem;
   border-radius: 10px;
   padding: 0px;
-  margin-top: 12px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   text-align: center;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   font-family: inherit;
   line-height: 1.2rem;
   position: relative;
-  left: -20%;
+  left: -25%;
 }
 
 .warningBox img {
@@ -79,79 +82,28 @@
   left: 10px;
 }
 
-.buttonRow {
-  display: flex;
-  gap: 100px;
-  margin-top: 10px;
+.submitButton img, .confirmButton img {
+  width: 209px;
+  height: 80px;
 }
 
-.submitButton {
-  display: flex;
-  align-items: center;
-    justify-content: center;
-    position: relative;
-  gap: 6px;
-  min-width: 90px;
-  height: 18px;
-  font-size: 1rem;
-  font-family: 'font', 'Noto Sans KR', sans-serif;
-  color: #333;
-  left: -60px;  top: -1px;
-}
-
-.submitButton span{
-  font-size: 1.6rem;
-  position: absolute;
-}
-
-.submitButton img {
-  width: 180px;
-  height: 90px;
-  position: absolute;
-
-}
-
-.confirmButton {
-  background: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  gap: 6px;
-  min-width: 90px;
-  height: 18px;
-  font-family: 'font', 'Noto Sans KR', sans-serif;  
-  color: #333;
-}
-
-.confirmButton img {
-  width: 180px;
-  height: 76px;
-}
-
-.confirmButton span {
-  font-size: 1.6rem;
-  position: absolute;
-}
-
-@media (max-width: 412px) {
+@media (max-width: 600px) {
   .paperBox {
-    width: 95%;
-    padding: 30px 15px 15px 15px;
-    gap: 10px;
-  }
-  
-  .header {
-    font-size: 1.4rem;
-  }
-  
-  .description, .checkList {
+    width: 98vw;
+    height: auto;
+    padding: 18px 2vw 18px 2vw;
     font-size: 1rem;
+    gap: 10px;
+    min-width: unset;
+    min-height: unset;
+    max-width: 98vw;
   }
-  
-  .warningBox {
-    font-size: 0.9rem;
-    left: -10%;
+  .header {
+    font-size: 1.1rem;
+  }
+  .description, .checkList {
+    font-size: 0.98rem;
+    margin-top: 100px;
   }
 }
   

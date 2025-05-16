@@ -1,49 +1,45 @@
 import Modal from '@/components/Modal';
-import { useNavigate } from 'react-router-dom';
 import styles from './CompleteWriteModal.module.css';
 
 interface CompleteWriteModalProps {
   onClose: () => void;
+  onNext: () => void;
 }
 
-export default function CompleteWriteModal({ onClose }: CompleteWriteModalProps) {
-  const navigate = useNavigate();
+export default function CompleteWriteModal({ onClose, onNext }: CompleteWriteModalProps) {
   return (
     <Modal>
     <div className={styles.modalContainer}>
       <div className={styles.paperBox}>
         <div className={styles.header}>
-          <img src="/icons/submit_bg.svg" alt="write icon" className={styles.icon} />
-          <h2>편지를 마무리할 준비가 되셨나요?</h2>
+          <h2>📝 편지를 마무리할<br/> 준비가 되셨나요?</h2>
         </div>
 
         <p className={styles.description}>아래 내용을 확인하고 편지 작성을 완료할 수 있어요.</p>
 
         <div className={styles.checkList}>
-            전송 대상: 익명 사용자
-            답장 내용: "첫시작부터~~...."
+            <div>📤전송 대상: 익명 사용자 </div>
+            <div>🧾답장 내용: "&nbsp첫시작부터~~....&nbsp"</div>
+            <div style={{paddingTop: '10px'}}></div>
         </div>
 
         <div className={styles.warningBox}>
-          <img src="/icons/submit_warning.svg" alt="warning" className={styles.inlineIcon} />
-          개인정보나 욕설은 포함되지 않았나요? <br />
-          편지를 전송하면 수정할 수 없어요.
+          <img src="/icons/office/submit_warning.webp" alt="warning" className={styles.inlineIcon} />
+          <span>개인정보나 욕설은 포함되지 않았나요? <br />
+          편지를 전송하면 수정할 수 없어요.</span>
         </div>
-
+        <div style={{paddingTop: '10px'}}></div>
         <div className={styles.buttonRow}>
           <button className={styles.confirmButton} onClick={onClose}>
-            <img src="/icons/submit_check.svg" alt="check" />
-            다시 확인
+            <img src="/icons/office/submit_check.webp" alt="check" />
+            <span>다시 확인</span>
           </button>
           <button
             className={styles.submitButton}
-            onClick={() => {
-              onClose();
-              navigate('/letter/complete');
-            }}
+            onClick={onNext}
           >
-            <img src="/icons/submit_complete.svg" alt="send" />
-            작성 완료
+            <img src="/icons/office/submit_complete.webp" alt="send" />
+            <span>작성 완료</span>
           </button>
         </div>
       </div>
