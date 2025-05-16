@@ -1,24 +1,26 @@
-interface Letter {
-  id: number;
-  title: string;
-  date: string;
-  content?: string;
-  isAnswered: boolean;
-  answer?: string;
-}
+import styles from './letterlistitem.module.css';
 
-export default function LetterListItem({
-  letter,
-  onClick,
-}: {
+interface Letter {
+  _id: string;
+  title: string;
+  emotion: string;
+  created_at: string;
+}
+interface LetterListItemProps {
   letter: Letter;
   onClick: () => void;
-}) {
+}
+
+export default function LetterListItem({ letter, onClick }: LetterListItemProps) {
   return (
-    <div onClick={onClick}>
-      <p>{letter.title}</p>
-      <p>{letter.date}</p>
-      {letter.isAnswered && <p>답장</p>}
+    <div className={styles.container} onClick={onClick}>
+      <div>
+        <h3 className={styles.title}>{letter.title}</h3>
+      </div>
+      <div>
+        <p className={styles.date}>{new Date(letter.created_at).toLocaleDateString()}</p>
+        <span className={styles.emotion}>{letter.emotion}</span>
+      </div>
     </div>
   );
 }

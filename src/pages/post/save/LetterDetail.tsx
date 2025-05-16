@@ -1,31 +1,92 @@
+import { useEffect, useState } from 'react';
 import Appbar from '@/components/Appbar';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { getLetterDetail, getLetterComments } from '@/lib/api/letter';
+import { LetterDetail, Reply } from '@/lib/type/letter.type';
+import { isErrorResponse } from '@/lib/response_dto';
+import { useToastStore } from '@/store/toast';
+import styles from './letterdetail.module.css';
 
 export default function LetterDetailPage() {
   const { letterId } = useParams();
+  const navigate = useNavigate();
+  const { showToast } = useToastStore();
+  const [letter, setLetter] = useState<LetterDetail | null>(null);
+  const [comments, setComments] = useState<Reply[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const letter = {
-    id: 1,
-    title: '첫 번째 편지',
-    date: '2023-10-01',
-    isAnswered: true,
-    content: `안녕하세요! 첫 번째 편지입니다. 이 편지는 테스트용으로 작성되었습니다. 내용은 자유롭게 작성해 주세요. 편지의 내용은 나중에 수정할 수 없습니다. 편지를 작성하는 것은 정말 재미있고 창의적인 작업입니다. 편지를 통해 감정을 표현하고, 생각을 나누는 것은 소중한 경험이 될 것입니다. 편지를 쓰는 동안 즐거운 시간을 보내세요!`,
-    answer: `안녕하세요! 답장입니다. 첫 번째 편지에 대한 답장을 작성해 보았습니다. 편지를 통해 소통하는 것은 정말 멋진 일이에요. 편지의 내용이 마음에 드셨기를 바랍니다. 앞으로도 계속해서 편지를 주고받으며 좋은 시간을 보내세요!`,
-  };
+  useEffect(() => {
+    const fetchLetterDetail = async () => {
+      if (!letterId) {
+        showToast('편지 ID가 올바르지 않습니다.');
+        navigate('/letters');
+        return;
+      }
+
+      try {
+        const response = await getLetterDetail(letterId);
+
+        if (isErrorResponse(response)) {
+          showToast(response.error);
+          navigate('/letters');
+          return;
+        }
+
+        setLetter(response.letter);
+        setComments(response.comments || []);
+      } catch (error) {
+        showToast('편지 정보를 불러오는데 실패했습니다.');
+        navigate('/letters');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchLetterDetail();
+  }, [letterId]);
+
+  if (isLoading) {
+    return (
+      <>
+        <Appbar title="편지 읽기" />
+        <div className={styles.loading}>편지를 불러오는 중...</div>
+      </>
+    );
+  }
+
+  if (!letter) {
+    return null;
+  }
+
   return (
     <>
-      <Appbar title={`편지 ${letterId}`} />
-      <div>
-        <p>{letter.date}</p>
-        <h2>{letter.title}</h2>
+      <Appbar title="편지 읽기" />
+      <div className={styles.container}>
+        <div className={styles.letterHeader}>
+          <div className={styles.metadata}>
+            <span className={styles.date}>{new Date(letter.created_at).toLocaleDateString()}</span>
+            <span className={styles.emotion}>{letter.emotion}</span>
+          </div>
+          <h2 className={styles.title}>{letter.title}</h2>
+        </div>
 
-        <p>{letter.content}</p>
+        <div className={styles.content}>{letter.content}</div>
 
-        {letter.isAnswered && (
-          <>
-            <hr />
-            <p>{letter.answer}</p>
-          </>
+        {comments.length > 0 && (
+          <div className={styles.comments}>
+            <h3>답장</h3>
+            {comments.map((comment, index) => (
+              <div key={comment._id} className={styles.comment}>
+                <p className={styles.commentContent}>{comment.content}</p>
+                <div className={styles.commentFooter}>
+                  <span className={styles.commentFrom}>From. {comment.from}</span>
+                  <span className={styles.commentDate}>
+                    {new Date(comment.created_at).toLocaleDateString()}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
         )}
       </div>
     </>

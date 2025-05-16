@@ -1,27 +1,68 @@
 import Appbar from '@/components/Appbar';
 import LetterListItem from '@/components/LetterListItem';
 import { Link, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { getRandomLetters } from '@/lib/api/letter';
+import { Letter } from '@/lib/type/letter.type';
+import { isErrorResponse } from '@/lib/response_dto';
+import { useToastStore } from '@/store/toast';
 
 export default function ReceivedLetterListPage() {
   const navigate = useNavigate();
-  const letters = [
-    { id: 1, title: '첫 번째 편지', date: '2023-10-01', isAnswered: false },
-    { id: 2, title: '두 번째 편지', date: '2023-10-02', isAnswered: true },
-    { id: 3, title: '세 번째 편지', date: '2023-10-03', isAnswered: false },
-    { id: 4, title: '네 번째 편지', date: '2023-10-04', isAnswered: true },
-    { id: 5, title: '다섯 번째 편지', date: '2023-10-05', isAnswered: false },
-  ];
+  const { showToast } = useToastStore();
+  const [letters, setLetters] = useState<Letter[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const fetchLetters = async () => {
+    setIsLoading(true);
+
+    try {
+      const response = await getRandomLetters();
+
+      if (!response) {
+        showToast('알 수 없는 오류가 발생했습니다.');
+        return;
+      }
+
+      if (isErrorResponse(response)) {
+        showToast(response.error);
+        return;
+      }
+
+      setLetters(response.unread_letters);
+    } catch (error) {
+      showToast('편지 목록을 불러오는 중 오류가 발생했습니다.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchLetters();
+  }, []);
+
   return (
     <>
-      <Appbar title="" />
+      <Appbar title="받은 편지함" />
       <div>
-        {letters.map(letter => (
-          <LetterListItem
-            letter={letter}
-            key={letter.id}
-            onClick={() => navigate(`/received/letters/${letter.id}`)}
-          />
-        ))}
+        {isLoading ? (
+          <p>편지를 불러오는 중...</p>
+        ) : letters.length === 0 ? (
+          <p>아직 받은 편지가 없습니다.</p>
+        ) : (
+          letters.map(letter => (
+            <LetterListItem
+              letter={{
+                _id: letter._id,
+                title: letter.title,
+                emotion: letter.emotion,
+                created_at: letter.created_at,
+              }}
+              key={letter._id}
+              onClick={() => navigate(`/received/letters/${letter._id}`)}
+            />
+          ))
+        )}
       </div>
     </>
   );

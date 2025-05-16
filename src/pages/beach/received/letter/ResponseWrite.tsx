@@ -1,29 +1,130 @@
+import { useState } from 'react';
 import Appbar from '@/components/Appbar';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import LetterWriteForm from '@/components/LetterWriteForm';
+import styles from './responsewrite.module.css';
+import SpeechModal from '@/pages/post/send/components/SpeechModal';
+import { useToastStore } from '@/store/toast';
+import { replyToLetter } from '@/lib/api/letter';
+import { isErrorResponse, isSuccessResponse } from '@/lib/response_dto';
+import { ActionType } from '@/lib/type/reward.type';
+import { grantReward } from '@/lib/api/reward';
+import StopWriteModal from '@/pages/post/send/components/StopWriteModal';
+import CompleteWriteModal from '@/pages/post/send/components/CompleteWriteModal';
+import { LetterDetail } from '@/lib/type/letter.type';
 
 export default function ResponseWritePage() {
   const { letterId } = useParams();
 
   const navigate = useNavigate();
+  const [content, setContent] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const { showToast } = useToastStore();
 
-  const letter = {
-    id: 1,
-    title: '첫 번째 편지',
-    date: '2023-10-01',
-    isAnswered: false,
-    content: `안녕하세요! 첫 번째 편지입니다. 이 편지는 테스트용으로 작성되었습니다. 내용은 자유롭게 작성해 주세요. 편지의 내용은 나중에 수정할 수 없습니다. 편지를 작성하는 것은 정말 재미있고 창의적인 작업입니다. 편지를 통해 감정을 표현하고, 생각을 나누는 것은 소중한 경험이 될 것입니다. 편지를 쓰는 동안 즐거운 시간을 보내세요!`,
+  const [openSpeech, setOpenSpeech] = useState(false);
+  const [openStopWrite, setOpenStopWrite] = useState(false);
+  const [openCompleteWrite, setOpenCompleteWrite] = useState(false);
+
+  const location = useLocation();
+  const state = location.state as { letter: LetterDetail };
+  const [letter, setLetter] = useState<LetterDetail>(state?.letter || {});
+
+  const handleReply = async () => {
+    if (!letterId) {
+      showToast('존재하지 않는 편지입니다.');
+      return;
+    }
+
+    if (content.length == 0) {
+      console.log('content', content);
+      showToast('작성한 내용이 없습니다.');
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const response = await replyToLetter({
+        letter_id: letterId,
+        reply: content,
+      });
+
+      if (!response) {
+        showToast('알 수 없는 오류가 발생했습니다.');
+        return;
+      }
+
+      if (isErrorResponse(response)) {
+        showToast(response.error);
+        return;
+      }
+
+      // 보상 지급
+      const rewardResponse = await grantReward({ action: ActionType.REPLY });
+
+      if (isErrorResponse(rewardResponse)) {
+        showToast(rewardResponse.error);
+        return;
+      }
+
+      if (isSuccessResponse(rewardResponse)) {
+        showToast('편지가 전송되었습니다.');
+        navigate(`/received/letters/${letterId}/complete`, {
+          state: {
+            letterId,
+            rewardItems: rewardResponse.new_items,
+            leveled_up: rewardResponse.leveled_up,
+          },
+        });
+      }
+    } catch (error) {
+      showToast('편지 전송 중 오류가 발생했습니다.');
+    } finally {
+      setIsLoading(false);
+      setOpenCompleteWrite(false);
+    }
   };
+
   return (
-    <>
-      <Appbar title={`편지 ${letterId}`} />
-      <div>
-        <p>{letter.date}</p>
-        <h2>{letter.title}</h2>
-        <p>{letter.content}</p>
-        <hr />
-        <p>LetterWrite 컴포넌트 분리해서 가져오자~</p>
-        <button onClick={() => navigate(`/received/letters/${letterId}/complete`)}>전송하기</button>
+    <div className={styles.page}>
+      {openSpeech && (
+        <SpeechModal onClose={() => setOpenSpeech(false)} type="reply" letterId={letter._id} />
+      )}
+      {openStopWrite && <StopWriteModal onClose={() => setOpenStopWrite(false)} type="reply" />}
+      {openCompleteWrite && (
+        <CompleteWriteModal
+          onClose={() => setOpenCompleteWrite(false)}
+          onConfirm={handleReply}
+          isLoading={isLoading}
+          type="reply"
+        />
+      )}
+      <Appbar
+        title="답장하기"
+        onBackPress={() => setOpenStopWrite(true)}
+        nextButtonIcon={<img src="https://placehold.co/50x50" alt="question" />}
+        onNextPress={() => setOpenSpeech(true)}
+      />
+      <div className={styles.container}>
+        <div className={styles.letterSection}>
+          <p className={styles.date}>{letter.created_at}</p>
+          <h2 className={styles.title}>{letter.title}</h2>
+          <p className={styles.content}>{letter.content}</p>
+        </div>
+
+        <div className={styles.divider} />
+
+        <div className={styles.writeSection}>
+          <LetterWriteForm content={content} onChange={setContent} disabled={isLoading} />
+          <button
+            className={styles.submitButton}
+            onClick={() => setOpenCompleteWrite(true)}
+            disabled={isLoading || content.length < 10}
+          >
+            {isLoading ? '전송 중...' : '답장 보내기'}
+          </button>
+        </div>
       </div>
-    </>
+    </div>
   );
 }
