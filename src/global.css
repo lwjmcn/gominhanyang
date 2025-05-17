@@ -2,6 +2,14 @@
   font-family: 'Pretendard Variable';
   src: url('/font/PretendardVariable.woff2') format('woff2');
 }
+@font-face {
+  font-family: 'Jua';
+  src: url('/font/BMJUA.woff') format('woff');
+}
+@font-face {
+  font-family: 'KyoboHand';
+  src: url('/font/KyoboHand.woff') format('woff');
+}
 .layout {
   width: 100%;
   height: 100%;
@@ -23,7 +31,7 @@
 
 body {
   font-family:
-    'Pretendard Variable',
+    /* 'Jua', */
     Pretendard,
     -apple-system,
     BlinkMacSystemFont,
