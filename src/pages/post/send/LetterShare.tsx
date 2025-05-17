@@ -1,6 +1,7 @@
 import Appbar from '@/components/Appbar';
 import styles from './lettershare.module.css';
 import { useNavigate } from 'react-router-dom';
+import { SendType } from '@/lib/type/letter.type';
 
 export default function LetterSharePage() {
   const navigate = useNavigate();
@@ -12,21 +13,21 @@ export default function LetterSharePage() {
     // handle save logic here
 
     console.log('Saved to my collection!');
-    handleNextPage('save');
+    handleNextPage(SendType.SELF);
   };
 
   const handleRandom = () => {
     // handle random logic here
 
     console.log('Sent to the sea!');
-    handleNextPage('random');
+    handleNextPage(SendType.RANDOM);
   };
 
   const handleSend = () => {
     // handle send logic here
 
     console.log('Sent to 온기우체부!');
-    handleNextPage('send');
+    handleNextPage(SendType.VOLUNTEER);
   };
 
   return (

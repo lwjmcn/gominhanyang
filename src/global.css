@@ -57,6 +57,9 @@ button {
 button:active {
   background-color: #ff9900;
 }
+button:disabled {
+  background-color: #aaa;
+}
 
 a {
   cursor: pointer;

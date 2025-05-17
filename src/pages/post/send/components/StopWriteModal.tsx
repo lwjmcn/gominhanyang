@@ -3,14 +3,17 @@ import { useNavigate } from 'react-router-dom';
 
 interface StopWriteModalProps {
   onClose: () => void;
+  type: 'letter' | 'reply';
 }
 
-export default function StopWriteModal({ onClose }: StopWriteModalProps) {
+export default function StopWriteModal({ onClose, type }: StopWriteModalProps) {
   const navigate = useNavigate();
+  const modalType = type === 'letter' ? '편지' : '답장';
+
   return (
-    <Modal>
+    <Modal onClose={onClose}>
       <div>
-        <h2>정말 편지를 그만 쓰시겠어요?</h2>
+        <h2>정말 {modalType}를 그만 쓰시겠어요?</h2>
         <p>지금까지 쓴 내용이 사라져요.</p>
         <div className="modal-button-container">
           <button

@@ -1,15 +1,14 @@
 import styles from './item.module.css';
 interface Item {
-  id: number;
+  id: string;
   name: string;
-  description: string;
   isUsed: boolean;
   imageUrl: string;
 }
 
 interface ItemProps {
   item: Item;
-  onClick: (itemId: number) => void;
+  onClick: (itemId: string) => void;
 }
 
 export default function Item({ item, onClick }: ItemProps) {

@@ -1,9 +1,25 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './beach.module.css';
 import { useNavigate } from 'react-router-dom';
+import { getMyReward } from '../../lib/api/reward';
+import { isSuccessResponse } from '../../lib/response_dto';
+
 export default function BeachPage() {
   const navigate = useNavigate();
-  const [pointFill, setPointFill] = useState(60);
+  const [pointFill, setPointFill] = useState(0);
+
+  useEffect(() => {
+    const getMyPoints = async () => {
+      const response = await getMyReward();
+      if (isSuccessResponse(response)) {
+        const percentage = (response.point / 100) * 100;
+        setPointFill(percentage);
+      }
+    };
+
+    getMyPoints();
+  }, []);
+
   return (
     <div>
       <div className={styles.pointContainer}>
