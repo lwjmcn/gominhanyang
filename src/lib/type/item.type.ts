@@ -6,7 +6,7 @@ export enum CategoryType {
 
 export interface Item {
   item_id: string;
-  item_type: string;
+  name: string;
   used: boolean;
   category: CategoryType;
 }

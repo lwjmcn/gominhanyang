@@ -105,8 +105,8 @@ export default function ItemDetailModal() {
 
   return (
     <Modal onClose={() => navigate(-1)}>
-      <h1>{item.item_type}</h1>
-      <img src="https://placehold.co/200x100" alt={item.item_type} style={{ width: '100%' }} />
+      <h1>{item.name}</h1>
+      <img src="https://placehold.co/200x100" alt={item.name} style={{ width: '100%' }} />
       <p>{item.description}</p>
       <p className={styles.date}>획득일: {item.granted_at}</p>
       {item.used ? (

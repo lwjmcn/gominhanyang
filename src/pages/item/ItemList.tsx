@@ -81,7 +81,7 @@ export default function ItemListPage() {
                 key={item.item_id}
                 item={{
                   id: item.item_id,
-                  name: item.item_type,
+                  name: item.name,
                   isUsed: item.used,
                   imageUrl: 'https://placehold.co/200x200', // TODO: 이미지 URL 추가
                 }}
