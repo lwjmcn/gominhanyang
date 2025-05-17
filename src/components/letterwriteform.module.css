@@ -1,0 +1,64 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100%;
+  overflow: hidden;
+}
+
+.caution {
+  white-space: pre-wrap;
+  background-color: #fff5f5;
+  padding: 1.6rem;
+  border-radius: 0.8rem;
+  color: #e53e3e;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  flex-shrink: 0;
+}
+
+.flexGrowWrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  gap: 1rem;
+  overflow: hidden;
+}
+
+.letterInput {
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  padding: 1.6rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.8rem;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  resize: none;
+  overflow-y: auto;
+}
+
+.letterInput:focus {
+  outline: none;
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}
+
+.letterInputCount {
+  text-align: right;
+  color: #666;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.rewardInfo {
+  white-space: pre-wrap;
+  background-color: #f7fafc;
+  padding: 1.6rem;
+  border-radius: 0.8rem;
+  color: #2d3748;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  flex-shrink: 0;
+}

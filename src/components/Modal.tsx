@@ -3,13 +3,18 @@ import styles from './modal.module.css';
 
 interface ModalProps {
   children?: React.ReactNode;
+  onClose?: () => void;
 }
 
 export default function Modal(props: ModalProps) {
   const navigate = useNavigate();
 
   const handleClose = () => {
-    navigate(-1);
+    if (props.onClose) {
+      props.onClose();
+    } else {
+      navigate(-1);
+    }
   };
 
   return (

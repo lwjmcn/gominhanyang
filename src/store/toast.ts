@@ -5,6 +5,7 @@ interface ToastState {
   show: boolean;
   setMessage: (message: string) => void;
   setShow: (show: boolean) => void;
+  showToast: (message: string) => void;
 }
 
 export const useToastStore = create<ToastState>(set => ({
@@ -12,4 +13,5 @@ export const useToastStore = create<ToastState>(set => ({
   show: false,
   setMessage: message => set({ message }),
   setShow: show => set({ show }),
+  showToast: message => set({ message, show: true }),
 }));

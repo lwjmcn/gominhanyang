@@ -1,93 +1,59 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import Item from './components/Item';
 import Appbar from '@/components/Appbar';
-import { useState } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import styles from './itemlist.module.css';
+import { getMyItems } from '@/lib/api/item';
+import { Item as ItemType, CategoryType } from '@/lib/type/item.type';
+import { isErrorResponse } from '@/lib/response_dto';
+import { useToastStore } from '@/store/toast';
 
 export default function ItemListPage() {
   const navigate = useNavigate();
   const location = useLocation();
+  const { showToast } = useToastStore();
 
   const tabs = [
-    { label: '보관함', value: 'storage' },
-    { label: '사용중', value: 'inUse' },
-    { label: '기타', value: 'others' },
+    { label: '조개 목걸이', value: CategoryType.SHELL },
+    { label: '온기 스티커', value: CategoryType.STICKER },
+    { label: '등대 미니어처', value: CategoryType.OCEAN },
   ];
+
   const [activeTab, setActiveTab] = useState(0);
+  const [items, setItems] = useState<ItemType[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const items = [
-    {
-      id: 1,
-      name: 'Item 1',
-      description: 'Description for Item 1',
-      isUsed: true,
-      imageUrl: 'https://placehold.co/200x200',
-    },
-    {
-      id: 2,
-      name: 'Item 2',
-      description: 'Description for Item 2',
-      isUsed: false,
-      imageUrl: 'https://placehold.co/200x200',
-    },
-    {
-      id: 3,
-      name: 'Item 3',
-      description: 'Description for Item 3',
-      isUsed: true,
-      imageUrl: 'https://placehold.co/200x200',
-    },
-    {
-      id: 4,
-      name: 'Item 4',
-      description: 'Description for Item 4',
-      isUsed: false,
-      imageUrl: 'https://placehold.co/200x200',
-    },
-    {
-      id: 5,
-      name: 'Item 5',
-      description: 'Description for Item 5',
-      isUsed: false,
-      imageUrl: 'https://placehold.co/200x200',
-    },
-    {
-      id: 6,
-      name: 'Item 6',
-      description: 'Description for Item 6',
-      isUsed: false,
+  const fetchItems = async () => {
+    setIsLoading(true);
+    try {
+      const response = await getMyItems();
 
-      imageUrl: 'https://placehold.co/200x200',
-    },
-    {
-      id: 7,
-      name: 'Item 7',
-      description: 'Description for Item 7',
-      isUsed: false,
-      imageUrl: 'https://placehold.co/200x200',
-    },
-    {
-      id: 8,
-      name: 'Item 8',
-      description: 'Description for Item 8',
-      isUsed: true,
-      imageUrl: 'https://placehold.co/200x200',
-    },
-    {
-      id: 9,
-      name: 'Item 9',
-      description: 'Description for Item 9',
-      isUsed: true,
-      imageUrl: 'https://placehold.co/200x200',
-    },
-    {
-      id: 10,
-      name: 'Item 10',
-      description: 'Description for Item 10',
-      isUsed: false,
-      imageUrl: 'https://placehold.co/200x200',
-    },
-  ];
+      if (!response) {
+        showToast('알 수 없는 오류가 발생했습니다.');
+        return;
+      }
+
+      if (isErrorResponse(response)) {
+        showToast(response.error);
+        return;
+      }
+
+      setItems(response.items);
+    } catch (error) {
+      showToast('아이템 목록을 불러오는데 실패했습니다.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchItems();
+  }, []);
+
+  const filteredItems = useMemo(() => {
+    const selectedCategory = tabs[activeTab].value;
+    return items.filter(item => item.item_type === selectedCategory);
+  }, [items, activeTab]);
 
   return (
     <>
@@ -105,15 +71,28 @@ export default function ItemListPage() {
           ))}
         </div>
         <div className={styles.gridContainer}>
-          {items.map(item => (
-            <Item
-              key={item.id}
-              item={item}
-              onClick={() =>
-                navigate(`/items/${item.id}`, { state: { backgroundLocation: location } })
-              }
-            />
-          ))}
+          {isLoading ? (
+            <div>로딩 중...</div>
+          ) : filteredItems.length === 0 ? (
+            <div>아이템이 없습니다.</div>
+          ) : (
+            filteredItems.map(item => (
+              <Item
+                key={item.item_id}
+                item={{
+                  id: item.item_id,
+                  name: item.item_type,
+                  isUsed: item.used,
+                  imageUrl: 'https://placehold.co/200x200', // TODO: 이미지 URL 추가
+                }}
+                onClick={() =>
+                  navigate(`/items/${item.item_id}`, {
+                    state: { backgroundLocation: location },
+                  })
+                }
+              />
+            ))
+          )}
         </div>
       </div>
     </>
