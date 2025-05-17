@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Appbar from '@/components/Appbar';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styles from './letterwrite.module.css';
@@ -12,6 +12,7 @@ import { useToastStore } from '@/store/toast';
 import { grantReward } from '@/lib/api/reward';
 import { ActionType } from '@/lib/type/reward.type';
 import LetterWriteForm from '@/components/LetterWriteForm';
+import { generateQuestion, getHelpQuestion } from '@/lib/api/question';
 
 export default function LetterWritePage() {
   const nextButtonIcon = (
@@ -28,8 +29,11 @@ export default function LetterWritePage() {
   const [isLoading, setIsLoading] = useState(false);
 
   const [openSpeech, setOpenSpeech] = useState(false);
+  const [firstTime, setFirstTime] = useState(true);
   const [openStopWrite, setOpenStopWrite] = useState(false);
   const [openCompleteWrite, setOpenCompleteWrite] = useState(false);
+
+  const [helpMessages, setHelpMessages] = useState<string[]>([]);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -93,14 +97,49 @@ export default function LetterWritePage() {
     }
   };
 
+  const fetchInitialQuestion = async () => {
+    const response = await generateQuestion({ emotion });
+
+    if (isErrorResponse(response)) {
+      showToast(response.error);
+      return;
+    }
+
+    setHelpMessages([response.question]);
+  };
+
+  const updateQuestion = async () => {
+    if (content.length == 0) {
+      showToast('작성한 내용이 없습니다');
+      return;
+    }
+    const response = await getHelpQuestion({ partial_letter: content.slice(-100) });
+
+    if (isErrorResponse(response)) {
+      showToast(response.error);
+      return;
+    }
+
+    setHelpMessages([response.help_question]);
+  };
+
+  useEffect(() => {
+    if (firstTime) {
+      fetchInitialQuestion();
+    }
+  }, [emotion]);
+
   return (
     <div className={styles.page}>
       {openSpeech && (
         <SpeechModal
-          onClose={() => setOpenSpeech(false)}
+          onClose={() => {
+            setOpenSpeech(false);
+            setFirstTime(false);
+          }}
           type="letter"
-          emotion={emotion}
-          partialLetter={content.slice(-100)}
+          helpMessages={helpMessages}
+          onRefresh={updateQuestion}
         />
       )}
       {openStopWrite && <StopWriteModal onClose={() => setOpenStopWrite(false)} type="letter" />}

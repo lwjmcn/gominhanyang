@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Appbar from '@/components/Appbar';
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import LetterWriteForm from '@/components/LetterWriteForm';
 import styles from './responsewrite.module.css';
 import SpeechModal from '@/pages/post/send/components/SpeechModal';
 import { useToastStore } from '@/store/toast';
-import { replyToLetter } from '@/lib/api/letter';
+import { replyToLetter, getReplyOptions } from '@/lib/api/letter';
 import { isErrorResponse, isSuccessResponse } from '@/lib/response_dto';
 import { ActionType } from '@/lib/type/reward.type';
 import { grantReward } from '@/lib/api/reward';
@@ -37,6 +37,8 @@ export default function ResponseWritePage() {
   const location = useLocation();
   const state = location.state as { letter: LetterDetail };
   const [letter, setLetter] = useState<LetterDetail>(state?.letter || {});
+
+  const [helpMessages, setHelpMessages] = useState<string[]>([]);
 
   const handleReply = async () => {
     if (!letterId) {
@@ -94,10 +96,34 @@ export default function ResponseWritePage() {
     }
   };
 
+  const fetchReplyOptions = async () => {
+    if (!letterId || helpMessages.length > 0) return;
+
+    const response = await getReplyOptions(letterId);
+
+    if (isErrorResponse(response)) {
+      showToast(response.error);
+      return;
+    }
+
+    setHelpMessages(response.questions);
+  };
+
+  useEffect(() => {
+    if (openSpeech) {
+      fetchReplyOptions();
+    }
+  }, [openSpeech]);
+
   return (
     <div className={styles.page}>
       {openSpeech && (
-        <SpeechModal onClose={() => setOpenSpeech(false)} type="reply" letterId={letter._id} />
+        <SpeechModal
+          onClose={() => setOpenSpeech(false)}
+          type="reply"
+          helpMessages={helpMessages}
+          onRefresh={() => {}}
+        />
       )}
       {openStopWrite && <StopWriteModal onClose={() => setOpenStopWrite(false)} type="reply" />}
       {openCompleteWrite && (

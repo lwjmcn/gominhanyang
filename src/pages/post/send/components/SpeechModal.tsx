@@ -1,9 +1,4 @@
-import { useEffect, useState } from 'react';
 import styles from './speechmodal.module.css';
-import { getReplyOptions } from '@/lib/api/letter';
-import { isErrorResponse } from '@/lib/response_dto';
-import { useToastStore } from '@/store/toast';
-import { generateQuestion, getHelpQuestion } from '@/lib/api/question';
 import { EmotionType } from '@/lib/type/letter.type';
 
 interface SpeechModalProps {
@@ -12,60 +7,11 @@ interface SpeechModalProps {
   letterId?: string;
   emotion?: EmotionType;
   partialLetter?: string;
+  helpMessages: string[];
+  onRefresh: () => void;
 }
 
-export default function SpeechModal({
-  onClose,
-  type,
-  letterId,
-  emotion,
-  partialLetter,
-}: SpeechModalProps) {
-  const [helpMessages, setHelpMessages] = useState<string[]>([]);
-  const handleRefresh = () => {};
-
-  const fetchInitialQuestion = async () => {
-    if (!emotion) return;
-    const response = await generateQuestion({ emotion });
-
-    if (isErrorResponse(response)) {
-      showToast(response.error);
-      return;
-    }
-
-    setHelpMessages([response.question]);
-  };
-  const updateQuestion = async () => {
-    if (!partialLetter) return;
-
-    const response = await getHelpQuestion({ partial_letter: partialLetter });
-
-    if (isErrorResponse(response)) {
-      showToast(response.error);
-      return;
-    }
-
-    setHelpMessages([response.help_question]);
-  };
-
-  const fetchReplyOptions = async () => {
-    if (!letterId) return;
-
-    const response = await getReplyOptions(letterId);
-
-    if (isErrorResponse(response)) {
-      showToast(response.error);
-      return;
-    }
-
-    setHelpMessages(response.questions);
-  };
-
-  useEffect(() => {
-    if (type === 'letter') fetchInitialQuestion();
-    else if (type === 'reply') fetchReplyOptions();
-  }, [type]);
-
+export default function SpeechModal({ onClose, type, helpMessages, onRefresh }: SpeechModalProps) {
   return (
     <div className={styles.overlay}>
       <div className={styles.content}>
@@ -73,17 +19,17 @@ export default function SpeechModal({
           ✖️
         </button>
         <div>
+          <p>{'이런 식으로 작성해볼 수 있어요.\n'}</p>
           {helpMessages.map((msg, index) => (
             <p key={`msg-${index}`}>{msg}</p>
           ))}
         </div>
-        <button className={styles.closeButton} onClick={handleRefresh}>
-          🔃
-        </button>
+        {type === 'letter' && (
+          <button className={styles.closeButton} onClick={onRefresh}>
+            🔃
+          </button>
+        )}
       </div>
     </div>
   );
-}
-function showToast(error: string) {
-  throw new Error('Function not implemented.');
 }
