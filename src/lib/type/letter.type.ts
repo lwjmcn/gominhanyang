@@ -29,6 +29,7 @@ export interface Letter {
 export interface Reply {
   _id: string;
   from: string;
+  from_nickname: string;
   content: string;
   read: boolean;
   created_at: string;

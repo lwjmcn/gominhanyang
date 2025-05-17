@@ -67,7 +67,6 @@ export default function ApiTestPage() {
     },
     letter: {
       send: {
-        from: '보내는사람',
         to: SendType.SELF,
         title: '테스트 편지',
         content: '안녕하세요, 테스트 편지입니다.',

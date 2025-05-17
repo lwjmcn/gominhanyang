@@ -9,7 +9,6 @@ import {
 } from '../type/letter.type';
 
 export interface SendLetterRequestDto {
-  from: string;
   to: SendType;
   content: string;
   emotion: EmotionType;

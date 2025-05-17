@@ -1,12 +1,13 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { ActionType, RewardItem } from '@/lib/type/reward.type';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { RewardItem } from '@/lib/type/reward.type';
 import styles from './lettercomplete.module.css';
+import { SendType } from '@/lib/type/letter.type';
 
 interface LocationState {
-  letterId: string;
-  sendType: string;
+  sendType: SendType;
+  message: string;
+  leveled_up: boolean;
   rewardItems: RewardItem[];
-  rewardAction: ActionType;
 }
 
 export default function LetterCompletePage() {
@@ -15,10 +16,7 @@ export default function LetterCompletePage() {
   const state = location.state as LocationState;
 
   const getRewardMessage = () => {
-    if (state.rewardAction === ActionType.WRITE_LONG) {
-      return '긴 편지 작성 보너스 보상이 지급되었어요!';
-    }
-    return '편지 작성 보상이 지급되었어요!';
+    return state.message;
   };
 
   return (
@@ -43,6 +41,7 @@ export default function LetterCompletePage() {
           <img src="https://placehold.co/50x50" alt="letter" />
           편지 보관함
         </button>
+
         <button onClick={() => navigate('/items')}>
           <img src="https://placehold.co/50x50" alt="storage" />
           아이템

@@ -93,7 +93,7 @@ export default function ReceivedResponseDetailPage() {
             comments.map(comment => (
               <div key={comment._id} className={styles.commentItem}>
                 <div className={styles.commentHeader}>
-                  <p className={styles.commentAuthor}>{comment.from}</p>
+                  <p className={styles.commentAuthor}>{comment.from_nickname} 님</p>
                   <p className={styles.commentDate}>
                     {new Date(comment.created_at).toLocaleDateString()}
                   </p>

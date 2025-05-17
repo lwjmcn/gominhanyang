@@ -43,7 +43,6 @@ export default function LetterWritePage() {
 
     try {
       const response = await sendLetter({
-        from: 'master01',
         content,
         emotion,
         to: sendType,
@@ -71,14 +70,13 @@ export default function LetterWritePage() {
         showToast(rewardResponse.error);
         return;
       }
-
       showToast('편지가 전송되었습니다.');
       navigate('/letter/complete', {
         state: {
-          letterId: response.letter_id,
           sendType,
+          message: rewardResponse.message,
+          leveled_up: rewardResponse.leveled_up,
           rewardItems: rewardResponse.new_items,
-          rewardAction,
         },
       });
     } catch (error) {

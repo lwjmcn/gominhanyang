@@ -40,7 +40,7 @@ export default function SignInPage() {
 
     showToast(response.message);
     setIsLoading(false);
-    setLogin(nickname);
+    setLogin();
     navigate('/', { replace: true });
   };
 
