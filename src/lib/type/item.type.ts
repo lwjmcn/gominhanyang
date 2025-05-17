@@ -1,13 +1,14 @@
 export enum CategoryType {
-  SHELL = '조개 목걸이',
-  STICKER = '온기 스티커',
-  OCEAN = '등대 미니어처',
+  OCEAN = '바다아이템',
+  BEACH = '육지아이템',
+  OTTER = '캐릭터아이템',
 }
 
 export interface Item {
   item_id: string;
-  item_type: CategoryType;
+  item_type: string;
   used: boolean;
+  category: CategoryType;
 }
 
 export interface ItemDetail extends Item {

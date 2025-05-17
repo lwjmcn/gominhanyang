@@ -14,9 +14,9 @@ export default function ItemListPage() {
   const { showToast } = useToastStore();
 
   const tabs = [
-    { label: '조개 목걸이', value: CategoryType.SHELL },
-    { label: '온기 스티커', value: CategoryType.STICKER },
-    { label: '등대 미니어처', value: CategoryType.OCEAN },
+    { label: '바다', value: CategoryType.OCEAN },
+    { label: '육지', value: CategoryType.BEACH },
+    { label: '캐릭터', value: CategoryType.OTTER },
   ];
 
   const [activeTab, setActiveTab] = useState(0);
@@ -52,7 +52,7 @@ export default function ItemListPage() {
 
   const filteredItems = useMemo(() => {
     const selectedCategory = tabs[activeTab].value;
-    return items.filter(item => item.item_type === selectedCategory);
+    return items.filter(item => item.category === selectedCategory);
   }, [items, activeTab]);
 
   return (
