@@ -2,7 +2,6 @@ import { useAuthStore } from '@/store/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './auth.module.css';
 import { login } from '@/lib/api/user';
-import { LoginResponseDto } from '@/lib/dto/user.dto';
 import { isErrorResponse } from '@/lib/response_dto';
 import { useState } from 'react';
 import { useToastStore } from '@/store/toast';
@@ -47,7 +46,12 @@ export default function SignInPage() {
   return (
     <div className={styles.container}>
       <h1>마음의 항해</h1>
-      <img className={styles.logo} src="https://placehold.co/400x400" alt="" />
+      <img
+        className={styles.logo}
+        src="image/login_setting/login_otter.webp"
+        object-fit="cover"
+        alt=""
+      />
       <input
         className={styles.nicknameInput}
         type="text"

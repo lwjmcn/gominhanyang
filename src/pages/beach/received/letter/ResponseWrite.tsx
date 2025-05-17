@@ -14,6 +14,15 @@ import CompleteWriteModal from '@/pages/post/send/components/CompleteWriteModal'
 import { LetterDetail } from '@/lib/type/letter.type';
 
 export default function ResponseWritePage() {
+  const nextButtonIcon = (
+    <img
+      src="/image/write/otter_help.webp"
+      alt="question"
+      object-fit="cover"
+      style={{ width: 'auto', height: '100%' }}
+    />
+  );
+
   const { letterId } = useParams();
 
   const navigate = useNavigate();
@@ -71,9 +80,9 @@ export default function ResponseWritePage() {
         showToast('편지가 전송되었습니다.');
         navigate(`/received/letters/${letterId}/complete`, {
           state: {
-            letterId,
-            rewardItems: rewardResponse.new_items,
+            message: rewardResponse.message,
             leveled_up: rewardResponse.leveled_up,
+            rewardItems: rewardResponse.new_items,
           },
         });
       }
@@ -102,7 +111,7 @@ export default function ResponseWritePage() {
       <Appbar
         title="답장하기"
         onBackPress={() => setOpenStopWrite(true)}
-        nextButtonIcon={<img src="https://placehold.co/50x50" alt="question" />}
+        nextButtonIcon={nextButtonIcon}
         onNextPress={() => setOpenSpeech(true)}
       />
       <div className={styles.container}>

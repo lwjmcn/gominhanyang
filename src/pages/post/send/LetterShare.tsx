@@ -36,15 +36,30 @@ export default function LetterSharePage() {
       <div className={styles.container}>
         <h2>편지를 누구에게 띄울까요?</h2>
         <button className={styles.shareButton} onClick={handleSave}>
-          <img src="https://placehold.co/50x50" alt="save" />
+          <img
+            className={styles.buttonImage}
+            src="/image/post/paper_archive_love.webp"
+            object-fit="cover"
+            alt="save"
+          />
           나만의 보관함에 담기
         </button>
         <button className={styles.shareButton} onClick={handleRandom}>
-          <img src="https://placehold.co/50x50" alt="random" />
+          <img
+            className={styles.buttonImage}
+            src="/image/common/paper_boat.webp"
+            object-fit="cover"
+            alt="random"
+          />
           바다에 띄우기
         </button>
         <button className={styles.shareButton} onClick={handleSend}>
-          <img src="https://placehold.co/50x50" alt="send" />
+          <img
+            className={styles.buttonImage}
+            src="/image/post/post_box.webp"
+            object-fit="cover"
+            alt="send"
+          />
           온기 우체부에게 보내기
         </button>
       </div>

@@ -1,8 +1,6 @@
 .postImage {
-  display: block;
-  width: 40rem;
-  height: 40rem;
-  margin: 30rem auto;
+  position: absolute;
+  z-index: -1;
 }
 
 .pointContainer {
@@ -13,14 +11,24 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  /* gap: 2rem; */
+}
+
+.shellImage {
+  width: auto;
+  height: 8rem;
+}
+
+.level {
+  position: absolute;
+  color: #fff;
 }
 
 .cylinder {
   width: 3rem;
   height: 15rem;
   border-radius: 4rem;
-  background: linear-gradient(to top, #e0e0e0, #f8f8f8);
+  background: linear-gradient(to top, #c8daee, #d3d9dc);
   position: relative;
   overflow: hidden;
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
@@ -32,8 +40,8 @@
   width: 100%;
   height: var(--fill-level);
   transition: height 0.5s ease;
-  background: linear-gradient(to top, #4caf50, #81c784);
-  border-top: 2px solid #388e3c;
+  background: linear-gradient(to top, #d3b8ee, #ddb5e8);
+  border-top: 2px solid #bd8bcb;
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
   border-bottom-left-radius: 36px;
   border-bottom-right-radius: 36px;
@@ -44,17 +52,22 @@
   top: 0;
   right: 0;
   margin: 2rem;
+  height: auto;
+  height: 6rem;
 }
 .navContainer {
   position: fixed;
+  width: 100%;
   bottom: 4rem;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
-  gap: 2rem;
-  margin: 2rem;
-  & > button {
-    width: 30%;
-  }
+}
+.navContainer img {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s;
 }

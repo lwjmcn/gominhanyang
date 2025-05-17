@@ -7,7 +7,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <div className="layout">
       <header />
       <main className="main">{children}</main>
-      <footer className="footer">Copyright © gominhanyang 2025.</footer>
+      {/* <footer className="footer">Copyright © gominhanyang 2025.</footer> */}
       <ConsoleLog />
       <Toast />
     </div>

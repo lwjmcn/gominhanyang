@@ -56,3 +56,7 @@
 .navButtonContainer button:hover {
   opacity: 0.8;
 }
+.navImage {
+  width: auto;
+  height: 12rem;
+}

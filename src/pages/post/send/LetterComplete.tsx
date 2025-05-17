@@ -22,7 +22,11 @@ export default function LetterCompletePage() {
   return (
     <div className={styles.container}>
       <h2>편지가 저장되었어요</h2>
-      <img src="https://placehold.co/400x200" alt="letter" />
+      <img
+        src={`/image/post/otter_${state.sendType === SendType.SELF ? 'save' : 'send'}.webp`}
+        object-fit="cover"
+        alt="letter"
+      />
 
       <div className={styles.rewardSection}>
         <h3>{getRewardMessage()}</h3>
@@ -38,16 +42,31 @@ export default function LetterCompletePage() {
 
       <div className={styles.navButtonContainer}>
         <button onClick={() => navigate('/letters')}>
-          <img src="https://placehold.co/50x50" alt="letter" />
+          <img
+            src="/image/common/paper_archive.webp"
+            object-fit="cover"
+            alt="letter"
+            className={styles.navImage}
+          />
           편지 보관함
         </button>
 
         <button onClick={() => navigate('/items')}>
-          <img src="https://placehold.co/50x50" alt="storage" />
+          <img
+            src="/image/common/item.webp"
+            object-fit="cover"
+            alt="storage"
+            className={styles.navImage}
+          />
           아이템
         </button>
         <button onClick={() => navigate('/')}>
-          <img src="https://placehold.co/50x50" alt="storage" />
+          <img
+            src="/image/common/main.webp"
+            object-fit="cover"
+            alt="storage"
+            className={styles.navImage}
+          />
           메인
         </button>
       </div>

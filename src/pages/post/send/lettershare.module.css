@@ -14,3 +14,9 @@
 .shareButton > img {
   margin: 4rem;
 }
+
+.buttonImage {
+  width: 10rem;
+  height: 10rem;
+  object-fit: cover;
+}

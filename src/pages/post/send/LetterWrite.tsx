@@ -9,13 +9,19 @@ import { sendLetter } from '@/lib/api/letter';
 import { EmotionType, SendType } from '@/lib/type/letter.type';
 import { isErrorResponse } from '@/lib/response_dto';
 import { useToastStore } from '@/store/toast';
-import { useAuthStore } from '@/store/auth';
 import { grantReward } from '@/lib/api/reward';
 import { ActionType } from '@/lib/type/reward.type';
 import LetterWriteForm from '@/components/LetterWriteForm';
 
 export default function LetterWritePage() {
-  const nextButtonIcon = <img src="https://placehold.co/50x50" alt="question" />;
+  const nextButtonIcon = (
+    <img
+      src="/image/write/otter_help.webp"
+      alt="question"
+      object-fit="cover"
+      style={{ width: 'auto', height: '100%' }}
+    />
+  );
 
   const [content, setContent] = useState('');
   const [emotion, setEmotion] = useState<EmotionType>(EmotionType.HAPPY);
@@ -151,34 +157,39 @@ export default function LetterWritePage() {
 
         <div className={styles.emotionContainer}>
           <img
-            src="https://placehold.co/100x100"
+            src="/image/write/emotion_excited.webp"
+            object-fit="cover"
+            alt="기쁨"
+            onClick={() => setEmotion(EmotionType.EXCITED)}
+            className={emotion === EmotionType.EXCITED ? styles.selected : ''}
+          />
+          <img
+            src="/image/write/emotion_happy.webp"
+            object-fit="cover"
             alt="행복"
             onClick={() => setEmotion(EmotionType.HAPPY)}
             className={emotion === EmotionType.HAPPY ? styles.selected : ''}
           />
           <img
-            src="https://placehold.co/100x100"
-            alt="설렘"
-            onClick={() => setEmotion(EmotionType.EXCITED)}
-            className={emotion === EmotionType.EXCITED ? styles.selected : ''}
-          />
-          <img
-            src="https://placehold.co/100x100"
+            src="/image/write/emotion_bored.webp"
+            object-fit="cover"
             alt="우울"
             onClick={() => setEmotion(EmotionType.DEPRESSED)}
             className={emotion === EmotionType.DEPRESSED ? styles.selected : ''}
           />
           <img
-            src="https://placehold.co/100x100"
+            src="/image/write/emotion_angry.webp"
+            object-fit="cover"
             alt="화남"
             onClick={() => setEmotion(EmotionType.ANGRY)}
             className={emotion === EmotionType.ANGRY ? styles.selected : ''}
           />
           <img
-            src="https://placehold.co/100x100"
-            alt="불안"
-            onClick={() => setEmotion(EmotionType.DEPRESSED)}
-            className={emotion === EmotionType.DEPRESSED ? styles.selected : ''}
+            src="/image/write/emotion_sad.webp"
+            object-fit="cover"
+            alt="슬픔"
+            onClick={() => setEmotion(EmotionType.SAD)}
+            className={emotion === EmotionType.SAD ? styles.selected : ''}
           />
         </div>
 
@@ -189,7 +200,7 @@ export default function LetterWritePage() {
             onClick={() => setOpenCompleteWrite(true)}
             disabled={isLoading}
           >
-            <img src="https://placehold.co/50x50" alt="complete" />
+            <img src="/image/write/paper_flight.webp" object-fit="cover" alt="complete" />
           </button>
         </div>
       </div>

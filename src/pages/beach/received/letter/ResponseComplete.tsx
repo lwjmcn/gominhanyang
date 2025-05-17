@@ -3,9 +3,9 @@ import { ActionType, RewardItem } from '@/lib/type/reward.type';
 import styles from './responsecomplete.module.css';
 
 interface LocationState {
-  letterId: string;
+  message: string;
+  leveled_up: boolean;
   rewardItems: RewardItem[];
-  rewardAction: ActionType;
 }
 
 export default function ResponseCompletePage() {
@@ -14,16 +14,13 @@ export default function ResponseCompletePage() {
   const state = location.state as LocationState;
 
   const getRewardMessage = () => {
-    if (state.rewardAction === ActionType.WRITE_LONG) {
-      return '긴 답장 작성 보너스 보상이 지급되었어요!';
-    }
-    return '답장 작성 보상이 지급되었어요!';
+    return state.message;
   };
 
   return (
     <div className={styles.container}>
       <h2>답장이 전송되었어요</h2>
-      <img src="https://placehold.co/400x200" alt="letter" />
+      <img src="/image/write/otter_send.webp" alt="letter" />
 
       <div className={styles.rewardSection}>
         <h3>{getRewardMessage()}</h3>
@@ -38,16 +35,22 @@ export default function ResponseCompletePage() {
       </div>
 
       <div className={styles.navButtonContainer}>
-        <button onClick={() => navigate('/received')}>
-          <img src="https://placehold.co/50x50" alt="letter" />
-          받은 편지함
-        </button>
         <button onClick={() => navigate('/items')}>
-          <img src="https://placehold.co/50x50" alt="storage" />
+          <img
+            src="/image/common/item.webp"
+            object-fit="cover"
+            alt="storage"
+            className={styles.navImage}
+          />
           아이템
         </button>
         <button onClick={() => navigate('/')}>
-          <img src="https://placehold.co/50x50" alt="storage" />
+          <img
+            src="/image/common/main.webp"
+            object-fit="cover"
+            alt="storage"
+            className={styles.navImage}
+          />
           메인
         </button>
       </div>

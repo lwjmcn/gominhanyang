@@ -17,11 +17,11 @@ export default function PostOfficePage() {
         <img src="https://placehold.co/600x600" alt="officer" />
         <div className="nav-button-container">
           <button onClick={() => navigate('/letter/share')}>
-            <img src="https://placehold.co/50x50" alt="letter" />
+            <img src="/image/post/pencil_letter.webp" alt="letter" />
             편지작성
           </button>
           <button onClick={() => navigate('/letters')}>
-            <img src="https://placehold.co/50x50" alt="storage" />
+            <img src="/image/common/paper_archive.webp" alt="storage" />
             편지보관함
           </button>
         </div>

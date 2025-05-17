@@ -18,11 +18,11 @@ export default function ReceivedPage() {
 
         <div className="nav-button-container">
           <button onClick={() => navigate('/received/letters')}>
-            <img src="https://placehold.co/50x50" alt="letter" />
+            <img src="/image/common/paper_boat.webp" object-fit="cover" alt="letter" />
             흘러온 편지
           </button>
           <button onClick={() => navigate('/received/responses')}>
-            <img src="https://placehold.co/50x50" alt="storage" />
+            <img src="/image/beach/bottle.webp" alt="storage" />
             받은 답장
           </button>
         </div>

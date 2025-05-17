@@ -2,28 +2,39 @@ import { useState, useEffect } from 'react';
 import styles from './beach.module.css';
 import { useNavigate } from 'react-router-dom';
 import { getMyReward } from '../../lib/api/reward';
-import { isSuccessResponse } from '../../lib/response_dto';
+import { isErrorResponse, isSuccessResponse } from '../../lib/response_dto';
 
 export default function BeachPage() {
   const navigate = useNavigate();
   const [pointFill, setPointFill] = useState(0);
+  const [level, setLevel] = useState(0);
 
+  const getMyPoints = async () => {
+    const response = await getMyReward();
+    if (isErrorResponse(response)) {
+      console.error('Error fetching points:', response);
+      return;
+    }
+
+    const percentage = (response.point / 100) * 100;
+    setPointFill(percentage);
+    setLevel(response.level);
+    console.log('level', response.level);
+  };
   useEffect(() => {
-    const getMyPoints = async () => {
-      const response = await getMyReward();
-      if (isSuccessResponse(response)) {
-        const percentage = (response.point / 100) * 100;
-        setPointFill(percentage);
-      }
-    };
-
     getMyPoints();
   }, []);
 
   return (
     <div>
       <div className={styles.pointContainer}>
-        <img src="https://placehold.co/100x100" alt="shell" />
+        <img
+          src="/image/main/shell.webp"
+          object-fit="cover"
+          alt="shell"
+          className={styles.shellImage}
+        />
+        <p className={styles.level}>Lv.{level}</p>
         <div className={styles.cylinder}>
           <div
             className={styles.cylinderFill}
@@ -31,16 +42,41 @@ export default function BeachPage() {
           />
         </div>
       </div>
-      <div className={styles.settingButton} onClick={() => navigate('/settings')}>
-        <img src="https://placehold.co/100x100" alt="setting" />
-      </div>
+      <img
+        className={styles.settingButton}
+        onClick={() => navigate('/settings')}
+        src="/image/main/setting.webp"
+        object-fit="cover"
+        alt="setting"
+      />
 
-      <img className={styles.postImage} src="https://placehold.co/400x400" alt="post-office" />
+      <img
+        className={styles.postImage}
+        // src="/image/main/background_initial.webp"
+        src="https://placehold.co/300x300"
+        object-fit="fill"
+        alt="post-office"
+      />
 
       <div className={styles.navContainer}>
-        <button onClick={() => navigate('/post')}>내 편지 열람 & 편지 작성</button>
-        <button onClick={() => navigate('/received')}>누군가의 이야기 & 답장 본내기</button>
-        <button onClick={() => navigate('/items')}>아이템 보관함</button>
+        <img
+          onClick={() => navigate('/post')}
+          src="/image/main/post.webp"
+          alt="letter"
+          object-fit="cover"
+        />
+        <img
+          onClick={() => navigate('/received')}
+          src="/image/main/ocean.webp"
+          alt="letter"
+          object-fit="cover"
+        />
+        <img
+          onClick={() => navigate('/items')}
+          src="/image/main/archive.webp"
+          alt="letter"
+          object-fit="cover"
+        />
       </div>
     </div>
   );

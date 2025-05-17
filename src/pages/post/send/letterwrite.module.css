@@ -40,20 +40,15 @@
 }
 
 .emotionContainer img {
-  width: 5rem;
+  width: auto;
   height: 5rem;
   border-radius: 50%;
   cursor: pointer;
   transition: transform 0.2s;
 }
 
-.emotionContainer img:hover {
-  transform: scale(1.1);
-}
-
 .emotionContainer img.selected {
-  border: 2px solid #4299e1;
-  transform: scale(1.1);
+  transform: scale(1.5);
 }
 
 .writeSection {
@@ -84,7 +79,6 @@
   font-size: 2rem;
   width: 90%;
   height: 100%;
-  font-family: Pretendard;
   resize: none;
   ::placeholder {
     font-size: inherit;
@@ -123,11 +117,6 @@
 }
 
 .completeButton img {
-  width: 5rem;
-  height: 5rem;
-  transition: transform 0.2s;
-}
-
-.completeButton:hover:not(:disabled) img {
-  transform: scale(1.1);
+  width: 10rem;
+  height: auto;
 }

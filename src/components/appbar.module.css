@@ -1,13 +1,14 @@
 .container {
   display: flex;
   align-items: center;
-  padding: 3rem;
+  padding: 0;
 }
 
 .backButton {
+  margin: 3rem;
   margin-right: auto;
-  width: 4rem;
-  height: 4rem;
+  width: 6rem;
+  height: 6rem;
 }
 .title {
   flex-grow: 1;
@@ -17,12 +18,16 @@
   margin: 0;
 }
 .nextButtonContainer {
+  margin-right: 3rem;
   margin-left: auto;
-  width: 4rem;
-  height: 4rem;
+  width: 10rem;
+  height: 10rem;
   z-index: 505;
 }
-
+.nextButton {
+  width: 10rem;
+  height: 10rem;
+}
 .nextButton,
 .backButton {
   background: none;
