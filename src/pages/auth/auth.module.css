@@ -1,23 +1,75 @@
 .container {
+  height: 100vh;
+  width: 100vw;
+  background-color: #fef2b6; /* pastel yellow paper look */
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20%;
-  padding: 6rem;
+  justify-content: center;
+  padding: 2rem;
+  font-family: 'Pretendard', 'Arial', sans-serif; /*i think we need to change the font?*/
+  overflow: hidden;
 }
 
+.container h1 {
+  font-size: 7rem;
+  font-family: 'Pretendard', 'Arial', sans-serif;
+  margin-bottom: 1rem;
+}
+
+
 .logo {
-  display: block;
-  width: auto;
-  height: 40rem;
-  margin: 3rem;
+  height: 36rem;
+  margin: 2rem 0;
 }
 
 .nicknameInput {
-  width: 100%;
+  width: 80%;
+  max-width: 400px;
+  padding: 1.7rem;
+  font-size: 2rem;
+  border: none;
+  border-radius: 1rem;
+  background-color: #fcf9e8;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+  font-family: 'Pretendard', 'Arial', sans-serif;
+  box-sizing: border-box;
 }
 
 .loginButton {
-  width: 100%;
-  margin: 2rem 0;
+  width: 80%;
+  max-width: 400px;
+  padding: 1.2rem;
+  margin: 2rem 0 1rem 0;
+  background-color: #e7d2f6;
+  color: #000;
+  font-size: 3rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  font-family: 'Pretendard', 'Arial', sans-serif;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.loginButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+a {
+  font-size: 1.5rem;
+  color: #000;
+  text-decoration: underline;
+  margin-top: 0.5rem;
+}
+
+@font-face {
+  font-family: 'font';
+  src: url('/public/font/font.ttf') format('truetype');
 }
