@@ -1,7 +1,8 @@
 .container {
   margin: 0 auto;
-  margin-top: 20%;
+  margin-top: 0;
   text-align: center;
+  background-color: #f0f5e1;
 }
 
 .shareButton {
@@ -20,3 +21,20 @@
   height: 10rem;
   object-fit: cover;
 }
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+:global(.appbar) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}
+
