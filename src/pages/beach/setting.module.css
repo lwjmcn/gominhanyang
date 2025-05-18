@@ -3,6 +3,16 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  background-color: #f2f2f2;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.container div > div {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: -0.5rem; /* move the radio group upward */
 }
 
 .saveButton:disabled {
