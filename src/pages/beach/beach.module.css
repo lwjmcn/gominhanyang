@@ -1,6 +1,12 @@
 .postImage {
-  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
   z-index: -1;
+  content: url('/public/image/main/background_initial.webp');
 }
 
 .pointContainer {
