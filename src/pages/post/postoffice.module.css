@@ -1,33 +1,129 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
 .container {
-  height: 90%;
+  height: 100vh;
+  overflow: hidden;
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 4rem;
+  background-image: url('/image/post/background_post.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.speechBubble {
+  position: absolute;
+  top: 15rem;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 4rem;
+  padding: 2rem 3rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  text-align: center;
+
+  width: 35rem;
+  max-width: 100%;
+  z-index: 2;
+}
+
+
+.speechBubble::after {
+  content: '';
+  position: absolute;
+  top: 13rem;
+  left: -1rem;
+  width: 0;
+  height: 0;
+  border: 5rem solid transparent;
+  border-right-color: #fefefe;
+}
+
+.bubbleText h4 {
+  font-size: 2.8rem;
+  font-weight: 500;
+  text-align: center;
+  white-space: pre-line;
+}
+
+/* Navigation button container */
+:global(.nav-button-container) {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+/* Individual Button */
+:global(.nav-button-container button) {
+  background-color: #fffaf0;
+  border: 2px solid #d9b382;
+  border-radius: 1.5rem;
+  width: 180px;
+  height: 180px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 5rem;
-  padding: 0 5%;
-}
-.speechBubble {
-  position: relative;
-  background: #f0f0f0;
-  border-radius: 12rem;
-  padding: 3rem 4rem;
-  width: 36rem;
-  box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.2);
-  ::after {
-    content: '';
-    position: absolute;
-    top: 13.5rem;
-    left: -0.5rem;
-    width: 0;
-    height: 0;
-    border: 5rem solid transparent;
-    border-right-color: #f0f0f0;
-  }
-}
-.speechBubble h4 {
-  font-size: 3rem;
+  cursor: pointer;
+  box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.1);
+  font-size: 2rem;
   font-weight: 500;
-  height: 6rem;
-  text-align: center;
+  font-family: 'UhBeeSe_hyun', 'Pretendard', sans-serif;
+  color: #333;
+}
+
+/* Icon Inside Button */
+:global(.nav-button-container button img) {
+  width: 100px;
+  height: auto;
+  margin-top: 1rem;
+  margin-bottom: 0.05rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .container {
+    padding-bottom: 3rem;
+    background-position: top center;
+  }
+
+  .speechBubble {
+    width: 90vw;
+    border-radius: 6rem;
+    padding: 1.5rem 2rem;
+  }
+
+  .bubbleText h4 {
+    font-size: 2rem;
+  }
+
+  :global(.nav-button-container) {
+    flex-direction: column;
+  }
+
+  :global(.nav-button-container button) {
+    width: 200px;
+    height: 120px;
+    font-size: 2rem;
+  }
+
+  :global(.nav-button-container button img) {
+    width: 60px;
+  }
 }
