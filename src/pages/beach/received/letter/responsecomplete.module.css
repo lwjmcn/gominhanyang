@@ -27,12 +27,21 @@
 }
 
 .rewardSection h3 {
+<<<<<<< HEAD
   font-size: 2rem;
+=======
+  font-size: 2rem; /* ⬅️ increase size */
+>>>>>>> bb8d05a (change bg and move item text, make reward text bigger. need the otter pic)
   font-weight: 700;
   color: #222;
   margin-bottom: 1rem;
 }
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> bb8d05a (change bg and move item text, make reward text bigger. need the otter pic)
 .rewardItems {
   display: flex;
   flex-direction: column;
@@ -94,7 +103,6 @@
   font-size: 1.3rem;
   line-height: 1.5;
 }
-
 .pointMessage {
   font-size: 1.6rem;
   color: #444;
