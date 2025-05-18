@@ -4,6 +4,8 @@
   flex-direction: column;
   gap: 20px;
   height: calc(100vh - 60px);
+  background-color: #e6f4fb;
+  box-sizing: border-box;
 }
 
 .letterContainer {
