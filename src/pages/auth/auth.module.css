@@ -24,8 +24,8 @@
 }
 
 .nicknameInput {
-  width: 80%;
-  max-width: 400px;
+  width: 90%;
+  max-width: 500px;
   padding: 1.7rem;
   font-size: 2rem;
   border: none;
@@ -38,8 +38,8 @@
 }
 
 .loginButton {
-  width: 80%;
-  max-width: 400px;
+  width: 90%;
+  max-width: 500px;
   padding: 1.2rem;
   margin: 2rem 0 1rem 0;
   background-color: #e7d2f6;
@@ -63,7 +63,7 @@
 }
 
 a {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: #000;
   text-decoration: underline;
   margin-top: 0.5rem;
