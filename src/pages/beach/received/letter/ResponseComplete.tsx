@@ -34,6 +34,21 @@ export default function ResponseCompletePage() {
         </div>
       </div>
 
+{/* {state.rewardItems.length > 0 ? (
+          <div className={styles.rewardItems}>
+            {state.rewardItems.map((item, index) => (
+              <div key={index} className={styles.rewardItem}>
+                <p>{item.name}</p>
+                <p>{item.description}</p>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p className={styles.pointMessage}>포인트가 지급되었습니다!</p>
+        )}
+      </div> */}
+
+
       <div className={styles.navButtonContainer}>
         <button onClick={() => navigate('/items')}>
           <img
