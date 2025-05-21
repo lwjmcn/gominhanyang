@@ -25,7 +25,7 @@ export default function LetterWritePage() {
   );
 
   const [content, setContent] = useState('');
-  const [emotion, setEmotion] = useState<EmotionType>(EmotionType.HAPPY);
+  const [emotion, setEmotion] = useState<EmotionType | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const [openSpeech, setOpenSpeech] = useState(false);
@@ -44,6 +44,10 @@ export default function LetterWritePage() {
   );
 
   const handleSendLetter = async () => {
+    if (emotion === null) {
+      showToast('감정을 선택해주세요.');
+      return;
+    }
     if (content.length < 10) {
       showToast('편지는 최소 10자 이상 작성해주세요.');
       return;
@@ -98,6 +102,11 @@ export default function LetterWritePage() {
   };
 
   const fetchInitialQuestion = async () => {
+    if (emotion === null) {
+      showToast('감정을 선택해주세요.');
+      return;
+    }
+
     const response = await generateQuestion({ emotion });
 
     if (isErrorResponse(response)) {
