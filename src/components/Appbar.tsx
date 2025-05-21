@@ -26,6 +26,7 @@ export default function Appbar({
         }}
         src="/image/common/back.webp"
         alt="Back"
+        role="button"
       />
 
       <h2 className={styles.title}>{title}</h2>

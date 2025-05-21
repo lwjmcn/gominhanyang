@@ -57,7 +57,12 @@ export default function LetterWriteForm({
           🎁 마음을 담아 길게 써주시면, 작은 보상을 드려요
         </p>
         <button className={styles.completeButton} onClick={onSend}>
-          <img src="/image/write/paper_flight.webp" object-fit="cover" alt="complete" />
+          <img
+            src="/image/write/paper_flight.webp"
+            object-fit="cover"
+            alt="complete"
+            role="button"
+          />
         </button>
       </div>
     </div>
