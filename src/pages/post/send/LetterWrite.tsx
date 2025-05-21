@@ -208,7 +208,7 @@ export default function LetterWritePage() {
               />
               익명 친구
             </label>
-          </div>{' '}
+          </div>
           <div>
             <input
               type="radio"
