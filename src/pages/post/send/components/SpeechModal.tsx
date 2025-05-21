@@ -33,7 +33,7 @@ export default function SpeechModal({ onClose, type, helpMessages, onRefresh }: 
         )}
         <div>
           <p>{'이런 식으로 작성해볼 수 있어요.\n'}</p>
-          {!helpMessages && <p>...</p>}
+          {helpMessages.length === 0 && <p>...</p>}
           {helpMessages.map((msg, index) => (
             <p key={`msg-${index}`}>{msg}</p>
           ))}
