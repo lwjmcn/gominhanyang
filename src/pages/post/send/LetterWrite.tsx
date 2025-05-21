@@ -276,22 +276,9 @@ export default function LetterWritePage() {
             content={content}
             onChange={setContent}
             disabled={isLoading}
+            onSend={() => setOpenCompleteWrite(true)}
             type="letter"
           />
-          <div className={styles.completeContainer}>
-            <p className={styles.rewardInfo}>
-              ✅ 100자 이상 작성하시면 리워드가 추가로 제공돼요.
-              {'\n'}
-              🎁 마음을 담아 길게 써주시면, 작은 보상을 드려요
-            </p>
-            <button
-              className={styles.completeButton}
-              onClick={() => setOpenCompleteWrite(true)}
-              disabled={isLoading}
-            >
-              <img src="/image/write/paper_flight.webp" object-fit="cover" alt="complete" />
-            </button>
-          </div>
         </div>
       </div>
     </div>

@@ -77,35 +77,3 @@
   min-height: 0;
   overflow: hidden;
 }
-
-.completeContainer {
-  display: flex;
-  align-items: center;
-  margin: 2rem;
-}
-
-.rewardInfo {
-  color: #666;
-  font-size: 1.6rem;
-  flex-grow: 1;
-}
-
-.completeButton {
-  background-color: #fffae2;
-  border: 0.3rem solid #ffba19;
-  padding-top: 0.6rem;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.completeButton:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.completeButton img {
-  width: 10rem;
-  height: auto;
-}
