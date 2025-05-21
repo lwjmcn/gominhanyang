@@ -123,6 +123,11 @@ export default function LetterWritePage() {
     setHelpMessages([response.help_question]);
   };
 
+  const handleChangeEmotion = (newEmotion: EmotionType) => {
+    setEmotion(newEmotion);
+    setFirstTime(true);
+  };
+
   useEffect(() => {
     if (firstTime) {
       fetchInitialQuestion();
@@ -149,6 +154,8 @@ export default function LetterWritePage() {
           onConfirm={handleSendLetter}
           isLoading={isLoading}
           type="letter"
+          content={content}
+          sendType={sendType}
         />
       )}
       <Appbar
@@ -162,85 +169,116 @@ export default function LetterWritePage() {
       />
       <div className={styles.container}>
         <div className={styles.radioContainer}>
-          <input
-            type="radio"
-            id="option1"
-            name="options"
-            value={SendType.SELF}
-            checked={sendType === SendType.SELF}
-            onChange={e => setSendType(e.target.value as SendType)}
-            disabled={isLoading}
-          />
-          <label htmlFor="option1">보관하기</label>
-          <input
-            type="radio"
-            id="option2"
-            name="options"
-            value={SendType.RANDOM}
-            checked={sendType === SendType.RANDOM}
-            onChange={e => setSendType(e.target.value as SendType)}
-            disabled={isLoading}
-          />
-          <label htmlFor="option2">랜덤 전송</label>
-          <input
-            type="radio"
-            id="option3"
-            name="options"
-            value={SendType.VOLUNTEER}
-            checked={sendType === SendType.VOLUNTEER}
-            onChange={e => setSendType(e.target.value as SendType)}
-            disabled={isLoading}
-          />
-          <label htmlFor="option3">온기우체부</label>
+          <div>
+            <input
+              type="radio"
+              id="option1"
+              name="options"
+              value={SendType.SELF}
+              checked={sendType === SendType.SELF}
+              onChange={e => setSendType(e.target.value as SendType)}
+              disabled={isLoading}
+            />
+            <label htmlFor="option1">
+              <img
+                className={styles.labelImg}
+                object-fit="cover"
+                src="/image/post/paper_love.webp"
+                alt="self"
+              />
+              보관함
+            </label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              id="option2"
+              name="options"
+              value={SendType.RANDOM}
+              checked={sendType === SendType.RANDOM}
+              onChange={e => setSendType(e.target.value as SendType)}
+              disabled={isLoading}
+            />
+            <label htmlFor="option2">
+              <img
+                className={styles.labelImg}
+                object-fit="cover"
+                src="/image/post/person.webp"
+                alt="self"
+              />
+              익명 친구
+            </label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              id="option3"
+              name="options"
+              value={SendType.VOLUNTEER}
+              checked={sendType === SendType.VOLUNTEER}
+              onChange={e => setSendType(e.target.value as SendType)}
+              disabled={isLoading}
+            />
+            <label htmlFor="option3">
+              <img
+                className={styles.labelImg}
+                object-fit="cover"
+                src="/image/post/post_office_yellow.webp"
+                alt="self"
+              />
+              온기우체부
+            </label>
+          </div>
         </div>
+
+        <hr className={styles.divider} />
 
         <div className={styles.emotionContainer}>
           <img
             src="/image/write/emotion_excited.webp"
             object-fit="cover"
             alt="기쁨"
-            onClick={() => setEmotion(EmotionType.EXCITED)}
+            onClick={() => handleChangeEmotion(EmotionType.EXCITED)}
             className={emotion === EmotionType.EXCITED ? styles.selected : ''}
           />
           <img
             src="/image/write/emotion_happy.webp"
             object-fit="cover"
             alt="행복"
-            onClick={() => setEmotion(EmotionType.HAPPY)}
+            onClick={() => handleChangeEmotion(EmotionType.HAPPY)}
             className={emotion === EmotionType.HAPPY ? styles.selected : ''}
           />
           <img
             src="/image/write/emotion_bored.webp"
             object-fit="cover"
             alt="우울"
-            onClick={() => setEmotion(EmotionType.DEPRESSED)}
+            onClick={() => handleChangeEmotion(EmotionType.DEPRESSED)}
             className={emotion === EmotionType.DEPRESSED ? styles.selected : ''}
           />
           <img
             src="/image/write/emotion_angry.webp"
             object-fit="cover"
             alt="화남"
-            onClick={() => setEmotion(EmotionType.ANGRY)}
+            onClick={() => handleChangeEmotion(EmotionType.ANGRY)}
             className={emotion === EmotionType.ANGRY ? styles.selected : ''}
           />
           <img
             src="/image/write/emotion_sad.webp"
             object-fit="cover"
             alt="슬픔"
-            onClick={() => setEmotion(EmotionType.SAD)}
+            onClick={() => handleChangeEmotion(EmotionType.SAD)}
             className={emotion === EmotionType.SAD ? styles.selected : ''}
           />
         </div>
 
         <div className={styles.writeSection}>
-          <LetterWriteForm content={content} onChange={setContent} disabled={isLoading} />
-          <button
-            className={styles.completeButton}
-            onClick={() => setOpenCompleteWrite(true)}
+          <LetterWriteForm
+            content={content}
+            onChange={setContent}
             disabled={isLoading}
-          >
-            <img src="/image/write/paper_flight.webp" object-fit="cover" alt="complete" />
-          </button>
+            onSend={() => setOpenCompleteWrite(true)}
+            type="letter"
+          />
         </div>
       </div>
     </div>

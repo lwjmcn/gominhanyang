@@ -1,0 +1,9 @@
+.caution {
+  white-space: pre-wrap;
+  background-color: #ffebeb;
+  padding: 1.6rem;
+  border-radius: 1rem;
+  color: #e53e3e;
+  font-size: 1.6rem;
+  line-height: 1.6;
+}

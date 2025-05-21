@@ -13,12 +13,12 @@
 .content {
   position: absolute;
   height: fit-content;
-  top: 10rem;
-  right: 2rem;
+  top: 12em;
+  right: 5rem;
   display: flex;
-  background-color: #fff;
+  background-color: #f8eacd;
   padding: 2rem 3rem;
-  border-radius: 4rem;
+  border-radius: 3rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   width: 65%;
   animation: fadeIn 0.2s ease-in-out;
@@ -31,7 +31,7 @@
     width: 0;
     height: 0;
     border-left: 3rem solid transparent;
-    border-bottom: 3rem solid #fff;
+    border-bottom: 3rem solid #f8eacd;
   }
 }
 .content h2 {
@@ -41,7 +41,22 @@
 .content p {
   font-size: 2rem;
 }
-
+.closeButton {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  cursor: pointer;
+  height: 4rem;
+  width: auto;
+}
+.refreshButton {
+  position: absolute;
+  top: 2rem;
+  right: 7rem;
+  cursor: pointer;
+  height: 4rem;
+  width: auto;
+}
 @keyframes fadeIn {
   from {
     opacity: 0;
