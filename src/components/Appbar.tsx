@@ -19,14 +19,15 @@ export default function Appbar({
   const navigate = useNavigate();
   return (
     <div className={styles.container}>
-      <button
+      <img
         className={styles.backButton}
         onClick={() => {
           onBackPress ? onBackPress() : navigate(-1);
         }}
-      >
-        ◀
-      </button>
+        src="/image/common/back.webp"
+        alt="Back"
+      />
+
       <h2 className={styles.title}>{title}</h2>
       <div className={styles.nextButtonContainer}>
         {nextButtonIcon && (

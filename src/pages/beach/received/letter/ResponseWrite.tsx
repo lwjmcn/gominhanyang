@@ -150,7 +150,12 @@ export default function ResponseWritePage() {
         <div className={styles.divider} />
 
         <div className={styles.writeSection}>
-          <LetterWriteForm content={content} onChange={setContent} disabled={isLoading} />
+          <LetterWriteForm
+            content={content}
+            onChange={setContent}
+            disabled={isLoading}
+            type="reply"
+          />
           <button
             className={styles.submitButton}
             onClick={() => setOpenCompleteWrite(true)}

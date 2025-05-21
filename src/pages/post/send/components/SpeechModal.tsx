@@ -15,20 +15,29 @@ export default function SpeechModal({ onClose, type, helpMessages, onRefresh }: 
   return (
     <div className={styles.overlay}>
       <div className={styles.content}>
-        <button className={styles.closeButton} onClick={onClose}>
-          ✖️
-        </button>
+        <img
+          className={styles.closeButton}
+          onClick={onClose}
+          src="/image/common/close.webp"
+          alt="close"
+          object-fit="cover"
+        />
+        {type === 'letter' && (
+          <img
+            className={styles.refreshButton}
+            onClick={onRefresh}
+            src="/image/write/refresh.webp"
+            alt="refresh"
+            object-fit="cover"
+          />
+        )}
         <div>
           <p>{'이런 식으로 작성해볼 수 있어요.\n'}</p>
+          {!helpMessages && <p>...</p>}
           {helpMessages.map((msg, index) => (
             <p key={`msg-${index}`}>{msg}</p>
           ))}
         </div>
-        {type === 'letter' && (
-          <button className={styles.closeButton} onClick={onRefresh}>
-            🔃
-          </button>
-        )}
       </div>
     </div>
   );

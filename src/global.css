@@ -61,6 +61,7 @@ button {
   color: #fff;
   background-color: #f8c464;
   transition: background-color 3s ease;
+  font-family: Jua;
 }
 button:active {
   background-color: #ff9900;
@@ -161,9 +162,10 @@ option {
   flex-direction: column;
   align-items: center;
   padding: 0 2rem;
+  color: #333;
   &:nth-of-type(2) {
-    background-color: #ddd;
-    color: #333;
+    background-color: #f0f0f0;
+    border: 0.3rem solid #ff9900;
   }
 }
 .nav-button-container {

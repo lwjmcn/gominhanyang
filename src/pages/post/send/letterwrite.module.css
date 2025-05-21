@@ -1,16 +1,15 @@
 .page {
-  height: calc(100dvh - 7rem); /* footer 높이 제외 */
+  height: 100%;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  background-color: #f0f5e1;
 }
 
 .container {
   flex: 1;
   padding: 2rem;
   padding-bottom: 0;
-  max-width: 800px;
-  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -23,12 +22,31 @@
   display: flex;
   justify-content: center;
   gap: 2rem;
-  padding: 1rem;
   flex-shrink: 0;
+}
+
+.radioContainer > div {
+  display: flex;
+  align-items: center;
 }
 
 .radioContainer input[type='radio'] {
   margin-right: 0.5rem;
+}
+
+.labelImg {
+  width: auto;
+  height: 2.5rem;
+  transform: translateY(0.5rem);
+  margin-right: 0.5rem;
+}
+
+.divider {
+  width: 90%;
+  height: 0.3rem;
+  background-color: #1aae27;
+  border-radius: 2rem;
+  margin: 0.5remrem 0;
 }
 
 .emotionContainer {
@@ -60,55 +78,26 @@
   overflow: hidden;
 }
 
-.caution {
-  display: block;
-  text-align: left;
-  margin: 2rem;
-}
-
-.flexGrowWrapper {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.letterInput {
-  flex-grow: 1;
-  display: block;
-  margin: 0 auto;
-  font-size: 2rem;
-  width: 90%;
-  height: 100%;
-  resize: none;
-  ::placeholder {
-    font-size: inherit;
-  }
-}
-
-.letterInputCount {
-  text-align: right;
-  margin-right: 5%;
-  font-size: 1.5rem;
-  color: #717171;
-}
-
 .completeContainer {
   display: flex;
   align-items: center;
   margin: 2rem;
 }
 
+.rewardInfo {
+  color: #666;
+  font-size: 1.6rem;
+  flex-grow: 1;
+}
+
 .completeButton {
-  width: 100%;
-  padding: 1.6rem;
-  background: none;
-  border: none;
+  background-color: #fffae2;
+  border: 0.3rem solid #ffba19;
+  padding-top: 0.6rem;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 2rem;
-  flex-shrink: 0;
 }
 
 .completeButton:disabled {

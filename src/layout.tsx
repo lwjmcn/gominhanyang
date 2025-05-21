@@ -8,7 +8,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <header />
       <main className="main">{children}</main>
       {/* <footer className="footer">Copyright © gominhanyang 2025.</footer> */}
-      <ConsoleLog />
+      {/* <ConsoleLog /> */}
       <Toast />
     </div>
   );
