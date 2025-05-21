@@ -11,7 +11,7 @@ import { ActionType } from '@/lib/type/reward.type';
 import { grantReward } from '@/lib/api/reward';
 import StopWriteModal from '@/pages/post/send/components/StopWriteModal';
 import CompleteWriteModal from '@/pages/post/send/components/CompleteWriteModal';
-import { LetterDetail } from '@/lib/type/letter.type';
+import { LetterDetail, SendType } from '@/lib/type/letter.type';
 
 export default function ResponseWritePage() {
   const nextButtonIcon = (
@@ -36,7 +36,13 @@ export default function ResponseWritePage() {
 
   const location = useLocation();
   const state = location.state as { letter: LetterDetail };
-  const [letter, setLetter] = useState<LetterDetail>(state?.letter || {});
+  const [letter, setLetter] = useState<LetterDetail>(
+    state?.letter || {
+      title: '제목이에요',
+      content: '안녕하세요 편지 내용이에요안녕하세요 편지 내용이에요',
+      created_at: '2023-10-01',
+    },
+  );
 
   const [helpMessages, setHelpMessages] = useState<string[]>([]);
 
@@ -132,6 +138,8 @@ export default function ResponseWritePage() {
           onConfirm={handleReply}
           isLoading={isLoading}
           type="reply"
+          content={content}
+          sendType={SendType.RANDOM}
         />
       )}
       <Appbar
@@ -144,20 +152,19 @@ export default function ResponseWritePage() {
         <div className={styles.letterSection}>
           <p className={styles.date}>{letter.created_at}</p>
           <h2 className={styles.title}>{letter.title}</h2>
-          <p className={styles.content}>{letter.content}</p>
+          <textarea className={styles.letterInput} value={letter.content} disabled />
         </div>
 
         <div className={styles.divider} />
 
         <div className={styles.writeSection}>
-          <LetterWriteForm content={content} onChange={setContent} disabled={isLoading} />
-          <button
-            className={styles.submitButton}
-            onClick={() => setOpenCompleteWrite(true)}
-            disabled={isLoading || content.length < 10}
-          >
-            {isLoading ? '전송 중...' : '답장 보내기'}
-          </button>
+          <LetterWriteForm
+            content={content}
+            onChange={setContent}
+            onSend={() => setOpenCompleteWrite(true)}
+            disabled={isLoading}
+            type="reply"
+          />
         </div>
       </div>
     </div>

@@ -1,0 +1,11 @@
+.contentContainer {
+  margin: 6rem 0;
+}
+.letterContent {
+  /* width 100, 끊어서 ellipsis */
+  width: 100%;
+  line-height: 2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

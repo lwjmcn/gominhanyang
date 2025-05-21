@@ -14,13 +14,17 @@
 }
 
 .content {
-  background-color: #fff;
+  background-color: #f8eacd;
+  border: 0.8rem solid #f6c157;
+  border-radius: 2rem;
   padding: 2rem 3rem;
-  border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   width: 65%;
   animation: fadeIn 0.2s ease-in-out;
   line-height: 0.5;
+  position: relative;
+  padding-top: 6rem;
+  text-align: center;
 }
 .content h2 {
   font-size: 3rem;
@@ -28,6 +32,15 @@
 }
 .content p {
   font-size: 2rem;
+}
+
+.closeButton {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  cursor: pointer;
+  height: 4rem;
+  width: auto;
 }
 
 @keyframes fadeIn {

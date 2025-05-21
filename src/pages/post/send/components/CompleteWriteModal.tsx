@@ -1,11 +1,15 @@
 import Modal from '@/components/Modal';
-import { useNavigate } from 'react-router-dom';
+import Caution from './Caution';
+import { SendType } from '@/lib/type/letter.type';
+import styles from './completewritemodal.module.css';
 
 interface CompleteWriteModalProps {
   onClose: () => void;
   onConfirm: () => void;
   type: 'letter' | 'reply';
   isLoading: boolean;
+  content: string;
+  sendType: SendType;
 }
 
 export default function CompleteWriteModal({
@@ -13,21 +17,32 @@ export default function CompleteWriteModal({
   onConfirm,
   type,
   isLoading,
+  content,
+  sendType,
 }: CompleteWriteModalProps) {
-  const navigate = useNavigate();
-
   const modalType = type === 'letter' ? '편지' : '답장';
 
   return (
     <Modal onClose={onClose}>
       <div>
-        <h2>📝 {modalType}를 마무리 할 준비가 되셨나요?</h2>
-        <p>아래 내용을 확인하고 {modalType} 작성을 완료할 수 있어요.</p>
-        <div>
-          <p>📤 전송 대상: 익명 사용자 🧾 {modalType} 내용: 첫시작부터~~....</p>
-          <p>❗개인정보나 욕설은 포함되지 않았나요?</p>
-          <p>✅ {modalType}를 전송하면 수정할 수 없어요.</p>
+        <h2>{modalType}를 마무리 하시겠어요?</h2>
+        <p>아래 내용을 확인하시면 {modalType} 작성을 완료할 수 있어요.</p>
+        <div className={styles.contentContainer}>
+          <p>
+            📤 전송 대상:{' '}
+            {sendType === SendType.SELF
+              ? '없음'
+              : sendType === SendType.RANDOM
+                ? '익명 친구'
+                : '온기우체부'}
+          </p>
+          <p className={styles.letterContent}>
+            🧾 {modalType} 내용: {content}
+          </p>
         </div>
+        <Caution
+          message={`❗개인정보나 욕설은 포함되지 않았나요?\n✅ ${modalType}를 전송하면 수정할 수 없어요.`}
+        />
         <div className="modal-button-container">
           <button onClick={onConfirm} disabled={isLoading}>
             {isLoading ? '전송 중...' : '✅작성 완료'}
