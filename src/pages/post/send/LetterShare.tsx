@@ -34,7 +34,7 @@ export default function LetterSharePage() {
     <>
       <div className={styles.container}>
         <Appbar title="" />
-        <h2 className={styles.title}>누구에게 편지를 전하고 싶나요?</h2>
+        <p className={styles.title}>누구에게 편지를 전하고 싶나요?</p>
         <div className={styles.buttonContainer}>
           <button className={styles.shareButton} onClick={handleSave}>
             <img
@@ -43,7 +43,7 @@ export default function LetterSharePage() {
               object-fit="cover"
               alt="save"
             />
-            <div className={styles.text}>나만의 보관함에 담기</div>
+            <div className={styles.text}>나만의 보관함에 간직하기</div>
           </button>
           <button className={styles.shareButton} onClick={handleRandom}>
             <img
@@ -52,7 +52,7 @@ export default function LetterSharePage() {
               object-fit="cover"
               alt="random"
             />
-            <div className={styles.text}>바다에 띄우기</div>
+            <div className={styles.text}>바다 위 익명 친구에게 띄우기</div>
           </button>
           <button className={styles.shareButton} onClick={handleSend}>
             <img
@@ -62,7 +62,7 @@ export default function LetterSharePage() {
               alt="send"
             />
 
-            <div className={styles.text}>온기 우체부에게 보내기</div>
+            <div className={styles.text}>온기 우체부에게 전송하기</div>
           </button>
         </div>
       </div>

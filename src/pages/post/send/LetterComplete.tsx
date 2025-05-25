@@ -21,8 +21,10 @@ export default function LetterCompletePage() {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.text2}>언제든 다시 보고 싶은 편지,</h2>
-      <h2 className={styles.text2}>보관함에 소중히 넣어두었어요.</h2>
+      <p className={styles.text2}>
+        언제든 다시 보고 싶은 편지, <br />
+        보관함에 소중히 넣어두었어요.
+      </p>
 
       <img
         className={styles.otterImage}
