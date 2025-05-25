@@ -34,9 +34,18 @@ export default function LetterListPage() {
   }, [showToast]);
 
   return (
-    <>
-      <Appbar title="나의 보관함" />
+    <div
+      style={{
+        backgroundImage: "url('/image/post/back_ground_green.webp')",
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        minHeight: '100vh',
+      }}
+    >
       <div className={styles.container}>
+        <Appbar title="나의 보관함" />
+
         {isLoading ? (
           <div className={styles.loading}>편지를 불러오는 중...</div>
         ) : letters.length === 0 ? (
@@ -51,6 +60,6 @@ export default function LetterListPage() {
           ))
         )}
       </div>
-    </>
+    </div>
   );
 }
