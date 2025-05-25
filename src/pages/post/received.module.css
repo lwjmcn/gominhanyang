@@ -34,9 +34,15 @@ body {
 }
 
 /* 아이콘 이미지 */
-.icon {
+.icon1 {
   width: 27rem;
-  height: 27rem;
+  height: 18rem;
+  margin-top: 1rem;
+}
+.icon2 {
+  margin-left: 3rem;
+  width: 16rem;
+  height: 20rem;
 }
 
 /* 노란 텍스트 박스 */
@@ -52,8 +58,31 @@ body {
   justify-content: center;
 }
 
+/* 노란 텍스트 박스 */
+.labelBox1 {
+  width: 24rem;
+  height: 10rem;
+  background-image: url('/image/post/yellow_box.webp');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
 /* 텍스트 스타일 */
 .labelText {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  word-break: keep-all;
+  padding: 0 1rem;
+}
+
+.labelText1 {
   font-size: 3rem;
   font-weight: bold;
   color: #333;

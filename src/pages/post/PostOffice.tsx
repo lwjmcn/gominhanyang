@@ -12,8 +12,8 @@ export default function PostOfficePage() {
           <img src="/image/post/pencil_letter.webp" alt="letter" className={styles.icon} />
           <div className={styles.labelBox}>
             <span className={styles.labelText}>
-              편지쓰러 <br />
-              가기
+              편지 <br />
+              쓰러 가기
             </span>
           </div>
         </div>

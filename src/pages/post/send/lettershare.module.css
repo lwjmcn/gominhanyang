@@ -13,19 +13,21 @@
 }
 .title {
   margin-top: 15rem;
+  font-size: 4rem;
 }
 .shareButton {
   margin-top: 6rem;
-  width: 70%;
+  width: 50rem;
   height: 15rem;
   display: flex;
   align-items: center;
 }
 .shareButton > img {
-  margin: 3rem;
+  margin: 1rem;
 }
 .text {
   color: black;
+  font-size: 2.8rem;
 }
 .buttonImage {
   width: 12rem;
