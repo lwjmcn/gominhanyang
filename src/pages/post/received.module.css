@@ -8,122 +8,56 @@ body {
 
 .container {
   height: 100vh;
-  overflow: hidden;
-  min-height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding-bottom: 4rem;
   background-image: url('/image/beach/background_ocean.webp');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  overflow: hidden;
   position: relative;
 }
 
-.speechBubble {
-  position: absolute;
-  top: 10rem;
-  left: 50%;
-  transform: translateX(-50%);
-  
-  background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 4rem;
-  padding: 2rem 3rem;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-  text-align: center;
-
-  width: 35rem;
-  max-width: 100%;
-  z-index: 2;
-}
-
-
-.speechBubble::after {
-  content: '';
-  position: absolute;
-  top: 12rem;
-  left: -1rem;
-  width: 0;
-  height: 0;
-  border: 5rem solid transparent;
-  border-right-color: #fefefe;
-}
-
-.bubbleText h4 {
-  font-size: 2.8rem;
-  font-weight: 500;
-  text-align: center;
-  white-space: pre-line;
-}
-
-/* Navigation button container */
-:global(.nav-button-container) {
+/* 수평으로 아이템 2개 배치 */
+.optionRow {
   display: flex;
-  flex-direction: row;
-  gap: 2rem;
+  margin-top: 53rem;
   justify-content: center;
-  margin-bottom: 13rem;
+  gap: 3rem;
 }
 
-/* Individual Button */
-:global(.nav-button-container button) {
-  background-color: #fffaf0;
-  border: 2px solid #d9b382;
-  border-radius: 1.5rem;
-  width: 180px;
-  height: 180px;
+/* 아이콘 + 텍스트 한 묶음 */
+.optionItem {
   display: flex;
   flex-direction: column;
+  cursor: pointer;
+}
+
+/* 아이콘 이미지 */
+.icon {
+  width: 27rem;
+  height: 27rem;
+}
+
+/* 노란 텍스트 박스 */
+.labelBox {
+  width: 24rem;
+  height: 20rem;
+  background-image: url('/image/post/yellow_box.webp');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.1);
-  font-size: 2rem;
-  font-weight: 500;
-  font-family: 'UhBeeSe_hyun', 'Pretendard', sans-serif;
+}
+
+/* 텍스트 스타일 */
+.labelText {
+  font-size: 3rem;
+  font-weight: bold;
   color: #333;
+  text-align: center;
+  word-break: keep-all;
+  padding: 0 1rem;
 }
-
-/* Icon Inside Button */
-:global(.nav-button-container button img) {
-  width: 100px;
-  height: auto;
-  margin-top: 1rem;
-  margin-bottom: 0.05rem;
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .container {
-    padding-bottom: 3rem;
-    background-position: top center;
-  }
-
-  .speechBubble {
-    width: 90vw;
-    border-radius: 6rem;
-    padding: 1.5rem 2rem;
-  }
-
-  .bubbleText h4 {
-    font-size: 2rem;
-  }
-
-  :global(.nav-button-container) {
-    flex-direction: column;
-  }
-
-  :global(.nav-button-container button) {
-    width: 200px;
-    height: 120px;
-    font-size: 2rem;
-  }
-
-  :global(.nav-button-container button img) {
-    width: 60px;
-  }
-}
-

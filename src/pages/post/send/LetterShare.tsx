@@ -34,34 +34,37 @@ export default function LetterSharePage() {
     <>
       <div className={styles.container}>
         <Appbar title="" />
-        <h2>편지를 누구에게 띄울까요?</h2>
-        <button className={styles.shareButton} onClick={handleSave}>
-          <img
-            className={styles.buttonImage}
-            src="/image/post/paper_archive_love.webp"
-            object-fit="cover"
-            alt="save"
-          />
-          나만의 보관함에 담기
-        </button>
-        <button className={styles.shareButton} onClick={handleRandom}>
-          <img
-            className={styles.buttonImage}
-            src="/image/common/paper_boat.webp"
-            object-fit="cover"
-            alt="random"
-          />
-          바다에 띄우기
-        </button>
-        <button className={styles.shareButton} onClick={handleSend}>
-          <img
-            className={styles.buttonImage}
-            src="/image/post/post_box.webp"
-            object-fit="cover"
-            alt="send"
-          />
-          온기 우체부에게 보내기
-        </button>
+        <h2 className={styles.title}>편지를 누구에게 띄울까요?</h2>
+        <div className={styles.buttonContainer}>
+          <button className={styles.shareButton} onClick={handleSave}>
+            <img
+              className={styles.buttonImage}
+              src="/image/post/paper_archive_love.webp"
+              object-fit="cover"
+              alt="save"
+            />
+            <div className={styles.text}>나만의 보관함에 담기</div>
+          </button>
+          <button className={styles.shareButton} onClick={handleRandom}>
+            <img
+              className={styles.buttonImage}
+              src="/image/common/paper_boat.webp"
+              object-fit="cover"
+              alt="random"
+            />
+            <div className={styles.text}>바다에 띄우기</div>
+          </button>
+          <button className={styles.shareButton} onClick={handleSend}>
+            <img
+              className={styles.buttonImage}
+              src="/image/post/post_box.webp"
+              object-fit="cover"
+              alt="send"
+            />
+
+            <div className={styles.text}>온기 우체부에게 보내기</div>
+          </button>
+        </div>
       </div>
     </>
   );

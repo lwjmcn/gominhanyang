@@ -5,7 +5,7 @@
 }
 
 :global(.backButton) {
-  margin-top: 0;          /* 위쪽 여백 제거 */
+  margin-top: 0; /* 위쪽 여백 제거 */
   background: none !important;
 }
 
@@ -34,7 +34,6 @@
   max-width: 90%;
   z-index: 2;
 }
-
 
 .speechBubble::after {
   content: '';

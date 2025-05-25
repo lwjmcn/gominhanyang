@@ -21,54 +21,42 @@ export default function LetterCompletePage() {
 
   return (
     <div className={styles.container}>
-      <h2>편지가 저장되었어요</h2>
+      <h2 className={styles.text2}>언제든 다시 보고 싶은 편지,</h2>
+      <h2 className={styles.text2}>보관함에 소중히 넣어두었어요.</h2>
+
       <img
+        className={styles.otterImage}
         src={`/image/post/otter_${state.sendType === SendType.SELF ? 'save' : 'send'}.webp`}
         object-fit="cover"
         alt="letter"
       />
 
       <div className={styles.rewardSection}>
-        <h3>{getRewardMessage()}</h3>
+        <p className={styles.text}>{getRewardMessage()}</p>
         <div className={styles.rewardItems}>
           {state.rewardItems.map((item, index) => (
             <div key={index} className={styles.rewardItem}>
-              <p>{item.name}</p>
-              <p>{item.description}</p>
+              <p className={styles.text}>{item.name}</p>
+              <p className={styles.text}>{item.description}</p>
             </div>
           ))}
         </div>
       </div>
 
       <div className={styles.navButtonContainer}>
-        <button onClick={() => navigate('/letters')}>
-          <img
-            src="/image/common/paper_archive.webp"
-            object-fit="cover"
-            alt="letter"
-            className={styles.navImage}
-          />
-          편지 보관함
-        </button>
+        <div onClick={() => navigate('/letters')} className={styles.navButton}>
+          <img src="/image/common/paper_archive.webp" className={styles.navIcon} alt="보관함" />
+          <div className={styles.yellowBoxButton}>
+            <span className={styles.buttonLabel}>나의 편지 보관함</span>
+          </div>
+        </div>
 
-        <button onClick={() => navigate('/items')}>
-          <img
-            src="/image/common/item.webp"
-            object-fit="cover"
-            alt="storage"
-            className={styles.navImage}
-          />
-          아이템
-        </button>
-        <button onClick={() => navigate('/')}>
-          <img
-            src="/image/common/main.webp"
-            object-fit="cover"
-            alt="storage"
-            className={styles.navImage}
-          />
-          메인
-        </button>
+        <div onClick={() => navigate('/')} className={styles.navButton}>
+          <img src="/image/common/main.webp" className={styles.navIcon} alt="메인화면" />
+          <div className={styles.yellowBoxButton}>
+            <span className={styles.buttonLabel}>메인화면 가기</span>
+          </div>
+        </div>
       </div>
     </div>
   );

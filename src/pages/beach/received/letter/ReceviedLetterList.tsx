@@ -1,6 +1,6 @@
 import Appbar from '@/components/Appbar';
 import LetterListItem from '@/components/LetterListItem';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getRandomLetters } from '@/lib/api/letter';
 import { Letter } from '@/lib/type/letter.type';

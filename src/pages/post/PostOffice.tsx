@@ -16,11 +16,11 @@ export default function PostOfficePage() {
         <div className="nav-button-container">
           <button onClick={() => navigate('/letter/share')}>
             <img src="/image/post/pencil_letter.webp" alt="letter" />
-            편지작성
+            <h4 style={{ margin: '0px' }}>편지작성</h4>
           </button>
           <button onClick={() => navigate('/letters')}>
             <img src="/image/common/paper_archive.webp" alt="storage" />
-            편지보관함
+            <h4 style={{ margin: '0px' }}>편지보관함</h4>
           </button>
         </div>
       </div>
