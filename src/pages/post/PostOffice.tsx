@@ -5,27 +5,29 @@ import styles from './postoffice.module.css';
 export default function PostOfficePage() {
   const navigate = useNavigate();
   return (
-    <>
+    <div className={styles.container}>
       <Appbar title="" />
-
-      <div className={styles.container}>
-        <div className={styles.speechBubble}>
-          <div className={styles.bubbleText}>
-            <h4>우체국에 오신 것을 환영해요{'\n'}어떤 걸 하고 싶으신가요?</h4>
+      <div className={styles.optionRow}>
+        <div className={styles.optionItem} onClick={() => navigate('/letter/share')}>
+          <img src="/image/post/pencil_letter.webp" alt="letter" className={styles.icon} />
+          <div className={styles.labelBox}>
+            <span className={styles.labelText}>
+              편지쓰러 <br />
+              가기
+            </span>
           </div>
         </div>
-        <img src="https://placehold.co/600x600" alt="officer" />
-        <div className="nav-button-container">
-          <button onClick={() => navigate('/letter/share')}>
-            <img src="/image/post/pencil_letter.webp" alt="letter" />
-            편지작성
-          </button>
-          <button onClick={() => navigate('/letters')}>
-            <img src="/image/common/paper_archive.webp" alt="storage" />
-            편지보관함
-          </button>
+
+        <div className={styles.optionItem} onClick={() => navigate('/letters')}>
+          <img src="/image/common/paper_archive.webp" alt="storage" className={styles.icon} />
+          <div className={styles.labelBox}>
+            <span className={styles.labelText}>
+              나의 편지 <br />
+              보관함 가기
+            </span>
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

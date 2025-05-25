@@ -1,6 +1,6 @@
 import Appbar from '@/components/Appbar';
 import LetterListItem from '@/components/LetterListItem';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getRandomLetters } from '@/lib/api/letter';
 import { Letter } from '@/lib/type/letter.type';
@@ -43,8 +43,16 @@ export default function ReceivedLetterListPage() {
 
   return (
     <>
-      <Appbar title="받은 편지함" />
-      <div>
+      <div
+        style={{
+          backgroundImage: "url('/image/beach/background_blue.webp')",
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+          minHeight: '100vh', // 뷰포트 전체 높이 커버
+        }}
+      >
+        <Appbar title="받은 편지함" />
         {isLoading ? (
           <p>편지를 불러오는 중...</p>
         ) : letters.length === 0 ? (

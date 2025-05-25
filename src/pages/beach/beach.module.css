@@ -8,7 +8,10 @@
   z-index: -1;
   content: url('/public/image/main/background_initial.webp');
 }
-
+.point {
+  margin-top: 11rem;
+  margin-left: 2rem;
+}
 .pointContainer {
   position: fixed;
   top: 0;

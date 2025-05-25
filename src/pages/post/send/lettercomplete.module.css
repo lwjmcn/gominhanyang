@@ -2,30 +2,60 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 24rem 20px 20px;
+  padding: 15rem 20px 20px;
   gap: 20px;
+  background-image: url('/image/post/back_ground_green.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
   background-color: #f0f5e1;
   min-height: 100vh;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-top: 6rem;
+  }
 }
 
 .rewardSection {
   width: 100%;
-  max-width: 500px;
+  max-width: 800px;
   text-align: center;
-  background-color: #f5f5f5;
   padding: 20px;
   border-radius: 10px;
+}
+
+.otterImage {
+  width: 30rem;
+  height: auto;
+  margin: 4rem;
+  object-fit: cover;
+}
+
+.text {
+  font-size: 4rem;
+  margin-top: 3rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.text2 {
+  font-size: 4rem;
+  margin-top: 0;
+  text-align: center;
 }
 
 .rewardItems {
   display: flex;
   flex-direction: column;
+  border-radius: 4rem;
   gap: 10px;
   margin-top: 15px;
 }
 
 .rewardItem {
-  background-color: white;
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -38,28 +68,41 @@
 
 .navButtonContainer {
   display: flex;
-  gap: 15px;
-  margin-top: 20px;
+  gap: 6rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 5rem;
 }
 
-.navButtonContainer button {
+.navButton {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5px;
-  padding: 10px;
-  border: none;
-  background: none;
   cursor: pointer;
-  color: #000;
 }
 
-
-.navButtonContainer button:hover {
-  opacity: 0.8;
+.navIcon {
+  width: 15rem;
+  height: 15rem;
+  margin-bottom: 1rem;
+  object-fit: contain;
 }
 
-.navImage {
-  width: auto;
-  height: 12rem;
+.yellowBoxButton {
+  width: 25rem;
+  height: 10rem;
+  background-image: url('/image/post/yellow_box.webp');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonLabel {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  word-break: keep-all;
 }

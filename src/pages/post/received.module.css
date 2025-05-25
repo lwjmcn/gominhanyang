@@ -1,44 +1,48 @@
-:global(html, body) {
-  height: 100%;
+html,
+body {
   margin: 0;
-  background: url('/image/post/background_post.webp') center / cover no-repeat;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
 }
 
 .container {
   height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  padding-bottom: 4rem;
+  background-image: url('/image/beach/background_ocean.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   position: relative;
 }
 
-/* 아이콘 + 텍스트 하나의 블록을 수직으로 */
+/* 수평으로 아이템 2개 배치 */
 .optionRow {
   display: flex;
+  margin-top: 53rem;
   justify-content: center;
-  gap: 4rem;
-  margin-top: 70rem;
+  gap: 3rem;
 }
 
+/* 아이콘 + 텍스트 한 묶음 */
 .optionItem {
   display: flex;
   flex-direction: column;
-  align-items: center;
   cursor: pointer;
 }
 
-/* 아이콘 */
+/* 아이콘 이미지 */
 .icon {
-  width: 25rem;
-  height: 22rem;
-  margin-bottom: 1rem;
+  width: 27rem;
+  height: 27rem;
 }
 
-/* 텍스트 박스 */
+/* 노란 텍스트 박스 */
 .labelBox {
-  width: 25rem;
-  height: 14rem;
+  width: 24rem;
+  height: 10rem;
   background-image: url('/image/post/yellow_box.webp');
   background-size: contain;
   background-repeat: no-repeat;
@@ -48,10 +52,12 @@
   justify-content: center;
 }
 
+/* 텍스트 스타일 */
 .labelText {
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: bold;
   color: #333;
   text-align: center;
-  padding: 2.5rem;
+  word-break: keep-all;
+  padding: 0 1rem;
 }

@@ -1,25 +1,43 @@
 .container {
-  margin: 0 auto;
+  margin: 0;
   margin-top: 0;
+  height: 100%;
   text-align: center;
-  background-color: #f0f5e1;
-}
+  background-image: url('/image/post/back_ground_green.webp'); /* ✅ 여기 추가 */
+  background-size: cover; /* 화면에 꽉 채움 */
+  background-repeat: no-repeat;
+  background-position: center center;
 
+  /* 배경 위 요소들이 잘 보이도록 필요 시 배경색 제거 또는 투명도 조정 */
+  background-color: transparent;
+}
+.title {
+  margin-top: 15rem;
+}
 .shareButton {
-  margin: 4rem auto;
-  width: 90%;
-  height: 16rem;
+  margin-top: 6rem;
+  width: 70%;
+  height: 15rem;
   display: flex;
   align-items: center;
 }
 .shareButton > img {
-  margin: 4rem;
+  margin: 3rem;
+}
+.text {
+  color: black;
+}
+.buttonImage {
+  width: 12rem;
+  height: 12rem;
+  object-fit: cover;
 }
 
-.buttonImage {
-  width: 10rem;
-  height: 10rem;
-  object-fit: cover;
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 수직 가운데 정렬 */
+  align-items: center;
 }
 
 html,
@@ -37,4 +55,3 @@ body {
   width: 100%;
   z-index: 10;
 }
-
