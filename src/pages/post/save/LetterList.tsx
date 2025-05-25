@@ -43,9 +43,9 @@ export default function LetterListPage() {
         minHeight: '100vh',
       }}
     >
-      <div className={styles.container}>
-        <Appbar title="나의 보관함" />
+      <Appbar title="나의 보관함" />
 
+      <div className={styles.container}>
         {isLoading ? (
           <div className={styles.loading}>편지를 불러오는 중...</div>
         ) : letters.length === 0 ? (
