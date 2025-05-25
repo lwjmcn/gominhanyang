@@ -4,110 +4,54 @@
   background: url('/image/post/background_post.webp') center / cover no-repeat;
 }
 
-:global(.backButton) {
-  margin-top: 0; /* 위쪽 여백 제거 */
-  background: none !important;
-}
-
 .container {
   height: 100vh;
   display: flex;
   flex-direction: column;
-
-  justify-content: space-between;
-
+  justify-content: flex-start;
   padding-bottom: 4rem;
   position: relative;
 }
 
-.speechBubble {
-  position: absolute;
-  top: 12rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 4rem;
-  padding: 2rem 3rem;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-  text-align: center;
-  width: 35rem;
-  max-width: 90%;
-  z-index: 2;
-}
-
-.speechBubble::after {
-  content: '';
-  position: absolute;
-
-  top: 13rem;
-  left: -1rem;
-  width: 0;
-  height: 0;
-  border: 5rem solid transparent;
-  border-right-color: #fefefe;
-}
-
-.bubbleText h4 {
-  font-size: 2.8rem;
-  font-weight: 500;
-  white-space: pre-line;
-}
-
-:global(.nav-button-container) {
+/* 아이콘 + 텍스트 하나의 블록을 수직으로 */
+.optionRow {
   display: flex;
-  flex-direction: row;
-  gap: 2rem;
   justify-content: center;
-  margin-bottom: 13rem;
+  gap: 4rem;
+  margin-top: 70rem;
 }
 
-:global(.nav-button-container button) {
-  background-color: #fffaf0;
-  border: 2px solid #d9b382;
-  border-radius: 1.5rem;
-  width: 18rem;
-  height: 18rem;
+.optionItem {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   cursor: pointer;
-  box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.1);
-  font-size: 2rem;
-  font-weight: 500;
-  font-family: 'UhBeeSe_hyun', 'Pretendard', sans-serif;
+}
+
+/* 아이콘 */
+.icon {
+  width: 25rem;
+  height: 22rem;
+  margin-bottom: 1rem;
+}
+
+/* 텍스트 박스 */
+.labelBox {
+  width: 25rem;
+  height: 14rem;
+  background-image: url('/image/post/yellow_box.webp');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.labelText {
+  font-size: 4rem;
+  font-weight: bold;
   color: #333;
-}
-
-:global(.nav-button-container button img) {
-  width: 10rem;
-  height: auto;
-  margin-bottom: 0.5rem;
-}
-
-@media (max-width: 768px) {
-  .speechBubble {
-    top: 8rem;
-    width: 90vw;
-    border-radius: 6rem;
-    padding: 1.5rem 2rem;
-  }
-
-  .bubbleText h4 {
-    font-size: 2rem;
-  }
-
-  :global(.nav-button-container) {
-    flex-direction: column;
-  }
-
-  :global(.nav-button-container button) {
-    width: 20rem;
-    height: 12rem;
-    font-size: 2rem;
-  }
-
-  :global(.nav-button-container button img) {
-    width: 6rem;
-  }
+  text-align: center;
+  padding: 2.5rem;
 }
