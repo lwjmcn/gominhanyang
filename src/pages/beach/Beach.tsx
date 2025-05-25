@@ -35,13 +35,8 @@ export default function BeachPage() {
           className={styles.shellImage}
         />
         <p className={styles.level}>Lv.{level}</p>
-        <div className={styles.cylinder}>
-          <div
-            className={styles.cylinderFill}
-            style={{ '--fill-level': `${pointFill}%` } as React.CSSProperties}
-          />
-        </div>
       </div>
+      <p className={styles.point}>{pointFill} / 100 </p>
       <img
         className={styles.settingButton}
         onClick={() => navigate('/settings')}
@@ -50,11 +45,7 @@ export default function BeachPage() {
         alt="setting"
       />
 
-      <img
-        className={styles.postImage}
-        object-fit="fill"
-        alt="post-office"
-      />
+      <img className={styles.postImage} object-fit="fill" alt="post-office" />
 
       <div className={styles.navContainer}>
         <img

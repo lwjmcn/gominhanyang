@@ -47,11 +47,20 @@ export default function ReceivedLetterDetailPage() {
     fetchLetterDetail();
   }, [letterId]);
 
+  const backgroundStyle = {
+    backgroundImage: "url('/image/beach/background_blue.webp')",
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    minHeight: '100vh',
+  };
+
   if (isLoading) {
     return (
       <>
-        <Appbar title="편지 읽기" />
-        <div>
+        <div style={backgroundStyle}>
+          <Appbar title="편지 읽기" />
+
           <p>편지를 불러오는 중...</p>
         </div>
       </>
@@ -61,8 +70,9 @@ export default function ReceivedLetterDetailPage() {
   if (!letter) {
     return (
       <>
-        <Appbar title="편지 읽기" />
-        <div>
+        <div style={backgroundStyle}>
+          <Appbar title="편지 읽기" />
+
           <p>편지를 찾을 수 없습니다.</p>
         </div>
       </>
@@ -71,8 +81,9 @@ export default function ReceivedLetterDetailPage() {
 
   return (
     <>
-      <Appbar title="편지 읽기" />
-      <div>
+      <div style={backgroundStyle}>
+        <Appbar title="편지 읽기" />
+
         <p>{new Date(letter.created_at).toLocaleDateString()}</p>
         <h2>{letter.title}</h2>
         <p>{letter.content}</p>

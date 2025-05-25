@@ -1,102 +1,110 @@
 .container {
-  padding: 20rem 20px 20px;
-  max-width: 800px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
-  background-color: #e6f4fb;
+  padding: 15rem 20px 20px;
+  gap: 20px;
+  background-image: url('/image/beach/background_blue.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: #f0f5e1;
   min-height: 100vh;
   box-sizing: border-box;
 }
 
-
-.container img {
-  width: 150px;
-  height: auto;
+@media (max-width: 768px) {
+  .container {
+    padding-top: 6rem;
+  }
 }
 
+.icon_ondal {
+  width: 23rem;
+}
 .rewardSection {
   width: 100%;
-  max-width: 500px;
+  max-width: 800px;
   text-align: center;
-  background-color: #f5f5f5;
-  padding: 2rem;
-  border-radius: 1rem;
+  padding: 20px;
+  border-radius: 10px;
 }
 
-.rewardSection h3 {
+.otterImage {
+  width: 30rem;
+  height: auto;
+  margin: 4rem;
+  object-fit: cover;
+}
 
-  font-size: 2rem;
+.text {
+  font-size: 4rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
 
+.text2 {
+  font-size: 4rem;
+  margin-top: 0;
+  text-align: center;
 }
 
 .rewardItems {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  margin-top: 1.5rem;
+  border-radius: 4rem;
+  gap: 10px;
+  margin-top: 15px;
 }
 
 .rewardItem {
-  background-color: white;
-  padding: 1.5rem;
-  border-radius: 0.8rem;
+  padding: 15px;
+  border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .rewardItem p:first-child {
   font-weight: bold;
-  margin-bottom: 0.5rem;
-  font-size: 1.5rem;
-}
-
-.rewardItem p:last-child {
-  font-size: 1.3rem;
-  color: #666;
+  margin-bottom: 5px;
 }
 
 .navButtonContainer {
   display: flex;
-  gap: 1.5rem;
-  margin-top: 2rem;
+  gap: 6rem;
   justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 5rem;
 }
 
-.navButtonContainer button {
+.navButton {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 1.3rem;
-  padding: 1rem;
-  border: none;
-  background: none;
   cursor: pointer;
-  color: #000;
 }
 
-.navButtonContainer button:hover {
-  opacity: 0.8;
-}
-.navImage {
-  width: auto;
-  height: 12rem;
-}
-
-.navButtonContainer button:nth-child(1) {
-  gap: 1.8rem;
+.navIcon {
+  width: 15rem;
+  height: 15rem;
+  margin-bottom: 1rem;
+  object-fit: contain;
 }
 
-.navButtonContainer button:nth-child(1) {
-  font-size: 1.3rem;
-  line-height: 1.5;
+.yellowBoxButton {
+  width: 25rem;
+  height: 10rem;
+  background-image: url('/image/post/yellow_box.webp');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.pointMessage {
-  font-size: 1.6rem;
-  color: #444;
-  margin-top: 1rem;
+.buttonLabel {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  word-break: keep-all;
 }
-

@@ -11,14 +11,20 @@ export default function PostOfficePage() {
         <div className={styles.optionItem} onClick={() => navigate('/letter/share')}>
           <img src="/image/post/pencil_letter.webp" alt="letter" className={styles.icon} />
           <div className={styles.labelBox}>
-            <span className={styles.labelText}>편지쓰러 가기</span>
+            <span className={styles.labelText}>
+              편지쓰러 <br />
+              가기
+            </span>
           </div>
         </div>
 
         <div className={styles.optionItem} onClick={() => navigate('/letters')}>
           <img src="/image/common/paper_archive.webp" alt="storage" className={styles.icon} />
           <div className={styles.labelBox}>
-            <span className={styles.labelText}>나의 편지 보관함 가기</span>
+            <span className={styles.labelText}>
+              나의 편지 <br />
+              보관함 가기
+            </span>
           </div>
         </div>
       </div>
