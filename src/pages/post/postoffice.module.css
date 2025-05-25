@@ -1,44 +1,37 @@
-html,
-body {
-  margin: 0;
-  padding: 0;
+:global(html, body) {
   height: 100%;
-  overflow: hidden;
+  margin: 0;
+  background: url('/image/post/background_post.webp') center / cover no-repeat;
+}
+
+:global(.backButton) {
+  margin-top: 0;          /* 위쪽 여백 제거 */
+  background: none !important;
 }
 
 .container {
   height: 100vh;
-  overflow: hidden;
-  min-height: 100vh;
-  width: 100vw;
   display: flex;
   flex-direction: column;
 
   justify-content: space-between;
 
   padding-bottom: 4rem;
-  background-image: url('/image/post/background_post.webp');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  overflow: hidden;
   position: relative;
 }
 
 .speechBubble {
   position: absolute;
-  top: 15rem;
+  top: 12rem;
   left: 50%;
   transform: translateX(-50%);
-  
-  background-color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 4rem;
   padding: 2rem 3rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
   text-align: center;
-
   width: 35rem;
-  max-width: 100%;
+  max-width: 90%;
   z-index: 2;
 }
 
@@ -58,27 +51,23 @@ body {
 .bubbleText h4 {
   font-size: 2.8rem;
   font-weight: 500;
-  text-align: center;
   white-space: pre-line;
 }
 
-/* Navigation button container */
 :global(.nav-button-container) {
   display: flex;
   flex-direction: row;
   gap: 2rem;
   justify-content: center;
-
   margin-bottom: 13rem;
 }
 
-/* Individual Button */
 :global(.nav-button-container button) {
   background-color: #fffaf0;
   border: 2px solid #d9b382;
   border-radius: 1.5rem;
-  width: 180px;
-  height: 180px;
+  width: 18rem;
+  height: 18rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -91,22 +80,15 @@ body {
   color: #333;
 }
 
-/* Icon Inside Button */
 :global(.nav-button-container button img) {
-  width: 100px;
+  width: 10rem;
   height: auto;
-  margin-top: 1rem;
-  margin-bottom: 0.05rem;
+  margin-bottom: 0.5rem;
 }
 
-/* Responsive Styles */
 @media (max-width: 768px) {
-  .container {
-    padding-bottom: 3rem;
-    background-position: top center;
-  }
-
   .speechBubble {
+    top: 8rem;
     width: 90vw;
     border-radius: 6rem;
     padding: 1.5rem 2rem;
@@ -121,12 +103,12 @@ body {
   }
 
   :global(.nav-button-container button) {
-    width: 200px;
-    height: 120px;
+    width: 20rem;
+    height: 12rem;
     font-size: 2rem;
   }
 
   :global(.nav-button-container button img) {
-    width: 60px;
+    width: 6rem;
   }
 }
