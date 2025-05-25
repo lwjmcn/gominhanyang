@@ -59,7 +59,7 @@ export default function LetterDetailPage() {
   }
 
   return (
-    <>
+    <div className={styles.pageBackground}>
       <Appbar title="편지 읽기" />
       <div className={styles.container}>
         <div className={styles.letterHeader}>
@@ -75,7 +75,7 @@ export default function LetterDetailPage() {
         {comments.length > 0 && (
           <div className={styles.comments}>
             <h3>답장</h3>
-            {comments.map((comment, index) => (
+            {comments.map(comment => (
               <div key={comment._id} className={styles.comment}>
                 <p className={styles.commentContent}>{comment.content}</p>
                 <div className={styles.commentFooter}>
@@ -89,6 +89,6 @@ export default function LetterDetailPage() {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 }
