@@ -1,6 +1,5 @@
 import { Navigate, Outlet, Route, Routes, useLocation } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import ReactGA from 'react-ga4';
+import RouteGA from './routeGA';
 import { useAuthStore } from '@/store/auth';
 import SignInPage from './pages/auth/SignIn';
 import SignUpPage from './pages/auth/SignUp';
@@ -21,7 +20,7 @@ import LetterCompletePage from './pages/post/send/LetterComplete';
 import LetterSharePage from './pages/post/send/LetterShare';
 import LetterWritePage from './pages/post/send/LetterWrite';
 import ReceivedLetterDetailPage from './pages/beach/received/letter/ReceivedLetterDetail';
-import ApiTestPage from './pages/test/ApiTest';
+// import ApiTestPage from './pages/test/ApiTest';
 
 export const ProtectedRoute = () => {
   const { isAuth } = useAuthStore();
@@ -37,23 +36,15 @@ export default function AppRoutes() {
   const state = location.state as { backgroundLocation?: Location };
   const backgroundLocation = state?.backgroundLocation;
 
-  const [gaInitialized, setGaInitialized] = useState(false);
-  useEffect(() => {
-    ReactGA.initialize(import.meta.env.VITE_GOOGLE_ANALYTICS_ID);
-    setGaInitialized(true);
-  }, []);
-  useEffect(() => {
-    if (!gaInitialized) return;
-    ReactGA.set({ page: location.pathname });
-    ReactGA.send({ hitType: 'pageview', page: location.pathname });
-  }, [gaInitialized, location]);
+  RouteGA();
+
   return (
     <>
       <Routes location={backgroundLocation || location}>
         <Route element={<PublicRoute />}>
           <Route path="/signin" element={<SignInPage />} />
           <Route path="/signup" element={<SignUpPage />} />
-          <Route path="/test" element={<ApiTestPage />} />
+          {/* <Route path="/test" element={<ApiTestPage />} /> */}
         </Route>
         <Route element={<ProtectedRoute />}>
           <Route path="/" element={<BeachPage />} />
