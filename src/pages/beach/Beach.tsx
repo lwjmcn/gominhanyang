@@ -26,7 +26,7 @@ export default function BeachPage() {
   }, []);
 
   return (
-    <div>
+    <div className={styles.container}>
       <div className={styles.pointContainer}>
         <img
           src="/image/main/shell.webp"
@@ -44,9 +44,6 @@ export default function BeachPage() {
         object-fit="cover"
         alt="setting"
       />
-
-      <img className={styles.postImage} object-fit="fill" alt="post-office" />
-
       <div className={styles.navContainer}>
         <img
           onClick={() => navigate('/post')}
