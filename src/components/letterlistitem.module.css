@@ -1,7 +1,10 @@
 .container {
+  width: 80%;
+  margin: 0 auto;
   padding: 2rem;
-  background-color: white;
-  border-radius: 1rem;
+  background-color: #afd8c6;
+  border: 1rem solid #79bab4;
+  border-radius: 3rem;
   box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: transform 0.2s;
@@ -18,18 +21,21 @@
   font-weight: 600;
 }
 
+.infoSection {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.infoSection > p {
+  margin: 0;
+}
+
 .emotion {
   padding: 1rem 2rem;
-  background-color: #f5f5f5;
+  background-color: #f7d984;
   border-radius: 1rem;
   font-size: 2rem;
   color: #666;
-}
-
-.from {
-  font-weight: 500;
-}
-
-.date {
-  color: #999;
 }

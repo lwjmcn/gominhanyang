@@ -1,6 +1,11 @@
+.pageBackground {
+  background-color: #fbe798;
+
+  height: 100vh;
+}
 .container {
   padding: 2rem;
-  height: calc(100% - 30rem);
+  height: calc(100dvh - 30rem);
 }
 .tabList {
   display: flex;
@@ -11,11 +16,10 @@
 .tabButton {
   padding-bottom: 2rem;
   width: 100%;
-  background-color: #fff;
+  background-color: #f7d984;
   color: #000;
   font-size: 2rem;
-  border: none;
-  border-bottom: 0.5rem solid #f8c464;
+  border: 0.5rem solid #f1c16f;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
   cursor: pointer;
@@ -25,18 +29,18 @@
 }
 
 .active {
-  background-color: #f8c464;
+  background-color: #ffefa7;
   border-bottom-color: transparent;
   font-weight: bold;
-  color: #fff;
 }
 
 .gridContainer {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3개 열, 동일한 너비 */
+  background-color: #ffefa7;
   gap: 2rem; /* 아이템 간 간격 */
   padding: 2rem;
-  border: 0.5rem solid #f8c464;
+  border: 0.5rem solid #f1c16f;
   height: 100%;
   overflow: auto;
 }

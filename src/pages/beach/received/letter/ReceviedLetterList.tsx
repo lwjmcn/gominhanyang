@@ -6,6 +6,7 @@ import { getRandomLetters } from '@/lib/api/letter';
 import { Letter } from '@/lib/type/letter.type';
 import { isErrorResponse } from '@/lib/response_dto';
 import { useToastStore } from '@/store/toast';
+import styles from './receivedletterlist.module.css';
 
 export default function ReceivedLetterListPage() {
   const navigate = useNavigate();
@@ -42,36 +43,26 @@ export default function ReceivedLetterListPage() {
   }, []);
 
   return (
-    <>
-      <div
-        style={{
-          backgroundImage: "url('/image/beach/background_blue.webp')",
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-          minHeight: '100vh', // 뷰포트 전체 높이 커버
-        }}
-      >
-        <Appbar title="받은 편지함" />
-        {isLoading ? (
-          <p>편지를 불러오는 중...</p>
-        ) : letters.length === 0 ? (
-          <p>아직 받은 편지가 없습니다.</p>
-        ) : (
-          letters.map(letter => (
-            <LetterListItem
-              letter={{
-                _id: letter._id,
-                title: letter.title,
-                emotion: letter.emotion,
-                created_at: letter.created_at,
-              }}
-              key={letter._id}
-              onClick={() => navigate(`/received/letters/${letter._id}`)}
-            />
-          ))
-        )}
-      </div>
-    </>
+    <div className={styles.pageBackground}>
+      <Appbar title="받은 편지함" />
+      {isLoading ? (
+        <p>편지를 불러오는 중...</p>
+      ) : letters.length === 0 ? (
+        <p>아직 받은 편지가 없습니다.</p>
+      ) : (
+        letters.map(letter => (
+          <LetterListItem
+            letter={{
+              _id: letter._id,
+              title: letter.title,
+              emotion: letter.emotion,
+              created_at: letter.created_at,
+            }}
+            key={letter._id}
+            onClick={() => navigate(`/received/letters/${letter._id}`)}
+          />
+        ))
+      )}
+    </div>
   );
 }

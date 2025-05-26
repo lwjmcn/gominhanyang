@@ -4,11 +4,7 @@
   align-items: center;
   padding: 15rem 20px 20px;
   gap: 20px;
-  background-image: url('/image/post/back_ground_green.webp');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-color: #f0f5e1;
+  background-color: #e8f2ce;
   min-height: 100vh;
   box-sizing: border-box;
 }

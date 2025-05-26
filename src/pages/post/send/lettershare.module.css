@@ -3,13 +3,7 @@
   margin-top: 0;
   height: 100%;
   text-align: center;
-  background-image: url('/image/post/back_ground_green.webp'); /* ✅ 여기 추가 */
-  background-size: cover; /* 화면에 꽉 채움 */
-  background-repeat: no-repeat;
-  background-position: center center;
-
-  /* 배경 위 요소들이 잘 보이도록 필요 시 배경색 제거 또는 투명도 조정 */
-  background-color: transparent;
+  background-color: #e8f2ce;
 }
 .title {
   margin-top: 15rem;

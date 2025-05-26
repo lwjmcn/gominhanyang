@@ -56,7 +56,7 @@ export default function ItemListPage() {
   }, [items, activeTab]);
 
   return (
-    <>
+    <div className={styles.pageBackground}>
       <Appbar title="아이템 보관함" />
       <div className={styles.container}>
         <div className={styles.tabList}>
@@ -95,6 +95,6 @@ export default function ItemListPage() {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 }

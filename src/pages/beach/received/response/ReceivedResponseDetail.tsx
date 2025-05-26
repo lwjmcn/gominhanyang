@@ -75,7 +75,7 @@ export default function ReceivedResponseDetailPage() {
   }
 
   return (
-    <>
+    <div className={styles.pageBackground}>
       <Appbar title="답장 읽기" />
       <div className={styles.container}>
         <div className={styles.letterContainer}>
@@ -104,6 +104,6 @@ export default function ReceivedResponseDetailPage() {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 }

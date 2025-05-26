@@ -18,7 +18,7 @@ export default function LetterListItem({ letter, onClick }: LetterListItemProps)
       <div>
         <h3 className={styles.title}>{letter.title}</h3>
       </div>
-      <div>
+      <div className={styles.infoSection}>
         <p className={styles.date}>{new Date(letter.created_at).toLocaleDateString()}</p>
         <span className={styles.emotion}>{letter.emotion}</span>
       </div>

@@ -1,16 +1,11 @@
 .pageBackground {
-  background-image: url('/image/post/back_ground_green.webp');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  min-height: 100vh;
-  padding: 2rem 0;
-  box-sizing: border-box;
+  background-color: #e8f2ce;
+  height: 100dvh;
 }
 
 .container {
   padding: 2rem;
-  max-width: 800px;
+  width: 90%;
   margin: 0 auto;
 }
 
@@ -20,41 +15,24 @@
   color: #666;
 }
 
-.letterHeader {
-  margin-bottom: 3rem;
-}
-
 .metadata {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
-}
-
-.date {
-  color: #666;
-  font-size: 1.4rem;
+  line-height: 0;
 }
 
 .emotion {
-  padding: 0.8rem 1.6rem;
-  background-color: #f5f5f5;
+  padding: 2rem 2rem;
+  background-color: #f7d984;
   border-radius: 0.8rem;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: #666;
 }
 
 .title {
   font-size: 3rem;
   font-weight: 600;
-  margin: 0 0 1rem 0;
-}
-
-.content {
-  font-size: 1.6rem;
-  line-height: 1.6;
-  white-space: pre-wrap;
-  margin-bottom: 4rem;
 }
 
 .comments {

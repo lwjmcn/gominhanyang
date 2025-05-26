@@ -6,52 +6,6 @@
   overflow: hidden;
 }
 
-.flexGrowWrapper {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  min-height: 0;
-  gap: 1rem;
-  overflow: hidden;
-  background-color: var(--color-background);
-  border: 1rem solid var(--color-border);
-  border-radius: 1rem;
-  padding: 2rem;
-}
-.letterInput {
-  flex: 1;
-  min-height: 0;
-  font-size: 2rem;
-  font-family: KyoboHand;
-  line-height: 1.6;
-  resize: none;
-  overflow-y: auto;
-  background-color: transparent;
-  border: none;
-
-  /* background에 편지지 줄 그어주기 (반복) */
-  background-image: repeating-linear-gradient(
-    to bottom,
-    transparent,
-    transparent 3.3rem,
-    var(--color-border) 3.3rem,
-    var(--color-border) 3.8rem
-  );
-}
-
-.letterInput::placeholder {
-  color: #999;
-  font-size: 2rem;
-  font-family: KyoboHand;
-}
-
-.letterInput:focus {
-  outline: none;
-  box-shadow: none;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-}
-
 .letterInputCount {
   text-align: right;
   color: #666;

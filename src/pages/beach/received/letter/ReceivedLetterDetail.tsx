@@ -5,6 +5,8 @@ import { getLetterDetail } from '@/lib/api/letter';
 import { LetterDetail } from '@/lib/type/letter.type';
 import { isErrorResponse } from '@/lib/response_dto';
 import { useToastStore } from '@/store/toast';
+import styles from './receivedletterdetail.module.css';
+import { Textarea } from '@/components/Textarea';
 
 export default function ReceivedLetterDetailPage() {
   const { letterId } = useParams();
@@ -47,46 +49,33 @@ export default function ReceivedLetterDetailPage() {
     fetchLetterDetail();
   }, [letterId]);
 
-  const backgroundStyle = {
-    backgroundImage: "url('/image/beach/background_blue.webp')",
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-    minHeight: '100vh',
-  };
-
   if (isLoading) {
     return (
-      <>
-        <div style={backgroundStyle}>
-          <Appbar title="편지 읽기" />
+      <div className={styles.pageBackground}>
+        <Appbar title="편지 읽기" />
 
-          <p>편지를 불러오는 중...</p>
-        </div>
-      </>
+        <p>편지를 불러오는 중...</p>
+      </div>
     );
   }
 
   if (!letter) {
     return (
-      <>
-        <div style={backgroundStyle}>
-          <Appbar title="편지 읽기" />
+      <div className={styles.pageBackground}>
+        <Appbar title="편지 읽기" />
 
-          <p>편지를 찾을 수 없습니다.</p>
-        </div>
-      </>
+        <p>편지를 찾을 수 없습니다.</p>
+      </div>
     );
   }
 
   return (
-    <>
-      <div style={backgroundStyle}>
-        <Appbar title="편지 읽기" />
-
+    <div className={styles.pageBackground}>
+      <Appbar title="편지 읽기" />
+      <div className={styles.container}>
         <p>{new Date(letter.created_at).toLocaleDateString()}</p>
         <h2>{letter.title}</h2>
-        <p>{letter.content}</p>
+        <Textarea type="letter" disabled value={letter.content}></Textarea>
 
         <button
           onClick={() =>
@@ -100,6 +89,6 @@ export default function ReceivedLetterDetailPage() {
           답장하기
         </button>
       </div>
-    </>
+    </div>
   );
 }

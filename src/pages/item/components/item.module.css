@@ -1,12 +1,12 @@
 .gridItem {
-  background-color: #f0f0f0;
+  background-color: #fff3c1;
   padding: 1.5rem 0;
   text-align: center;
   border-radius: 0.5rem;
   height: fit-content;
 }
 .gridItem.used {
-  background-color: #f7d89e;
+  background-color: #fff3c1;
 }
 
 .title {

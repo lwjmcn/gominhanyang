@@ -4,11 +4,7 @@
   align-items: center;
   padding: 15rem 20px 20px;
   gap: 20px;
-  background-image: url('/image/beach/background_blue.webp');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-color: #f0f5e1;
+  background-color: #cbe4e2;
   min-height: 100vh;
   box-sizing: border-box;
 }

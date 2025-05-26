@@ -6,6 +6,7 @@ import { getRepliedLetters } from '@/lib/api/letter';
 import { RepliedLetter } from '@/lib/type/letter.type';
 import { isErrorResponse } from '@/lib/response_dto';
 import { useToastStore } from '@/store/toast';
+import styles from '../letter/receivedletterlist.module.css';
 
 export default function ReceivedResponseListPage() {
   const navigate = useNavigate();
@@ -42,7 +43,7 @@ export default function ReceivedResponseListPage() {
   }, []);
 
   return (
-    <>
+    <div className={styles.pageBackground}>
       <Appbar title="받은 답장함" />
       <div>
         {isLoading || letters == undefined ? (
@@ -64,6 +65,6 @@ export default function ReceivedResponseListPage() {
           ))
         )}
       </div>
-    </>
+    </div>
   );
 }

@@ -1,16 +1,14 @@
-:global(html, body) {
-  height: 100%;
-  margin: 0;
-  background: url('/image/post/background_post.webp') center / cover no-repeat;
-}
-
 .container {
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding-bottom: 4rem;
   position: relative;
+  background-image: url('/image/post/background_post.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
 }
 
 /* 아이콘 + 텍스트 하나의 블록을 수직으로 */

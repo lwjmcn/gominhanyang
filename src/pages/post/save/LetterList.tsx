@@ -34,15 +34,7 @@ export default function LetterListPage() {
   }, [showToast]);
 
   return (
-    <div
-      style={{
-        backgroundImage: "url('/image/post/back_ground_green.webp')",
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-        minHeight: '100vh',
-      }}
-    >
+    <div className={styles.pageBackground}>
       <Appbar title="나의 보관함" />
 
       <div className={styles.container}>

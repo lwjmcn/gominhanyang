@@ -6,6 +6,7 @@ import { LetterDetail, Reply } from '@/lib/type/letter.type';
 import { isErrorResponse } from '@/lib/response_dto';
 import { useToastStore } from '@/store/toast';
 import styles from './letterdetail.module.css';
+import { Textarea } from '@/components/Textarea';
 
 export default function LetterDetailPage() {
   const { letterId } = useParams();
@@ -62,15 +63,14 @@ export default function LetterDetailPage() {
     <div className={styles.pageBackground}>
       <Appbar title="편지 읽기" />
       <div className={styles.container}>
-        <div className={styles.letterHeader}>
-          <div className={styles.metadata}>
-            <span className={styles.date}>{new Date(letter.created_at).toLocaleDateString()}</span>
-            <span className={styles.emotion}>{letter.emotion}</span>
-          </div>
-          <h2 className={styles.title}>{letter.title}</h2>
+        <div className={styles.metadata}>
+          <p>{new Date(letter.created_at).toLocaleDateString()}</p>
+          <span className={styles.emotion}>{letter.emotion}</span>
         </div>
 
-        <div className={styles.content}>{letter.content}</div>
+        <h2>{letter.title}</h2>
+
+        <Textarea type="letter" disabled value={letter.content} />
 
         {comments.length > 0 && (
           <div className={styles.comments}>

@@ -12,6 +12,7 @@ import { grantReward } from '@/lib/api/reward';
 import StopWriteModal from '@/pages/post/send/components/StopWriteModal';
 import CompleteWriteModal from '@/pages/post/send/components/CompleteWriteModal';
 import { LetterDetail, SendType } from '@/lib/type/letter.type';
+import { Textarea } from '@/components/Textarea';
 
 export default function ResponseWritePage() {
   const nextButtonIcon = (
@@ -152,7 +153,7 @@ export default function ResponseWritePage() {
         <div className={styles.letterSection}>
           <p className={styles.date}>{letter.created_at}</p>
           <h2 className={styles.title}>{letter.title}</h2>
-          <textarea className={styles.letterInput} value={letter.content} disabled />
+          <Textarea type="reply" value={letter.content} disabled />
         </div>
 
         <div className={styles.divider} />

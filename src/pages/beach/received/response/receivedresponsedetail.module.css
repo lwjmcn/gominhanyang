@@ -1,38 +1,69 @@
+.pageBackground {
+  background-color: #cbe4e2;
+  height: 100dvh;
+}
 .container {
-  padding: 20px;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  height: calc(100vh - 60px);
-  background-color: #e6f4fb;
   box-sizing: border-box;
 }
 
 .letterContainer {
-  background-color: #f5f5f5;
+  /* background-color: #f5f5f5;
   padding: 20px;
   border-radius: 10px;
   flex: 1;
-  overflow-y: auto;
+  overflow-y: auto; */
+  width: 90%;
+  background-color: #fbf39d;
+  border: 1rem solid #f7eb6c;
+  padding: 2rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  height: 30%; /* footer 고려하여 비율 조정 */
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 3.3rem,
+    #f7eb6c 3.3rem,
+    #f7eb6c 3.8rem
+  );
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1);
+  min-height: 0;
 }
 
-.letterContainer h2 {
+/* .letterContainer h2 {
   margin: 10px 0;
-}
+} */
 
 .commentsContainer {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  flex: 2;
-  overflow-y: auto;
+  align-items: center;
+  gap: 1.6rem;
+  margin-top: 2rem;
+  width: 100%;
 }
 
 .commentItem {
-  background-color: #fff;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 50%;
+  background-color: #ffd5d5;
+  border: 1rem solid #f5bbbb;
+  padding: 2rem;
+  border-radius: 1rem;
+  font-size: 1.1rem;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 3.3rem,
+    #f5bbbb 3.3rem,
+    #f5bbbb 3.8rem
+  );
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1);
+  line-height: 1.6;
 }
 
 .commentHeader {
@@ -48,12 +79,11 @@
 }
 
 .commentDate {
-  color: #666;
+  color: #555;
   font-size: 0.9em;
 }
 
 .commentContent {
-  color: #333;
-  line-height: 1.5;
+  font-size: 1.1rem;
   white-space: pre-wrap;
 }

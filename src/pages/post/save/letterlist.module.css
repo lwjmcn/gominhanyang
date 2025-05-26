@@ -1,3 +1,7 @@
+.pageBackground {
+  background-color: #e8f2ce;
+}
+
 .container {
   max-width: 800px;
   margin: 0 auto;
