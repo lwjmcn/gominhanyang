@@ -15,25 +15,18 @@
 }
 
 .logoImage {
-  height: 50rem;
+  height: 40rem;
   width: auto;
 }
 
-.loginFormContainer {
+.formContainer {
   width: 80%;
-  margin: 0 auto;
 }
 
-.nicknameInput {
+.input {
   width: 100%;
-  font-size: 3rem;
-  border: none;
-  border-radius: 1rem;
-  background-color: #fcf9e8;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   margin-top: 1rem;
   box-sizing: border-box;
-  line-height: 1.3;
 }
 
 .loginButton {
@@ -63,4 +56,42 @@ a {
   color: #000;
   text-decoration: underline;
   margin-top: 0.5rem;
+}
+
+.labelContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 5rem;
+}
+
+.label {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  align-self: flex-start;
+}
+
+.ageLabel {
+  font-size: 3rem;
+}
+
+.radioContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  gap: 3rem;
+}
+.radioLabelContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.link {
+  align-self: flex-end;
+  margin-right: 12%;
 }

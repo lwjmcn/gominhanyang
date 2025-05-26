@@ -54,20 +54,25 @@ export default function SignInPage() {
         object-fit="cover"
         alt=""
       />
-      <div className={styles.loginFormContainer}>
-        <input
-          className={styles.nicknameInput}
-          type="text"
-          placeholder="닉네임(ID)"
-          value={nickname}
-          onChange={e => setNickname(e.target.value)}
-          disabled={isLoading}
-        />
+      <div className={styles.formContainer}>
+        <div className={styles.labelContainer}>
+          <label className={styles.label}>닉네임(ID)</label>
+          <input
+            className={styles.input}
+            type="text"
+            placeholder="닉네임(ID)"
+            value={nickname}
+            onChange={e => setNickname(e.target.value)}
+            disabled={isLoading}
+          />
+        </div>
         <button className={styles.loginButton} onClick={handleLogin} disabled={isLoading}>
           {isLoading ? '로그인 중...' : '로그인 하기'}
         </button>
       </div>
-      <Link to="/signup">회원가입</Link>
+      <Link to="/signup" className={styles.link}>
+        회원가입
+      </Link>
     </div>
   );
 }

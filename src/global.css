@@ -99,12 +99,16 @@ caption {
 
 input {
   padding: 1rem;
-  border: 0.2rem solid #ddd;
-  border-radius: 0.5rem;
-  font-size: 2rem;
   color: #333;
-  transition: border-color 0.2s;
   font-family: 'Jua';
+  font-size: 3rem;
+  line-height: 1.3;
+  border: none;
+  border-radius: 1rem;
+  border-color: #ddd;
+  transition: border-color 0.2s;
+  background-color: #fcf9e8;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 input:focus {

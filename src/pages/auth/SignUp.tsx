@@ -1,6 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './auth.module.css';
-import styles2 from './signup.module.css';
 import { useToastStore } from '@/store/toast';
 import { useState } from 'react';
 import { signup } from '@/lib/api/user';
@@ -57,65 +56,66 @@ export default function SignUpPage() {
 
   return (
     <div className={styles.container}>
-      <h2>회원가입</h2>
-      <input
-        className={styles.nicknameInput}
-        type="text"
-        name="nickname"
-        placeholder="닉네임"
-        value={formData.nickname}
-        onChange={handleInputChange}
-        disabled={isLoading}
-      />
-      <div className={styles2.genderAge}>
-        <div className={styles2.genderContainer}>
-          <p>성별</p>
-          <div>
-            <input
-              type="radio"
-              name="gender"
-              value={GenderType.MALE}
-              checked={formData.gender === GenderType.MALE}
-              onChange={handleInputChange}
-              disabled={isLoading}
-            />
-            <label>남</label>
-            <input
-              type="radio"
-              name="gender"
-              value={GenderType.FEMALE}
-              checked={formData.gender === GenderType.FEMALE}
-              onChange={handleInputChange}
-              disabled={isLoading}
-            />
-            <label>여</label>
-            <input
-              type="radio"
-              name="gender"
-              value={GenderType.OTHER}
-              checked={formData.gender === GenderType.OTHER}
-              onChange={handleInputChange}
-              disabled={isLoading}
-            />
-            <label>기타</label>
+      <h1>회원가입</h1>
+      <div className={styles.formContainer}>
+        <div className={styles.labelContainer}>
+          <label className={styles.label}>닉네임(ID)</label>
+          <input
+            className={styles.input}
+            type="text"
+            name="nickname"
+            placeholder="닉네임(ID)"
+            value={formData.nickname}
+            onChange={handleInputChange}
+            disabled={isLoading}
+          />
+        </div>
+        <div className={styles.labelContainer}>
+          <label className={styles.label}>성별 </label>
+          <div className={styles.radioContainer}>
+            <div className={styles.radioLabelContainer}>
+              <input
+                type="radio"
+                name="gender"
+                value={GenderType.MALE}
+                checked={formData.gender === GenderType.MALE}
+                onChange={handleInputChange}
+                disabled={isLoading}
+              />
+              <label className={styles.ageLabel}>남</label>
+            </div>
+            <div className={styles.radioLabelContainer}>
+              <input
+                type="radio"
+                name="gender"
+                value={GenderType.FEMALE}
+                checked={formData.gender === GenderType.FEMALE}
+                onChange={handleInputChange}
+                disabled={isLoading}
+              />
+              <label className={styles.ageLabel}>여</label>
+            </div>
           </div>
         </div>
-        <div className={styles2.AgeContainer}>
-          <p>나이대</p>
-          <select name="age" value={formData.age} onChange={handleInputChange} disabled={isLoading}>
-            <option value={10}>10대</option>
-            <option value={20}>20대</option>
-            <option value={30}>30대</option>
-            <option value={40}>40대</option>
-            <option value={50}>50대</option>
-            <option value={60}>60대 이상</option>
-          </select>
+        <div className={styles.labelContainer}>
+          <label className={styles.label}>출생연도</label>
+          <input
+            className={styles.input}
+            name="age"
+            type="number"
+            placeholder="출생연도 ex. 2006"
+            value={formData.age}
+            onChange={handleInputChange}
+            disabled={isLoading}
+          />
         </div>
+        <button className={styles.loginButton} onClick={handleSignup} disabled={isLoading}>
+          {isLoading ? '가입 중...' : '가입하기'}
+        </button>
       </div>
-      <button className={styles.loginButton} onClick={handleSignup} disabled={isLoading}>
-        {isLoading ? '가입 중...' : '가입하기'}
-      </button>
-      <Link to="/signin">로그인</Link>
+      <Link to="/signin" className={styles.link}>
+        로그인
+      </Link>
     </div>
   );
 }
