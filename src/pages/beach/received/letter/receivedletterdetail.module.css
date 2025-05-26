@@ -1,5 +1,5 @@
 .pageBackground {
-  background-color: #cbe4e2;
+  background-color: var(--blue-background-color);
   height: 100dvh;
 }
 .container {

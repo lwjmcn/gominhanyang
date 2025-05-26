@@ -1,5 +1,5 @@
 .pageBackground {
-  background-color: #fbe798;
+  background-color: var(--apricot-background-color);
   height: 100dvh;
 }
 .container {
@@ -15,10 +15,10 @@
 .tabButton {
   padding-bottom: 2rem;
   width: 100%;
-  background-color: #f7d984;
-  color: #000;
+  background-color: var(--apricot-dark-color);
+  color: var(--text-primary-color);
   font-size: 2rem;
-  border: 0.5rem solid #f1c16f;
+  border: 0.5rem solid var(--apricot-border-color);
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
   cursor: pointer;
@@ -28,7 +28,7 @@
 }
 
 .active {
-  background-color: #ffefa7;
+  background-color: var(--apricot-base-color);
   border-bottom-color: transparent;
   font-weight: bold;
 }
@@ -36,7 +36,7 @@
 .gridContainer {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3개 열, 동일한 너비 */
-  background-color: #ffefa7;
+  background-color: var(--apricot-base-color);
   gap: 2rem; /* 아이템 간 간격 */
   padding: 2rem;
   border: 0.5rem solid #f1c16f;

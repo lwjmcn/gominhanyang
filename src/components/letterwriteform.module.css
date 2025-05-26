@@ -8,7 +8,7 @@
 
 .letterInputCount {
   text-align: right;
-  color: #666;
+  color: var(--text-secondary-color);
   font-size: 1.4rem;
   flex-shrink: 0;
   margin: 0;
@@ -21,14 +21,14 @@
 }
 
 .rewardInfo {
-  color: #666;
+  color: var(--text-secondary-color);
   font-size: 1.6rem;
   flex-grow: 1;
 }
 
 .completeButton {
-  background-color: #fffae2;
-  border: 0.3rem solid #ffba19;
+  background-color: var(--yellow-base-color);
+  border: 0.3rem solid var(--yellow-border-color);
   padding-top: 0.6rem;
   cursor: pointer;
   display: flex;

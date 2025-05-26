@@ -76,7 +76,7 @@ body {
 .labelText {
   font-size: 3rem;
   font-weight: bold;
-  color: #333;
+  color: var(--text-primary-color);
   text-align: center;
   word-break: keep-all;
   padding: 0 1rem;
@@ -85,7 +85,7 @@ body {
 .labelText1 {
   font-size: 3rem;
   font-weight: bold;
-  color: #333;
+  color: var(--text-primary-color);
   text-align: center;
   word-break: keep-all;
   padding: 0 1rem;

@@ -1,12 +1,12 @@
 .gridItem {
-  background-color: #fff3c1;
+  background-color: var(--apricot-light-color);
   padding: 1.5rem 0;
   text-align: center;
   border-radius: 0.5rem;
   height: fit-content;
 }
 .gridItem.used {
-  background-color: #fff3c1;
+  background-color: var(--apricot-light-color);
 }
 
 .title {
@@ -19,16 +19,16 @@
   display: inline-block;
   padding: 0 1rem;
   width: 70%;
-  background-color: #e0e0e0;
+  background-color: var(--background-color);
   border-radius: 1rem;
-  color: #000;
+  color: var(--text-primary-color);
 }
 .chip.used {
-  background-color: #f8c464;
+  background-color: var(--orange-base-color);
 }
 .chipText {
   font-size: 1.8rem;
   line-height: 1rem;
   font-weight: 900;
-  color: #333;
+  color: var(--text-primary-color);
 }

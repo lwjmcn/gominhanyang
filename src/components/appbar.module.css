@@ -34,5 +34,5 @@
   border: none;
   cursor: pointer;
   font-size: 2rem;
-  color: #000;
+  color: var(--text-primary-color);
 }

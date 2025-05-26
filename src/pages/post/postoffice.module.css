@@ -48,7 +48,7 @@
 
 .labelText {
   font-size: 3.3rem;
-  color: #333;
+  color: var(--text-primary-color);
   text-align: center;
   padding: 2.5rem;
 }

@@ -3,7 +3,7 @@
   margin-top: 0;
   height: 100%;
   text-align: center;
-  background-color: #e8f2ce;
+  background-color: var(--green-background-color);
 }
 .title {
   margin-top: 15rem;

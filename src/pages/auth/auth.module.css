@@ -1,12 +1,10 @@
 .container {
   height: 100dvh;
-  overflow: hidden;
-  background-color: #fce796;
+  background-color: var(--apricot-background-color);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
 }
 
 .container h1 {
@@ -32,8 +30,8 @@
 .loginButton {
   width: 100%;
   margin: 2rem 0;
-  background-color: #e7d2f6;
-  color: #000;
+  background-color: var(--apricot-border-color);
+  color: var(--text-primary-color);
   font-size: 3rem;
   font-weight: bold;
   border: none;
@@ -53,7 +51,7 @@
 
 a {
   font-size: 2rem;
-  color: #000;
+  color: var(--text-primary-color);
   text-decoration: underline;
   margin-top: 0.5rem;
 }

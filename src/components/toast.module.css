@@ -35,20 +35,20 @@
 }
 
 .toastMessage {
-  background-color: #565656;
+  background-color: var(--orange-base-color);
   color: #fff;
-  padding: 1rem 2rem;
-  border-radius: 2rem;
-  font-size: 2rem;
+  padding: 2rem;
+  border-radius: 3rem;
+  font-size: 3rem;
   animation: fadeInOut 3s ease-in-out forwards;
 }
 .closeButton {
   background: none;
   border: none;
   color: #fff;
-  font-size: 2rem;
+  font-size: 3rem;
   cursor: pointer;
   position: absolute;
-  top: -0.7rem;
-  right: 2rem;
+  top: 0.7rem;
+  right: 3rem;
 }

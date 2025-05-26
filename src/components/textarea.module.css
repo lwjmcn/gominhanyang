@@ -33,7 +33,7 @@
 }
 
 .letterInput::placeholder {
-  color: #999;
+  color: var(--text-placeholder-color);
   font-size: 2rem;
   font-family: KyoboHand;
 }

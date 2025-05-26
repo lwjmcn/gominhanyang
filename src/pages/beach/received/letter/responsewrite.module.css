@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background-color: #cbe4e2;
+  background-color: var(--blue-background-color);
 }
 
 .container {
@@ -53,7 +53,7 @@
 .divider {
   width: 100%;
   height: 0.3rem;
-  background-color: #474a83;
+  background-color: var(--blue-border-color);
   border-radius: 2rem;
   margin-top: 1rem;
 }
@@ -70,7 +70,7 @@
 .submitButton {
   width: 100%;
   padding: 1.6rem;
-  background-color: #4299e1;
+  background-color: var(--blue-base-color);
   color: white;
   border: none;
   border-radius: 0.8rem;
@@ -84,10 +84,10 @@
 }
 
 .submitButton:hover:not(:disabled) {
-  background-color: #3182ce;
+  background-color: var(--blue-border-color);
 }
 
 .submitButton:disabled {
-  background-color: #a0aec0;
+  background-color: var(--text-placeholder-color);
   cursor: not-allowed;
 }

@@ -2,8 +2,8 @@
   width: 80%;
   margin: 0 auto;
   padding: 2rem;
-  background-color: #afd8c6;
-  border: 1rem solid #79bab4;
+  background-color: var(--blue-base-color);
+  border: 1rem solid var(--blue-border-color);
   border-radius: 3rem;
   box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
   cursor: pointer;
@@ -34,8 +34,8 @@
 
 .emotion {
   padding: 1rem 2rem;
-  background-color: #f7d984;
+  background-color: var(--yellow-base-color);
   border-radius: 1rem;
   font-size: 2rem;
-  color: #666;
+  color: var(--text-secondary-color);
 }

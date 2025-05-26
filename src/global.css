@@ -10,6 +10,40 @@
   font-family: 'KyoboHand';
   src: url('/font/KyoboHand.woff') format('woff');
 }
+
+/* css variable 색상표 정리 */
+:root {
+  --orange-base-color: #f9c776;
+  --orange-light-color: #f8eacd;
+  --orange-border-color: #ee9d3f;
+  --orange-active-color: #ff9900;
+  --blue-base-color: #b1dac7;
+  --blue-border-color: #74b9b2;
+  --yellow-base-color: #f7e593;
+  --yellow-border-color: #eeca4e;
+  --green-border-color: #1aae27;
+  --apricot-base-color: #ffefa7;
+  --apricot-dark-color: #f7d984;
+  --apricot-border-color: #f1c16f;
+  --apricot-light-color: #fff3c1;
+
+  --letter-background-color: #fbf39d;
+  --letter-border-color: #f7eb6c;
+  --comment-background-color: #ffd5d5;
+  --comment-border-color: #f5bbbb;
+
+  --text-primary-color: #333;
+  --text-secondary-color: #666;
+  --text-placeholder-color: #ccc;
+
+  --button-disabled-color: #aaa;
+  --background-color: #f0f0f0;
+
+  --apricot-background-color: #fce89c;
+  --green-background-color: #e6f0cb;
+  --blue-background-color: #cae3e2;
+}
+
 .layout {
   width: 100%;
   height: 100%;
@@ -25,7 +59,7 @@
   height: 4rem;
   font-size: 1.4rem;
   text-align: center;
-  color: #717171;
+  color: var(--text-secondary-color);
 }
 
 body {
@@ -59,15 +93,15 @@ button {
   border: none;
   border-radius: 1.5rem;
   color: #fff;
-  background-color: #f8c464;
+  background-color: var(--orange-base-color);
   transition: background-color 3s ease;
   font-family: Jua;
 }
 button:active {
-  background-color: #ff9900;
+  background-color: var(--orange-active-color);
 }
 button:disabled {
-  background-color: #aaa;
+  background-color: var(--button-disabled-color);
 }
 
 a {
@@ -93,32 +127,32 @@ p {
 
 caption {
   font-size: 1.9rem;
-  color: #717171;
+  color: var(--text-secondary-color);
   white-space: pre-wrap;
 }
 
 input {
   padding: 1rem;
-  color: #333;
+  color: var(--text-primary-color);
   font-family: 'Jua';
   font-size: 3rem;
   line-height: 1.3;
   border: none;
   border-radius: 1rem;
-  border-color: #ddd;
+  border-color: var(--text-placeholder-color);
   transition: border-color 0.2s;
-  background-color: #fcf9e8;
+  background-color: var(--background-color);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 input:focus {
-  border-color: #f8c464;
+  border-color: var(--orange-base-color);
   outline: none;
   box-shadow: 0 0 0 2px rgba(248, 196, 100, 0.1);
 }
 
 input::placeholder {
-  color: #ccc;
+  color: var(--text-placeholder-color);
   font-family: 'Jua';
 }
 
@@ -128,28 +162,18 @@ input[type='radio'] {
   appearance: none;
   width: 2rem;
   height: 2rem;
-  border: 0.4rem solid #ccc;
+  border: 0.4rem solid var(--text-placeholder-color);
   border-radius: 50%;
   outline: none;
   cursor: pointer;
-  &:checked {
-    background-color: #f8c464;
-    border: 0.4rem solid white;
-    box-shadow: 0 0 0 0.3rem #f8c464;
-  }
 }
 
-select {
-  padding: 1rem;
-  font-size: 2rem;
-  border: 2px solid #f8c464;
-  border-radius: 1rem;
-  :focus {
-    border-color: #ff9900;
-    outline: none;
-    box-shadow: 0 0 5px rgba(255, 94, 94, 0.5);
-  }
+input[type='radio']:checked {
+  background-color: var(--orange-base-color);
+  border: 0.4rem solid white;
+  box-shadow: 0 0 0 0.3rem var(--orange-base-color);
 }
+
 option {
   font-size: 2rem;
   padding: 10px;
@@ -162,6 +186,7 @@ option {
   justify-content: center;
   gap: 2rem;
 }
+
 .modal-button-container > button {
   width: 50%;
   margin: 0;
@@ -169,10 +194,10 @@ option {
   flex-direction: column;
   align-items: center;
   padding: 0 2rem;
-  color: #333;
+  color: var(--text-primary-color);
   &:nth-of-type(2) {
-    background-color: #f0f0f0;
-    border: 0.3rem solid #ff9900;
+    background-color: var(--background-color);
+    border: 0.3rem solid (--orange-active-color);
   }
 }
 .nav-button-container {

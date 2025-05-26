@@ -1,5 +1,5 @@
 .pageBackground {
-  background-color: #e8f2ce;
+  background-color: var(--green-background-color);
 }
 
 .container {
@@ -9,14 +9,14 @@
 
 .loading {
   text-align: center;
-  color: #666;
+  color: var(--text-secondary-color);
 }
 
 .empty {
   text-align: center;
   padding: 40px;
-  color: #666;
-  background-color: #f5f5f5;
+  color: var(--text-secondary-color);
+  background-color: var(--background-color);
   border-radius: 8px;
   margin-top: 20px;
 }
