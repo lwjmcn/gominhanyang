@@ -6,6 +6,7 @@ import {
   SignupResponseDto,
   LoginResponseDto,
   UpdateUserResponseDto,
+  UserMeResponseDto,
 } from '../dto/user.dto';
 import { ApiResponse, isErrorResponse } from '../response_dto';
 import { API_ENDPOINTS } from '../constants/api';
@@ -39,6 +40,14 @@ export const login = async (
   if (result && !isErrorResponse(result)) {
     saveToken(result.token);
   }
+  return result;
+};
+
+export const getMyInfo = async (): Promise<ApiResponse<UserMeResponseDto>> => {
+  const result = await axiosInstance
+    .get(API_ENDPOINTS.USER.ME)
+    .then(responseHandler<ApiResponse<UserMeResponseDto>>)
+    .catch(errorHandler);
   return result;
 };
 

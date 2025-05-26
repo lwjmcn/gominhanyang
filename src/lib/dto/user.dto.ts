@@ -27,6 +27,10 @@ export interface UpdateUserRequestDto {
   phone: string;
 }
 
+export interface UserMeResponseDto {
+  user: User;
+}
+
 export interface UpdateUserResponseDto {
   updated_user: User;
 }

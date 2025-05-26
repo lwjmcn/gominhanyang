@@ -37,11 +37,6 @@
   border: none;
   border-radius: 1rem;
   cursor: pointer;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
 }
 
 .loginButton:disabled {

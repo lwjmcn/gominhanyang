@@ -2,7 +2,7 @@ import Appbar from '@/components/Appbar';
 import styles from './setting.module.css';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { updateUser } from '@/lib/api/user';
+import { getMyInfo, updateUser } from '@/lib/api/user';
 import { GenderType } from '@/lib/type/user.type';
 import { isErrorResponse } from '@/lib/response_dto';
 import { useToastStore } from '@/store/toast';
@@ -20,6 +20,37 @@ export default function SettingPage() {
     address: '',
     phone: '',
   });
+
+  const fetchUserData = async () => {
+    try {
+      const response = await getMyInfo();
+      if (!response) {
+        showToast('알 수 없는 오류가 발생했습니다.');
+        return;
+      }
+      if (isErrorResponse(response)) {
+        showToast(response.error);
+        return;
+      }
+      const userData = response.user;
+      setFormData({
+        nickname: userData.nickname,
+        gender: userData.gender,
+        age: userData.age,
+        address: userData.address || '',
+        phone: userData.phone || '',
+      });
+    } catch (error) {
+      showToast('회원 정보 조회 중 오류가 발생했습니다.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    setIsLoading(true);
+    fetchUserData();
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -73,58 +104,58 @@ export default function SettingPage() {
         onNextPress={handleUpdate}
       />
       <div className={styles.container}>
-        <input
-          type="text"
-          name="nickname"
-          placeholder="닉네임"
-          value={formData.nickname}
-          onChange={handleInputChange}
-          disabled={isLoading}
-        />
-        <div>
-          <p>성별</p>
-          <div>
-            <input
-              type="radio"
-              name="gender"
-              value={GenderType.MALE}
-              checked={formData.gender === GenderType.MALE}
-              onChange={handleInputChange}
-              disabled={isLoading}
-            />
-            <label>남</label>
-            <input
-              type="radio"
-              name="gender"
-              value={GenderType.FEMALE}
-              checked={formData.gender === GenderType.FEMALE}
-              onChange={handleInputChange}
-              disabled={isLoading}
-            />
-            <label>여</label>
-            <input
-              type="radio"
-              name="gender"
-              value={GenderType.OTHER}
-              checked={formData.gender === GenderType.OTHER}
-              onChange={handleInputChange}
-              disabled={isLoading}
-            />
-            <label>기타</label>
+        <div className={styles.labelContainer}>
+          <label className={styles.label}>닉네임(ID)</label>
+          <input
+            className={styles.input}
+            type="text"
+            name="nickname"
+            placeholder="닉네임(ID)"
+            value={formData.nickname}
+            onChange={handleInputChange}
+            disabled={isLoading}
+          />
+        </div>
+        <div className={styles.labelContainer}>
+          <label className={styles.label}>성별 </label>
+          <div className={styles.radioContainer}>
+            <div className={styles.radioLabelContainer}>
+              <input
+                type="radio"
+                name="gender"
+                value={GenderType.MALE}
+                checked={formData.gender === GenderType.MALE}
+                onChange={handleInputChange}
+                disabled={isLoading}
+              />
+              <label className={styles.ageLabel}>남</label>
+            </div>
+            <div className={styles.radioLabelContainer}>
+              <input
+                type="radio"
+                name="gender"
+                value={GenderType.FEMALE}
+                checked={formData.gender === GenderType.FEMALE}
+                onChange={handleInputChange}
+                disabled={isLoading}
+              />
+              <label className={styles.ageLabel}>여</label>
+            </div>
           </div>
         </div>
-        <div>
-          <p>나이대</p>
-          <select name="age" value={formData.age} onChange={handleInputChange} disabled={isLoading}>
-            <option value={10}>10대</option>
-            <option value={20}>20대</option>
-            <option value={30}>30대</option>
-            <option value={40}>40대</option>
-            <option value={50}>50대</option>
-            <option value={60}>60대 이상</option>
-          </select>
+        <div className={styles.labelContainer}>
+          <label className={styles.label}>출생연도</label>
+          <input
+            className={styles.input}
+            name="age"
+            type="number"
+            placeholder="출생연도 ex. 2006"
+            value={formData.age}
+            onChange={handleInputChange}
+            disabled={isLoading}
+          />
         </div>
-        <input
+        {/* <input
           type="text"
           name="address"
           placeholder="주소"
@@ -139,7 +170,7 @@ export default function SettingPage() {
           value={formData.phone}
           onChange={handleInputChange}
           disabled={isLoading}
-        />
+        /> */}
         <button className={styles.saveButton} onClick={handleUpdate} disabled={isLoading}>
           {isLoading ? '저장 중...' : '저장하기'}
         </button>

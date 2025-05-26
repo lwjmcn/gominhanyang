@@ -9,14 +9,66 @@
   box-sizing: border-box;
 }
 
-.container div > div {
+.labelContainer {
+  width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.8rem;
-  margin-top: -0.5rem; /* move the radio group upward */
+  margin: 0 auto;
+  margin-top: 5rem;
 }
 
+.label {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  align-self: flex-start;
+}
+
+.input {
+  width: 100%;
+  margin-top: 1rem;
+  box-sizing: border-box;
+}
+
+.radioContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  gap: 3rem;
+  margin-top: 1rem;
+}
+.radioLabelContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.saveButton {
+  width: 100%;
+  margin: 2rem 0;
+  background-color: var(--apricot-border-color);
+  color: var(--text-primary-color);
+  font-size: 3rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+}
 .saveButton:disabled {
   background-color: var(--text-placeholder-color);
   cursor: not-allowed;
+}
+
+.logoutButton {
+  text-decoration: underline;
+  font-size: 2rem;
+  border: none;
+  background-color: transparent;
+  color: var(--text-primary-color);
+  cursor: pointer;
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
 }

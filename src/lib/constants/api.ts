@@ -6,6 +6,7 @@ export const API_ENDPOINTS = {
     BASE: '/api/users',
     LOGIN: '/api/users/login',
     SIGNUP: '/api/users/signup',
+    ME: '/api/users/me',
     UPDATE: '/api/users/update',
   },
   // 편지 관련

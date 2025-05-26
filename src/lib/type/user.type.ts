@@ -6,6 +6,7 @@ export interface User {
   address: string;
   phone: string;
   point: number;
+  level: number;
   limited_access: boolean;
 }
 
