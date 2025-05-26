@@ -1,4 +1,6 @@
 import { Navigate, Outlet, Route, Routes, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import ReactGA from 'react-ga4';
 import { useAuthStore } from '@/store/auth';
 import SignInPage from './pages/auth/SignIn';
 import SignUpPage from './pages/auth/SignUp';
@@ -34,6 +36,17 @@ export default function AppRoutes() {
   const location = useLocation();
   const state = location.state as { backgroundLocation?: Location };
   const backgroundLocation = state?.backgroundLocation;
+
+  const [gaInitialized, setGaInitialized] = useState(false);
+  useEffect(() => {
+    ReactGA.initialize(import.meta.env.VITE_GOOGLE_ANALYTICS_ID);
+    setGaInitialized(true);
+  }, []);
+  useEffect(() => {
+    if (!gaInitialized) return;
+    ReactGA.set({ page: location.pathname });
+    ReactGA.send({ hitType: 'pageview', page: location.pathname });
+  }, [gaInitialized, location]);
   return (
     <>
       <Routes location={backgroundLocation || location}>
