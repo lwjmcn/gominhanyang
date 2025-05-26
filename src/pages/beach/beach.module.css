@@ -1,12 +1,11 @@
-.postImage {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100dvw;
-  height: 100dvh;
-  object-fit: cover;
-  z-index: -1;
-  content: url('/public/image/main/background_initial.webp');
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background-image: url('/image/main/background_initial.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .point {
   margin-top: 11rem;
