@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Appbar from '@/components/Appbar';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styles from './letterwrite.module.css';
+import ReactGA from 'react-ga4';
 import SpeechModal from './components/SpeechModal';
 import StopWriteModal from './components/StopWriteModal';
 import CompleteWriteModal from './components/CompleteWriteModal';
@@ -174,7 +175,12 @@ export default function LetterWritePage() {
           setOpenStopWrite(true);
           return;
         }}
-        onNextPress={() => setOpenSpeech(true)}
+        onNextPress={() => {
+          setOpenSpeech(true);
+          ReactGA.event('ai_help', {
+            category: 'letter write',
+          });
+        }}
       />
       <div className={styles.container}>
         <div className={styles.radioContainer}>

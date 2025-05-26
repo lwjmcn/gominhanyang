@@ -1,6 +1,7 @@
 import { useAuthStore } from '@/store/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './auth.module.css';
+import ReactGA from 'react-ga4';
 import { login } from '@/lib/api/user';
 import { isErrorResponse } from '@/lib/response_dto';
 import { useState } from 'react';
@@ -40,6 +41,7 @@ export default function SignInPage() {
     showToast(response.message);
     setIsLoading(false);
     setLogin();
+    ReactGA.set({ user_id: response.nickname });
     navigate('/', { replace: true });
   };
 

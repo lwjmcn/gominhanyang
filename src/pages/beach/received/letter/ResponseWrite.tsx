@@ -3,6 +3,7 @@ import Appbar from '@/components/Appbar';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import LetterWriteForm from '@/components/LetterWriteForm';
 import styles from './responsewrite.module.css';
+import ReactGA from 'react-ga4';
 import SpeechModal from '@/pages/post/send/components/SpeechModal';
 import { useToastStore } from '@/store/toast';
 import { replyToLetter, getReplyOptions } from '@/lib/api/letter';
@@ -147,7 +148,12 @@ export default function ResponseWritePage() {
         title="답장하기"
         onBackPress={() => setOpenStopWrite(true)}
         nextButtonIcon={nextButtonIcon}
-        onNextPress={() => setOpenSpeech(true)}
+        onNextPress={() => {
+          setOpenSpeech(true);
+          ReactGA.event('ai_help', {
+            category: 'response write',
+          });
+        }}
       />
       <div className={styles.container}>
         <div className={styles.letterSection}>
