@@ -104,15 +104,18 @@ input {
   font-size: 2rem;
   color: #333;
   transition: border-color 0.2s;
+  font-family: 'Jua';
+}
 
-  &:focus {
-    border-color: #f8c464;
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(248, 196, 100, 0.1);
-  }
-  ::placeholder {
-    color: #ddd;
-  }
+input:focus {
+  border-color: #f8c464;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(248, 196, 100, 0.1);
+}
+
+input::placeholder {
+  color: #ccc;
+  font-family: 'Jua';
 }
 
 input[type='radio'] {

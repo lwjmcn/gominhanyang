@@ -1,7 +1,6 @@
 .pageBackground {
   background-color: #fbe798;
-
-  height: 100vh;
+  height: 100dvh;
 }
 .container {
   padding: 2rem;

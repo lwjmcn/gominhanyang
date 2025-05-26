@@ -1,47 +1,44 @@
 .container {
-  height: 100vh;
-  width: 100vw;
-  background-color: #fef2b6; /* pastel yellow paper look */
+  height: 100dvh;
+  overflow: hidden;
+  background-color: #fce796;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  font-family: 'Pretendard', 'Arial', sans-serif; /*i think we need to change the font?*/
-  overflow: hidden;
 }
 
 .container h1 {
   font-size: 7rem;
-  font-family: 'Pretendard', 'Arial', sans-serif;
   margin-bottom: 1rem;
 }
 
+.logoImage {
+  height: 50rem;
+  width: auto;
+}
 
-.logo {
-  height: 36rem;
-  margin: 2rem 0;
+.loginFormContainer {
+  width: 80%;
+  margin: 0 auto;
 }
 
 .nicknameInput {
-  width: 80%;
-  max-width: 400px;
-  padding: 1.7rem;
-  font-size: 2rem;
+  width: 100%;
+  font-size: 3rem;
   border: none;
   border-radius: 1rem;
   background-color: #fcf9e8;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   margin-top: 1rem;
-  font-family: 'Pretendard', 'Arial', sans-serif;
   box-sizing: border-box;
+  line-height: 1.3;
 }
 
 .loginButton {
-  width: 80%;
-  max-width: 400px;
-  padding: 1.2rem;
-  margin: 2rem 0 1rem 0;
+  width: 100%;
+  margin: 2rem 0;
   background-color: #e7d2f6;
   color: #000;
   font-size: 3rem;
@@ -49,7 +46,6 @@
   border: none;
   border-radius: 1rem;
   cursor: pointer;
-  font-family: 'Pretendard', 'Arial', sans-serif;
 
   display: flex;
   justify-content: center;
@@ -63,13 +59,8 @@
 }
 
 a {
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: #000;
   text-decoration: underline;
   margin-top: 0.5rem;
-}
-
-@font-face {
-  font-family: 'font';
-  src: url('/public/font/font.ttf') format('truetype');
 }

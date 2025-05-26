@@ -7,10 +7,9 @@
   align-items: center;
   gap: 2rem;
   background-color: #e6f4fb;
-  min-height: 100vh;
+  min-height: 100dvh;
   box-sizing: border-box;
 }
-
 
 .container img {
   width: 150px;
@@ -32,8 +31,6 @@
   color: #222;
   margin-bottom: 1rem;
 }
-
-
 
 .rewardItems {
   display: flex;

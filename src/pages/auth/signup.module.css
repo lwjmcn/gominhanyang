@@ -23,7 +23,6 @@
 .AgeContainer {
   display: flex;
   flex-direction: column;
-  font-family: 'Pretendard', 'Arial', sans-serif;
   font-size: 1rem;
 }
 
@@ -59,7 +58,6 @@
   border: none;
   background-color: #fcf9e8;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  font-family: 'Pretendard', 'Arial', sans-serif;
   font-size: 1.4rem;
   appearance: none;
   box-sizing: border-box;

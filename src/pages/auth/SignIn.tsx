@@ -49,22 +49,24 @@ export default function SignInPage() {
     <div className={styles.container}>
       <h1>마음의 항해</h1>
       <img
-        className={styles.logo}
+        className={styles.logoImage}
         src="image/login_setting/login_otter.webp"
         object-fit="cover"
         alt=""
       />
-      <input
-        className={styles.nicknameInput}
-        type="text"
-        placeholder="닉네임"
-        value={nickname}
-        onChange={e => setNickname(e.target.value)}
-        disabled={isLoading}
-      />
-      <button className={styles.loginButton} onClick={handleLogin} disabled={isLoading}>
-        {isLoading ? '로그인 중...' : '로그인'}
-      </button>
+      <div className={styles.loginFormContainer}>
+        <input
+          className={styles.nicknameInput}
+          type="text"
+          placeholder="닉네임(ID)"
+          value={nickname}
+          onChange={e => setNickname(e.target.value)}
+          disabled={isLoading}
+        />
+        <button className={styles.loginButton} onClick={handleLogin} disabled={isLoading}>
+          {isLoading ? '로그인 중...' : '로그인 하기'}
+        </button>
+      </div>
       <Link to="/signup">회원가입</Link>
     </div>
   );
