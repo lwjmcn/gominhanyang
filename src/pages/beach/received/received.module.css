@@ -1,14 +1,5 @@
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow: hidden;
-}
-
-.container {
+.pageBackground {
   height: 100dvh;
-  width: 100vw;
   display: flex;
   flex-direction: column;
   background-image: url('/image/beach/background_ocean.webp');
@@ -19,7 +10,8 @@ body {
 }
 
 /* 수평으로 아이템 2개 배치 */
-.optionRow {
+.container {
+  padding-top: 14rem;
   display: flex;
   margin-top: 53rem;
   justify-content: center;

@@ -31,39 +31,41 @@ export default function LetterSharePage() {
   };
 
   return (
-    <div className={styles.container}>
+    <>
       <Appbar title="" />
-      <p className={styles.title}>누구에게 편지를 전하고 싶나요?</p>
-      <div className={styles.buttonContainer}>
-        <button className={styles.shareButton} onClick={handleSave}>
-          <img
-            className={styles.buttonImage}
-            src="/image/post/paper_archive_love.webp"
-            object-fit="cover"
-            alt="save"
-          />
-          <div className={styles.text}>나만의 보관함에 간직하기</div>
-        </button>
-        <button className={styles.shareButton} onClick={handleRandom}>
-          <img
-            className={styles.buttonImage}
-            src="/image/common/paper_boat.webp"
-            object-fit="cover"
-            alt="random"
-          />
-          <div className={styles.text}>바다 위 익명 친구에게 띄우기</div>
-        </button>
-        <button className={styles.shareButton} onClick={handleSend}>
-          <img
-            className={styles.buttonImage}
-            src="/image/post/post_box.webp"
-            object-fit="cover"
-            alt="send"
-          />
+      <div className={styles.container}>
+        <p className={styles.title}>누구에게 편지를 전하고 싶나요?</p>
+        <div className={styles.buttonContainer}>
+          <button className={styles.shareButton} onClick={handleSave}>
+            <img
+              className={styles.buttonImage}
+              src="/image/post/paper_archive_love.webp"
+              object-fit="cover"
+              alt="save"
+            />
+            <div className={styles.text}>나만의 보관함에 간직하기</div>
+          </button>
+          <button className={styles.shareButton} onClick={handleRandom}>
+            <img
+              className={styles.buttonImage}
+              src="/image/common/paper_boat.webp"
+              object-fit="cover"
+              alt="random"
+            />
+            <div className={styles.text}>바다 위 익명 친구에게 띄우기</div>
+          </button>
+          <button className={styles.shareButton} onClick={handleSend}>
+            <img
+              className={styles.buttonImage}
+              src="/image/post/post_box.webp"
+              object-fit="cover"
+              alt="send"
+            />
 
-          <div className={styles.text}>온기 우체부에게 전송하기</div>
-        </button>
+            <div className={styles.text}>온기 우체부에게 전송하기</div>
+          </button>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

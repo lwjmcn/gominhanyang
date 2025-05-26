@@ -34,9 +34,8 @@ export default function LetterListPage() {
   }, [showToast]);
 
   return (
-    <div className={styles.pageBackground}>
+    <>
       <Appbar title="나의 보관함" />
-
       <div className={styles.container}>
         {isLoading ? (
           <div className={styles.loading}>편지를 불러오는 중...</div>
@@ -52,6 +51,6 @@ export default function LetterListPage() {
           ))
         )}
       </div>
-    </div>
+    </>
   );
 }

@@ -1,15 +1,15 @@
 import Appbar from '@/components/Appbar';
-import styles from '../../post/received.module.css';
+import styles from './received.module.css';
 import { useNavigate } from 'react-router-dom';
 
 export default function ReceivedPage() {
   const navigate = useNavigate();
 
   return (
-    <div className={styles.container}>
+    <div className={styles.pageBackground}>
       <Appbar title="" />
 
-      <div className={styles.optionRow}>
+      <div className={styles.container}>
         <div className={styles.optionItem} onClick={() => navigate('/received/letters')}>
           <img className={styles.icon1} src="/image/beach/boat.webp" alt="흘러온 편지" />
           <div className={styles.labelBox1}>

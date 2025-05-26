@@ -4,6 +4,7 @@
 }
 .container {
   padding: 2rem;
+  padding-top: 14rem;
   height: calc(100dvh - 30rem);
 }
 .tabList {

@@ -45,7 +45,7 @@ export default function ReceivedResponseListPage() {
   return (
     <div className={styles.pageBackground}>
       <Appbar title="받은 답장함" />
-      <div>
+      <div className={styles.container}>
         {isLoading || letters == undefined ? (
           <p>답장을 불러오는 중...</p>
         ) : letters.length === 0 ? (

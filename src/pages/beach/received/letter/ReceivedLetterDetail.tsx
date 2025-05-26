@@ -53,8 +53,9 @@ export default function ReceivedLetterDetailPage() {
     return (
       <div className={styles.pageBackground}>
         <Appbar title="편지 읽기" />
-
-        <p>편지를 불러오는 중...</p>
+        <div className={styles.container}>
+          <p>편지를 불러오는 중...</p>
+        </div>
       </div>
     );
   }
@@ -77,7 +78,9 @@ export default function ReceivedLetterDetailPage() {
         <h2>{letter.title}</h2>
         <Textarea type="letter" disabled value={letter.content} wrapperStyles={{ flex: 1 }} />
         <div className={styles.flexContainer}>
-          <p>{'당신의 한 마디가 큰 힘이 돼요.\n답장으로 마음을 전해보세요.'}</p>
+          <p className={styles.helperText}>
+            {'당신의 한 마디가 큰 힘이 돼요.\n답장으로 마음을 전해보세요.'}
+          </p>
           <button
             className={styles.replyButton}
             onClick={() =>
@@ -88,7 +91,13 @@ export default function ReceivedLetterDetailPage() {
               })
             }
           >
-            답장하기
+            <img
+              src="/image/beach/reply.webp"
+              alt="답장하기"
+              object-fit="cover"
+              className={styles.replyIcon}
+            />
+            <span className={styles.replyText}>답장하기</span>
           </button>
         </div>
       </div>

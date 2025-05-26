@@ -45,24 +45,26 @@ export default function ReceivedLetterListPage() {
   return (
     <div className={styles.pageBackground}>
       <Appbar title="받은 편지함" />
-      {isLoading ? (
-        <p>편지를 불러오는 중...</p>
-      ) : letters.length === 0 ? (
-        <p>아직 받은 편지가 없습니다.</p>
-      ) : (
-        letters.map(letter => (
-          <LetterListItem
-            letter={{
-              _id: letter._id,
-              title: letter.title,
-              emotion: letter.emotion,
-              created_at: letter.created_at,
-            }}
-            key={letter._id}
-            onClick={() => navigate(`/received/letters/${letter._id}`)}
-          />
-        ))
-      )}
+      <div className={styles.container}>
+        {isLoading ? (
+          <p>편지를 불러오는 중...</p>
+        ) : letters.length === 0 ? (
+          <p>아직 받은 편지가 없습니다.</p>
+        ) : (
+          letters.map(letter => (
+            <LetterListItem
+              letter={{
+                _id: letter._id,
+                title: letter.title,
+                emotion: letter.emotion,
+                created_at: letter.created_at,
+              }}
+              key={letter._id}
+              onClick={() => navigate(`/received/letters/${letter._id}`)}
+            />
+          ))
+        )}
+      </div>
     </div>
   );
 }

@@ -6,6 +6,7 @@ import { LetterDetail, Reply } from '@/lib/type/letter.type';
 import { isErrorResponse } from '@/lib/response_dto';
 import { useToastStore } from '@/store/toast';
 import styles from './receivedresponsedetail.module.css';
+import { Textarea } from '@/components/Textarea';
 
 export default function ReceivedResponseDetailPage() {
   const { responseId } = useParams();
@@ -54,23 +55,23 @@ export default function ReceivedResponseDetailPage() {
 
   if (isLoading) {
     return (
-      <>
+      <div className={styles.pageBackground}>
         <Appbar title="답장 읽기" />
-        <div>
+        <div className={styles.container}>
           <p>편지를 불러오는 중...</p>
         </div>
-      </>
+      </div>
     );
   }
 
   if (!letter) {
     return (
-      <>
+      <div className={styles.pageBackground}>
         <Appbar title="답장 읽기" />
-        <div>
+        <div className={styles.container}>
           <p>편지를 찾을 수 없습니다.</p>
         </div>
-      </>
+      </div>
     );
   }
 
@@ -78,31 +79,27 @@ export default function ReceivedResponseDetailPage() {
     <div className={styles.pageBackground}>
       <Appbar title="답장 읽기" />
       <div className={styles.container}>
-        <div className={styles.letterContainer}>
-          <p>{new Date(letter.created_at).toLocaleDateString()}</p>
-          <h2>{letter.title}</h2>
-          <p>{letter.content}</p>
+        <div className={styles.letterSection}>
+          <p className={styles.date}>{letter.created_at.substring(0, 10)}</p>
+          <h2 className={styles.title}>{letter.title}</h2>
+          <Textarea type="letter" value={letter.content} disabled />
         </div>
-        <hr />
-        <div className={styles.commentsContainer}>
-          {isLoadingComments ? (
-            <p>답장을 불러오는 중...</p>
-          ) : comments.length === 0 ? (
-            <p>아직 답장이 없습니다.</p>
-          ) : (
-            comments.map(comment => (
-              <div key={comment._id} className={styles.commentItem}>
-                <div className={styles.commentHeader}>
-                  <p className={styles.commentAuthor}>{comment.from_nickname} 님</p>
-                  <p className={styles.commentDate}>
-                    {new Date(comment.created_at).toLocaleDateString()}
-                  </p>
-                </div>
-                <p className={styles.commentContent}>{comment.content}</p>
-              </div>
-            ))
-          )}
-        </div>
+        <hr className={styles.divider} />
+        {isLoadingComments ? (
+          <p>답장을 불러오는 중...</p>
+        ) : comments.length === 0 ? (
+          <p>아직 답장이 없습니다.</p>
+        ) : (
+          comments.map(comment => (
+            <div key={comment._id} className={styles.commentItem}>
+              <Textarea
+                type="reply"
+                value={comment.content + '\n' + comment.created_at.substring(0, 10)}
+                disabled
+              />
+            </div>
+          ))
+        )}
       </div>
     </div>
   );

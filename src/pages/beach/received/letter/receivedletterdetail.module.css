@@ -4,6 +4,7 @@
 }
 .container {
   padding: 2rem;
+  padding-top: 14rem;
   height: calc(100dvh - 30rem);
   display: flex;
   flex-direction: column;
@@ -13,9 +14,31 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 2rem;
+}
+
+.helperText {
+  margin-left: 1rem;
+  font-size: 2rem;
+  color: var(--text-secondary-color);
 }
 
 .replyButton {
-  padding: 0 2rem;
+  padding-right: 3rem;
+  height: 7rem;
   margin: 0;
+  background-color: var(--blue-base-color);
+  display: flex;
+  align-items: center;
+}
+
+.replyIcon {
+  height: 6rem;
+  width: auto;
+  box-sizing: border-box;
+}
+
+.replyText {
+  font-size: 3rem;
+  color: var(--green-border-color);
 }

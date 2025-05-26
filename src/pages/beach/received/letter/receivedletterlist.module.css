@@ -1,4 +1,9 @@
 .pageBackground {
   background-color: var(--blue-background-color);
-  height: 100dvh;
+  min-height: 100dvh;
+}
+
+.container {
+  padding-bottom: 1rem;
+  padding-top: 14rem;
 }

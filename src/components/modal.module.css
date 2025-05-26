@@ -14,8 +14,8 @@
 }
 
 .content {
-  background-color: var(--background-color);
-  border: 0.8rem solid var(--orange-border-color);
+  background-color: var(--apricot-light-color);
+  border: 0.8rem solid var(--orange-base-color);
   border-radius: 2rem;
   padding: 2rem 3rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
