@@ -19,9 +19,6 @@
 }
 
 .letterSection {
-  background-color: #fbf39d;
-  border: 1rem solid #f7eb6c;
-  padding: 2rem;
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
@@ -30,17 +27,7 @@
 }
 
 .date {
-  color: #666;
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
-  flex-shrink: 0;
-}
-
-.title {
-  font-size: 2.4rem;
-  font-weight: 600;
-  margin-bottom: 1.6rem;
-  flex-shrink: 0;
+  margin: 0;
 }
 
 .letterInput {

@@ -75,19 +75,22 @@ export default function ReceivedLetterDetailPage() {
       <div className={styles.container}>
         <p>{new Date(letter.created_at).toLocaleDateString()}</p>
         <h2>{letter.title}</h2>
-        <Textarea type="letter" disabled value={letter.content}></Textarea>
-
-        <button
-          onClick={() =>
-            navigate(`/received/letters/${letterId}/write`, {
-              state: {
-                letter: letter,
-              },
-            })
-          }
-        >
-          답장하기
-        </button>
+        <Textarea type="letter" disabled value={letter.content} wrapperStyles={{ flex: 1 }} />
+        <div className={styles.flexContainer}>
+          <p>{'당신의 한 마디가 큰 힘이 돼요.\n답장으로 마음을 전해보세요.'}</p>
+          <button
+            className={styles.replyButton}
+            onClick={() =>
+              navigate(`/received/letters/${letterId}/write`, {
+                state: {
+                  letter: letter,
+                },
+              })
+            }
+          >
+            답장하기
+          </button>
+        </div>
       </div>
     </div>
   );

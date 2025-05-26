@@ -4,4 +4,18 @@
 }
 .container {
   padding: 2rem;
+  height: calc(100dvh - 30rem);
+  display: flex;
+  flex-direction: column;
+}
+
+.flexContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.replyButton {
+  padding: 0 2rem;
+  margin: 0;
 }

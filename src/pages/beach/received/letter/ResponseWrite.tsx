@@ -151,9 +151,9 @@ export default function ResponseWritePage() {
       />
       <div className={styles.container}>
         <div className={styles.letterSection}>
-          <p className={styles.date}>{letter.created_at}</p>
+          <p className={styles.date}>{letter.created_at.substring(12)}</p>
           <h2 className={styles.title}>{letter.title}</h2>
-          <Textarea type="reply" value={letter.content} disabled />
+          <Textarea type="letter" value={letter.content} disabled />
         </div>
 
         <div className={styles.divider} />
