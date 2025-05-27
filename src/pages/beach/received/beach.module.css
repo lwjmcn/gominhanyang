@@ -40,21 +40,21 @@
 }
 .letter0 {
   position: absolute;
-  margin-top: -150px; /* 아래로 내림 */
+  margin-top: -130px; /* 아래로 내림 */
   margin-left: 0px; /* 오른쪽으로 이동 */
   width: 400px; /* 필요 시 사이즈도 조정 */
   height: auto;
 }
 .letter1 {
   position: absolute;
-  margin-top: -320px; /* 아래로 내림 */
+  margin-top: -300px; /* 아래로 내림 */
   margin-left: 400px; /* 오른쪽으로 이동 */
   width: 300px; /* 필요 시 사이즈도 조정 */
   height: auto;
 }
 .response0 {
   position: absolute;
-  top: 800px;
+  top: 720px;
   left: 550px;
   width: 400px;
   height: auto;
