@@ -44,7 +44,7 @@ export default function BeachPage() {
       <Appbar title="" />
 
       <div className={styles.container}>
-        <div className={styles.optionItem} onClick={() => navigate('/received/responses')}>
+        <div className={styles.optionItem} onClick={() => navigate('/received/inbox-test')}>
           <img className={styles.icon1} src="/image/beach/ListIcon.webp" alt="받은 답장" />
         </div>
         {/* 편지들 */}
