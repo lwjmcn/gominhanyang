@@ -55,7 +55,7 @@
 
 .speechBubble {
   position: absolute;
-  bottom: 89rem;
+  top: 10%;
   left: 50%;
   transform: translateX(-50%);
   max-width: 40rem;
