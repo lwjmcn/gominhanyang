@@ -87,7 +87,7 @@
   position: absolute;
 }
 .roadSignContainer:nth-of-type(2) {
-  top: 32%;
+  top: 34%;
   left: 25%;
   > img {
     transform: scaleX(-1);
