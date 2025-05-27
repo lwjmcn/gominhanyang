@@ -73,11 +73,9 @@ export default function MainPage() {
       </div>
 
       <div className={styles.otterContainer}>
+        <div className={styles.speechBubble}>편지를 쓰러 가볼까? 너의 이야기를 들려줘!</div>
         <img src="/image/main/otter.webp" className={styles.otterImage} alt="otter" />
         <div className={styles.otterShadow} />
-        <div className={styles.otterSpeech}>
-          <p>오늘은 어디로 가볼까?</p>
-        </div>
       </div>
     </div>
   );

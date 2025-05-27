@@ -81,13 +81,15 @@ export default function BeachPage() {
             }}
           />
         </div>
-
-        <img
-          className={styles.charac}
-          src="/image/beach/BeachOndal.webp"
-          alt=""
-          aria-hidden="true"
-        />
+        <div className={styles.characWrapper}>
+          <div className={styles.speechBubble}>편지를 쓰러 가볼까? 너의 이야기를 들려줘!</div>
+          <img
+            className={styles.charac}
+            src="/image/beach/BeachOndal.webp"
+            alt=""
+            aria-hidden="true"
+          />
+        </div>
       </div>
     </div>
   );

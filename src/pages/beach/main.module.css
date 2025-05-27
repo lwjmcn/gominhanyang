@@ -94,8 +94,8 @@
   }
 }
 .roadSignContainer:nth-of-type(3) {
-  top: 57%;
-  right: 17%;
+  top: 45%;
+  right: 15%;
 }
 
 .roadSignImage {
@@ -121,6 +121,7 @@
   position: absolute;
   bottom: 3%;
   left: 15%;
+  overflow: visible;
 }
 
 .otterImage {
@@ -139,35 +140,25 @@
   filter: blur(1rem);
   background-color: rgba(0, 0, 0, 0.4);
 }
-
-.otterSpeech {
+.speechBubble {
   position: absolute;
-  bottom: 10rem;
-  left: 19rem;
-  width: 25rem;
-  height: auto;
-  font-size: 2.5rem;
-  color: var(--text-primary-color);
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.8);
+  bottom: 25rem;
+  left: 18rem; /* ✅ 고정된 거리로 밀기 */
+  width: 24rem;
   padding: 2rem;
-  border-radius: 4rem;
-  line-height: 1.2;
-  word-break: keep-all; 
-  white-space: pre-wrap;
-  box-sizing: border-box;
-  overflow-wrap: break-word;
-  ::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: -1.5rem;
-    width: 0;
-    height: 0;
-    border-top: 1rem solid transparent;
-    border-bottom: 1rem solid transparent;
-    border-right: 2rem solid rgba(255, 255, 255, 0.8);
-    border-left: 0;
-  }
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 2rem;
+  text-align: center;
+  z-index: 10;
+  font-size: 2.8rem;
 }
-
+.speechBubble::after {
+  content: '';
+  position: absolute;
+  top: 75%;
+  transform: translateY(-50%);
+  left: -2rem; /* ← 본체 안에서 적당히 중앙 */
+  border-top: 1rem solid transparent;
+  border-bottom: 1rem solid transparent;
+  border-right: 2rem solid rgba(255, 255, 255, 0.9);
+}
