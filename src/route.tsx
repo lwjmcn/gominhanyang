@@ -3,11 +3,11 @@ import RouteGA from './routeGA';
 import { useAuthStore } from '@/store/auth';
 import SignInPage from './pages/auth/SignIn';
 import SignUpPage from './pages/auth/SignUp';
-import BeachPage from './pages/beach/Beach';
+import MainPage from './pages/beach/Main';
 import ReceivedLetterListPage from './pages/beach/received/letter/ReceviedLetterList';
 import ResponseCompletePage from './pages/beach/received/letter/ResponseComplete';
 import ResponseWritePage from './pages/beach/received/letter/ResponseWrite';
-import ReceivedPage from './pages/beach/received/Received';
+import BeachPage from './pages/beach/received/Beach';
 import ReceivedResponseDetailPage from './pages/beach/received/response/ReceivedResponseDetail';
 import ReceivedResponseListPage from './pages/beach/received/response/ReceivedResponseList';
 import SettingPage from './pages/beach/Setting';
@@ -47,9 +47,9 @@ export default function AppRoutes() {
           {/* <Route path="/test" element={<ApiTestPage />} /> */}
         </Route>
         <Route element={<ProtectedRoute />}>
-          <Route path="/" element={<BeachPage />} />
+          <Route path="/" element={<MainPage />} />
           <Route path="/settings" element={<SettingPage />} />
-          <Route path="/received" element={<ReceivedPage />} />
+          <Route path="/received" element={<BeachPage />} />
           <Route path="/received/responses" element={<ReceivedResponseListPage />} />
           <Route path="/received/responses/:responseId" element={<ReceivedResponseDetailPage />} />
           <Route path="/received/letters" element={<ReceivedLetterListPage />} />

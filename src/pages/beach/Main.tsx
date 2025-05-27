@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import styles from './beach.module.css';
+import styles from './main.module.css';
 import { useNavigate } from 'react-router-dom';
 import { getMyReward } from '../../lib/api/reward';
-import { isErrorResponse, isSuccessResponse } from '../../lib/response_dto';
+import { isErrorResponse } from '../../lib/response_dto';
 
-export default function BeachPage() {
+export default function MainPage() {
   const navigate = useNavigate();
   const [pointFill, setPointFill] = useState(0);
   const [level, setLevel] = useState(0);

@@ -1,8 +1,8 @@
 import Appbar from '@/components/Appbar';
-import styles from './received.module.css';
+import styles from './beach.module.css';
 import { useNavigate } from 'react-router-dom';
 
-export default function ReceivedPage() {
+export default function BeachPage() {
   const navigate = useNavigate();
 
   return (
