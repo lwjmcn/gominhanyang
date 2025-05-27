@@ -65,7 +65,7 @@ export default function LetterDetailPage() {
       <div className={styles.container}>
         <div className={styles.metadata}>
           <p>{new Date(letter.created_at).toLocaleDateString()}</p>
-          <span className={styles.emotion}>{letter.emotion}</span>
+          <span className={styles.emotionContainer}>{letter.emotionContainer}</span>
         </div>
 
         <h2>{letter.title}</h2>

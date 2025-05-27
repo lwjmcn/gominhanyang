@@ -76,7 +76,7 @@ export default function MainPage() {
         <img src="/image/main/otter.webp" className={styles.otterImage} alt="otter" />
         <div className={styles.otterShadow} />
         <div className={styles.otterSpeech}>
-          <p>안녕</p>
+          <p>오늘은 어디로 가볼까?</p>
         </div>
       </div>
     </div>
