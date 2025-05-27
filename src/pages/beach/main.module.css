@@ -7,10 +7,7 @@
   background-repeat: no-repeat;
   background-position: center;
 }
-.point {
-  margin-top: 11rem;
-  margin-left: 2rem;
-}
+
 .pointContainer {
   position: fixed;
   top: 0;
@@ -19,17 +16,39 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* gap: 2rem; */
+  gap: 2rem;
+}
+.level {
+  position: absolute;
+  color: var(--text-primary-color);
+  line-height: 2;
+}
+.cylinder {
+  width: 3rem;
+  height: 15rem;
+  border-radius: 4rem;
+  background: linear-gradient(to top, #e0e0e0, #f8f8f8);
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cylinderFill {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: var(--fill-level);
+  transition: height 0.5s ease;
+  background: linear-gradient(to top, #4caf50, #81c784);
+  border-top: 2px solid #388e3c;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  border-bottom-left-radius: 36px;
+  border-bottom-right-radius: 36px;
 }
 
 .shellImage {
   width: auto;
-  height: 8rem;
-}
-
-.level {
-  position: absolute;
-  color: #fff;
+  height: 10rem;
 }
 
 .cylinder {
@@ -60,22 +79,89 @@
   top: 0;
   right: 0;
   margin: 2rem;
-  height: auto;
+  width: auto;
+  height: 8rem;
+}
+
+.roadSignContainer {
+  position: absolute;
+}
+.roadSignContainer:nth-of-type(2) {
+  top: 38%;
+  left: 15%;
+  > img {
+    transform: scaleX(-1);
+  }
+}
+.roadSignContainer:nth-of-type(3) {
+  top: 56%;
+  right: 12%;
+}
+
+.roadSignImage {
+  height: 24rem;
+  width: auto;
+}
+
+.signHouseText {
+  position: absolute;
+  top: 1.8rem;
+  left: 7rem;
+  font-size: 3rem;
+}
+
+.signOceanText {
+  position: absolute;
+  top: 1.8rem;
+  left: 3rem;
+  font-size: 3rem;
+}
+
+.otterContainer {
+  position: absolute;
+  bottom: 3%;
+  left: 15%;
+}
+
+.otterImage {
+  height: 28rem;
+  width: auto;
+  z-index: 1;
+  position: absolute;
+  bottom: 35%;
+  left: -15%;
+}
+
+.otterShadow {
   height: 6rem;
-}
-.navContainer {
-  position: fixed;
-  width: 100%;
-  bottom: 4rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-}
-.navContainer img {
-  width: 10rem;
-  height: 10rem;
+  width: 15rem;
   border-radius: 50%;
-  cursor: pointer;
-  transition: transform 0.2s;
+  filter: blur(1rem);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.otterSpeech {
+  position: absolute;
+  bottom: 280%;
+  left: 120%;
+  width: 20rem;
+  height: auto;
+  font-size: 2.5rem;
+  color: var(--text-primary-color);
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 1rem;
+  border-radius: 4rem;
+  ::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -1.5rem;
+    width: 0;
+    height: 0;
+    border-top: 1rem solid transparent;
+    border-bottom: 1rem solid transparent;
+    border-right: 2rem solid rgba(255, 255, 255, 0.8);
+    border-left: 0;
+  }
 }

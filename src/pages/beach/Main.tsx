@@ -27,7 +27,7 @@ export default function MainPage() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.pointContainer}>
+      <div onClick={() => navigate('/items')} className={styles.pointContainer}>
         <img
           src="/image/main/shell.webp"
           object-fit="cover"
@@ -35,8 +35,14 @@ export default function MainPage() {
           className={styles.shellImage}
         />
         <p className={styles.level}>Lv.{level}</p>
+        <div className={styles.cylinder}>
+          <div
+            className={styles.cylinderFill}
+            style={{ '--fill-level': `${pointFill}%` } as React.CSSProperties}
+          />
+        </div>
       </div>
-      <p className={styles.point}>{pointFill} / 100 </p>
+
       <img
         className={styles.settingButton}
         onClick={() => navigate('/settings')}
@@ -44,25 +50,34 @@ export default function MainPage() {
         object-fit="cover"
         alt="setting"
       />
-      <div className={styles.navContainer}>
+
+      <div className={styles.roadSignContainer}>
         <img
+          className={styles.roadSignImage}
           onClick={() => navigate('/post')}
-          src="/image/main/post.webp"
-          alt="letter"
+          src="/image/main/road_sign.webp"
+          alt="sign-to-post"
           object-fit="cover"
         />
+        <p className={styles.signHouseText}>마음쉼터</p>
+      </div>
+      <div className={styles.roadSignContainer}>
         <img
+          className={styles.roadSignImage}
           onClick={() => navigate('/received')}
-          src="/image/main/ocean.webp"
-          alt="letter"
+          src="/image/main/road_sign.webp"
+          alt="sign-to-ocean"
           object-fit="cover"
         />
-        <img
-          onClick={() => navigate('/items')}
-          src="/image/main/archive.webp"
-          alt="letter"
-          object-fit="cover"
-        />
+        <p className={styles.signOceanText}>파랑해변</p>
+      </div>
+
+      <div className={styles.otterContainer}>
+        <img src="/image/main/otter.webp" className={styles.otterImage} alt="otter" />
+        <div className={styles.otterShadow} />
+        <div className={styles.otterSpeech}>
+          <p>안녕</p>
+        </div>
       </div>
     </div>
   );
