@@ -26,15 +26,18 @@ export default function LetterDetailPage() {
 
       try {
         const response = await getLetterDetail(letterId);
-
         if (isErrorResponse(response)) {
           showToast(response.error);
           navigate('/letters');
           return;
         }
+        setLetter({
+          ...response.letter,
+          reply: response.comments?.[0], // ✅ 첫 번째 답장을 letter.reply에 포함
+        });
 
-        setLetter(response.letter);
-        // setComments(response.comments || []);
+
+
       } catch (error) {
         showToast('편지 정보를 불러오는데 실패했습니다.');
         navigate('/letters');
@@ -71,6 +74,12 @@ export default function LetterDetailPage() {
         <h2>{letter.title}</h2>
 
         <Textarea type="letter" disabled value={letter.content} />
+        
+        {letter.reply && (
+        <div className={styles.replyBox}>
+          <p><strong></strong> {letter.reply.content}</p>
+        </div>
+        )}
 
         {comments.length > 0 && (
           <>

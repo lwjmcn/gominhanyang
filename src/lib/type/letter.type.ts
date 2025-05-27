@@ -25,6 +25,7 @@ export interface Letter {
   title: string;
   emotion: EmotionType;
   created_at: string;
+  reply?: Reply;
 }
 export interface Reply {
   _id: string;
