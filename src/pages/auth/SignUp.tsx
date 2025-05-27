@@ -13,7 +13,7 @@ export default function SignUpPage() {
   const [formData, setFormData] = useState({
     nickname: '',
     gender: GenderType.OTHER,
-    age: 20,
+    age: undefined,
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -29,11 +29,19 @@ export default function SignUpPage() {
       showToast('닉네임을 입력해주세요.');
       return;
     }
+    if (!formData.age) {
+      showToast('출생연도를 입력해주세요.');
+      return;
+    }
 
     setIsLoading(true);
 
     try {
-      const response = await signup(formData);
+      const response = await signup({
+        nickname: formData.nickname,
+        gender: formData.gender,
+        age: formData.age,
+      });
 
       if (!response) {
         showToast('알 수 없는 오류가 발생했습니다.');

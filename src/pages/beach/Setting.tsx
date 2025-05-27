@@ -16,7 +16,7 @@ export default function SettingPage() {
   const [formData, setFormData] = useState({
     nickname: '',
     gender: GenderType.OTHER,
-    age: 20,
+    age: undefined as number | undefined,
     address: '',
     phone: '',
   });
