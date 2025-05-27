@@ -47,7 +47,7 @@
 }
 .letter1 {
   position: absolute;
-  margin-top: -350px; /* 아래로 내림 */
+  margin-top: -380px; /* 아래로 내림 */
   margin-left: 400px; /* 오른쪽으로 이동 */
   width: 300px; /* 필요 시 사이즈도 조정 */
   height: auto;
@@ -68,7 +68,7 @@
 .charac {
   position: absolute;
   pointer-events: none;
-  margin-top: 130px; /* 아래로 내림 */
+  margin-top: 180px; /* 아래로 내림 */
   margin-left: 400px; /* 오른쪽으로 이동 */
   width: 450px; /* 필요 시 사이즈도 조정 */
   height: auto;
