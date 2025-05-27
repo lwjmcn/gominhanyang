@@ -82,7 +82,7 @@ export default function BeachPage() {
           />
         </div>
         <div className={styles.characWrapper}>
-          <div className={styles.speechBubble}>편지를 쓰러 가볼까? 너의 이야기를 들려줘!</div>
+          <div className={styles.speechBubble}>바다 너머에서 흘러온 마음을 열어볼래?</div>
           <img
             className={styles.charac}
             src="/image/beach/BeachOndal.webp"

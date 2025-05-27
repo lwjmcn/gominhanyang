@@ -40,7 +40,7 @@
 }
 .letter0 {
   position: absolute;
-  margin-top: -200px; /* 아래로 내림 */
+  margin-top: -250px; /* 아래로 내림 */
   margin-left: 0px; /* 오른쪽으로 이동 */
   width: 400px; /* 필요 시 사이즈도 조정 */
   height: auto;
