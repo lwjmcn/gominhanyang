@@ -142,16 +142,21 @@
 
 .otterSpeech {
   position: absolute;
-  bottom: 280%;
-  left: 120%;
-  width: 20rem;
+  bottom: 10rem;
+  left: 19rem;
+  width: 25rem;
   height: auto;
   font-size: 2.5rem;
   color: var(--text-primary-color);
   text-align: center;
   background-color: rgba(255, 255, 255, 0.8);
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 4rem;
+  line-height: 1.2;
+  word-break: keep-all; 
+  white-space: pre-wrap;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
   ::after {
     content: '';
     position: absolute;
@@ -164,4 +169,24 @@
     border-right: 2rem solid rgba(255, 255, 255, 0.8);
     border-left: 0;
   }
+}
+
+.speechBubble {
+  position: absolute;
+  bottom: 89rem;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 40rem;
+  font-size: 2.5rem;
+  color: var(--text-primary-color);
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 2.5rem 2rem;
+  border-radius: 4rem;
+  z-index: 10;
+  line-height: 1.5;
+  word-break: keep-all; 
+  white-space: pre-wrap;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
 }
