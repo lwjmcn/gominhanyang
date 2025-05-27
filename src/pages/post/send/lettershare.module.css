@@ -1,9 +1,11 @@
+.pageBackground {
+  background-color: var(--green-background-color);
+  height: 100%;
+}
 .container {
   padding-top: 14rem;
   margin: 0;
-  height: 100dvh;
   text-align: center;
-  background-color: var(--green-background-color);
 }
 .title {
   margin-top: 4rem;

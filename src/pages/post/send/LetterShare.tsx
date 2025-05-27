@@ -31,7 +31,7 @@ export default function LetterSharePage() {
   };
 
   return (
-    <>
+    <div className={styles.pageBackground}>
       <Appbar title="" />
       <div className={styles.container}>
         <p className={styles.title}>누구에게 편지를 전하고 싶나요?</p>
@@ -66,6 +66,6 @@ export default function LetterSharePage() {
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 }

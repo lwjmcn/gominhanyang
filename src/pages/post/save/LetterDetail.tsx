@@ -34,7 +34,7 @@ export default function LetterDetailPage() {
         }
 
         setLetter(response.letter);
-        setComments(response.comments || []);
+        // setComments(response.comments || []);
       } catch (error) {
         showToast('편지 정보를 불러오는데 실패했습니다.');
         navigate('/letters');
@@ -48,10 +48,10 @@ export default function LetterDetailPage() {
 
   if (isLoading) {
     return (
-      <>
+      <div className={styles.pageBackground}>
         <Appbar title="편지 읽기" />
-        <div className={styles.loading}>편지를 불러오는 중...</div>
-      </>
+        <div className={styles.container}>편지를 불러오는 중...</div>
+      </div>
     );
   }
 
@@ -73,20 +73,20 @@ export default function LetterDetailPage() {
         <Textarea type="letter" disabled value={letter.content} />
 
         {comments.length > 0 && (
-          <div className={styles.comments}>
-            <h3>답장</h3>
-            {comments.map(comment => (
-              <div key={comment._id} className={styles.comment}>
-                <p className={styles.commentContent}>{comment.content}</p>
-                <div className={styles.commentFooter}>
-                  <span className={styles.commentFrom}>From. {comment.from}</span>
-                  <span className={styles.commentDate}>
-                    {new Date(comment.created_at).toLocaleDateString()}
-                  </span>
+          <>
+            <hr className={styles.divider} />
+            <div className={styles.comments}>
+              {comments.map(comment => (
+                <div key={comment._id} className={styles.commentItem}>
+                  <Textarea
+                    type="reply"
+                    value={comment.content + '\n' + comment.created_at.substring(0, 10)}
+                    disabled
+                  />
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          </>
         )}
       </div>
     </div>

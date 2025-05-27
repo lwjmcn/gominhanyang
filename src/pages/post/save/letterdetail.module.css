@@ -1,10 +1,11 @@
 .pageBackground {
   background-color: var(--green-background-color);
-  height: 100dvh;
+  height: 100%;
 }
 
 .container {
   padding: 2rem;
+  padding-top: 14rem;
   width: 90%;
   margin: 0 auto;
 }
@@ -35,42 +36,18 @@
   font-weight: 600;
 }
 
-.comments {
-  border-top: 1px solid #eee;
-  padding-top: 2rem;
+.divider {
+  width: 90%;
+  height: 0.3rem;
+  background-color: var(--green-border-color);
+  border-radius: 2rem;
+  margin: 3rem auto;
 }
 
-.comments h3 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-}
-
-.comment {
-  background-color: var(--background-color);
-  padding: 2rem;
-  border-radius: 1rem;
-  margin-bottom: 2rem;
-}
-
-.commentContent {
-  font-size: 1.6rem;
-  line-height: 1.6;
-  white-space: pre-wrap;
-  margin: 0 0 1.5rem 0;
-}
-
-.commentFooter {
+.commentItem {
+  margin-top: 2rem;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 1.4rem;
-  color: var(--text-secondary-color);
-}
-
-.commentFrom {
-  font-weight: 500;
-}
-
-.commentDate {
-  color: var(--text-primary-color);
+  flex-direction: column;
+  min-height: 24dvh;
 }

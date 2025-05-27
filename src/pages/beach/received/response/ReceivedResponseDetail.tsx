@@ -92,11 +92,7 @@ export default function ReceivedResponseDetailPage() {
         ) : (
           comments.map(comment => (
             <div key={comment._id} className={styles.commentItem}>
-              <Textarea
-                type="reply"
-                value={comment.content + '\n' + comment.created_at.substring(0, 10)}
-                disabled
-              />
+              <Textarea type="reply" value={comment.content} disabled />
             </div>
           ))
         )}
