@@ -2,7 +2,7 @@
   height: 100dvh;
   display: flex;
   flex-direction: column;
-  background-image: url('/image/beach/background_ocean.webp');
+  background-image: url('/image/beach/new_beach.webp');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -14,29 +14,65 @@
   padding-top: 14rem;
   display: flex;
   margin-top: 53rem;
-  justify-content: center;
+  justify-content: space-between;
   gap: 3rem;
+  padding: 0 20px; /* 좌우 공간 확보 */
 }
 
 /* 아이콘 + 텍스트 한 묶음 */
 .optionItem {
-  display: flex;
-  flex-direction: column;
+  position: absolute;
+  top: 30px; /* ✅ 화면 위에서 30px 아래 */
+  left: 830px; /* ✅ 오른쪽 정렬 기준 */
+  z-index: 1000;
   cursor: pointer;
 }
-
 /* 아이콘 이미지 */
 .icon1 {
-  width: 27rem;
-  height: 18rem;
-  margin-top: 1rem;
+  margin-top: 0px; /* 아래로 내림 */
+  margin-left: 0px; /* 오른쪽으로 이동 */
+  width: 105px; /* 필요 시 사이즈도 조정 */
 }
 .icon2 {
-  margin-left: 3rem;
-  width: 16rem;
-  height: 20rem;
+  width: 100%;
+  height: auto;
+  display: block;
 }
-
+.letter0 {
+  position: absolute;
+  margin-top: -50px; /* 아래로 내림 */
+  margin-left: 0px; /* 오른쪽으로 이동 */
+  width: 400px; /* 필요 시 사이즈도 조정 */
+  height: auto;
+}
+.letter1 {
+  position: absolute;
+  margin-top: -220px; /* 아래로 내림 */
+  margin-left: 400px; /* 오른쪽으로 이동 */
+  width: 300px; /* 필요 시 사이즈도 조정 */
+  height: auto;
+}
+.response0 {
+  position: absolute;
+  top: 800px;
+  left: 550px;
+  width: 400px;
+  height: auto;
+  z-index: 10;
+}
+.icon3 {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.charac {
+  position: absolute;
+  pointer-events: none;
+  margin-top: 600px; /* 아래로 내림 */
+  margin-left: 400px; /* 오른쪽으로 이동 */
+  width: 450px; /* 필요 시 사이즈도 조정 */
+  height: auto;
+}
 /* 노란 텍스트 박스 */
 .labelBox {
   width: 24rem;
