@@ -40,14 +40,14 @@
 }
 .letter0 {
   position: absolute;
-  margin-top: -50px; /* 아래로 내림 */
+  margin-top: -150px; /* 아래로 내림 */
   margin-left: 0px; /* 오른쪽으로 이동 */
   width: 400px; /* 필요 시 사이즈도 조정 */
   height: auto;
 }
 .letter1 {
   position: absolute;
-  margin-top: -220px; /* 아래로 내림 */
+  margin-top: -320px; /* 아래로 내림 */
   margin-left: 400px; /* 오른쪽으로 이동 */
   width: 300px; /* 필요 시 사이즈도 조정 */
   height: auto;
@@ -68,7 +68,7 @@
 .charac {
   position: absolute;
   pointer-events: none;
-  margin-top: 600px; /* 아래로 내림 */
+  margin-top: 400px; /* 아래로 내림 */
   margin-left: 400px; /* 오른쪽으로 이동 */
   width: 450px; /* 필요 시 사이즈도 조정 */
   height: auto;
