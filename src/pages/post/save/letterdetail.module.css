@@ -51,3 +51,22 @@
   flex-direction: column;
   min-height: 24dvh;
 }
+
+.replyBox {
+  background-color: #fff0f0;
+  border-left: 4px solid #ff8080;
+  padding: 1rem;
+  margin-top: 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.replyDate {
+  font-weight: bold;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.replyContent {
+  font-size: 1rem;
+  line-height: 1.6;
+}

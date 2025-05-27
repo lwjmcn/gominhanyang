@@ -1,0 +1,91 @@
+.pageBackground {
+  background-color: var(--blue-background-color);
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 전체 내용 영역 (리스트 등) */
+.container {
+  flex: 1;
+  padding: 2rem 1.5rem;
+  overflow-y: auto;
+}
+
+/* 탭 & 뒤로가기 버튼 묶음 */
+.tabWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2.0rem;
+  padding: 1rem 1.5rem;
+}
+
+/* 탭 컨테이너 */
+.tabContainer {
+  position: relative;
+  display: flex;
+  background-color: #dbeff1;
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 0 10px;
+  width: fit-content; /* 자동 너비 조정 */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* 각 탭 버튼 스타일 */
+.tabContainer button {
+  display: flex;
+  flex-direction: row; 
+  align-items: center;        /* 수직 중앙 정렬 */
+  justify-content: center;    /* 수평 중앙 정렬 */
+  gap: 0.8rem;                 /* 이미지-텍스트 사이 간격 */
+  min-width: 100px;
+  min-height: 40px;
+  padding: 0.6rem 1rem;
+  border: none;
+  background: none;
+  font-weight: 600;
+  color: #444;
+  cursor: pointer;
+  z-index: 1;
+}
+.activeTab {
+  color: #007777;
+}
+
+.inactiveTab {
+  color: #888888;
+}
+
+/* 움직이는 탭 슬라이더 */
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background-color: #658984;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+  z-index: 0;
+}
+
+/* 아이콘 이미지 크기 */
+.lettericon {
+  width: 80px;
+  height: 60px;
+}
+.jaricon {
+  width: 50px;
+  height: 60px;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+.tabContent {
+  display: flex;
+  flex-direction: column; /* 위-아래 정렬 */
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
