@@ -87,14 +87,14 @@
   position: absolute;
 }
 .roadSignContainer:nth-of-type(2) {
-  top: 35%;
+  top: 30%;
   left: 25%;
   > img {
     transform: scaleX(-1);
   }
 }
 .roadSignContainer:nth-of-type(3) {
-  top: 45%;
+  top: 40%;
   right: 12%;
 }
 
@@ -142,7 +142,7 @@
 }
 .speechBubble {
   position: absolute;
-  bottom: 22rem;
+  bottom: 20rem;
   left: 18rem; /* ✅ 고정된 거리로 밀기 */
   width: 26rem;
   padding: 2rem;
