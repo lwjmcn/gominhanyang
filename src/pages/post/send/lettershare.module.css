@@ -3,16 +3,27 @@
   height: 100%;
 }
 .container {
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-around;
   padding-top: 14rem;
   margin: 0;
   text-align: center;
 }
 .title {
-  margin-top: 4rem;
   font-size: 4rem;
 }
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 수직 가운데 정렬 */
+  align-items: center;
+  gap: 6rem;
+  margin: 6rem 0;
+}
 .shareButton {
-  margin-top: 6rem;
   width: 50rem;
   height: 15rem;
   display: flex;
@@ -41,13 +52,6 @@
   width: 12rem;
   height: 12rem;
   object-fit: cover;
-}
-
-.buttonContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* 수직 가운데 정렬 */
-  align-items: center;
 }
 
 html,

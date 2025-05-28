@@ -34,13 +34,15 @@
     border-bottom: 3rem solid #f8eacd;
   }
 }
-.content h2 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-.content p {
+
+.cautionText {
   font-size: 2rem;
 }
+.recommendedText {
+  font-size: 2rem;
+  font-family: 'KyoboHand';
+}
+
 .closeButton {
   position: absolute;
   top: 2rem;

@@ -14,6 +14,7 @@ import StopWriteModal from '@/pages/post/send/components/StopWriteModal';
 import CompleteWriteModal from '@/pages/post/send/components/CompleteWriteModal';
 import { LetterDetail, SendType } from '@/lib/type/letter.type';
 import { Textarea } from '@/components/Textarea';
+import Caution from '@/pages/post/send/components/Caution';
 
 export default function ResponseWritePage() {
   const nextButtonIcon = (
@@ -165,6 +166,9 @@ export default function ResponseWritePage() {
         <div className={styles.divider} />
 
         <div className={styles.writeSection}>
+          <Caution
+            message={`⚠️ 편지 작성 시 유의사항\n타인에게 편지를 보낼 경우, 이름, 연락처, 주소 등 개인정보가 포함되지 않도록 주의해 주세요. 또한, 비난, 조롱, 위협 등 악의적인 내용은 절대 허용되지 않습니다.`}
+          />
           <LetterWriteForm
             content={content}
             onChange={setContent}

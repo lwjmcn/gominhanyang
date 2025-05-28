@@ -14,22 +14,13 @@ import { grantReward } from '@/lib/api/reward';
 import { ActionType } from '@/lib/type/reward.type';
 import LetterWriteForm from '@/components/LetterWriteForm';
 import { generateQuestion, getHelpQuestion } from '@/lib/api/question';
+import SpeechBubble from './components/SpeechBubble';
 
 export default function LetterWritePage() {
-  const nextButtonIcon = (
-    <img
-      src="/image/write/otter_help.webp"
-      alt="question"
-      object-fit="cover"
-      style={{ width: 'auto', height: '100%' }}
-    />
-  );
-
   const [content, setContent] = useState('');
   const [emotion, setEmotion] = useState<EmotionType | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const [openSpeech, setOpenSpeech] = useState(false);
   const [firstTime, setFirstTime] = useState(true);
   const [openStopWrite, setOpenStopWrite] = useState(false);
   const [openCompleteWrite, setOpenCompleteWrite] = useState(false);
@@ -117,8 +108,7 @@ export default function LetterWritePage() {
 
     setHelpMessages([response.question]);
   };
-
-  const updateQuestion = async () => {
+  const fetchHelpQuestion = async () => {
     if (content.length == 0) {
       showToast('작성한 내용이 없습니다');
       return;
@@ -133,30 +123,27 @@ export default function LetterWritePage() {
     setHelpMessages([response.help_question]);
   };
 
+  const onRefresh = async () => {
+    ReactGA.event('ai_help', {
+      category: 'letter write',
+    });
+
+    if (firstTime) {
+      fetchInitialQuestion();
+      setFirstTime(false);
+      return;
+    }
+
+    fetchHelpQuestion();
+  };
+
   const handleChangeEmotion = (newEmotion: EmotionType) => {
     setEmotion(newEmotion);
     setFirstTime(true);
   };
 
-  useEffect(() => {
-    if (firstTime) {
-      fetchInitialQuestion();
-    }
-  }, [emotion]);
-
   return (
     <div className={styles.page}>
-      {openSpeech && (
-        <SpeechModal
-          onClose={() => {
-            setOpenSpeech(false);
-            setFirstTime(false);
-          }}
-          type="letter"
-          helpMessages={helpMessages}
-          onRefresh={updateQuestion}
-        />
-      )}
       {openStopWrite && <StopWriteModal onClose={() => setOpenStopWrite(false)} type="letter" />}
       {openCompleteWrite && (
         <CompleteWriteModal
@@ -170,16 +157,9 @@ export default function LetterWritePage() {
       )}
       <Appbar
         title=""
-        nextButtonIcon={nextButtonIcon}
         onBackPress={() => {
           setOpenStopWrite(true);
           return;
-        }}
-        onNextPress={() => {
-          setOpenSpeech(true);
-          ReactGA.event('ai_help', {
-            category: 'letter write',
-          });
         }}
       />
       <div className={styles.container}>
@@ -287,6 +267,17 @@ export default function LetterWritePage() {
         </div>
 
         <div className={styles.writeSection}>
+          <div className={styles.helpContainer}>
+            <img
+              className={styles.helpOtterImage}
+              src="/image/write/otter_help.webp"
+              alt="question"
+              object-fit="cover"
+            />
+            <div className={styles.speechBubbleContainer}>
+              <SpeechBubble emotion={emotion} onRefresh={onRefresh} helpMessages={helpMessages} />
+            </div>
+          </div>
           <LetterWriteForm
             content={content}
             onChange={setContent}

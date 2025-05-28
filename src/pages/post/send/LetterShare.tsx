@@ -2,6 +2,7 @@ import Appbar from '@/components/Appbar';
 import styles from './lettershare.module.css';
 import { useNavigate } from 'react-router-dom';
 import { SendType } from '@/lib/type/letter.type';
+import Caution from './components/Caution';
 
 export default function LetterSharePage() {
   const navigate = useNavigate();
@@ -35,6 +36,7 @@ export default function LetterSharePage() {
       <Appbar title="" />
       <div className={styles.container}>
         <p className={styles.title}>누구에게 편지를 전하고 싶나요?</p>
+
         <div className={styles.buttonContainer}>
           <button className={styles.shareButton} onClick={handleSave}>
             <img
@@ -65,6 +67,10 @@ export default function LetterSharePage() {
             <div className={styles.text}>온기 우체부에게 전송하기</div>
           </button>
         </div>
+
+        <Caution
+          message={`⚠️ 편지 작성 시 유의사항\n타인에게 편지를 보낼 경우, 이름, 연락처, 주소 등 개인정보가 포함되지 않도록 주의해 주세요. 또한, 비난, 조롱, 위협 등 악의적인 내용은 절대 허용되지 않습니다.`}
+        />
       </div>
     </div>
   );
