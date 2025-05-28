@@ -23,28 +23,6 @@
   color: var(--text-primary-color);
   line-height: 2;
 }
-.cylinder {
-  width: 3rem;
-  height: 15rem;
-  border-radius: 4rem;
-  background: linear-gradient(to top, #e0e0e0, #f8f8f8);
-  position: relative;
-  overflow: hidden;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.cylinderFill {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: var(--fill-level);
-  transition: height 0.5s ease;
-  background: linear-gradient(to top, #4caf50, #81c784);
-  border-top: 2px solid #388e3c;
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-  border-bottom-left-radius: 36px;
-  border-bottom-right-radius: 36px;
-}
 
 .shellImage {
   width: auto;
@@ -52,6 +30,7 @@
 }
 
 .cylinder {
+  top: -2rem;
   width: 3rem;
   height: 15rem;
   border-radius: 4rem;
@@ -67,8 +46,8 @@
   width: 100%;
   height: var(--fill-level);
   transition: height 0.5s ease;
-  background: linear-gradient(to top, #d3b8ee, #ddb5e8);
-  border-top: 2px solid #bd8bcb;
+  background: linear-gradient(to top, #d6bddd, #edd2ea);
+  border-top: 2px solid #cb8bc4;
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
   border-bottom-left-radius: 36px;
   border-bottom-right-radius: 36px;
