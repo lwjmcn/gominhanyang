@@ -1,7 +1,10 @@
+.pageBackground {
+  background-color: var(--green-background-color);
+  min-height: 100dvh;
+}
 .container {
   padding-top: 14rem;
   margin: 0 auto;
-  background-color: var(--green-background-color);
 }
 
 .loading {

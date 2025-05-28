@@ -51,7 +51,7 @@ export default function LetterDetailPage() {
     return (
       <div className={styles.pageBackground}>
         <Appbar title="편지 읽기" />
-        <div className={styles.container}>편지를 불러오는 중...</div>
+        <p className={styles.container}>편지를 불러오는 중...</p>
       </div>
     );
   }
@@ -70,16 +70,7 @@ export default function LetterDetailPage() {
         </div>
 
         <h2>{letter.title}</h2>
-
         <Textarea type="letter" disabled value={letter.content} />
-
-        {letter.reply && (
-          <div className={styles.replyBox}>
-            <p>
-              <strong></strong> {letter.reply.content}
-            </p>
-          </div>
-        )}
 
         {comments.length > 0 && (
           <>
@@ -87,11 +78,7 @@ export default function LetterDetailPage() {
             <div className={styles.comments}>
               {comments.map(comment => (
                 <div key={comment._id} className={styles.commentItem}>
-                  <Textarea
-                    type="reply"
-                    value={comment.content + '\n' + comment.created_at.substring(0, 10)}
-                    disabled
-                  />
+                  <Textarea type="reply" value={comment.content} disabled />
                 </div>
               ))}
             </div>

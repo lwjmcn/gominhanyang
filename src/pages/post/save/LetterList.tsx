@@ -34,13 +34,13 @@ export default function LetterListPage() {
   }, [showToast]);
 
   return (
-    <>
+    <div className={styles.pageBackground}>
       <Appbar title="나의 보관함" />
       <div className={styles.container}>
         {isLoading ? (
-          <div className={styles.loading}>편지를 불러오는 중...</div>
+          <p className={styles.loading}>편지를 불러오는 중...</p>
         ) : letters.length === 0 ? (
-          <div className={styles.empty}>저장된 편지가 없습니다.</div>
+          <p className={styles.empty}>저장된 편지가 없습니다.</p>
         ) : (
           letters.map(letter => (
             <LetterListItem
@@ -51,6 +51,6 @@ export default function LetterListPage() {
           ))
         )}
       </div>
-    </>
+    </div>
   );
 }

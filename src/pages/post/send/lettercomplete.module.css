@@ -5,7 +5,7 @@
   padding: 15rem 20px 20px;
   gap: 20px;
   background-color: var(--green-background-color);
-  min-height: 100dvh;
+  height: 100dvh;
   box-sizing: border-box;
 }
 
