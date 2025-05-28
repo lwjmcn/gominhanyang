@@ -54,22 +54,24 @@ export default function MainPage() {
       <div className={styles.roadSignContainer}>
         <img
           className={styles.roadSignImage}
-          onClick={() => navigate('/post')}
           src="/image/main/road_sign.webp"
           alt="sign-to-post"
           object-fit="cover"
         />
-        <p className={styles.signHouseText}>마음쉼터</p>
+        <button onClick={() => navigate('/post')} className={styles.signHouseText}>
+          마음쉼터
+        </button>
       </div>
       <div className={styles.roadSignContainer}>
         <img
           className={styles.roadSignImage}
-          onClick={() => navigate('/received')}
           src="/image/main/road_sign.webp"
           alt="sign-to-ocean"
           object-fit="cover"
         />
-        <p className={styles.signOceanText}>파랑해변</p>
+        <button onClick={() => navigate('/received')} className={styles.signOceanText}>
+          파랑해변
+        </button>
       </div>
 
       <div className={styles.otterContainer}>
