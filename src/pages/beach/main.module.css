@@ -125,11 +125,11 @@
 }
 
 .otterImage {
-  height: 28rem;
+  height: 30rem;
   width: auto;
   z-index: 1;
   position: absolute;
-  bottom: 35%;
+  bottom: 50%;
   left: -15%;
 }
 
