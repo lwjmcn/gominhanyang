@@ -74,7 +74,7 @@ export default function ReceivedLetterDetailPage() {
     <div className={styles.pageBackground}>
       <Appbar title="편지 읽기" />
       <div className={styles.container}>
-        <p>{new Date(letter.created_at).toLocaleDateString()}</p>
+        <p>{letter.created_at.slice(0, 10)}</p>
         <h2>{letter.title}</h2>
         <Textarea type="letter" disabled value={letter.content} wrapperstyles={{ flex: 1 }} />
         <div className={styles.flexContainer}>
