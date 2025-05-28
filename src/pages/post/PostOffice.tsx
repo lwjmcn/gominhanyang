@@ -7,6 +7,11 @@ export default function PostOfficePage() {
   return (
     <div className={styles.container}>
       <Appbar title="" />
+      <div className={styles.speechBubble}>
+        편지를 쓰러 가볼까?
+        <br />
+        너의 이야기를 들려줘!
+      </div>
       <div className={styles.optionRow}>
         <div className={styles.optionItem} onClick={() => navigate('/letter/share')}>
           <img src="/image/post/pencil_letter.webp" alt="letter" className={styles.icon} />
