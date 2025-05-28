@@ -97,24 +97,27 @@
 }
 
 .otterContainer {
-  position: absolute;
   bottom: 3%;
   left: 15%;
   overflow: visible;
+  position: relative;
 }
 
 .otterImage {
   height: 30rem;
   width: auto;
   z-index: 1;
-  position: absolute;
-  bottom: 50%;
+  top: 75%;
   left: -15%;
+  position: relative;
 }
 
 .otterShadow {
+  position: absolute;
   height: 6rem;
   width: 15rem;
+  top: 94.5%;
+  right: 22%;
   border-radius: 50%;
   filter: blur(1rem);
   background-color: rgba(0, 0, 0, 0.4);
