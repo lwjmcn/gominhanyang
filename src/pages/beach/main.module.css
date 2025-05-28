@@ -142,7 +142,7 @@
 }
 .speechBubble {
   position: absolute;
-  bottom: 21rem;
+  bottom: 20rem;
   left: 18rem; /* ✅ 고정된 거리로 밀기 */
   width: 26rem;
   padding: 2rem;
