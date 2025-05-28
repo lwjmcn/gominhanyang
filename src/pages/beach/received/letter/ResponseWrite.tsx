@@ -95,6 +95,7 @@ export default function ResponseWritePage() {
             leveled_up: rewardResponse.leveled_up,
             rewardItems: rewardResponse.new_items,
           },
+          replace: true,
         });
       }
     } catch (error) {

@@ -84,6 +84,7 @@ export default function LetterWritePage() {
           leveled_up: rewardResponse.leveled_up,
           rewardItems: rewardResponse.new_items,
         },
+        replace: true,
       });
     } catch (error) {
       showToast('편지 전송 중 오류가 발생했습니다.');
