@@ -17,8 +17,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 2.0rem;
+  margin: 2rem;
   padding: 1rem 1.5rem;
+  z-index: 1001;
 }
 
 /* 탭 컨테이너 */
@@ -36,10 +37,10 @@
 /* 각 탭 버튼 스타일 */
 .tabContainer button {
   display: flex;
-  flex-direction: row; 
-  align-items: center;        /* 수직 중앙 정렬 */
-  justify-content: center;    /* 수평 중앙 정렬 */
-  gap: 0.8rem;                 /* 이미지-텍스트 사이 간격 */
+  flex-direction: row;
+  align-items: center; /* 수직 중앙 정렬 */
+  justify-content: center; /* 수평 중앙 정렬 */
+  gap: 0.8rem; /* 이미지-텍스트 사이 간격 */
   min-width: 100px;
   min-height: 40px;
   padding: 0.6rem 1rem;
