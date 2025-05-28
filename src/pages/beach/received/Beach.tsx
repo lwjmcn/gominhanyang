@@ -12,10 +12,11 @@ export default function BeachPage() {
   const { showToast } = useToastStore();
   const [letters, setLetters] = useState<Letter[] | undefined>(undefined);
   const [comments, setComments] = useState<RepliedLetter[] | undefined>(undefined);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLettersLoading, setIsLettersLoading] = useState(false);
+  const [isCommentsLoading, setIsCommentsLoading] = useState(false);
 
   const fetchLetters = async () => {
-    setIsLoading(true);
+    setIsLettersLoading(true);
 
     try {
       const response = await getRandomLetters();
@@ -34,11 +35,12 @@ export default function BeachPage() {
     } catch (error) {
       showToast('편지 목록을 불러오는 중 오류가 발생했습니다.');
     } finally {
-      setIsLoading(false);
+      setIsLettersLoading(false);
     }
   };
+
   const fetchComments = async () => {
-    setIsLoading(true);
+    setIsCommentsLoading(true);
 
     try {
       const response = await getRepliedLetters();
@@ -57,12 +59,12 @@ export default function BeachPage() {
     } catch (error) {
       showToast('답장 목록을 불러오는 중 오류가 발생했습니다.');
     } finally {
-      setIsLoading(false);
+      setIsCommentsLoading(false);
     }
   };
+
   useEffect(() => {
-    fetchLetters();
-    fetchComments();
+    Promise.all([fetchLetters(), fetchComments()]);
   }, []);
 
   return (
@@ -86,53 +88,61 @@ export default function BeachPage() {
         </div>
         {/* 편지들 */}
         <div className={styles.lettersContainer}>
-          {isLoading && (
+          {(isLettersLoading || isCommentsLoading) && (
             <div className={styles.loadingContainer}>
-              <p>불러오는 중...</p>
+              <div className={styles.loadingSpinner}></div>
+              <p>바다에서 편지가 흘러오는 중...</p>
             </div>
           )}
-          {letters &&
-            letters.slice(0, 2).map((letter, index) => (
-              <button
-                key={`letter-${letter._id}`}
-                style={{
-                  position: 'absolute',
-                  left: `${Math.random() * 70 + 10}%`,
-                  top: `${Math.random() * 60 + 20}%`,
-                  height: `${Math.random() * 3 + 10}rem`,
-                  width: 'max-content',
-                }}
-                className={styles.randomLetterButton}
-                onClick={() => navigate(`/received/letters/${letter._id}`)}
-              >
-                <img
-                  className={styles.boatIcon}
-                  src="/image/beach/paperboat.webp"
-                  alt={`흘러온 편지 ${index + 1}`}
+          {!isLettersLoading &&
+            letters &&
+            letters.slice(0, 3).map((letter, index) => {
+              // 랜덤 위치 생성
+              const top = Math.random() * 50;
+              const left = Math.random() * 80;
+              const size = 15 + (top / 100) * 15; // 아래에 있을수록 크기가 커짐
+              const delay = Math.random() * 3;
+
+              return (
+                <button
+                  key={`letter-${letter._id}`}
+                  style={{
+                    position: 'absolute',
+                    left: `${left}%`,
+                    top: `${top}%`,
+                    width: `${size}rem`,
+                    height: `${size}rem`,
+                    animationDelay: `${delay}s`,
+                  }}
+                  className={styles.randomLetterButton}
+                  onClick={() => navigate(`/received/letters/${letter._id}`)}
                 />
-              </button>
-            ))}
-          {comments &&
-            comments.slice(0, 2).map(comment => (
-              <button
-                key={`comment-${comment._id}`}
-                style={{
-                  position: 'absolute',
-                  left: `${Math.random() * 80 + 10}%`,
-                  top: `${Math.random() * 60 + 20}%`,
-                  height: `${Math.random() * 3 + 10}rem`,
-                  width: 'auto',
-                }}
-                className={styles.randomLetterButton}
-                onClick={() => navigate(`/received/responses/${comments[0]._id}`)}
-              >
-                <img
-                  className={styles.bottleIcon}
-                  src="/image/beach/responsebottle.webp"
-                  alt="받은 답장"
+              );
+            })}
+          {!isCommentsLoading &&
+            comments &&
+            comments.slice(0, 1).map((comment, index) => {
+              const top = Math.random() * 50;
+              const left = Math.random() * 80;
+              const size = 15 + (top / 100) * 15; // 아래에 있을수록 크기가 커짐
+              const delay = Math.random() * 3;
+
+              return (
+                <button
+                  key={`comment-${comment._id}`}
+                  style={{
+                    position: 'absolute',
+                    left: `${left}%`,
+                    top: `${top}%`,
+                    width: `${size}rem`,
+                    height: `${size}rem`,
+                    animationDelay: `${delay}s`,
+                  }}
+                  className={styles.randomCommentButton}
+                  onClick={() => navigate(`/received/responses/${comments[0]._id}`)}
                 />
-              </button>
-            ))}
+              );
+            })}
         </div>
       </div>
     </div>
