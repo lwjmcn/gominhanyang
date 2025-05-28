@@ -1,7 +1,7 @@
 import styles from './textarea.module.css';
 
 interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
-  wrapperStyles?: React.CSSProperties;
+  wrapperstyles?: React.CSSProperties;
   type: 'letter' | 'reply';
   children?: React.ReactNode;
 }
@@ -13,7 +13,7 @@ export const Textarea = (props: TextareaProps) => {
         {
           '--color-background': `${props.type === 'letter' ? '#fbf39d' : '#FEE1DC'}`,
           '--color-border': `${props.type === 'letter' ? '#f7eb6c' : '#FBC6BC'}`,
-          ...(props.wrapperStyles || {}),
+          ...(props.wrapperstyles || {}),
         } as React.CSSProperties
       }
     >
