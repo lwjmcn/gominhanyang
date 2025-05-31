@@ -59,7 +59,7 @@ export default function MainPage() {
           object-fit="cover"
         />
         <button onClick={() => navigate('/post')} className={styles.signHouseText}>
-          마음쉼터
+          집 가는 길
         </button>
       </div>
       <div className={styles.roadSignContainer}>
@@ -70,7 +70,7 @@ export default function MainPage() {
           object-fit="cover"
         />
         <button onClick={() => navigate('/received')} className={styles.signOceanText}>
-          파랑해변
+          해변 가는 길
         </button>
       </div>
 

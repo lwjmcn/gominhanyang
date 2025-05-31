@@ -85,7 +85,7 @@
 .signHouseText {
   position: absolute;
   top: 3.4rem;
-  left: 7rem;
+  left: 6rem;
   font-size: 3rem;
   background-color: transparent;
   color: var(--text-primary-color);
@@ -94,7 +94,7 @@
 .signOceanText {
   position: absolute;
   top: 3.4rem;
-  left: 3rem;
+  left: 2rem;
   font-size: 3rem;
   background-color: transparent;
   color: var(--text-primary-color);
