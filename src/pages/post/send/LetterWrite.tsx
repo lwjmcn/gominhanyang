@@ -96,7 +96,7 @@ export default function LetterWritePage() {
 
   const fetchInitialQuestion = async () => {
     if (emotion === null) {
-      showToast('감정을 선택해주세요.');
+      setHelpMessages(['감정을 먼저 선택해주세요.']);
       return;
     }
 
@@ -111,7 +111,7 @@ export default function LetterWritePage() {
   };
   const fetchHelpQuestion = async () => {
     if (content.length == 0) {
-      showToast('작성한 내용이 없습니다');
+      setHelpMessages(['편지를 쓰시면 그 내용을 기반으로 어떻게 이어가면 좋을지 추천해드릴게요.']);
       return;
     }
     const response = await getHelpQuestion({ partial_letter: content.slice(-100) });
@@ -128,6 +128,8 @@ export default function LetterWritePage() {
     ReactGA.event('ai_help', {
       category: 'letter write',
     });
+
+    setHelpMessages(['잠시만 기다려주세요...']);
 
     if (firstTime) {
       fetchInitialQuestion();
