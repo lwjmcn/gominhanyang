@@ -6,11 +6,13 @@ import { getItemDetail, useItem, unuseItem } from '@/lib/api/item';
 import { ItemDetail as ItemDetailType } from '@/lib/type/item.type';
 import { isErrorResponse } from '@/lib/response_dto';
 import { useToastStore } from '@/store/toast';
+import { useItemStore } from '@/store/item';
 
 export default function ItemDetailModal() {
   const { itemId } = useParams();
   const navigate = useNavigate();
   const { showToast } = useToastStore();
+  const { items, setItems } = useItemStore();
   const [isLoading, setIsLoading] = useState(false);
   const [item, setItem] = useState<ItemDetailType | null>(null);
 
@@ -67,7 +69,8 @@ export default function ItemDetailModal() {
       }
 
       showToast('아이템이 적용되었습니다.');
-      fetchItemDetail(); // 상태 갱신을 위해 재조회
+      setItem({ ...item, used: true });
+      setItems(items.map(item => (item.item_id === item.item_id ? { ...item, used: true } : item)));
     } catch (error) {
       showToast('아이템 적용에 실패했습니다.');
     } finally {
@@ -93,7 +96,10 @@ export default function ItemDetailModal() {
       }
 
       showToast('아이템 적용이 해제되었습니다.');
-      fetchItemDetail(); // 상태 갱신을 위해 재조회
+      setItem({ ...item, used: false });
+      setItems(
+        items.map(item => (item.item_id === item.item_id ? { ...item, used: false } : item)),
+      );
     } catch (error) {
       showToast('아이템 해제에 실패했습니다.');
     } finally {
@@ -106,9 +112,9 @@ export default function ItemDetailModal() {
   return (
     <Modal onClose={() => navigate(-1)}>
       <h1>{item.name}</h1>
-      <img src="https://placehold.co/200x100" alt={item.name} style={{ width: '100%' }} />
+      <img src={'/image/item/dolphin.webp'} alt={item.name} style={{ height: '16rem' }} />
       <p>{item.description}</p>
-      <p className={styles.date}>획득일: {item.granted_at}</p>
+      <p className={styles.date}>획득일: {item.granted_at.substring(0, 10)}</p>
       {item.used ? (
         <button
           className={`${styles.chip} ${styles.used}`}

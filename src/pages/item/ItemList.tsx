@@ -7,11 +7,13 @@ import { getMyItems } from '@/lib/api/item';
 import { Item as ItemType, CategoryType } from '@/lib/type/item.type';
 import { isErrorResponse } from '@/lib/response_dto';
 import { useToastStore } from '@/store/toast';
+import { useItemStore } from '@/store/item';
 
 export default function ItemListPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const { showToast } = useToastStore();
+  const { items, setItems } = useItemStore();
 
   const tabs = [
     { label: '바다', value: CategoryType.OCEAN },
@@ -20,7 +22,6 @@ export default function ItemListPage() {
   ];
 
   const [activeTab, setActiveTab] = useState(0);
-  const [items, setItems] = useState<ItemType[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchItems = async () => {
@@ -47,8 +48,10 @@ export default function ItemListPage() {
   };
 
   useEffect(() => {
-    fetchItems();
-  }, []);
+    if (items.length === 0) {
+      fetchItems();
+    }
+  }, [location]);
 
   const filteredItems = useMemo(() => {
     const selectedCategory = tabs[activeTab].value;
@@ -83,7 +86,7 @@ export default function ItemListPage() {
                   id: item.item_id,
                   name: item.name,
                   isUsed: item.used,
-                  imageUrl: 'https://placehold.co/200x200', // TODO: 이미지 URL 추가
+                  imageUrl: '/image/item/dolphin.webp', // TODO: 이미지 URL 추가
                 }}
                 onClick={() =>
                   navigate(`/items/${item.item_id}`, {
