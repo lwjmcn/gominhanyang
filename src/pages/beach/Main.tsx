@@ -19,7 +19,20 @@ export default function MainPage() {
     const percentage = (response.point / 100) * 100;
     setPointFill(percentage);
     setLevel(response.level);
-    console.log('level', response.level);
+    setPoint(response.point);
+  };
+
+  const fetchUsedItems = async () => {
+    try {
+      const response = await getMyItems();
+      if (!response || isErrorResponse(response)) {
+        console.error('Error fetching items:', response);
+        return;
+      }
+      setItems(response.items);
+    } catch (error) {
+      console.error('Error fetching items:', error);
+    }
   };
   useEffect(() => {
     getMyPoints();
@@ -27,6 +40,22 @@ export default function MainPage() {
 
   return (
     <div className={styles.container}>
+      {getUsedItems().map(item => (
+        <img
+          key={item.item_id}
+          src="/image/item/dolphin.webp"
+          alt={item.name}
+          className={styles.itemImage}
+          style={{
+            position: 'absolute',
+            left: `${70}%`,
+            top: `${30}%`,
+            width: '8rem',
+            height: '8rem',
+            objectFit: 'contain',
+          }}
+        />
+      ))}
       <div onClick={() => navigate('/items')} className={styles.pointContainer}>
         <img
           src="/image/main/shell.webp"
