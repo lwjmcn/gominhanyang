@@ -23,12 +23,12 @@ export default function SpeechBubble({ helpMessages, onRefresh }: SpeechBubblePr
             }}
           >
             {helpMessages.length === 0
-              ? '안녕하세요 :) 먼저 감정을 선택해주시면 제가 편지의 시작을 도와드릴게요.'
+              ? '안녕하세요. 저는 온달이에요. 편지를 시작하는 게 어렵거나 도중에 막히면 언제든지 도와드릴게요.'
               : helpMessages}
           </TypeIt>
         </div>
         <button className={styles.refreshButton} onClick={onRefresh}>
-          ▶ 도움 구하기
+          ▶ 도움이 필요해요
         </button>
       </div>
     </div>
