@@ -3,11 +3,15 @@ import styles from './main.module.css';
 import { useNavigate } from 'react-router-dom';
 import { getMyReward } from '../../lib/api/reward';
 import { isErrorResponse } from '../../lib/response_dto';
+import { getMyItems } from '@/lib/api/item';
+import { usePointStore } from '@/store/point';
+import { useItemStore } from '@/store/item';
 
 export default function MainPage() {
   const navigate = useNavigate();
   const [pointFill, setPointFill] = useState(0);
-  const [level, setLevel] = useState(0);
+  const { level, setLevel, setPoint } = usePointStore();
+  const { items, setItems, getUsedItems } = useItemStore();
 
   const getMyPoints = async () => {
     const response = await getMyReward();
@@ -34,8 +38,18 @@ export default function MainPage() {
       console.error('Error fetching items:', error);
     }
   };
+
   useEffect(() => {
-    getMyPoints();
+    // 스토어에 데이터가 없을 때만 API 호출
+    if (level === 0) {
+      getMyPoints();
+    } else {
+      setPointFill((level / 100) * 100);
+    }
+
+    if (items.length === 0) {
+      fetchUsedItems();
+    }
   }, []);
 
   return (

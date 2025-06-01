@@ -103,7 +103,11 @@
   background-position: center;
 }
 .randomLetterButton:hover {
+  background-color: transparent;
+}
+.randomLetterButton:active {
   transform: scale(1.1);
+  background-color: transparent;
 }
 .randomCommentButton {
   background-color: transparent;
@@ -114,6 +118,13 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+}
+.randomCommentButton:hover {
+  background-color: transparent;
+}
+.randomCommentButton:active {
+  transform: scale(1.1);
+  background-color: transparent;
 }
 
 .boatIcon {

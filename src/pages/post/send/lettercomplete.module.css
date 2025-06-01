@@ -25,26 +25,15 @@
 }
 
 .text {
-  font-size: 4rem;
-  margin-top: 0.1rem;
+  font-size: 3rem;
+  margin-top: 2rem;
 }
 
-.text2 {
+.title {
   font-size: 4rem;
   margin-top: 0;
   text-align: center;
 }
-.rewardItem {
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.rewardItem p:first-child {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
 .navButtonContainer {
   display: flex;
   gap: 6rem;
@@ -60,7 +49,7 @@
 }
 
 .navIcon {
-  width: 15rem;
+  height: 15rem;
   object-fit: contain;
 }
 

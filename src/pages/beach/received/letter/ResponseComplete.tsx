@@ -25,7 +25,11 @@ export default function ResponseCompletePage() {
         object-fit="cover"
       />
       <div className={styles.rewardSection}>
-        <p>{state.message}</p>
+        <p className={styles.text}>
+          {state.rewardItems.length > 0
+            ? '새로운 아이템이 도착했어요.\n어서 확인해보세요!'
+            : state.message}
+        </p>
       </div>
 
       <div className={styles.navButtonContainer}>

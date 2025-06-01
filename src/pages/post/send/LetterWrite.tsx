@@ -10,11 +10,14 @@ import { sendLetter } from '@/lib/api/letter';
 import { EmotionType, SendType } from '@/lib/type/letter.type';
 import { isErrorResponse } from '@/lib/response_dto';
 import { useToastStore } from '@/store/toast';
-import { grantReward } from '@/lib/api/reward';
+import { getMyReward, grantReward } from '@/lib/api/reward';
 import { ActionType } from '@/lib/type/reward.type';
 import LetterWriteForm from '@/components/LetterWriteForm';
 import { generateQuestion, getHelpQuestion } from '@/lib/api/question';
 import SpeechBubble from './components/SpeechBubble';
+import { getMyItems } from '@/lib/api/item';
+import { useItemStore } from '@/store/item';
+import { usePointStore } from '@/store/point';
 
 export default function LetterWritePage() {
   const [content, setContent] = useState('');
@@ -36,6 +39,9 @@ export default function LetterWritePage() {
   const [emotion, setEmotion] = useState<EmotionType | null>(
     (state?.emotion as EmotionType) || null,
   );
+
+  const { setItems } = useItemStore();
+  const { setPoint, setLevel } = usePointStore();
 
   const handleSendLetter = async () => {
     if (emotion === null) {
@@ -78,7 +84,28 @@ export default function LetterWritePage() {
         showToast(rewardResponse.error);
         return;
       }
+
       showToast('편지가 전송되었습니다.');
+
+      // 보상 포인트 추가
+      const pointResponse = await getMyReward();
+      if (isErrorResponse(pointResponse)) {
+        showToast(pointResponse.error);
+        return;
+      }
+      setPoint(pointResponse.point);
+      setLevel(pointResponse.level);
+
+      // 보상 아이템 추가
+      if (rewardResponse.new_items.length > 0) {
+        const response = await getMyItems();
+        if (isErrorResponse(response)) {
+          showToast(response.error);
+          return;
+        }
+        setItems(response.items);
+      }
+
       navigate('/letter/complete', {
         state: {
           sendType,

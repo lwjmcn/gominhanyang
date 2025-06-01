@@ -9,12 +9,15 @@ import { useToastStore } from '@/store/toast';
 import { replyToLetter, getReplyOptions } from '@/lib/api/letter';
 import { isErrorResponse, isSuccessResponse } from '@/lib/response_dto';
 import { ActionType } from '@/lib/type/reward.type';
-import { grantReward } from '@/lib/api/reward';
+import { getMyReward, grantReward } from '@/lib/api/reward';
 import StopWriteModal from '@/pages/post/send/components/StopWriteModal';
 import CompleteWriteModal from '@/pages/post/send/components/CompleteWriteModal';
 import { LetterDetail, SendType } from '@/lib/type/letter.type';
 import { Textarea } from '@/components/Textarea';
 import Caution from '@/pages/post/send/components/Caution';
+import { useItemStore } from '@/store/item';
+import { usePointStore } from '@/store/point';
+import { getMyItems } from '@/lib/api/item';
 
 export default function ResponseWritePage() {
   const nextButtonIcon = (
@@ -46,6 +49,9 @@ export default function ResponseWritePage() {
       created_at: '2023-10-01',
     },
   );
+
+  const { setPoint, setLevel } = usePointStore();
+  const { setItems } = useItemStore();
 
   const [helpMessages, setHelpMessages] = useState<string[]>([]);
 
@@ -89,6 +95,26 @@ export default function ResponseWritePage() {
 
       if (isSuccessResponse(rewardResponse)) {
         showToast('편지가 전송되었습니다.');
+
+        // 보상 포인트 추가
+        const pointResponse = await getMyReward();
+        if (isErrorResponse(pointResponse)) {
+          showToast(pointResponse.error);
+          return;
+        }
+        setPoint(pointResponse.point);
+        setLevel(pointResponse.level);
+
+        // 보상 아이템 추가
+        if (rewardResponse.new_items.length > 0) {
+          const response = await getMyItems();
+          if (isErrorResponse(response)) {
+            showToast(response.error);
+            return;
+          }
+          setItems(response.items);
+        }
+
         navigate(`/received/letters/${letterId}/complete`, {
           state: {
             message: rewardResponse.message,

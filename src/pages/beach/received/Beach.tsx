@@ -79,7 +79,7 @@ export default function BeachPage() {
             style={{ height: '80%', width: 'auto', marginTop: '10%' }}
           />
         }
-        onNextPress={() => navigate('/received/inbox-test')}
+        onNextPress={() => navigate('/received/all')}
       />
       <div className={styles.container}>
         <div className={styles.otterContainer}>
