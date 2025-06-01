@@ -125,7 +125,7 @@ export default function LetterWritePage() {
 
   const fetchInitialQuestion = async () => {
     if (emotion === null) {
-      setHelpMessages(['감정을 먼저 선택해주세요.']);
+      setHelpMessages(['감정을 선택해야 도움을 드릴 수 있어요.']);
       return;
     }
 
@@ -160,7 +160,7 @@ export default function LetterWritePage() {
 
     setHelpMessages(['잠시만 기다려주세요...']);
 
-    if (firstTime) {
+    if (firstTime && content.length == 0) {
       fetchInitialQuestion();
       setFirstTime(false);
       return;
