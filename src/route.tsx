@@ -21,8 +21,8 @@ import LetterSharePage from './pages/post/send/LetterShare';
 import LetterWritePage from './pages/post/send/LetterWrite';
 import ReceivedLetterDetailPage from './pages/beach/received/letter/ReceivedLetterDetail';
 // import ApiTestPage from './pages/test/ApiTest';
-import ReceivedInboxPage from './pages/beach/received/letter/ReceivedInboxPage';
 import LetterEmotionPage from './pages/post/send/LetterEmotion';
+import ReceivedListAllPage from './pages/beach/received/letter/ReceivedListAll';
 
 export const ProtectedRoute = () => {
   const { isAuth } = useAuthStore();
@@ -69,7 +69,7 @@ export default function AppRoutes() {
           <Route path="/letter/complete" element={<LetterCompletePage />} />
           <Route path="/letters" element={<LetterListPage />} />
           <Route path="/letters/:letterId" element={<LetterDetailPage />} />
-          <Route path="/received/inbox-test" element={<ReceivedInboxPage />} />
+          <Route path="/received/all" element={<ReceivedListAllPage />} />
         </Route>
         {/* <Route path="/counter" element={<Counter />} /> */}
       </Routes>
