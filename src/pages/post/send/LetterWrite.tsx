@@ -18,7 +18,6 @@ import SpeechBubble from './components/SpeechBubble';
 
 export default function LetterWritePage() {
   const [content, setContent] = useState('');
-  const [emotion, setEmotion] = useState<EmotionType | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const [firstTime, setFirstTime] = useState(true);
@@ -30,9 +29,12 @@ export default function LetterWritePage() {
   const navigate = useNavigate();
   const location = useLocation();
   const { showToast } = useToastStore();
-  const state = location.state as { sendType: string };
+  const state = location.state as { sendType: string; emotion: EmotionType };
   const [sendType, setSendType] = useState<SendType>(
     (state?.sendType as SendType) || SendType.SELF,
+  );
+  const [emotion, setEmotion] = useState<EmotionType | null>(
+    (state?.emotion as EmotionType) || null,
   );
 
   const handleSendLetter = async () => {

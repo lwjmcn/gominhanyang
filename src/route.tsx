@@ -22,6 +22,7 @@ import LetterWritePage from './pages/post/send/LetterWrite';
 import ReceivedLetterDetailPage from './pages/beach/received/letter/ReceivedLetterDetail';
 // import ApiTestPage from './pages/test/ApiTest';
 import ReceivedInboxPage from './pages/beach/received/letter/ReceivedInboxPage';
+import LetterEmotionPage from './pages/post/send/LetterEmotion';
 
 export const ProtectedRoute = () => {
   const { isAuth } = useAuthStore();
@@ -63,6 +64,7 @@ export default function AppRoutes() {
 
           <Route path="/post" element={<PostOfficePage />} />
           <Route path="/letter/share" element={<LetterSharePage />} />
+          <Route path="/letter/emotion" element={<LetterEmotionPage />} />
           <Route path="/letter/write" element={<LetterWritePage />} />
           <Route path="/letter/complete" element={<LetterCompletePage />} />
           <Route path="/letters" element={<LetterListPage />} />
