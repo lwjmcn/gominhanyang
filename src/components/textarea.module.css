@@ -14,9 +14,9 @@
 .letterInput {
   flex: 1;
   min-height: 20rem;
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-family: KyoboHand;
-  line-height: 1.6;
+  line-height: 3.8rem;
   resize: none;
   overflow-y: auto;
   background-color: transparent;
@@ -34,7 +34,7 @@
 
 .letterInput::placeholder {
   color: var(--text-placeholder-color);
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-family: KyoboHand;
 }
 
