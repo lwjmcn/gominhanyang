@@ -7,28 +7,7 @@ import Caution from './components/Caution';
 export default function LetterSharePage() {
   const navigate = useNavigate();
   const handleNextPage = (type: string) => {
-    navigate('/letter/write', { state: { sendType: type } });
-  };
-
-  const handleSave = () => {
-    // handle save logic here
-
-    console.log('Saved to my collection!');
-    handleNextPage(SendType.SELF);
-  };
-
-  const handleRandom = () => {
-    // handle random logic here
-
-    console.log('Sent to the sea!');
-    handleNextPage(SendType.RANDOM);
-  };
-
-  const handleSend = () => {
-    // handle send logic here
-
-    console.log('Sent to 온기우체부!');
-    handleNextPage(SendType.VOLUNTEER);
+    navigate('/letter/emotion', { state: { sendType: type } });
   };
 
   return (
@@ -38,7 +17,7 @@ export default function LetterSharePage() {
         <p className={styles.title}>누구에게 편지를 전하고 싶나요?</p>
 
         <div className={styles.buttonContainer}>
-          <button className={styles.shareButton} onClick={handleSave}>
+          <button className={styles.shareButton} onClick={() => handleNextPage(SendType.SELF)}>
             <img
               className={styles.buttonImage}
               src="/image/post/paper_archive_love.webp"
@@ -47,7 +26,7 @@ export default function LetterSharePage() {
             />
             <div className={styles.text}>나만의 보관함에 간직하기</div>
           </button>
-          <button className={styles.shareButton} onClick={handleRandom}>
+          <button className={styles.shareButton} onClick={() => handleNextPage(SendType.RANDOM)}>
             <img
               className={styles.buttonImage}
               src="/image/common/paper_boat.webp"
@@ -56,7 +35,7 @@ export default function LetterSharePage() {
             />
             <div className={styles.text}>바다 위 익명 친구에게 띄우기</div>
           </button>
-          <button className={styles.shareButton} onClick={handleSend}>
+          <button className={styles.shareButton} onClick={() => handleNextPage(SendType.VOLUNTEER)}>
             <img
               className={styles.buttonImage}
               src="/image/post/post_box.webp"

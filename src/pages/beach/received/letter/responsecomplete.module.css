@@ -15,6 +15,11 @@
   line-height: 6rem;
 }
 
+.text {
+  font-size: 3rem;
+  margin-top: 2rem;
+}
+
 .otterImage {
   width: auto;
   height: 32rem;
@@ -24,24 +29,6 @@
   width: 100%;
   text-align: center;
   text-align: center;
-}
-
-.rewardItems {
-  display: flex;
-  flex-direction: column;
-  border-radius: 4rem;
-  gap: 1rem;
-}
-
-.rewardItem {
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.rewardItem p:first-child {
-  font-weight: bold;
-  margin-bottom: 0.5rem;
 }
 
 .navButtonContainer {

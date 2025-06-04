@@ -21,7 +21,7 @@ export default function LetterCompletePage() {
 
   return (
     <div className={styles.container}>
-      <p className={styles.text2}>
+      <p className={styles.title}>
         언제든 다시 보고 싶은 편지, <br />
         보관함에 소중히 넣어두었어요.
       </p>
@@ -34,24 +34,29 @@ export default function LetterCompletePage() {
       />
 
       <div className={styles.rewardSection}>
-        <p className={styles.text}>{getRewardMessage()}</p>
-        <div className={styles.rewardItems}>
-          {state.rewardItems.map((item, index) => (
-            <div key={index} className={styles.rewardItem}>
-              <p className={styles.text}>{item.name}</p>
-              <p className={styles.text}>{item.description}</p>
-            </div>
-          ))}
-        </div>
+        <p className={styles.text}>
+          {state.rewardItems.length > 0
+            ? '새로운 아이템이 도착했어요.\n어서 확인해보세요!'
+            : state.message}
+        </p>
       </div>
 
       <div className={styles.navButtonContainer}>
-        <div onClick={() => navigate('/letters')} className={styles.navButton}>
-          <img src="/image/common/paper_archive.webp" className={styles.navIcon} alt="보관함" />
-          <div className={styles.yellowBoxButton}>
-            <span className={styles.buttonLabel}>나의 편지 보관함</span>
+        {state.rewardItems.length > 0 ? (
+          <div onClick={() => navigate('/items')} className={styles.navButton}>
+            <img src="/image/common/item.webp" className={styles.navIcon} alt="아이템" />
+            <div className={styles.yellowBoxButton}>
+              <span className={styles.buttonLabel}>아이템 보관함</span>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div onClick={() => navigate('/letters')} className={styles.navButton}>
+            <img src="/image/common/paper_archive.webp" className={styles.navIcon} alt="보관함" />
+            <div className={styles.yellowBoxButton}>
+              <span className={styles.buttonLabel}>나의 편지 보관함</span>
+            </div>
+          </div>
+        )}
 
         <div onClick={() => navigate('/')} className={styles.navButton}>
           <img src="/image/common/main.webp" className={styles.navIcon} alt="메인화면" />

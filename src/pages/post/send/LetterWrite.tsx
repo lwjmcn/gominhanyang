@@ -10,15 +10,17 @@ import { sendLetter } from '@/lib/api/letter';
 import { EmotionType, SendType } from '@/lib/type/letter.type';
 import { isErrorResponse } from '@/lib/response_dto';
 import { useToastStore } from '@/store/toast';
-import { grantReward } from '@/lib/api/reward';
+import { getMyReward, grantReward } from '@/lib/api/reward';
 import { ActionType } from '@/lib/type/reward.type';
 import LetterWriteForm from '@/components/LetterWriteForm';
 import { generateQuestion, getHelpQuestion } from '@/lib/api/question';
 import SpeechBubble from './components/SpeechBubble';
+import { getMyItems } from '@/lib/api/item';
+import { useItemStore } from '@/store/item';
+import { usePointStore } from '@/store/point';
 
 export default function LetterWritePage() {
   const [content, setContent] = useState('');
-  const [emotion, setEmotion] = useState<EmotionType | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const [firstTime, setFirstTime] = useState(true);
@@ -30,10 +32,16 @@ export default function LetterWritePage() {
   const navigate = useNavigate();
   const location = useLocation();
   const { showToast } = useToastStore();
-  const state = location.state as { sendType: string };
+  const state = location.state as { sendType: string; emotion: EmotionType };
   const [sendType, setSendType] = useState<SendType>(
     (state?.sendType as SendType) || SendType.SELF,
   );
+  const [emotion, setEmotion] = useState<EmotionType | null>(
+    (state?.emotion as EmotionType) || null,
+  );
+
+  const { setItems } = useItemStore();
+  const { setPoint, setLevel } = usePointStore();
 
   const handleSendLetter = async () => {
     if (emotion === null) {
@@ -76,7 +84,28 @@ export default function LetterWritePage() {
         showToast(rewardResponse.error);
         return;
       }
+
       showToast('편지가 전송되었습니다.');
+
+      // 보상 포인트 추가
+      const pointResponse = await getMyReward();
+      if (isErrorResponse(pointResponse)) {
+        showToast(pointResponse.error);
+        return;
+      }
+      setPoint(pointResponse.point);
+      setLevel(pointResponse.level);
+
+      // 보상 아이템 추가
+      if (rewardResponse.new_items.length > 0) {
+        const response = await getMyItems();
+        if (isErrorResponse(response)) {
+          showToast(response.error);
+          return;
+        }
+        setItems(response.items);
+      }
+
       navigate('/letter/complete', {
         state: {
           sendType,
@@ -96,7 +125,7 @@ export default function LetterWritePage() {
 
   const fetchInitialQuestion = async () => {
     if (emotion === null) {
-      showToast('감정을 선택해주세요.');
+      setHelpMessages(['감정을 선택해야 도움을 드릴 수 있어요.']);
       return;
     }
 
@@ -111,7 +140,7 @@ export default function LetterWritePage() {
   };
   const fetchHelpQuestion = async () => {
     if (content.length == 0) {
-      showToast('작성한 내용이 없습니다');
+      setHelpMessages(['편지를 쓰시면 그 내용을 기반으로 어떻게 이어가면 좋을지 추천해드릴게요.']);
       return;
     }
     const response = await getHelpQuestion({ partial_letter: content.slice(-100) });
@@ -129,7 +158,9 @@ export default function LetterWritePage() {
       category: 'letter write',
     });
 
-    if (firstTime) {
+    setHelpMessages(['잠시만 기다려주세요...']);
+
+    if (firstTime && content.length == 0) {
       fetchInitialQuestion();
       setFirstTime(false);
       return;

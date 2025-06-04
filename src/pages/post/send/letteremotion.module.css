@@ -15,13 +15,24 @@
 .title {
   font-size: 4rem;
 }
-.buttonContainer {
+.emotionContainer {
   display: flex;
-  flex-direction: column;
-  justify-content: center; /* 수직 가운데 정렬 */
+  justify-content: center;
   align-items: center;
-  gap: 6rem;
+  gap: 3rem;
   margin: 6rem 0;
+}
+
+.emotionImage {
+  width: 8rem;
+  height: 8rem;
+  object-fit: cover;
+}
+
+.emotionText {
+  margin-top: 1rem;
+  font-size: 2.4rem;
+  color: var(--green-border-color);
 }
 .shareButton {
   width: 50rem;

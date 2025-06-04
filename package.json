@@ -12,6 +12,7 @@
     "react-dom": "^19.1.0",
     "react-ga4": "^2.1.0",
     "react-router-dom": "^7.5.2",
+    "typeit-react": "^2.7.8",
     "zustand": "^5.0.3"
   },
   "devDependencies": {

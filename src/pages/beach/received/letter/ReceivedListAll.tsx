@@ -6,9 +6,9 @@ import { getRandomLetters, getRepliedLetters } from '@/lib/api/letter';
 import { Letter, RepliedLetter } from '@/lib/type/letter.type';
 import { isErrorResponse } from '@/lib/response_dto';
 import { useToastStore } from '@/store/toast';
-import styles from '../letter/inbox.module.css';
+import styles from '../letter/receivedlistall.module.css';
 
-export default function ReceivedInboxPage() {
+export default function ReceivedListAllPage() {
   const navigate = useNavigate();
   const { showToast } = useToastStore();
   const [tab, setTab] = useState<'letter' | 'reply'>('letter');
