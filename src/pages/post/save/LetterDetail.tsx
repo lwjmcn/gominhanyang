@@ -7,6 +7,7 @@ import { isErrorResponse } from '@/lib/response_dto';
 import { useToastStore } from '@/store/toast';
 import styles from './letterdetail.module.css';
 import { Textarea } from '@/components/Textarea';
+import { Satisfaction } from '@/pages/beach/received/response/component/Satisfaction';
 
 export default function LetterDetailPage() {
   const { letterId } = useParams();
@@ -81,6 +82,7 @@ export default function LetterDetailPage() {
                   <Textarea type="reply" value={comment.content} disabled />
                 </div>
               ))}
+              <Satisfaction letterId={comments[0]._id} />
             </div>
           </>
         )}

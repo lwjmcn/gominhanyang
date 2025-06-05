@@ -7,6 +7,7 @@ import { isErrorResponse } from '@/lib/response_dto';
 import { useToastStore } from '@/store/toast';
 import styles from './receivedresponsedetail.module.css';
 import { Textarea } from '@/components/Textarea';
+import { Satisfaction } from './component/Satisfaction';
 
 export default function ReceivedResponseDetailPage() {
   const { responseId } = useParams();
@@ -90,11 +91,14 @@ export default function ReceivedResponseDetailPage() {
         ) : comments.length === 0 ? (
           <p>아직 답장이 없습니다.</p>
         ) : (
-          comments.map(comment => (
-            <div key={comment._id} className={styles.commentItem}>
-              <Textarea type="reply" value={comment.content} disabled />
-            </div>
-          ))
+          <>
+            {comments.map(comment => (
+              <div key={comment._id} className={styles.commentItem}>
+                <Textarea type="reply" value={comment.content} disabled />
+              </div>
+            ))}
+            <Satisfaction letterId={comments[0]._id} />
+          </>
         )}
       </div>
     </div>

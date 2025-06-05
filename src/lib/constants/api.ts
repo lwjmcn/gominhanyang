@@ -21,6 +21,10 @@ export const API_ENDPOINTS = {
     SAVED: '/letter/saved',
     COMMENTS: (letterId: string) => `/letter/for-letter/${letterId}`,
   },
+  // 만족도 조사
+  SATISFACTION: {
+    BASE: '/satisfaction',
+  },
   // 아이템 관련
   ITEM: {
     BASE: '/item',
