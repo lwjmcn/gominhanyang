@@ -6,6 +6,7 @@ import { login } from '@/lib/api/user';
 import { isErrorResponse } from '@/lib/response_dto';
 import { useState } from 'react';
 import { useToastStore } from '@/store/toast';
+import { LoadingSpinner } from '@/components/LoadingSpinner';
 
 export default function SignInPage() {
   const navigate = useNavigate();
@@ -67,7 +68,7 @@ export default function SignInPage() {
           />
         </div>
         <button className={styles.loginButton} onClick={handleLogin} disabled={isLoading}>
-          {isLoading ? '로그인 중...' : '로그인 하기'}
+          {isLoading ? <LoadingSpinner spinnerSize={2} /> : '로그인 하기'}
         </button>
       </div>
       <Link to="/signup" className={styles.link}>

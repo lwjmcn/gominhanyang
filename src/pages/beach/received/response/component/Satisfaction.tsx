@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styles from './satisfaction.module.css';
 import { sendSatisfaction } from '@/lib/api/satisfaction';
 import { useToastStore } from '@/store/toast';
+import { LoadingSpinner } from '@/components/LoadingSpinner';
 
 interface SatisfactionProps {
   letterId: string; // 편지 ID를 prop으로 받도록 변경
@@ -44,12 +45,7 @@ export const Satisfaction = ({ letterId }: SatisfactionProps) => {
           <p>만족도 조사가 완료되었어요. 소중한 의견 감사합니다! 😊</p>
         </div>
       ) : isLoading ? (
-        <div className={styles.loadingContainer}>
-          <div className={styles.loadingSpinner}></div>
-          <div className={styles.description}>
-            <p>전송 중...</p>
-          </div>
-        </div>
+        <LoadingSpinner description="전송 중..." />
       ) : (
         <>
           <div className={styles.header}>

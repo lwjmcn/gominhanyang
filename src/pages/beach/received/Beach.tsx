@@ -6,6 +6,7 @@ import { getRandomLetters, getRepliedLetters } from '@/lib/api/letter';
 import { isErrorResponse } from '@/lib/response_dto';
 import { useToastStore } from '@/store/toast';
 import { Letter, RepliedLetter } from '@/lib/type/letter.type';
+import { LoadingSpinner } from '@/components/LoadingSpinner';
 
 export default function BeachPage() {
   const navigate = useNavigate();
@@ -81,7 +82,7 @@ export default function BeachPage() {
             style={{ height: '80%', width: 'auto', marginTop: '10%' }}
           />
         }
-        onNextPress={() => navigate('/received/all')}
+        onNextPress={() => navigate('/received')}
       />
       <div className={styles.container}>
         <div
@@ -99,10 +100,7 @@ export default function BeachPage() {
         {/* 편지들 */}
         <div className={styles.lettersContainer}>
           {(isLettersLoading || isCommentsLoading) && (
-            <div className={styles.loadingContainer}>
-              <div className={styles.loadingSpinner}></div>
-              <p>바다에서 편지가 흘러오는 중...</p>
-            </div>
+            <LoadingSpinner spinnerSize={3} description="바다에서 편지가 흘러오는 중..." />
           )}
           {!isLettersLoading &&
             letters &&

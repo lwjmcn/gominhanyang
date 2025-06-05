@@ -8,6 +8,8 @@ import { Item as ItemType, CategoryType } from '@/lib/type/item.type';
 import { isErrorResponse } from '@/lib/response_dto';
 import { useToastStore } from '@/store/toast';
 import { useItemStore } from '@/store/item';
+import { LoadingSpinner } from '@/components/LoadingSpinner';
+import { Nothing } from '@/components/Nothing';
 
 export default function ItemListPage() {
   const navigate = useNavigate();
@@ -75,26 +77,28 @@ export default function ItemListPage() {
         </div>
         <div className={styles.gridContainer}>
           {isLoading ? (
-            <div>로딩 중...</div>
+            <LoadingSpinner description="아이템을 불러오는 중..." />
           ) : filteredItems.length === 0 ? (
-            <div>아이템이 없습니다.</div>
+            <Nothing description="아직 아이템이 없어요." />
           ) : (
-            filteredItems.map(item => (
-              <Item
-                key={item.item_id}
-                item={{
-                  id: item.item_id,
-                  name: item.name,
-                  isUsed: item.used,
-                  imageUrl: '/image/item/dolphin.webp', // TODO: 이미지 URL 추가
-                }}
-                onClick={() =>
-                  navigate(`/items/${item.item_id}`, {
-                    state: { backgroundLocation: location },
-                  })
-                }
-              />
-            ))
+            <div className={styles.grid}>
+              {filteredItems.map(item => (
+                <Item
+                  key={item.item_id}
+                  item={{
+                    id: item.item_id,
+                    name: item.name,
+                    isUsed: item.used,
+                    imageUrl: '/image/item/dolphin.webp', // TODO: 이미지 URL 추가
+                  }}
+                  onClick={() =>
+                    navigate(`/items/${item.item_id}`, {
+                      state: { backgroundLocation: location },
+                    })
+                  }
+                />
+              ))}
+            </div>
           )}
         </div>
       </div>

@@ -8,6 +8,8 @@ import { useToastStore } from '@/store/toast';
 import styles from './letterdetail.module.css';
 import { Textarea } from '@/components/Textarea';
 import { Satisfaction } from '@/pages/beach/received/response/component/Satisfaction';
+import { LoadingSpinner } from '@/components/LoadingSpinner';
+import { Nothing } from '@/components/Nothing';
 
 export default function LetterDetailPage() {
   const { letterId } = useParams();
@@ -29,17 +31,12 @@ export default function LetterDetailPage() {
         const response = await getLetterDetail(letterId);
         if (isErrorResponse(response)) {
           showToast(response.error);
-          navigate('/letters');
           return;
         }
-        setLetter({
-          ...response.letter,
-          reply: response.comments?.[0], // ✅ 첫 번째 답장을 letter.reply에 포함
-        });
+        setLetter(response.letter);
         setComments(response.comments || []);
       } catch (error) {
         showToast('편지 정보를 불러오는데 실패했습니다.');
-        navigate('/letters');
       } finally {
         setIsLoading(false);
       }
@@ -52,13 +49,24 @@ export default function LetterDetailPage() {
     return (
       <div className={styles.pageBackground}>
         <Appbar title="편지 읽기" />
-        <p className={styles.container}>편지를 불러오는 중...</p>
+        <LoadingSpinner
+          description="편지 정보를 불러오는 중..."
+          containerStyle={{ height: '100dvh' }}
+        />
       </div>
     );
   }
 
   if (!letter) {
-    return null;
+    return (
+      <div className={styles.pageBackground}>
+        <Appbar title="편지 읽기" />
+        <Nothing
+          description="편지 정보를 찾을 수 없습니다."
+          containerStyle={{ height: '100dvh' }}
+        />
+      </div>
+    );
   }
 
   return (

@@ -7,6 +7,8 @@ import { Letter, RepliedLetter } from '@/lib/type/letter.type';
 import { isErrorResponse } from '@/lib/response_dto';
 import { useToastStore } from '@/store/toast';
 import styles from '../letter/receivedlistall.module.css';
+import { LoadingSpinner } from '@/components/LoadingSpinner';
+import { Nothing } from '@/components/Nothing';
 
 export default function ReceivedListAllPage() {
   const navigate = useNavigate();
@@ -75,10 +77,12 @@ export default function ReceivedListAllPage() {
 
       <div className={styles.container}>
         {isLoading ? (
-          <p>{tab === 'letter' ? '편지를 불러오는 중...' : '답장을 불러오는 중...'}</p>
+          <LoadingSpinner
+            description={tab === 'letter' ? '편지를 불러오는 중...' : '답장을 불러오는 중...'}
+          />
         ) : tab === 'letter' ? (
           letters.length === 0 ? (
-            <p>아직 받은 편지가 없습니다.</p>
+            <Nothing description="앗, 아직 받은 편지가 없어요." />
           ) : (
             letters.map(letter => (
               <LetterListItem
@@ -94,7 +98,7 @@ export default function ReceivedListAllPage() {
             ))
           )
         ) : replies.length === 0 ? (
-          <p>아직 받은 답장이 없습니다.</p>
+          <Nothing description="앗, 아직 받은 답장이 없어요." />
         ) : (
           replies.map(reply => (
             <LetterListItem

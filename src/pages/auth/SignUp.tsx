@@ -7,6 +7,7 @@ import { GenderType } from '@/lib/type/user.type';
 import { isErrorResponse } from '@/lib/response_dto';
 import { useAuthStore } from '@/store/auth';
 import ReactGA from 'react-ga4';
+import { LoadingSpinner } from '@/components/LoadingSpinner';
 
 export default function SignUpPage() {
   const navigate = useNavigate();
@@ -141,7 +142,7 @@ export default function SignUpPage() {
           />
         </div>
         <button className={styles.loginButton} onClick={handleSignup} disabled={isLoading}>
-          {isLoading ? '가입 중...' : '가입하기'}
+          {isLoading ? <LoadingSpinner spinnerSize={2} /> : '가입하기'}
         </button>
       </div>
       <Link to="/signin" className={styles.link}>

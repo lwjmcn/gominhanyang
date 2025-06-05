@@ -7,6 +7,7 @@ import { isErrorResponse } from '@/lib/response_dto';
 import { useToastStore } from '@/store/toast';
 import styles from './receivedletterdetail.module.css';
 import { Textarea } from '@/components/Textarea';
+import { LoadingSpinner } from '@/components/LoadingSpinner';
 
 export default function ReceivedLetterDetailPage() {
   const { letterId } = useParams();
@@ -53,9 +54,7 @@ export default function ReceivedLetterDetailPage() {
     return (
       <div className={styles.pageBackground}>
         <Appbar title="편지 읽기" />
-        <div className={styles.container}>
-          <p>편지를 불러오는 중...</p>
-        </div>
+        <LoadingSpinner description="편지를 불러오는 중..." />
       </div>
     );
   }

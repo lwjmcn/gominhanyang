@@ -4,12 +4,10 @@ import { useAuthStore } from '@/store/auth';
 import SignInPage from './pages/auth/SignIn';
 import SignUpPage from './pages/auth/SignUp';
 import MainPage from './pages/beach/Main';
-import ReceivedLetterListPage from './pages/beach/received/letter/ReceviedLetterList';
 import ResponseCompletePage from './pages/beach/received/letter/ResponseComplete';
 import ResponseWritePage from './pages/beach/received/letter/ResponseWrite';
 import BeachPage from './pages/beach/received/Beach';
 import ReceivedResponseDetailPage from './pages/beach/received/response/ReceivedResponseDetail';
-import ReceivedResponseListPage from './pages/beach/received/response/ReceivedResponseList';
 import SettingPage from './pages/beach/Setting';
 import ItemDetailModal from './pages/item/ItemDetail';
 import ItemListPage from './pages/item/ItemList';
@@ -51,10 +49,9 @@ export default function AppRoutes() {
         <Route element={<ProtectedRoute />}>
           <Route path="/" element={<MainPage />} />
           <Route path="/settings" element={<SettingPage />} />
-          <Route path="/received" element={<BeachPage />} />
-          <Route path="/received/responses" element={<ReceivedResponseListPage />} />
+          <Route path="/beach" element={<BeachPage />} />
+          <Route path="/received" element={<ReceivedListAllPage />} />
           <Route path="/received/responses/:responseId" element={<ReceivedResponseDetailPage />} />
-          <Route path="/received/letters" element={<ReceivedLetterListPage />} />
           <Route path="/received/letters/:letterId" element={<ReceivedLetterDetailPage />} />
           <Route path="/received/letters/:letterId/write" element={<ResponseWritePage />} />
           <Route path="/received/letters/:letterId/complete" element={<ResponseCompletePage />} />
@@ -69,7 +66,6 @@ export default function AppRoutes() {
           <Route path="/letter/complete" element={<LetterCompletePage />} />
           <Route path="/letters" element={<LetterListPage />} />
           <Route path="/letters/:letterId" element={<LetterDetailPage />} />
-          <Route path="/received/all" element={<ReceivedListAllPage />} />
         </Route>
         {/* <Route path="/counter" element={<Counter />} /> */}
       </Routes>
