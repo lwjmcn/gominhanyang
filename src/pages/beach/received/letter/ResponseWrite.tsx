@@ -42,13 +42,7 @@ export default function ResponseWritePage() {
 
   const location = useLocation();
   const state = location.state as { letter: LetterDetail };
-  const [letter, setLetter] = useState<LetterDetail>(
-    state?.letter || {
-      title: '제목이에요',
-      content: '안녕하세요 편지 내용이에요안녕하세요 편지 내용이에요',
-      created_at: '2023-10-01',
-    },
-  );
+  const [letter, setLetter] = useState<LetterDetail>(state?.letter);
 
   const { setPoint, setLevel } = usePointStore();
   const { setItems } = useItemStore();
