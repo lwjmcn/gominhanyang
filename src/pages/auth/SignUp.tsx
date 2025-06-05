@@ -5,6 +5,8 @@ import { useState } from 'react';
 import { signup } from '@/lib/api/user';
 import { GenderType } from '@/lib/type/user.type';
 import { isErrorResponse } from '@/lib/response_dto';
+import { useAuthStore } from '@/store/auth';
+import ReactGA from 'react-ga4';
 
 export default function SignUpPage() {
   const navigate = useNavigate();
@@ -14,7 +16,10 @@ export default function SignUpPage() {
     nickname: '',
     gender: GenderType.OTHER,
     age: undefined,
+    address: '',
   });
+
+  const { setLogin } = useAuthStore();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -26,11 +31,16 @@ export default function SignUpPage() {
 
   const handleSignup = async () => {
     if (!formData.nickname) {
-      showToast('닉네임을 입력해주세요.');
+      showToast('닉네임(ID)을 입력해주세요.');
       return;
-    }
-    if (!formData.age) {
+    } else if (!formData.address) {
+      showToast('주소를 입력해주세요.');
+      return;
+    } else if (!formData.age) {
       showToast('출생연도를 입력해주세요.');
+      return;
+    } else if (formData.age < 1900 || formData.age > new Date().getFullYear()) {
+      showToast('유효한 출생연도를 입력해주세요.');
       return;
     }
 
@@ -41,6 +51,7 @@ export default function SignUpPage() {
         nickname: formData.nickname,
         gender: formData.gender,
         age: formData.age,
+        address: formData.address,
       });
 
       if (!response) {
@@ -52,7 +63,8 @@ export default function SignUpPage() {
         showToast(response.error);
         return;
       }
-
+      setLogin();
+      ReactGA.set({ user_id: response.nickname });
       showToast('가입이 완료되었습니다.');
       navigate('/signin');
     } catch (error) {
@@ -113,6 +125,17 @@ export default function SignUpPage() {
             type="number"
             placeholder="출생연도 ex. 2006"
             value={formData.age}
+            onChange={handleInputChange}
+            disabled={isLoading}
+          />
+        </div>
+        <div className={styles.labelContainer}>
+          <label className={styles.label}>주소</label>
+          <input
+            className={styles.input}
+            name="address"
+            placeholder="온기우체부 편지를 받을 주소"
+            value={formData.address}
             onChange={handleInputChange}
             disabled={isLoading}
           />
