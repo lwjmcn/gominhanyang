@@ -101,3 +101,25 @@
 .submitButton:active {
   background-color: var(--blue-background-color);
 }
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.loadingSpinner {
+  width: 4rem;
+  height: 4rem;
+  border: 1rem solid var(--blue-base-color);
+  border-top: 1rem solid var(--blue-border-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
