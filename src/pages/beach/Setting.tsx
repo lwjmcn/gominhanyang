@@ -155,14 +155,18 @@ export default function SettingPage() {
             disabled={isLoading}
           />
         </div>
-        {/* <input
-          type="text"
-          name="address"
-          placeholder="주소"
-          value={formData.address}
-          onChange={handleInputChange}
-          disabled={isLoading}
-        />
+        <div className={styles.labelContainer}>
+          <label className={styles.label}>주소</label>
+          <input
+            className={styles.input}
+            name="address"
+            placeholder="온기우체부 편지를 받을 주소"
+            value={formData.address}
+            onChange={handleInputChange}
+            disabled={isLoading}
+          />
+        </div>
+        {/* 
         <input
           type="tel"
           name="phone"

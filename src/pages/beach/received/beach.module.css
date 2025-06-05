@@ -26,9 +26,9 @@
   justify-content: center;
 }
 .speechBubble {
-  width: 24rem;
-  padding: 2rem;
-  margin-right: 2rem;
+  width: 28rem;
+  padding: 0 2rem;
+  margin-right: 4rem;
   background-color: var(--background-color);
   opacity: 0.8;
   border-radius: 2rem;
@@ -45,6 +45,21 @@
   border-width: 1rem;
   border-style: solid;
   border-color: rgba(255, 255, 255, 0.8) transparent transparent transparent;
+}
+.bubbleAnimation {
+  animation: bubble 2s infinite;
+}
+
+@keyframes bubble {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 .otterImage {
   position: absolute;

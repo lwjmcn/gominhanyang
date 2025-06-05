@@ -1,16 +1,23 @@
 import Appbar from '@/components/Appbar';
 import { useNavigate } from 'react-router-dom';
 import styles from './postoffice.module.css';
+import { useState } from 'react';
 
 export default function PostOfficePage() {
   const navigate = useNavigate();
+  const [otterClicked, setOtterClicked] = useState(false);
+
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      onClick={() => {
+        setOtterClicked(true);
+        setTimeout(() => setOtterClicked(false), 2000);
+      }}
+    >
       <Appbar title="" />
-      <div className={styles.speechBubble}>
-        편지를 쓰러 가볼까?
-        <br />
-        너의 이야기를 들려줘!
+      <div className={`${styles.speechBubble} ${otterClicked ? styles.bubbleAnimation : ''}`}>
+        <p>편지를 쓰러 갈까요?{'\n'}당신의 이야기를 들려주세요.</p>
       </div>
       <div className={styles.optionRow}>
         <div className={styles.optionItem} onClick={() => navigate('/letter/share')}>
