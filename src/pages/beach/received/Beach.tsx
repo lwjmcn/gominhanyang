@@ -15,6 +15,8 @@ export default function BeachPage() {
   const [isLettersLoading, setIsLettersLoading] = useState(false);
   const [isCommentsLoading, setIsCommentsLoading] = useState(false);
 
+  const [otterClicked, setOtterClicked] = useState(false);
+
   const fetchLetters = async () => {
     setIsLettersLoading(true);
 
@@ -82,8 +84,14 @@ export default function BeachPage() {
         onNextPress={() => navigate('/received/all')}
       />
       <div className={styles.container}>
-        <div className={styles.otterContainer}>
-          <div className={styles.speechBubble}>
+        <div
+          className={styles.otterContainer}
+          onClick={() => {
+            setOtterClicked(true);
+            setTimeout(() => setOtterClicked(false), 2000);
+          }}
+        >
+          <div className={`${styles.speechBubble} ${otterClicked ? styles.bubbleAnimation : ''}`}>
             <p>바다 너머에서{'\n'}흘러온 마음을 열어보실래요?</p>
           </div>
           <div className={styles.otterImage}></div>

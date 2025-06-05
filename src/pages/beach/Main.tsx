@@ -13,6 +13,8 @@ export default function MainPage() {
   const { level, setLevel, setPoint } = usePointStore();
   // const { items, setItems, getUsedItems } = useItemStore();
 
+  const [otterClicked, setOtterClicked] = useState(false);
+
   const getMyPoints = async () => {
     const response = await getMyReward();
     if (isErrorResponse(response)) {
@@ -120,18 +122,11 @@ export default function MainPage() {
       <div
         className={styles.otterContainer}
         onClick={() => {
-          //말풍선 반짝
-          const bubble = document.querySelector(`.${styles.speechBubble}`);
-          console.log('말풍선 클릭됨', bubble);
-          if (bubble) {
-            bubble.classList.add(styles.bubbleAnimation);
-            setTimeout(() => {
-              bubble.classList.remove(styles.bubbleAnimation);
-            }, 2000); // 애니메이션 지속 시간에 맞춰 조정
-          }
+          setOtterClicked(true);
+          setTimeout(() => setOtterClicked(false), 2000);
         }}
       >
-        <div className={styles.speechBubble}>
+        <div className={`${styles.speechBubble} ${otterClicked ? styles.bubbleAnimation : ''}`}>
           <p>반가워요!{'\n'}오늘은 어디로 떠나볼까요?</p>
         </div>
         <img src="/image/main/otter.webp" className={styles.otterImage} alt="otter" />
