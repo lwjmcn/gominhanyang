@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  padding: 0 2rem;
   gap: 2rem;
   background-color: var(--blue-background-color);
   height: 100dvh;
@@ -9,20 +11,19 @@
 
 .title {
   font-size: 4rem;
-  margin-top: 10rem;
   text-align: center;
-  white-space: pre-wrap;
-  line-height: 6rem;
 }
 
 .text {
   font-size: 3rem;
-  margin-top: 2rem;
+  padding: 2rem;
 }
 
 .otterImage {
   width: auto;
   height: 32rem;
+  margin: 1rem;
+  object-fit: cover;
 }
 
 .rewardSection {

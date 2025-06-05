@@ -15,15 +15,8 @@ export default function ResponseCompletePage() {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>
-        온기를 담은 소중한 답장,{'\n'}온기 우체부가 잘 전달해드릴게요!
-      </h2>
-      <img
-        className={styles.otterImage}
-        src="/image/beach/ondal.webp"
-        alt="우체부"
-        object-fit="cover"
-      />
+      <p className={styles.title}>온기를 담은 소중한 답장,{'\n'}온기 우체부가 잘 전달해드릴게요!</p>
+      <img className={styles.otterImage} src="/image/beach/ondal.webp" alt="우체부" />
       <div className={styles.rewardSection}>
         <p className={styles.text}>
           {
