@@ -282,35 +282,35 @@ export default function LetterWritePage() {
           <img
             src="/image/write/emotion_excited.webp"
             object-fit="cover"
-            alt="기쁨"
+            alt={EmotionType.EXCITED}
             onClick={() => handleChangeEmotion(EmotionType.EXCITED)}
             className={emotion === EmotionType.EXCITED ? styles.selected : ''}
           />
           <img
             src="/image/write/emotion_happy.webp"
             object-fit="cover"
-            alt="행복"
+            alt={EmotionType.HAPPY}
             onClick={() => handleChangeEmotion(EmotionType.HAPPY)}
             className={emotion === EmotionType.HAPPY ? styles.selected : ''}
           />
           <img
             src="/image/write/emotion_bored.webp"
             object-fit="cover"
-            alt="우울"
+            alt={EmotionType.DEPRESSED}
             onClick={() => handleChangeEmotion(EmotionType.DEPRESSED)}
             className={emotion === EmotionType.DEPRESSED ? styles.selected : ''}
           />
           <img
             src="/image/write/emotion_angry.webp"
             object-fit="cover"
-            alt="화남"
+            alt={EmotionType.ANGRY}
             onClick={() => handleChangeEmotion(EmotionType.ANGRY)}
             className={emotion === EmotionType.ANGRY ? styles.selected : ''}
           />
           <img
             src="/image/write/emotion_sad.webp"
             object-fit="cover"
-            alt="슬픔"
+            alt={EmotionType.SAD}
             onClick={() => handleChangeEmotion(EmotionType.SAD)}
             className={emotion === EmotionType.SAD ? styles.selected : ''}
           />

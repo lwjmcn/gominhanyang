@@ -30,47 +30,47 @@ export default function LetterEmotionPage() {
           <div className={styles.emotionItem}>
             <img
               src="/image/write/emotion_excited.webp"
-              alt="기쁨"
+              alt={EmotionType.EXCITED}
               onClick={() => handleNextPage(EmotionType.EXCITED)}
               className={emotion === EmotionType.EXCITED ? styles.selected : styles.emotionImage}
             />
-            <div className={styles.emotionText}>기쁨</div>
+            <div className={styles.emotionText}>{EmotionType.EXCITED}</div>
           </div>
           <div className={styles.emotionItem}>
             <img
               src="/image/write/emotion_happy.webp"
-              alt="행복"
+              alt={EmotionType.HAPPY}
               onClick={() => handleNextPage(EmotionType.HAPPY)}
               className={emotion === EmotionType.HAPPY ? styles.selected : styles.emotionImage}
             />
-            <div className={styles.emotionText}>행복</div>
+            <div className={styles.emotionText}>{EmotionType.HAPPY}</div>
           </div>
           <div className={styles.emotionItem}>
             <img
               src="/image/write/emotion_bored.webp"
-              alt="우울"
+              alt={EmotionType.DEPRESSED}
               onClick={() => handleNextPage(EmotionType.DEPRESSED)}
               className={emotion === EmotionType.DEPRESSED ? styles.selected : styles.emotionImage}
             />
-            <div className={styles.emotionText}>우울</div>
+            <div className={styles.emotionText}>{EmotionType.DEPRESSED}</div>
           </div>
           <div className={styles.emotionItem}>
             <img
               src="/image/write/emotion_angry.webp"
-              alt="화남"
+              alt={EmotionType.ANGRY}
               onClick={() => handleNextPage(EmotionType.ANGRY)}
               className={emotion === EmotionType.ANGRY ? styles.selected : styles.emotionImage}
             />
-            <div className={styles.emotionText}>화남</div>
+            <div className={styles.emotionText}>{EmotionType.ANGRY}</div>
           </div>
           <div className={styles.emotionItem}>
             <img
               src="/image/write/emotion_sad.webp"
-              alt="슬픔"
+              alt={EmotionType.SAD}
               onClick={() => handleNextPage(EmotionType.SAD)}
               className={emotion === EmotionType.SAD ? styles.selected : styles.emotionImage}
             />
-            <div className={styles.emotionText}>슬픔</div>
+            <div className={styles.emotionText}>{EmotionType.SAD}</div>
           </div>
         </div>
       </div>
