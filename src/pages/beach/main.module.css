@@ -131,7 +131,7 @@
   bottom: 20rem;
   left: 18rem; /* ✅ 고정된 거리로 밀기 */
   width: 26rem;
-  padding: 2rem;
+  padding: 0 2rem;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 2rem;
   text-align: center;
@@ -143,10 +143,25 @@
   position: absolute;
   top: 75%;
   transform: translateY(-50%);
-  left: -2rem; /* ← 본체 안에서 적당히 중앙 */
+  left: -1.8rem; /* ← 본체 안에서 적당히 중앙 */
   border-top: 1rem solid transparent;
   border-bottom: 1rem solid transparent;
   border-right: 2rem solid rgba(255, 255, 255, 0.9);
+}
+.bubbleAnimation {
+  animation: bubble 2s infinite;
+}
+
+@keyframes bubble {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .itemImage {

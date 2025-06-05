@@ -26,9 +26,9 @@
   justify-content: center;
 }
 .speechBubble {
-  width: 24rem;
-  padding: 2rem;
-  margin-right: 2rem;
+  width: 28rem;
+  padding: 0 2rem;
+  margin-right: 4rem;
   background-color: var(--background-color);
   opacity: 0.8;
   border-radius: 2rem;
