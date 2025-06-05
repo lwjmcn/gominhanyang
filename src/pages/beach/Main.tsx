@@ -3,15 +3,15 @@ import styles from './main.module.css';
 import { useNavigate } from 'react-router-dom';
 import { getMyReward } from '../../lib/api/reward';
 import { isErrorResponse } from '../../lib/response_dto';
-import { getMyItems } from '@/lib/api/item';
+// import { getMyItems } from '@/lib/api/item';
 import { usePointStore } from '@/store/point';
-import { useItemStore } from '@/store/item';
+// import { useItemStore } from '@/store/item';
 
 export default function MainPage() {
   const navigate = useNavigate();
   const [pointFill, setPointFill] = useState(0);
   const { level, setLevel, setPoint } = usePointStore();
-  const { items, setItems, getUsedItems } = useItemStore();
+  // const { items, setItems, getUsedItems } = useItemStore();
 
   const getMyPoints = async () => {
     const response = await getMyReward();
@@ -26,18 +26,18 @@ export default function MainPage() {
     setPoint(response.point);
   };
 
-  const fetchUsedItems = async () => {
-    try {
-      const response = await getMyItems();
-      if (!response || isErrorResponse(response)) {
-        console.error('Error fetching items:', response);
-        return;
-      }
-      setItems(response.items);
-    } catch (error) {
-      console.error('Error fetching items:', error);
-    }
-  };
+  // const fetchUsedItems = async () => {
+  //   try {
+  //     const response = await getMyItems();
+  //     if (!response || isErrorResponse(response)) {
+  //       console.error('Error fetching items:', response);
+  //       return;
+  //     }
+  //     setItems(response.items);
+  //   } catch (error) {
+  //     console.error('Error fetching items:', error);
+  //   }
+  // };
 
   useEffect(() => {
     // 스토어에 데이터가 없을 때만 API 호출
@@ -47,14 +47,14 @@ export default function MainPage() {
       setPointFill((level / 100) * 100);
     }
 
-    if (items.length === 0) {
-      fetchUsedItems();
-    }
+    // if (items.length === 0) {
+    //   fetchUsedItems();
+    // }
   }, []);
 
   return (
     <div className={styles.container}>
-      {getUsedItems().map(item => (
+      {/* {getUsedItems().map(item => (
         <img
           key={item.item_id}
           src="/image/item/dolphin.webp"
@@ -69,8 +69,8 @@ export default function MainPage() {
             objectFit: 'contain',
           }}
         />
-      ))}
-      <div onClick={() => navigate('/items')} className={styles.pointContainer}>
+      ))} */}
+      <div /* onClick={() => navigate('/items')}*/ className={styles.pointContainer}>
         <img
           src="/image/main/shell.webp"
           object-fit="cover"

@@ -26,21 +26,23 @@ export default function ResponseCompletePage() {
       />
       <div className={styles.rewardSection}>
         <p className={styles.text}>
-          {state.rewardItems.length > 0
+          {
+            /*state.rewardItems.length > 0
             ? '새로운 아이템이 도착했어요.\n어서 확인해보세요!'
-            : state.message}
+            :*/ state.message
+          }
         </p>
       </div>
 
       <div className={styles.navButtonContainer}>
-        {state.rewardItems.length > 0 && (
+        {/* {state.rewardItems.length > 0 && (
           <div onClick={() => navigate('/items')} className={styles.navButton}>
             <img src="/image/common/item.webp" className={styles.navIcon} alt="아이템보관함" />
             <div className={styles.yellowBoxButton}>
               <span className={styles.buttonLabel}>아이템 보관함 가기</span>
             </div>
           </div>
-        )}
+        )} */}
         <div onClick={() => navigate('/')} className={styles.navButton}>
           <img src="/image/common/main.webp" className={styles.navIcon} alt="메인화면" />
           <div className={styles.yellowBoxButton}>
