@@ -8,6 +8,8 @@ import { useToastStore } from '@/store/toast';
 import styles from './receivedresponsedetail.module.css';
 import { Textarea } from '@/components/Textarea';
 import { Satisfaction } from './component/Satisfaction';
+import { LoadingSpinner } from '@/components/LoadingSpinner';
+import { Nothing } from '@/components/Nothing';
 
 export default function ReceivedResponseDetailPage() {
   const { responseId } = useParams();
@@ -41,8 +43,13 @@ export default function ReceivedResponseDetailPage() {
         return;
       }
 
+      if (!response.comments) {
+        showToast('답장을 찾을 수 없습니다.');
+        return;
+      }
+
       setLetter(response.letter);
-      setComments(response.comments || []);
+      setComments(response.comments!);
     } catch (error) {
       showToast('편지를 불러오는 중 오류가 발생했습니다.');
     } finally {
@@ -58,9 +65,7 @@ export default function ReceivedResponseDetailPage() {
     return (
       <div className={styles.pageBackground}>
         <Appbar title="답장 읽기" />
-        <div className={styles.container}>
-          <p>편지를 불러오는 중...</p>
-        </div>
+        <LoadingSpinner containerStyle={{ height: '100dvh' }} description="편지를 불러오는 중..." />
       </div>
     );
   }
@@ -69,9 +74,7 @@ export default function ReceivedResponseDetailPage() {
     return (
       <div className={styles.pageBackground}>
         <Appbar title="답장 읽기" />
-        <div className={styles.container}>
-          <p>편지를 찾을 수 없습니다.</p>
-        </div>
+        <Nothing containerStyle={{ height: '100dvh' }} description="편지를 찾을 수 없습니다." />
       </div>
     );
   }
@@ -87,9 +90,7 @@ export default function ReceivedResponseDetailPage() {
         </div>
         <hr className={styles.divider} />
         {isLoadingComments ? (
-          <p>답장을 불러오는 중...</p>
-        ) : comments.length === 0 ? (
-          <p>아직 답장이 없습니다.</p>
+          <LoadingSpinner description="답장을 불러오는 중..." />
         ) : (
           <>
             {comments.map(comment => (

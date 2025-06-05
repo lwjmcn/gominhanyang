@@ -2,6 +2,7 @@ import Modal from '@/components/Modal';
 import Caution from './Caution';
 import { SendType } from '@/lib/type/letter.type';
 import styles from './completewritemodal.module.css';
+import { LoadingSpinner } from '@/components/LoadingSpinner';
 
 interface CompleteWriteModalProps {
   onClose: () => void;
@@ -45,7 +46,7 @@ export default function CompleteWriteModal({
         />
         <div className="modal-button-container">
           <button onClick={onConfirm} disabled={isLoading}>
-            {isLoading ? '전송 중...' : '✅작성 완료'}
+            {isLoading ? <LoadingSpinner spinnerSize={2} /> : '✅작성 완료'}
           </button>
           <button onClick={onClose} disabled={isLoading}>
             ✍️다시 확인

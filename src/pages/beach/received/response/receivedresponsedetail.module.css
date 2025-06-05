@@ -1,6 +1,7 @@
 .pageBackground {
   background-color: var(--blue-background-color);
   min-height: 100dvh;
+  height: fit-content;
 }
 .container {
   padding: 3rem;

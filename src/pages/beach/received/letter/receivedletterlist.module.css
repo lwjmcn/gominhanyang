@@ -1,9 +1,0 @@
-.pageBackground {
-  background-color: var(--blue-background-color);
-  min-height: 100dvh;
-}
-
-.container {
-  padding-bottom: 1rem;
-  padding-top: 14rem;
-}

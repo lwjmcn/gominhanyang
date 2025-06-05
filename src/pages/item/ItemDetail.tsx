@@ -7,6 +7,7 @@ import { ItemDetail as ItemDetailType } from '@/lib/type/item.type';
 import { isErrorResponse } from '@/lib/response_dto';
 import { useToastStore } from '@/store/toast';
 import { useItemStore } from '@/store/item';
+import { LoadingSpinner } from '@/components/LoadingSpinner';
 
 export default function ItemDetailModal() {
   const { itemId } = useParams();
@@ -121,11 +122,11 @@ export default function ItemDetailModal() {
           onClick={handleUnuse}
           disabled={isLoading}
         >
-          {isLoading ? '처리 중...' : '❎아이템 해제하기'}
+          {isLoading ? <LoadingSpinner spinnerSize={2} /> : '❎아이템 해제하기'}
         </button>
       ) : (
         <button className={styles.chip} onClick={handleUse} disabled={isLoading}>
-          {isLoading ? '처리 중...' : '💚아이템 적용하기'}
+          {isLoading ? <LoadingSpinner spinnerSize={2} /> : '💚아이템 적용하기'}
         </button>
       )}
     </Modal>

@@ -1,3 +1,4 @@
+import { LoadingSpinner } from '@/components/LoadingSpinner';
 import styles from './speechmodal.module.css';
 import { EmotionType } from '@/lib/type/letter.type';
 
@@ -32,7 +33,7 @@ export default function SpeechModal({ onClose, type, helpMessages, onRefresh }: 
       )}
       <div>
         {helpMessages.length === 0 ? (
-          <p className={styles.cautionText}>불러오는 중...</p>
+          <LoadingSpinner spinnerSize={2} containerStyle={{ height: '4rem' }} />
         ) : (
           <p className={styles.cautionText}>{'이런 식으로 작성해볼 수 있어요.\n'}</p>
         )}

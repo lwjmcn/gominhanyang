@@ -7,6 +7,7 @@ import { GenderType } from '@/lib/type/user.type';
 import { isErrorResponse } from '@/lib/response_dto';
 import { useToastStore } from '@/store/toast';
 import { useAuthStore } from '@/store/auth';
+import { LoadingSpinner } from '@/components/LoadingSpinner';
 
 export default function SettingPage() {
   const navigate = useNavigate();
@@ -176,7 +177,7 @@ export default function SettingPage() {
           disabled={isLoading}
         /> */}
         <button className={styles.saveButton} onClick={handleUpdate} disabled={isLoading}>
-          {isLoading ? '저장 중...' : '저장하기'}
+          {isLoading ? <LoadingSpinner spinnerSize={2} /> : '저장하기'}
         </button>
 
         <button className={styles.logoutButton} onClick={handleLogout}>

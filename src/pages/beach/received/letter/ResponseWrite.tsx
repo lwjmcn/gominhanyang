@@ -42,7 +42,19 @@ export default function ResponseWritePage() {
 
   const location = useLocation();
   const state = location.state as { letter: LetterDetail };
-  const [letter, setLetter] = useState<LetterDetail>(state?.letter);
+  const [letter, setLetter] = useState<LetterDetail>(
+    state?.letter || {
+      letter_id: '',
+      title: '',
+      content: '',
+      created_at: '',
+      sender_name: '',
+      sender_id: '',
+      receiver_name: '',
+      receiver_id: '',
+      is_read: false,
+    },
+  );
 
   const { setPoint, setLevel } = usePointStore();
   const { setItems } = useItemStore();

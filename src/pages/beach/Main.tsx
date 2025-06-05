@@ -114,7 +114,7 @@ export default function MainPage() {
           alt="sign-to-ocean"
           object-fit="cover"
         />
-        <button onClick={() => navigate('/received')} className={styles.signOceanText}>
+        <button onClick={() => navigate('/beach')} className={styles.signOceanText}>
           해변 가는 길
         </button>
       </div>

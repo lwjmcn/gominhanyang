@@ -35,12 +35,15 @@
 }
 
 .gridContainer {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3개 열, 동일한 너비 */
   background-color: var(--apricot-base-color);
-  gap: 2rem; /* 아이템 간 간격 */
   padding: 2rem;
   border: 0.5rem solid #f1c16f;
   height: 100%;
   overflow: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem; /* 아이템 간 간격 */
 }
