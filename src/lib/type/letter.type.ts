@@ -9,7 +9,7 @@ export enum EmotionType {
   HAPPY = '행복',
   SAD = '슬픔',
   ANGRY = '화남',
-  DEPRESSED = '우울',
+  DEPRESSED = '무기력',
 }
 
 export enum StatusType {
