@@ -43,6 +43,16 @@ export default function LetterWritePage() {
   const { setItems } = useItemStore();
   const { setPoint, setLevel } = usePointStore();
 
+  useEffect(() => {
+    ReactGA.event('letter_start', {
+      category: 'letter write',
+      label: sendType,
+      emotion: emotion,
+      timestamp: new Date().toISOString(),
+    });
+    console.log('편지 쓰기 시작');
+  }, []);
+
   const handleSendLetter = async () => {
     if (emotion === null) {
       showToast('감정을 선택해주세요.');
@@ -54,6 +64,14 @@ export default function LetterWritePage() {
     }
 
     setIsLoading(true);
+    ReactGA.event('letter_send', {
+      category: 'letter write',
+      label: sendType,
+      emotion: emotion,
+      value: content.length,
+      timestamp: new Date().toISOString(),
+    });
+    console.log('편지 쓰기 완료');
 
     try {
       const response = await sendLetter({
