@@ -141,51 +141,50 @@ export default function LetterWritePage() {
     }
   };
 
-  const fetchInitialQuestion = async () => {
-    if (emotion === null) {
-      setHelpMessages(['감정을 선택해야 도움을 드릴 수 있어요.']);
-      return;
-    }
+  // const fetchInitialQuestion = async () => {
+  //   if (emotion === null) {
+  //     setHelpMessages(['감정을 선택해야 도움을 드릴 수 있어요.']);
+  //     return;
+  //   }
 
-    const response = await generateQuestion({ emotion });
+  //   const response = await generateQuestion({ emotion });
 
-    if (isErrorResponse(response)) {
-      showToast(response.error);
-      return;
-    }
+  //   if (isErrorResponse(response)) {
+  //     showToast(response.error);
+  //     return;
+  //   }
 
-    setHelpMessages([response.question]);
-  };
-  const fetchHelpQuestion = async () => {
-    if (content.length == 0) {
-      setHelpMessages(['편지를 쓰시면 그 내용을 기반으로 어떻게 이어가면 좋을지 추천해드릴게요.']);
-      return;
-    }
-    const response = await getHelpQuestion({ partial_letter: content.slice(-100) });
+  //   setHelpMessages([response.question]);
+  // };
+  // const fetchHelpQuestion = async () => {
+  //   if (content.length == 0) {
+  //     setHelpMessages(['편지를 쓰시면 그 내용을 기반으로 어떻게 이어가면 좋을지 추천해드릴게요.']);
+  //     return;
+  //   }
+  //   const response = await getHelpQuestion({ partial_letter: content.slice(-100) });
 
-    if (isErrorResponse(response)) {
-      showToast(response.error);
-      return;
-    }
+  //   if (isErrorResponse(response)) {
+  //     showToast(response.error);
+  //     return;
+  //   }
 
-    setHelpMessages([response.help_question]);
-  };
+  //   setHelpMessages([response.help_question]);
+  // };
+  // const onRefresh = async () => {
+  //   ReactGA.event('ai_help', {
+  //     category: 'letter write',
+  //   });
 
-  const onRefresh = async () => {
-    ReactGA.event('ai_help', {
-      category: 'letter write',
-    });
+  //   setHelpMessages(['잠시만 기다려주세요...']);
 
-    setHelpMessages(['잠시만 기다려주세요...']);
+  //   if (firstTime && content.length == 0) {
+  //     fetchInitialQuestion();
+  //     setFirstTime(false);
+  //     return;
+  //   }
 
-    if (firstTime && content.length == 0) {
-      fetchInitialQuestion();
-      setFirstTime(false);
-      return;
-    }
-
-    fetchHelpQuestion();
-  };
+  //   fetchHelpQuestion();
+  // };
 
   const handleChangeEmotion = (newEmotion: EmotionType) => {
     setEmotion(newEmotion);
@@ -317,7 +316,7 @@ export default function LetterWritePage() {
         </div>
 
         <div className={styles.writeSection}>
-          <div className={styles.helpContainer}>
+          {/* <div className={styles.helpContainer}>
             <img
               className={styles.helpOtterImage}
               src="/image/write/otter_help.webp"
@@ -327,7 +326,7 @@ export default function LetterWritePage() {
             <div className={styles.speechBubbleContainer}>
               <SpeechBubble emotion={emotion} onRefresh={onRefresh} helpMessages={helpMessages} />
             </div>
-          </div>
+          </div> */}
           <LetterWriteForm
             content={content}
             onChange={setContent}
