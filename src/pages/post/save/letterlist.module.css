@@ -5,6 +5,10 @@
 .container {
   padding-top: 14rem;
   margin: 0 auto;
+  padding-bottom: 4rem;
+}
+.container > :last-child {
+  margin-bottom: 0;
 }
 
 .loading {

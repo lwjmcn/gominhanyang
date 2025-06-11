@@ -3,44 +3,65 @@ import styles from './main.module.css';
 import { useNavigate } from 'react-router-dom';
 import { usePointStore } from '@/store/point';
 import { useToastStore } from '@/store/toast';
+import { useItemStore } from '@/store/item';
+import { ITEM_IMAGE_URL, ITEM_POSITIONS } from '@/lib/constants/items';
 
 export default function MainPage() {
   const navigate = useNavigate();
   const { showToast } = useToastStore();
-  const { level, point, isLoading, fetchPoint } = usePointStore();
-  // const { items, setItems, getUsedItems } = useItemStore();
+  const { level, point, isLoading: isPointLoading, fetchPoint } = usePointStore();
+  const { items, isLoading: isItemsLoading, fetchItems } = useItemStore();
 
   const [otterClicked, setOtterClicked] = useState(false);
 
   useEffect(() => {
-    if (level === 0 && !isLoading)
+    if (level === 0 && !isPointLoading)
       fetchPoint().catch(error => {
         showToast(error.message || '포인트 정보를 불러오는데 실패했습니다.');
       });
 
-    // if (items.length === 0) {
-    //   fetchUsedItems();
-    // }
+    if (items.length === 0 && !isItemsLoading) {
+      fetchItems().catch(error => {
+        showToast(error.message || '아이템 정보를 불러오는데 실패했습니다.');
+      });
+    }
   }, []);
+
+  const usedItems = items.filter(item => item.used);
+
+  // const allItems: Item[] = [
+  //   { item_id: 'i1', name: '푸른 나무', used: true, category: CategoryType.BEACH },
+  //   { item_id: 'id2', name: '빨간 들꽃', used: true, category: CategoryType.BEACH },
+  //   { item_id: 'id3', name: '노란 나비', used: true, category: CategoryType.BEACH },
+  //   { item_id: 'id4', name: '돌고래', used: true, category: CategoryType.OCEAN },
+  //   { item_id: 'id5', name: '해파리', used: true, category: CategoryType.OCEAN },
+  // ];
 
   return (
     <div className={styles.container}>
-      {/* {getUsedItems().map(item => (
-        <img
-          key={item.item_id}
-          src="/image/item/dolphin.webp"
-          alt={item.name}
-          className={styles.itemImage}
-          style={{
-            position: 'absolute',
-            left: `${70}%`,
-            top: `${30}%`,
-            width: '8rem',
-            height: '8rem',
-            objectFit: 'contain',
-          }}
-        />
-      ))} */}
+      {usedItems.map(item => {
+        const position = ITEM_POSITIONS[item.name] || {
+          left: '50%',
+          top: '50%',
+          width: '8rem',
+          height: '8rem',
+        };
+
+        return (
+          <img
+            key={item.item_id}
+            src={ITEM_IMAGE_URL[item.name]}
+            alt={item.name}
+            className={styles.itemImage}
+            style={{
+              position: 'absolute',
+              ...position,
+              objectFit: 'contain',
+            }}
+          />
+        );
+      })}
+
       <div onClick={() => navigate('/items')} className={styles.pointContainer}>
         <img
           src="/image/main/shell.webp"
