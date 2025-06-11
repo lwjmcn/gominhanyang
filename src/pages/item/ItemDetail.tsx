@@ -113,26 +113,25 @@ export default function ItemDetailModal() {
 
   return (
     <Modal onClose={() => navigate(-1)}>
-      <h1>{item.item_name}</h1>
+      <h2>{item.item_name}</h2>
       <img
         src={ITEM_IMAGE_URL[item.item_name!]}
         alt={item.item_name}
         object-fit="contain"
-        style={{ height: '16rem', width: 'auto' }}
+        style={{ height: '16rem', width: 'auto', margin: '2rem 0' }}
       />
       <p>{item.description}</p>
-      <p className={styles.date}>획득일: {item.granted_at.substring(0, 10)}</p>
       {item.used ? (
         <button
           className={`${styles.chip} ${styles.used}`}
           onClick={handleUnuse}
           disabled={isLoading}
         >
-          {isLoading ? <LoadingSpinner spinnerSize={2} /> : '❎아이템 해제하기'}
+          {isLoading ? <LoadingSpinner spinnerSize={2} /> : '❎해제하기'}
         </button>
       ) : (
         <button className={styles.chip} onClick={handleUse} disabled={isLoading}>
-          {isLoading ? <LoadingSpinner spinnerSize={2} /> : '💚아이템 적용하기'}
+          {isLoading ? <LoadingSpinner spinnerSize={2} /> : '💚사용하기'}
         </button>
       )}
     </Modal>
