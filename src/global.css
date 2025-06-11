@@ -57,7 +57,25 @@
   overflow-y: auto;
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 500px) and (hover) {
+  /* pc browser */
+  html {
+    font-size: 45%; /* 7.2px = 1rem */
+  }
+  .layout {
+    background-color: var(--background-color);
+  }
+
+  .main {
+    width: 60rem;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+}
+@media screen and (min-width: 1025px) and (hover: none) {
+  /* pc browser */
   html {
     font-size: 45%; /* 7.2px = 1rem */
   }
