@@ -113,8 +113,13 @@ export default function ItemDetailModal() {
 
   return (
     <Modal onClose={() => navigate(-1)}>
-      <h1>{item.name}</h1>
-      <img src={ITEM_IMAGE_URL[item.item_id]} alt={item.name} style={{ height: '16rem' }} />
+      <h1>{item.item_name}</h1>
+      <img
+        src={ITEM_IMAGE_URL[item.item_name!]}
+        alt={item.item_name}
+        object-fit="contain"
+        style={{ height: '16rem', width: 'auto' }}
+      />
       <p>{item.description}</p>
       <p className={styles.date}>획득일: {item.granted_at.substring(0, 10)}</p>
       {item.used ? (

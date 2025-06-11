@@ -1,49 +1,22 @@
 import { useState, useEffect } from 'react';
 import styles from './main.module.css';
 import { useNavigate } from 'react-router-dom';
-import { getMyReward } from '../../lib/api/reward';
-import { isErrorResponse } from '../../lib/response_dto';
-// import { getMyItems } from '@/lib/api/item';
 import { usePointStore } from '@/store/point';
-// import { useItemStore } from '@/store/item';
+import { useToastStore } from '@/store/toast';
 
 export default function MainPage() {
   const navigate = useNavigate();
-  const { level, point, setLevel, setPoint } = usePointStore();
+  const { showToast } = useToastStore();
+  const { level, point, isLoading, fetchPoint } = usePointStore();
   // const { items, setItems, getUsedItems } = useItemStore();
 
   const [otterClicked, setOtterClicked] = useState(false);
 
-  const getMyPoints = async () => {
-    const response = await getMyReward();
-    if (isErrorResponse(response)) {
-      console.error('Error fetching points:', response);
-      return;
-    }
-
-    const percentage = (response.point / 100) * 100;
-    setLevel(response.level);
-    setPoint(response.point);
-  };
-
-  // const fetchUsedItems = async () => {
-  //   try {
-  //     const response = await getMyItems();
-  //     if (!response || isErrorResponse(response)) {
-  //       console.error('Error fetching items:', response);
-  //       return;
-  //     }
-  //     setItems(response.items);
-  //   } catch (error) {
-  //     console.error('Error fetching items:', error);
-  //   }
-  // };
-
   useEffect(() => {
-    // 스토어에 데이터가 없을 때만 API 호출
-    if (level === 0) {
-      getMyPoints();
-    }
+    if (level === 0 && !isLoading)
+      fetchPoint().catch(error => {
+        showToast(error.message || '포인트 정보를 불러오는데 실패했습니다.');
+      });
 
     // if (items.length === 0) {
     //   fetchUsedItems();

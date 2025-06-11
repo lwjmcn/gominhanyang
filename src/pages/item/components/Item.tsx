@@ -19,7 +19,7 @@ export default function Item({ item, onClick }: ItemProps) {
   return (
     <div onClick={handleClick} className={`${styles.gridItem} ${item.isUsed && styles.used}`}>
       <img
-        src={ITEM_IMAGE_URL[item.id]}
+        src={ITEM_IMAGE_URL[item.name]}
         alt={item.name}
         style={{ width: '100px', height: '100px' }}
       />

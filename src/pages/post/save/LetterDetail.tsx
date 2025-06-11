@@ -1,10 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Appbar from '@/components/Appbar';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getLetterDetail, getLetterComments } from '@/lib/api/letter';
-import { LetterDetail, Reply } from '@/lib/type/letter.type';
-import { isErrorResponse } from '@/lib/response_dto';
 import { useToastStore } from '@/store/toast';
+import { useLetterStore } from '@/store/letter';
 import styles from './letterdetail.module.css';
 import { Textarea } from '@/components/Textarea';
 import { Satisfaction } from '@/pages/beach/received/response/component/Satisfaction';
@@ -15,37 +13,21 @@ export default function LetterDetailPage() {
   const { letterId } = useParams();
   const navigate = useNavigate();
   const { showToast } = useToastStore();
-  const [letter, setLetter] = useState<LetterDetail | null>(null);
-  const [comments, setComments] = useState<Reply[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const { letterDetails, isLetterDetailLoading, fetchLetterDetail } = useLetterStore();
 
   useEffect(() => {
-    const fetchLetterDetail = async () => {
-      if (!letterId) {
-        showToast('편지 ID가 올바르지 않습니다.');
-        navigate('/letters');
-        return;
-      }
+    if (!letterId) {
+      showToast('편지 ID가 올바르지 않습니다.');
+      navigate('/letters');
+      return;
+    }
 
-      try {
-        const response = await getLetterDetail(letterId);
-        if (isErrorResponse(response)) {
-          showToast(response.error);
-          return;
-        }
-        setLetter(response.letter);
-        setComments(response.comments || []);
-      } catch (error) {
-        showToast('편지 정보를 불러오는데 실패했습니다.');
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchLetterDetail();
+    fetchLetterDetail(letterId).catch(error => {
+      showToast(error.message || '편지 정보를 불러오는데 실패했습니다.');
+    });
   }, [letterId]);
 
-  if (isLoading) {
+  if (isLetterDetailLoading) {
     return (
       <div className={styles.pageBackground}>
         <Appbar title="편지 읽기" />
@@ -57,7 +39,8 @@ export default function LetterDetailPage() {
     );
   }
 
-  if (!letter) {
+  const letterData = letterId ? letterDetails.get(letterId) : null;
+  if (!letterData) {
     return (
       <div className={styles.pageBackground}>
         <Appbar title="편지 읽기" />
@@ -68,6 +51,8 @@ export default function LetterDetailPage() {
       </div>
     );
   }
+
+  const { letter, comments } = letterData;
 
   return (
     <div className={styles.pageBackground}>

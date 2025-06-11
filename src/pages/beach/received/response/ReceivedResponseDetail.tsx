@@ -10,6 +10,7 @@ import { Textarea } from '@/components/Textarea';
 import { Satisfaction } from './component/Satisfaction';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
 import { Nothing } from '@/components/Nothing';
+import { useLetterStore } from '@/store/letter';
 
 export default function ReceivedResponseDetailPage() {
   const { responseId } = useParams();
@@ -20,6 +21,8 @@ export default function ReceivedResponseDetailPage() {
   const [comments, setComments] = useState<Reply[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingComments, setIsLoadingComments] = useState(false);
+
+  const { fetchSavedLetters } = useLetterStore();
 
   const fetchLetterDetail = async () => {
     if (!responseId) {
@@ -59,6 +62,7 @@ export default function ReceivedResponseDetailPage() {
 
   useEffect(() => {
     fetchLetterDetail();
+    fetchSavedLetters(); // 보관함 편지 업데이트
   }, [responseId]);
 
   if (isLoading) {

@@ -2,10 +2,8 @@ import { useState, useEffect } from 'react';
 import Appbar from '@/components/Appbar';
 import LetterListItem from '@/components/LetterListItem';
 import { useNavigate } from 'react-router-dom';
-import { getRandomLetters, getRepliedLetters } from '@/lib/api/letter';
-import { Letter, RepliedLetter } from '@/lib/type/letter.type';
-import { isErrorResponse } from '@/lib/response_dto';
 import { useToastStore } from '@/store/toast';
+import { useLetterStore } from '@/store/letter';
 import styles from '../letter/receivedlistall.module.css';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
 import { Nothing } from '@/components/Nothing';
@@ -14,36 +12,27 @@ export default function ReceivedListAllPage() {
   const navigate = useNavigate();
   const { showToast } = useToastStore();
   const [tab, setTab] = useState<'letter' | 'reply'>('letter');
-  const [letters, setLetters] = useState<Letter[]>([]);
-  const [replies, setReplies] = useState<RepliedLetter[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const fetchData = async () => {
-    setIsLoading(true);
-    try {
-      if (tab === 'letter') {
-        const response = await getRandomLetters();
-        if (!response || isErrorResponse(response)) {
-          showToast(response?.error ?? '편지를 불러오는 중 오류 발생');
-          return;
-        }
-        setLetters(response.unread_letters ?? []);
-      } else {
-        const response = await getRepliedLetters();
-        if (!response || isErrorResponse(response)) {
-          showToast(response?.error ?? '답장을 불러오는 중 오류 발생');
-          return;
-        }
-        setReplies(response['replied-to-me'] ?? []);
-      }
-    } catch {
-      showToast('데이터를 불러오는 중 오류가 발생했습니다.');
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const {
+    receivedLetters,
+    receivedReplies,
+    isReceivedLettersLoading,
+    isReceivedRepliesLoading,
+    fetchReceivedLetters,
+    fetchReceivedReplies,
+  } = useLetterStore();
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (tab === 'letter') await fetchReceivedLetters();
+        else await fetchReceivedReplies();
+      } catch (error) {
+        showToast(
+          error instanceof Error ? error.message : '데이터를 불러오는 중 오류가 발생했습니다.',
+        );
+      }
+    };
+
     fetchData();
   }, [tab]);
 
@@ -76,15 +65,15 @@ export default function ReceivedListAllPage() {
       </div>
 
       <div className={styles.container}>
-        {isLoading ? (
+        {(tab === 'letter' ? isReceivedLettersLoading : isReceivedRepliesLoading) ? (
           <LoadingSpinner
             description={tab === 'letter' ? '편지를 불러오는 중...' : '답장을 불러오는 중...'}
           />
         ) : tab === 'letter' ? (
-          letters.length === 0 ? (
+          receivedLetters.length === 0 ? (
             <Nothing description="앗, 아직 받은 편지가 없어요." />
           ) : (
-            letters.map(letter => (
+            receivedLetters.map(letter => (
               <LetterListItem
                 key={letter._id}
                 letter={{
@@ -97,10 +86,10 @@ export default function ReceivedListAllPage() {
               />
             ))
           )
-        ) : replies.length === 0 ? (
+        ) : receivedReplies.length === 0 ? (
           <Nothing description="앗, 아직 받은 답장이 없어요." />
         ) : (
-          replies.map(reply => (
+          receivedReplies.map(reply => (
             <LetterListItem
               key={reply._id}
               letter={{

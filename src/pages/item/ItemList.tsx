@@ -3,9 +3,7 @@ import Item from './components/Item';
 import Appbar from '@/components/Appbar';
 import { useState, useEffect, useMemo } from 'react';
 import styles from './itemlist.module.css';
-import { getMyItems } from '@/lib/api/item';
-import { Item as ItemType, CategoryType } from '@/lib/type/item.type';
-import { isErrorResponse } from '@/lib/response_dto';
+import { CategoryType } from '@/lib/type/item.type';
 import { useToastStore } from '@/store/toast';
 import { useItemStore } from '@/store/item';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
@@ -16,7 +14,7 @@ export default function ItemListPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const { showToast } = useToastStore();
-  const { items, setItems } = useItemStore();
+  const { items, isLoading, fetchItems } = useItemStore();
 
   const tabs = [
     { label: '바다', value: CategoryType.OCEAN },
@@ -25,36 +23,13 @@ export default function ItemListPage() {
   ];
 
   const [activeTab, setActiveTab] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const fetchItems = async () => {
-    setIsLoading(true);
-    try {
-      const response = await getMyItems();
-
-      if (!response) {
-        showToast('알 수 없는 오류가 발생했습니다.');
-        return;
-      }
-
-      if (isErrorResponse(response)) {
-        showToast(response.error);
-        return;
-      }
-
-      setItems(response.items);
-    } catch (error) {
-      showToast('아이템 목록을 불러오는데 실패했습니다.');
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   useEffect(() => {
-    if (items.length === 0) {
-      fetchItems();
-    }
-  }, [location]);
+    if (items.length === 0 && !isLoading)
+      fetchItems().catch(error => {
+        showToast(error.message || '아이템 목록을 불러오는데 실패했습니다.');
+      });
+  }, []);
 
   const filteredItems = useMemo(() => {
     const selectedCategory = tabs[activeTab].value;

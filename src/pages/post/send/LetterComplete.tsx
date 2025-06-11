@@ -2,6 +2,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { RewardItem } from '@/lib/type/reward.type';
 import styles from './lettercomplete.module.css';
 import { SendType } from '@/lib/type/letter.type';
+import { useEffect } from 'react';
+import { useLetterStore } from '@/store/letter';
 
 interface LocationState {
   sendType: SendType;
@@ -14,10 +16,6 @@ export default function LetterCompletePage() {
   const navigate = useNavigate();
   const location = useLocation();
   const state = location.state as LocationState;
-
-  const getRewardMessage = () => {
-    return state.message;
-  };
 
   return (
     <div className={styles.container}>

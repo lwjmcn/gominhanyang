@@ -2,56 +2,39 @@ import Appbar from '@/components/Appbar';
 import styles from './setting.module.css';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getMyInfo, updateUser } from '@/lib/api/user';
 import { GenderType } from '@/lib/type/user.type';
-import { isErrorResponse } from '@/lib/response_dto';
 import { useToastStore } from '@/store/toast';
 import { useAuthStore } from '@/store/auth';
+import { useUserStore } from '@/store/user';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
 
 export default function SettingPage() {
   const navigate = useNavigate();
   const { showToast } = useToastStore();
   const { setLogout } = useAuthStore();
-  const [isLoading, setIsLoading] = useState(false);
+  const { userInfo, isLoading, fetchUserInfo, updateUserInfo } = useUserStore();
   const [formData, setFormData] = useState({
     nickname: '',
-    gender: GenderType.OTHER,
-    age: undefined as number | undefined,
+    gender: GenderType.MALE,
+    age: '',
     address: '',
     phone: '',
   });
 
-  const fetchUserData = async () => {
-    try {
-      const response = await getMyInfo();
-      if (!response) {
-        showToast('알 수 없는 오류가 발생했습니다.');
-        return;
-      }
-      if (isErrorResponse(response)) {
-        showToast(response.error);
-        return;
-      }
-      const userData = response.user;
-      setFormData({
-        nickname: userData.nickname,
-        gender: userData.gender,
-        age: userData.age,
-        address: userData.address || '',
-        phone: userData.phone || '',
-      });
-    } catch (error) {
-      showToast('회원 정보 조회 중 오류가 발생했습니다.');
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  useEffect(() => {
+    fetchUserInfo().catch(error => {
+      showToast(error.message || '회원 정보 조회 중 오류가 발생했습니다.');
+    });
+  }, []);
 
   useEffect(() => {
-    setIsLoading(true);
-    fetchUserData();
-  }, []);
+    if (userInfo.nickname) {
+      setFormData({
+        ...userInfo,
+        age: userInfo.age?.toString() || '',
+      });
+    }
+  }, [userInfo]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -62,31 +45,14 @@ export default function SettingPage() {
   };
 
   const handleUpdate = async () => {
-    if (!formData.nickname) {
-      showToast('닉네임을 입력해주세요.');
-      return;
-    }
-
-    setIsLoading(true);
-
     try {
-      const response = await updateUser(formData);
-
-      if (!response) {
-        showToast('알 수 없는 오류가 발생했습니다.');
-        return;
-      }
-
-      if (isErrorResponse(response)) {
-        showToast(response.error);
-        return;
-      }
-
+      await updateUserInfo({
+        ...formData,
+        age: parseInt(formData.age) || undefined,
+      });
       showToast('회원 정보가 수정되었습니다.');
     } catch (error) {
-      showToast('회원 정보 수정 중 오류가 발생했습니다.');
-    } finally {
-      setIsLoading(false);
+      showToast(error instanceof Error ? error.message : '회원 정보 수정 중 오류가 발생했습니다.');
     }
   };
 

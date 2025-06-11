@@ -7,6 +7,10 @@ import { isErrorResponse } from '@/lib/response_dto';
 import { useState } from 'react';
 import { useToastStore } from '@/store/toast';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
+import { useUserStore } from '@/store/user';
+import { usePointStore } from '@/store/point';
+import { useLetterStore } from '@/store/letter';
+import { useItemStore } from '@/store/item';
 
 export default function SignInPage() {
   const navigate = useNavigate();
@@ -14,6 +18,11 @@ export default function SignInPage() {
   const [nickname, setNickname] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const { showToast } = useToastStore();
+
+  const { fetchUserInfo } = useUserStore();
+  const { fetchPoint } = usePointStore();
+  const { fetchSavedLetters } = useLetterStore();
+  const { fetchItems } = useItemStore();
 
   const handleLogin = async () => {
     console.log('로그인 버튼 클릭');
@@ -42,6 +51,10 @@ export default function SignInPage() {
     showToast(response.message);
     setIsLoading(false);
     setLogin();
+
+    // 조회 API 호출
+    Promise.all([fetchPoint(), fetchUserInfo(), fetchSavedLetters(), fetchItems()]);
+
     ReactGA.set({ user_id: response.nickname });
     navigate('/', { replace: true });
   };
