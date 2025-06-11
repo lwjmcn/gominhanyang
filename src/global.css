@@ -56,6 +56,24 @@
   flex: 1;
   overflow-y: auto;
 }
+
+@media screen and (min-width: 1024px) {
+  html {
+    font-size: 45%; /* 7.2px = 1rem */
+  }
+  .layout {
+    background-color: var(--background-color);
+  }
+
+  .main {
+    width: 60rem;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+}
+
 .footer {
   height: 4rem;
   font-size: 1.4rem;

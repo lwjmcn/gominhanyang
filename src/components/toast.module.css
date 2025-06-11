@@ -1,5 +1,5 @@
 .toastContainer {
-  position: fixed;
+  position: absolute;
   bottom: 4rem;
   width: 80%;
   left: 10%;

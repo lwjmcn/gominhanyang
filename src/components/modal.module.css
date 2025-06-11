@@ -1,6 +1,6 @@
 /* Modal.css */
 .overlay {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -18,7 +18,7 @@
   border: 0.8rem solid var(--orange-base-color);
   border-radius: 2rem;
   padding: 2rem 3rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.4rem 2rem rgba(0, 0, 0, 0.2);
   width: 65%;
   animation: fadeIn 0.2s ease-in-out;
   line-height: 0.5;
