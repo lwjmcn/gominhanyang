@@ -4,8 +4,8 @@
 }
 .container {
   padding: 2rem;
-  padding-top: 14rem;
-  height: calc(100dvh - 30rem);
+  padding-top: 12rem;
+  height: calc(100dvh - 50rem);
 }
 .tabList {
   display: flex;

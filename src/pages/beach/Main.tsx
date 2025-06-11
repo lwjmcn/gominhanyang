@@ -9,8 +9,7 @@ import { usePointStore } from '@/store/point';
 
 export default function MainPage() {
   const navigate = useNavigate();
-  const [pointFill, setPointFill] = useState(0);
-  const { level, setLevel, setPoint } = usePointStore();
+  const { level, point, setLevel, setPoint } = usePointStore();
   // const { items, setItems, getUsedItems } = useItemStore();
 
   const [otterClicked, setOtterClicked] = useState(false);
@@ -23,7 +22,6 @@ export default function MainPage() {
     }
 
     const percentage = (response.point / 100) * 100;
-    setPointFill(percentage);
     setLevel(response.level);
     setPoint(response.point);
   };
@@ -45,8 +43,6 @@ export default function MainPage() {
     // 스토어에 데이터가 없을 때만 API 호출
     if (level === 0) {
       getMyPoints();
-    } else {
-      setPointFill((level / 100) * 100);
     }
 
     // if (items.length === 0) {
@@ -72,7 +68,7 @@ export default function MainPage() {
           }}
         />
       ))} */}
-      <div /* onClick={() => navigate('/items')}*/ className={styles.pointContainer}>
+      <div onClick={() => navigate('/items')} className={styles.pointContainer}>
         <img
           src="/image/main/shell.webp"
           object-fit="cover"
@@ -83,7 +79,7 @@ export default function MainPage() {
         <div className={styles.cylinder}>
           <div
             className={styles.cylinderFill}
-            style={{ '--fill-level': `${pointFill}%` } as React.CSSProperties}
+            style={{ '--fill-level': `${point}%` } as React.CSSProperties}
           />
         </div>
       </div>

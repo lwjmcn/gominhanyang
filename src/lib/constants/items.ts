@@ -1,19 +1,7 @@
-import { CategoryType } from '../type/item.type';
-
-export interface ConstantItem {
-  item_id: string;
-  name: string;
-  description: string;
-  image_url: string;
-  category: CategoryType;
-}
-
-export const ITEM_LIST: ConstantItem[] = [
-  {
-    item_id: '1',
-    name: '돌고래',
-    description: '바다에서 헤엄치는 돌고래',
-    image_url: '/image/item/dolphin.webp',
-    category: CategoryType.BEACH,
-  },
-];
+export const ITEM_IMAGE_URL: Record<string, string> = {
+  '6824678b33b3799bb8c137c1': '/image/item/tree.webp',
+  '6824678b33b3799bb8c137c3': '/image/item/dolphin.webp',
+  '6824678b33b3799bb8c137c0': '/image/item/flower.webp',
+  '6824678b33b3799bb8c137c4': '/image/item/butterfly.webp',
+  '6824678b33b3799bb8c137c6': '/image/item/jellyfish.webp',
+};

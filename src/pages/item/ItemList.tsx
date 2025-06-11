@@ -10,6 +10,7 @@ import { useToastStore } from '@/store/toast';
 import { useItemStore } from '@/store/item';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
 import { Nothing } from '@/components/Nothing';
+import Level from './components/Level';
 
 export default function ItemListPage() {
   const navigate = useNavigate();
@@ -64,6 +65,7 @@ export default function ItemListPage() {
     <div className={styles.pageBackground}>
       <Appbar title="아이템 보관함" />
       <div className={styles.container}>
+        <Level />
         <div className={styles.tabList}>
           {tabs.map((tab, index) => (
             <button
@@ -89,7 +91,6 @@ export default function ItemListPage() {
                     id: item.item_id,
                     name: item.name,
                     isUsed: item.used,
-                    imageUrl: '/image/item/dolphin.webp', // TODO: 이미지 URL 추가
                   }}
                   onClick={() =>
                     navigate(`/items/${item.item_id}`, {
