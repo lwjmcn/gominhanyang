@@ -18,6 +18,7 @@ import SpeechBubble from './components/SpeechBubble';
 import { getMyItems } from '@/lib/api/item';
 import { useItemStore } from '@/store/item';
 import { usePointStore } from '@/store/point';
+import { useLetterStore } from '@/store/letter';
 
 export default function LetterWritePage() {
   const [content, setContent] = useState('');
@@ -40,8 +41,9 @@ export default function LetterWritePage() {
     (state?.emotion as EmotionType) || null,
   );
 
-  const { setItems } = useItemStore();
-  const { setPoint, setLevel } = usePointStore();
+  const { fetchItems } = useItemStore();
+  const { fetchPoint } = usePointStore();
+  const { fetchSavedLetters } = useLetterStore();
 
   useEffect(() => {
     ReactGA.event('letter_start', {
@@ -106,23 +108,11 @@ export default function LetterWritePage() {
       showToast('편지가 전송되었습니다.');
 
       // 보상 포인트 추가
-      const pointResponse = await getMyReward();
-      if (isErrorResponse(pointResponse)) {
-        showToast(pointResponse.error);
-        return;
-      }
-      setPoint(pointResponse.point);
-      setLevel(pointResponse.level);
-
+      fetchPoint();
       // 보상 아이템 추가
-      if (rewardResponse.new_items.length > 0) {
-        const response = await getMyItems();
-        if (isErrorResponse(response)) {
-          showToast(response.error);
-          return;
-        }
-        setItems(response.items);
-      }
+      if (rewardResponse.new_items.length > 0) fetchItems();
+      // 보관함에 저장
+      if (sendType === SendType.SELF) fetchSavedLetters();
 
       navigate('/letter/complete', {
         state: {

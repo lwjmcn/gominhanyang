@@ -18,8 +18,8 @@
 }
 
 .otterImage {
-  width: 28rem;
-  height: auto;
+  width: auto;
+  height: 30%;
   margin: 1rem;
   object-fit: cover;
 }

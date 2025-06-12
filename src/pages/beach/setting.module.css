@@ -3,7 +3,7 @@
   padding-top: 12rem;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 2rem;
   background-color: var(--background-color);
   min-height: 100dvh;
   box-sizing: border-box;

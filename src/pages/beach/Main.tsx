@@ -1,78 +1,68 @@
 import { useState, useEffect } from 'react';
 import styles from './main.module.css';
 import { useNavigate } from 'react-router-dom';
-import { getMyReward } from '../../lib/api/reward';
-import { isErrorResponse } from '../../lib/response_dto';
-// import { getMyItems } from '@/lib/api/item';
 import { usePointStore } from '@/store/point';
-// import { useItemStore } from '@/store/item';
+import { useToastStore } from '@/store/toast';
+import { useItemStore } from '@/store/item';
+import { ITEM_IMAGE_URL, ITEM_POSITIONS } from '@/lib/constants/items';
 
 export default function MainPage() {
   const navigate = useNavigate();
-  const [pointFill, setPointFill] = useState(0);
-  const { level, setLevel, setPoint } = usePointStore();
-  // const { items, setItems, getUsedItems } = useItemStore();
+  const { showToast } = useToastStore();
+  const { level, point, isLoading: isPointLoading, fetchPoint } = usePointStore();
+  const { items, isLoading: isItemsLoading, fetchItems } = useItemStore();
 
   const [otterClicked, setOtterClicked] = useState(false);
 
-  const getMyPoints = async () => {
-    const response = await getMyReward();
-    if (isErrorResponse(response)) {
-      console.error('Error fetching points:', response);
-      return;
-    }
-
-    const percentage = (response.point / 100) * 100;
-    setPointFill(percentage);
-    setLevel(response.level);
-    setPoint(response.point);
-  };
-
-  // const fetchUsedItems = async () => {
-  //   try {
-  //     const response = await getMyItems();
-  //     if (!response || isErrorResponse(response)) {
-  //       console.error('Error fetching items:', response);
-  //       return;
-  //     }
-  //     setItems(response.items);
-  //   } catch (error) {
-  //     console.error('Error fetching items:', error);
-  //   }
-  // };
-
   useEffect(() => {
-    // 스토어에 데이터가 없을 때만 API 호출
-    if (level === 0) {
-      getMyPoints();
-    } else {
-      setPointFill((level / 100) * 100);
-    }
+    if (level === 0 && !isPointLoading)
+      fetchPoint().catch(error => {
+        showToast(error.message || '포인트 정보를 불러오는데 실패했습니다.');
+      });
 
-    // if (items.length === 0) {
-    //   fetchUsedItems();
-    // }
+    if (items.length === 0 && !isItemsLoading) {
+      fetchItems().catch(error => {
+        showToast(error.message || '아이템 정보를 불러오는데 실패했습니다.');
+      });
+    }
   }, []);
+
+  const usedItems = items.filter(item => item.used);
+
+  // const allItems: Item[] = [
+  //   { item_id: 'i1', name: '푸른 나무', used: true, category: CategoryType.BEACH },
+  //   { item_id: 'id2', name: '빨간 들꽃', used: true, category: CategoryType.BEACH },
+  //   { item_id: 'id3', name: '노란 나비', used: true, category: CategoryType.BEACH },
+  //   { item_id: 'id4', name: '돌고래', used: true, category: CategoryType.OCEAN },
+  //   { item_id: 'id5', name: '해파리', used: true, category: CategoryType.OCEAN },
+  // ];
 
   return (
     <div className={styles.container}>
-      {/* {getUsedItems().map(item => (
-        <img
-          key={item.item_id}
-          src="/image/item/dolphin.webp"
-          alt={item.name}
-          className={styles.itemImage}
-          style={{
-            position: 'absolute',
-            left: `${70}%`,
-            top: `${30}%`,
-            width: '8rem',
-            height: '8rem',
-            objectFit: 'contain',
-          }}
-        />
-      ))} */}
-      <div /* onClick={() => navigate('/items')}*/ className={styles.pointContainer}>
+      {usedItems.map(item => {
+        const position = ITEM_POSITIONS[item.name] || {
+          left: '50%',
+          top: '50%',
+          width: '8rem',
+          height: '8rem',
+        };
+
+        return (
+          <img
+            key={item.item_id}
+            src={ITEM_IMAGE_URL[item.name]}
+            alt={item.name}
+            className={styles.itemImage}
+            style={{
+              position: 'absolute',
+              ...position,
+              objectFit: 'contain',
+            }}
+          />
+        );
+      })}
+
+      <div onClick={() => navigate('/items')} className={styles.pointContainer}>
         <img
           src="/image/main/shell.webp"
           object-fit="cover"
@@ -83,7 +73,7 @@ export default function MainPage() {
         <div className={styles.cylinder}>
           <div
             className={styles.cylinderFill}
-            style={{ '--fill-level': `${pointFill}%` } as React.CSSProperties}
+            style={{ '--fill-level': `${point}%` } as React.CSSProperties}
           />
         </div>
       </div>

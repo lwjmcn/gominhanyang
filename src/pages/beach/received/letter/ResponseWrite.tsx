@@ -17,7 +17,6 @@ import { Textarea } from '@/components/Textarea';
 import Caution from '@/pages/post/send/components/Caution';
 import { useItemStore } from '@/store/item';
 import { usePointStore } from '@/store/point';
-import { getMyItems } from '@/lib/api/item';
 
 export default function ResponseWritePage() {
   const nextButtonIcon = (
@@ -56,8 +55,8 @@ export default function ResponseWritePage() {
     },
   );
 
-  const { setPoint, setLevel } = usePointStore();
-  const { setItems } = useItemStore();
+  const { fetchPoint } = usePointStore();
+  const { fetchItems } = useItemStore();
 
   const [helpMessages, setHelpMessages] = useState<string[]>([]);
 
@@ -103,23 +102,9 @@ export default function ResponseWritePage() {
         showToast('편지가 전송되었습니다.');
 
         // 보상 포인트 추가
-        const pointResponse = await getMyReward();
-        if (isErrorResponse(pointResponse)) {
-          showToast(pointResponse.error);
-          return;
-        }
-        setPoint(pointResponse.point);
-        setLevel(pointResponse.level);
-
+        fetchPoint();
         // 보상 아이템 추가
-        if (rewardResponse.new_items.length > 0) {
-          const response = await getMyItems();
-          if (isErrorResponse(response)) {
-            showToast(response.error);
-            return;
-          }
-          setItems(response.items);
-        }
+        if (rewardResponse.new_items.length > 0) fetchItems();
 
         navigate(`/received/letters/${letterId}/complete`, {
           state: {

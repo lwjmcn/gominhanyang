@@ -16,7 +16,9 @@
   display: flex;
   justify-content: center;
   gap: 4rem;
-  margin-top: 60rem;
+  position: absolute;
+  width: 100%;
+  bottom: 10rem;
 }
 
 .optionItem {

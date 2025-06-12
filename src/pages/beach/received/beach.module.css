@@ -73,33 +73,7 @@
   background-repeat: no-repeat;
   background-position: center;
 }
-.loadingContainer {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  color: #666;
-}
-.loadingSpinner {
-  width: 40px;
-  height: 40px;
-  border: 4px solid var(--background-color);
-  border-top: 4px solid var(--blue-border-color);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
+
 .lettersContainer {
   width: 100%;
   height: 40%;

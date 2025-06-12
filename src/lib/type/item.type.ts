@@ -7,6 +7,7 @@ export enum CategoryType {
 export interface Item {
   item_id: string;
   name: string;
+  item_name?: string; // 백엔드 API 문제
   used: boolean;
   category: CategoryType;
 }
