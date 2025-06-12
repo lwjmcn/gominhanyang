@@ -72,7 +72,7 @@ export default function ItemDetailModal() {
 
       showToast('아이템이 적용되었습니다.');
       setItem({ ...item, used: true });
-      setItems(items.map(item => (item.item_id === item.item_id ? { ...item, used: true } : item)));
+      setItems(items.map(it => (it.item_id === item.item_id ? { ...it, used: true } : it)));
     } catch (error) {
       showToast('아이템 적용에 실패했습니다.');
     } finally {
@@ -99,9 +99,7 @@ export default function ItemDetailModal() {
 
       showToast('아이템 적용이 해제되었습니다.');
       setItem({ ...item, used: false });
-      setItems(
-        items.map(item => (item.item_id === item.item_id ? { ...item, used: false } : item)),
-      );
+      setItems(items.map(it => (it.item_id === item.item_id ? { ...it, used: false } : it)));
     } catch (error) {
       showToast('아이템 해제에 실패했습니다.');
     } finally {
