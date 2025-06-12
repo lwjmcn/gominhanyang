@@ -99,6 +99,10 @@
   color: var(--text-secondary-color);
 }
 
+body,
+html {
+  font-synthesis: none;
+}
 body {
   font-family:
     'Jua',
