@@ -13,6 +13,13 @@ export default function MainPage() {
   const { items, isLoading: isItemsLoading, fetchItems } = useItemStore();
 
   const [otterClicked, setOtterClicked] = useState(false);
+  const otterTexts = [
+    '반가워요!\n오늘은 어디로 떠나볼까요?',
+    '편지를 쓰고 싶다면\n집으로 가보세요!',
+    '해변에 가면\n편지를 받아볼 수 있어요!',
+    '조개를 클릭하면\n아이템들을 확인할 수 있어요!',
+  ];
+  const [otterIndex, setOtterIndex] = useState(() => Math.floor(Math.random() * otterTexts.length));
 
   useEffect(() => {
     if (level === 0 && !isPointLoading)
@@ -25,6 +32,11 @@ export default function MainPage() {
         showToast(error.message || '아이템 정보를 불러오는데 실패했습니다.');
       });
     }
+
+    const interval = setInterval(() => {
+      setOtterIndex(i => (i + 1) % otterTexts.length);
+    }, 5000);
+    return () => clearInterval(interval);
   }, []);
 
   const usedItems = items.filter(item => item.used);
@@ -114,10 +126,13 @@ export default function MainPage() {
         onClick={() => {
           setOtterClicked(true);
           setTimeout(() => setOtterClicked(false), 2000);
+          setOtterIndex(prev => (prev + 1) % otterTexts.length);
         }}
       >
         <div className={`${styles.speechBubble} ${otterClicked ? styles.bubbleAnimation : ''}`}>
-          <p>반가워요!{'\n'}오늘은 어디로 떠나볼까요?</p>
+          <p className={styles.speechText} key={otterIndex}>
+            {otterTexts[otterIndex] || '안녕하세요!'}
+          </p>
         </div>
         <img src="/image/main/otter.webp" className={styles.otterImage} alt="otter" />
         <div className={styles.otterShadow} />
