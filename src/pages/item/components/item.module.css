@@ -16,12 +16,14 @@
 }
 
 .chip {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
   padding: 0 1rem;
   width: 70%;
-  line-height: 2.3;
   background-color: var(--orange-light-color);
-  border: 0.5rem solid var(--orange-base-color);
+  border: 0.3rem solid var(--orange-base-color);
   border-radius: 1rem;
   color: var(--text-primary-color);
   transition: background-color 0.3s ease;
@@ -29,7 +31,22 @@
 .chip.used {
   background-color: var(--orange-base-color);
 }
+.checkImage {
+  height: 3rem;
+  margin-right: 0.5rem;
+  display: inline-block;
+  /* color black to orange */
+  filter: invert(0.2) sepia(1) saturate(10) hue-rotate(20deg) brightness(2.3);
+}
+.circleImage {
+  height: 1.5rem;
+  margin-right: 0.5rem;
+  display: inline-block;
+  /* color black to green */
+  filter: invert(0.2) sepia(1.2) saturate(8) hue-rotate(90deg) brightness(2);
+}
 .chipText {
+  display: inline-block;
   font-size: 1.8rem;
   line-height: 0;
   font-weight: 900;
