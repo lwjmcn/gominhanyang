@@ -45,14 +45,14 @@ export default function ReceivedListAllPage() {
             className={tab === 'letter' ? styles.activeTab : styles.inactiveTab}
             onClick={() => setTab('letter')}
           >
-            <img src="/image/beach/boat.webp" alt="편지" className={styles.lettericon} />
+            <img src="/image/beach/paperboat.webp" alt="편지" className={styles.lettericon} />
             편지
           </button>
           <button
             className={tab === 'reply' ? styles.activeTab : styles.inactiveTab}
             onClick={() => setTab('reply')}
           >
-            <img src="/image/beach/jar.webp" alt="답장" className={styles.jaricon} />
+            <img src="/image/beach/responsebottle.webp" alt="답장" className={styles.jaricon} />
             답장
           </button>
           <div

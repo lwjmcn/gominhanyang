@@ -29,7 +29,7 @@ export default function LetterSharePage() {
           <button className={styles.shareButton} onClick={() => handleNextPage(SendType.RANDOM)}>
             <img
               className={styles.buttonImage}
-              src="/image/common/paper_boat.webp"
+              src="/image/beach/paperboat.webp"
               object-fit="cover"
               alt="random"
             />
