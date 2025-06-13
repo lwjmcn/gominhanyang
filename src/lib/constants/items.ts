@@ -27,8 +27,8 @@ export const ITEM_POSITIONS: Record<string, ItemPosition> = {
   '빨간 들꽃': {
     right: '10%',
     bottom: '15%',
-    width: '6rem',
-    height: '6rem',
+    width: '8rem',
+    height: '8rem',
   },
   '노란 나비': {
     left: '10%',
