@@ -34,7 +34,7 @@ export default function Appbar({
         {nextButtonIcon && (
           <button onClick={onNextPress} className={styles.nextButton}>
             {nextButtonIcon}
-            {nextButtonText}
+            <p className={styles.nextButtonText}>{nextButtonText}</p>
           </button>
         )}
       </div>

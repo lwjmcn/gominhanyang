@@ -65,10 +65,15 @@ export default function SettingPage() {
     <>
       <Appbar
         title={'설정'}
-        nextButtonIcon={''}
-        nextButtonText={'저장'}
+        nextButtonIcon={
+          <img
+            src="/image/common/help.svg"
+            alt="Help"
+            style={{ height: '70%', margin: '0 auto', objectFit: 'cover', opacity: '0.3' }}
+          />
+        }
         onBackPress={() => navigate(-1)}
-        onNextPress={handleUpdate}
+        onNextPress={() => window.open('https://surl.lu/kokxkt', '_blank')}
       />
       <div className={styles.container}>
         <div className={styles.labelContainer}>
@@ -145,7 +150,6 @@ export default function SettingPage() {
         <button className={styles.saveButton} onClick={handleUpdate} disabled={isLoading}>
           {isLoading ? <LoadingSpinner spinnerSize={2} /> : '저장하기'}
         </button>
-
         <button className={styles.logoutButton} onClick={handleLogout}>
           로그아웃
         </button>
