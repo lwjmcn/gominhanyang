@@ -17,7 +17,7 @@ export default function MainPage() {
     '반가워요!\n오늘은 어디로 떠나볼까요?',
     '편지를 쓰고 싶다면\n집으로 가보세요!',
     '해변에 가면\n편지를 받아볼 수 있어요!',
-    '조개를 클릭하면\n아이템들을 확인할 수 있어요!',
+    '조개를 클릭하면\n아이템을 확인할 수 있어요!',
   ];
   const [otterIndex, setOtterIndex] = useState(() => Math.floor(Math.random() * otterTexts.length));
 
