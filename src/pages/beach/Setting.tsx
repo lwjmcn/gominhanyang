@@ -6,6 +6,7 @@ import { GenderType } from '@/lib/type/user.type';
 import { useToastStore } from '@/store/toast';
 import { useAuthStore } from '@/store/auth';
 import { useUserStore } from '@/store/user';
+import { useAudioStore } from '@/store/audio';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
 
 export default function SettingPage() {
@@ -13,6 +14,7 @@ export default function SettingPage() {
   const { showToast } = useToastStore();
   const { setLogout } = useAuthStore();
   const { userInfo, isLoading, fetchUserInfo, updateUserInfo } = useUserStore();
+  const { audioOn, setAudioOn } = useAudioStore();
   const [formData, setFormData] = useState({
     nickname: '',
     gender: GenderType.MALE,
@@ -76,83 +78,89 @@ export default function SettingPage() {
         onNextPress={() => window.open('https://surl.lu/kokxkt', '_blank')}
       />
       <div className={styles.container}>
-        <div className={styles.labelContainer}>
-          <label className={styles.label}>닉네임(ID)</label>
-          <input
-            className={styles.input}
-            type="text"
-            name="nickname"
-            placeholder="닉네임(ID)"
-            value={formData.nickname}
-            onChange={handleInputChange}
-            disabled={isLoading}
-          />
-        </div>
-        <div className={styles.labelContainer}>
-          <label className={styles.label}>성별 </label>
-          <div className={styles.radioContainer}>
-            <div className={styles.radioLabelContainer}>
-              <input
-                type="radio"
-                name="gender"
-                value={GenderType.MALE}
-                checked={formData.gender === GenderType.MALE}
-                onChange={handleInputChange}
-                disabled={isLoading}
-              />
-              <label className={styles.ageLabel}>남</label>
-            </div>
-            <div className={styles.radioLabelContainer}>
-              <input
-                type="radio"
-                name="gender"
-                value={GenderType.FEMALE}
-                checked={formData.gender === GenderType.FEMALE}
-                onChange={handleInputChange}
-                disabled={isLoading}
-              />
-              <label className={styles.ageLabel}>여</label>
+        {/* 내 정보 수정 섹션 */}
+        <div className={`${styles.section} ${styles.profileSection}`}>
+          <div className={styles.sectionTitle}>내 정보 수정</div>
+          <div className={styles.labelContainer}>
+            <label className={styles.label}>닉네임(ID)</label>
+            <input
+              className={styles.input}
+              type="text"
+              name="nickname"
+              placeholder="닉네임(ID)"
+              value={formData.nickname}
+              onChange={handleInputChange}
+              disabled={isLoading}
+            />
+          </div>
+          <div className={styles.labelContainer}>
+            <label className={styles.label}>성별 </label>
+            <div className={styles.radioContainer}>
+              <div className={styles.radioLabelContainer}>
+                <input
+                  type="radio"
+                  name="gender"
+                  value={GenderType.MALE}
+                  checked={formData.gender === GenderType.MALE}
+                  onChange={handleInputChange}
+                  disabled={isLoading}
+                />
+                <label className={styles.ageLabel}>남</label>
+              </div>
+              <div className={styles.radioLabelContainer}>
+                <input
+                  type="radio"
+                  name="gender"
+                  value={GenderType.FEMALE}
+                  checked={formData.gender === GenderType.FEMALE}
+                  onChange={handleInputChange}
+                  disabled={isLoading}
+                />
+                <label className={styles.ageLabel}>여</label>
+              </div>
             </div>
           </div>
+          <div className={styles.labelContainer}>
+            <label className={styles.label}>출생연도</label>
+            <input
+              className={styles.input}
+              name="age"
+              type="number"
+              placeholder="출생연도 ex. 2006"
+              value={formData.age}
+              onChange={handleInputChange}
+              disabled={isLoading}
+            />
+          </div>
+          <div className={styles.labelContainer}>
+            <label className={styles.label}>주소</label>
+            <input
+              className={styles.input}
+              name="address"
+              placeholder="온기우체부 편지를 받을 주소"
+              value={formData.address}
+              onChange={handleInputChange}
+              disabled={isLoading}
+            />
+          </div>
+          <button className={styles.saveButton} onClick={handleUpdate} disabled={isLoading}>
+            {isLoading ? <LoadingSpinner spinnerSize={2} /> : '저장하기'}
+          </button>
+          <button className={styles.logoutButton} onClick={handleLogout}>
+            로그아웃
+          </button>
         </div>
-        <div className={styles.labelContainer}>
-          <label className={styles.label}>출생연도</label>
-          <input
-            className={styles.input}
-            name="age"
-            type="number"
-            placeholder="출생연도 ex. 2006"
-            value={formData.age}
-            onChange={handleInputChange}
-            disabled={isLoading}
-          />
+        {/* 배경음악 섹션 */}
+        <div className={`${styles.section} ${styles.bgmSection}`}>
+          <div className={styles.sectionTitle}>기타 설정</div>
+          <div className={styles.bgmRow}>
+            <label style={{ fontSize: '2.5rem' }}>배경음악</label>
+            <label className={styles.toggleSwitch}>
+              <input type="checkbox" checked={audioOn} onChange={() => setAudioOn(!audioOn)} />
+              <span className={styles.slider}></span>
+            </label>
+          </div>
         </div>
-        <div className={styles.labelContainer}>
-          <label className={styles.label}>주소</label>
-          <input
-            className={styles.input}
-            name="address"
-            placeholder="온기우체부 편지를 받을 주소"
-            value={formData.address}
-            onChange={handleInputChange}
-            disabled={isLoading}
-          />
-        </div>
-        {/* 
-        <input
-          type="tel"
-          name="phone"
-          placeholder="전화번호"
-          value={formData.phone}
-          onChange={handleInputChange}
-          disabled={isLoading}
-        /> */}
-        <button className={styles.saveButton} onClick={handleUpdate} disabled={isLoading}>
-          {isLoading ? <LoadingSpinner spinnerSize={2} /> : '저장하기'}
-        </button>
-        <button className={styles.logoutButton} onClick={handleLogout}>
-          로그아웃
-        </button>
       </div>
     </>
   );

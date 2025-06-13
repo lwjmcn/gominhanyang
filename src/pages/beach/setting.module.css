@@ -15,7 +15,7 @@
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
-  margin-top: 5rem;
+  margin-top: 3rem;
 }
 
 .label {
@@ -47,7 +47,8 @@
 
 .saveButton {
   width: 100%;
-  margin: 2rem 0;
+  margin: 0;
+  margin-top: 2rem;
   background-color: var(--apricot-border-color);
   color: var(--text-primary-color);
   font-size: 3rem;
@@ -69,6 +70,86 @@
   color: var(--text-primary-color);
   cursor: pointer;
   position: absolute;
-  bottom: 2rem;
+  bottom: 0;
   right: 2rem;
+}
+
+.toggleSwitch {
+  position: relative;
+  width: 7rem;
+  height: 4rem;
+  display: inline-block;
+}
+.toggleSwitch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 3rem;
+}
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 3rem;
+  width: 3rem;
+  left: 0.5rem;
+  bottom: 0.5rem;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+input:checked + .slider {
+  background-color: #7ec6c8;
+}
+input:checked + .slider:before {
+  transform: translateX(3rem);
+}
+
+.section {
+  width: 90%;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 1.5rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  padding: 3rem 2rem 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(90deg, var(--orange-light-color) 50%, var(--background-color) 100%);
+}
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: var(--orange-border-color);
+  align-self: flex-start;
+}
+
+.bgmRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  justify-content: flex-start;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.labelContainer,
+.input,
+.radioContainer,
+.ageLabel {
+  font-size: 2rem;
+}
+.input {
+  padding: 0.8rem 1.2rem;
 }
