@@ -104,6 +104,7 @@ export default function SettingPage() {
                   checked={formData.gender === GenderType.MALE}
                   onChange={handleInputChange}
                   disabled={isLoading}
+                  className={styles.radioInput}
                 />
                 <label className={styles.ageLabel}>남</label>
               </div>
@@ -115,6 +116,7 @@ export default function SettingPage() {
                   checked={formData.gender === GenderType.FEMALE}
                   onChange={handleInputChange}
                   disabled={isLoading}
+                  className={styles.radioInput}
                 />
                 <label className={styles.ageLabel}>여</label>
               </div>
