@@ -6,13 +6,17 @@ import { useAudioStore } from './store/audio';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const audioRef = useRef<HTMLAudioElement>(null);
-  const { audioOn } = useAudioStore();
+  const { audioOn, setAudioOn } = useAudioStore();
 
   useEffect(() => {
-    if (audioRef.current) {
+    if (audioRef.current && audioOn) {
+      audioRef.current.play().catch(error => {
+        console.error('Error playing audio:', error);
+        setAudioOn(false);
+      });
       audioRef.current.playbackRate = 0.8; // Play at 80% speed
     }
-  }, []);
+  }, [audioRef.current, audioOn]);
 
   return (
     <div className="layout">

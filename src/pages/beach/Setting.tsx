@@ -63,6 +63,10 @@ export default function SettingPage() {
     navigate('/signin', { replace: true });
   };
 
+  const handleMusicToggle = () => {
+    setAudioOn(!audioOn);
+  };
+
   return (
     <>
       <Appbar
@@ -158,7 +162,7 @@ export default function SettingPage() {
           <div className={styles.bgmRow}>
             <label style={{ fontSize: '2.5rem' }}>배경음악</label>
             <label className={styles.toggleSwitch}>
-              <input type="checkbox" checked={audioOn} onChange={() => setAudioOn(!audioOn)} />
+              <input type="checkbox" checked={audioOn} onChange={handleMusicToggle} />
               <span className={styles.slider}></span>
             </label>
           </div>
