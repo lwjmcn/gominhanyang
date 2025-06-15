@@ -57,34 +57,36 @@
   overflow-y: auto;
 }
 
-@media screen and (min-width: 980px) and (hover) {
+@media screen and (min-width: 500px) and (hover) {
   /* pc browser */
   html {
-    font-size: 45%; /* 7.2px = 1rem */
+    font-size: 45%;
   }
   .layout {
     background-color: var(--background-color);
   }
 
   .main {
-    width: 60rem;
+    height: 100vh;
+    aspect-ratio: 9 / 16;
     margin: 0 auto;
     background-color: #fff;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
     position: relative;
   }
 }
-@media screen and (min-width: 1025px) and (hover: none) {
-  /* pc browser */
+@media screen and (min-aspect-ratio: 2 / 3) and (hover: none) {
+  /* tablets, 또는 가로모드  */
   html {
-    font-size: 45%; /* 7.2px = 1rem */
+    font-size: 80%;
   }
   .layout {
     background-color: var(--background-color);
   }
 
   .main {
-    width: 60rem;
+    height: 100dvh;
+    aspect-ratio: 9 / 16;
     margin: 0 auto;
     background-color: #fff;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
