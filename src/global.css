@@ -57,10 +57,10 @@
   overflow-y: auto;
 }
 
-@media screen and (min-width: 500px) and (hover) {
+@media screen and (min-width: 500px) and (pointer: fine) {
   /* pc browser */
   html {
-    font-size: 45%;
+    font-size: 40%;
   }
   .layout {
     background-color: var(--background-color);
