@@ -75,12 +75,7 @@ export default function MainPage() {
       })}
 
       <div onClick={() => navigate('/items')} className={styles.pointContainer}>
-        <img
-          src="/image/main/shell.webp"
-          object-fit="cover"
-          alt="shell"
-          className={styles.shellImage}
-        />
+        <button className={styles.shellButton} />
         <p className={styles.level}>Lv.{level}</p>
         <div className={styles.cylinder}>
           <div
@@ -90,13 +85,7 @@ export default function MainPage() {
         </div>
       </div>
 
-      <img
-        className={styles.settingButton}
-        onClick={() => navigate('/settings')}
-        src="/image/main/setting.webp"
-        object-fit="cover"
-        alt="setting"
-      />
+      <button className={styles.settingButton} onClick={() => navigate('/settings')} />
 
       <div className={styles.roadSignContainer}>
         <img

@@ -8,6 +8,7 @@ import { Textarea } from '@/components/Textarea';
 import { Satisfaction } from '@/pages/beach/received/response/component/Satisfaction';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
 import { Nothing } from '@/components/Nothing';
+import { EmotionIcon } from '@/lib/type/letter.type';
 
 export default function LetterDetailPage() {
   const { letterId } = useParams();
@@ -60,7 +61,11 @@ export default function LetterDetailPage() {
       <div className={styles.container}>
         <div className={styles.metadata}>
           <p>{new Date(letter.created_at).toLocaleDateString()}</p>
-          <span className={styles.emotion}>{letter.emotion}</span>
+          <img
+            src={`/image/write/emotion_${EmotionIcon[letter.emotion]}.webp`}
+            alt={letter.emotion}
+            className={styles.emotionIcon}
+          />
         </div>
 
         <h2>{letter.title}</h2>

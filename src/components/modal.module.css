@@ -40,7 +40,11 @@
   left: 2rem;
   cursor: pointer;
   height: 4rem;
-  width: auto;
+  width: 4rem;
+  background-image: url('/image/common/close.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 @keyframes fadeIn {

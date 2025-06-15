@@ -20,13 +20,7 @@ export default function Modal(props: ModalProps) {
   return (
     <div className={styles.overlay}>
       <div className={styles.content}>
-        <img
-          className={styles.closeButton}
-          onClick={handleClose}
-          src="/image/common/close.webp"
-          alt="close"
-          object-fit="cover"
-        />
+        <button className={styles.closeButton} onClick={handleClose} />
         {props.children}
       </div>
     </div>

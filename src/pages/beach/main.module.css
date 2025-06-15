@@ -25,9 +25,13 @@
   line-height: 2;
 }
 
-.shellImage {
-  width: auto;
+.shellButton {
+  width: 10rem;
   height: 10rem;
+  background-image: url('/image/main/shell.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .cylinder {
@@ -59,8 +63,12 @@
   top: 0;
   right: 0;
   margin: 2rem;
-  width: auto;
+  width: 8rem;
   height: 8rem;
+  background-image: url('/image/main/setting.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .roadSignContainer {

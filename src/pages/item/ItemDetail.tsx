@@ -116,7 +116,7 @@ export default function ItemDetailModal() {
         src={ITEM_IMAGE_URL[item.item_name!]}
         alt={item.item_name}
         object-fit="contain"
-        style={{ height: '16rem', width: 'auto', margin: '2rem 0' }}
+        style={{ height: '12rem', width: 'auto', margin: '2rem 0' }}
       />
       <p>{item.description}</p>
       {item.used ? (
@@ -135,7 +135,7 @@ export default function ItemDetailModal() {
                 className={styles.checkImage}
                 style={{ height: '3.5rem' }}
               />
-              '해제하기'
+              해제하기
             </>
           )}
         </button>
@@ -151,7 +151,7 @@ export default function ItemDetailModal() {
                 className={styles.circleImage}
                 style={{ height: '2.5rem' }}
               />
-              '사용하기'
+              사용하기
             </>
           )}
         </button>

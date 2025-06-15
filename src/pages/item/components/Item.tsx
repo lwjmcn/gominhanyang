@@ -21,7 +21,7 @@ export default function Item({ item, onClick }: ItemProps) {
       <img
         src={ITEM_IMAGE_URL[item.name]}
         alt={item.name}
-        style={{ width: 'auto', height: '10rem' }}
+        style={{ objectFit: 'contain', width: '10rem', height: '10rem' }}
       />
       <p className={styles.title}>{item.name}</p>
       <div className={`${styles.chip} ${item.isUsed && styles.used}`}>

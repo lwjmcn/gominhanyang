@@ -11,6 +11,13 @@ export enum EmotionType {
   ANGRY = '화남',
   DEPRESSED = '무기력',
 }
+export const EmotionIcon: { [key in EmotionType]: string } = {
+  [EmotionType.EXCITED]: 'excited',
+  [EmotionType.HAPPY]: 'happy',
+  [EmotionType.SAD]: 'sad',
+  [EmotionType.ANGRY]: 'angry',
+  [EmotionType.DEPRESSED]: 'depressed',
+};
 
 export enum StatusType {
   SENT = 'sent',

@@ -41,27 +41,27 @@ export default function LetterCompletePage() {
 
       <div className={styles.navButtonContainer}>
         {state.rewardItems.length > 0 ? (
-          <div onClick={() => navigate('/items')} className={styles.navButton}>
+          <button onClick={() => navigate('/items')} className={styles.navButton}>
             <img src="/image/common/item.webp" className={styles.navIcon} alt="아이템" />
             <div className={styles.yellowBoxButton}>
-              <span className={styles.buttonLabel}>아이템 보관함</span>
+              <p className={styles.buttonLabel}>아이템 보관함</p>
             </div>
-          </div>
+          </button>
         ) : (
-          <div onClick={() => navigate('/letters')} className={styles.navButton}>
+          <button onClick={() => navigate('/letters')} className={styles.navButton}>
             <img src="/image/common/paper_archive.webp" className={styles.navIcon} alt="보관함" />
             <div className={styles.yellowBoxButton}>
-              <span className={styles.buttonLabel}>나의 편지 보관함</span>
+              <p className={styles.buttonLabel}>편지 보관함</p>
             </div>
-          </div>
+          </button>
         )}
 
-        <div onClick={() => navigate('/')} className={styles.navButton}>
+        <button onClick={() => navigate('/')} className={styles.navButton}>
           <img src="/image/common/main.webp" className={styles.navIcon} alt="메인화면" />
           <div className={styles.yellowBoxButton}>
-            <span className={styles.buttonLabel}>메인화면 가기</span>
+            <p className={styles.buttonLabel}>메인화면</p>
           </div>
-        </div>
+        </button>
       </div>
     </div>
   );

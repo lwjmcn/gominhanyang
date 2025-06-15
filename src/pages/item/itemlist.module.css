@@ -23,6 +23,7 @@
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
   cursor: pointer;
+  line-height: 6rem;
   transition:
     border-color 0.3s,
     color 0.3s;

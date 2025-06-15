@@ -1,5 +1,6 @@
 .container {
-  width: 80%;
+  width: 90%;
+  height: fit-content;
   margin: 0 auto;
   padding: 2rem;
   background-color: var(--blue-base-color);
@@ -9,10 +10,7 @@
   cursor: pointer;
   transition: transform 0.2s;
   margin-bottom: 2rem;
-}
-
-.container:hover {
-  transform: translateY(-0.5rem);
+  text-align: left;
 }
 
 .title {
@@ -32,10 +30,8 @@
   margin: 0;
 }
 
-.emotion {
-  padding: 1rem 2rem;
-  background-color: var(--yellow-base-color);
-  border-radius: 1rem;
-  font-size: 2rem;
-  color: var(--text-secondary-color);
+.emotionIcon {
+  width: 4rem;
+  height: 4rem;
+  object-fit: cover;
 }

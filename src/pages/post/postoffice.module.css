@@ -11,10 +11,9 @@
 .optionRow {
   position: absolute;
   bottom: 10rem;
-  padding: 2rem;
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  width: 100%;
 }
 
 .optionItem {
@@ -23,6 +22,7 @@
   align-items: center;
   cursor: pointer;
   width: 100%;
+  height: fit-content;
 }
 
 /* 아이콘 */
@@ -44,6 +44,7 @@
 
 .labelText {
   font-size: 3.3rem;
+  line-height: 1.2;
   color: var(--text-primary-color);
   text-align: center;
   margin: 0;

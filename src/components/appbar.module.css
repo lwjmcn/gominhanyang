@@ -12,7 +12,10 @@
   margin-right: auto;
   width: 6rem;
   height: 6rem;
-  cursor: pointer;
+  background-image: url('/image/common/back.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .title {
   flex-grow: 1;
@@ -38,7 +41,6 @@
 }
 .nextButton,
 .backButton {
-  background: none;
   border: none;
   cursor: pointer;
   font-size: 2rem;

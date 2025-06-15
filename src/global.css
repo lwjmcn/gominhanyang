@@ -132,16 +132,18 @@ button {
   cursor: pointer;
   height: 6rem;
   font-size: 2.5rem;
-  line-height: 6rem;
   border: none;
   border-radius: 1.5rem;
-  color: #fff;
-  background-color: var(--orange-base-color);
-  transition: background-color 3s ease;
+  background-color: transparent;
+  transition: transform 0.2s ease;
   font-family: Jua;
+  color: var(--text-primary-color);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+
 button:active {
-  background-color: var(--orange-active-color);
+  /* background-color: var(--orange-active-color); */
+  transform: scale(0.95);
 }
 button:disabled {
   background-color: var(--button-disabled-color);
@@ -155,17 +157,20 @@ a {
 h1 {
   font-size: 5rem;
   font-weight: 800;
+  color: var(--text-primary-color);
 }
 
 h2 {
   font-size: 4rem;
   font-weight: 800;
+  color: var(--text-primary-color);
 }
 
 label,
 p {
   font-size: 2.5rem;
   white-space: pre-wrap;
+  color: var(--text-primary-color);
 }
 
 caption {
@@ -237,6 +242,7 @@ option {
   flex-direction: column;
   align-items: center;
   padding: 0 2rem;
+  background-color: var(--orange-base-color);
   color: var(--text-primary-color);
   &:nth-of-type(2) {
     background-color: var(--background-color);

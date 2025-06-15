@@ -28,8 +28,8 @@ export default function Level() {
           className={styles.cylinderFill}
           style={{ '--fill-level': `${point}%` } as React.CSSProperties}
         >
-          <p className={styles.description}>{point}</p>
-          <p className={styles.description}>/100</p>
+          <span className={styles.description}>{point}</span>
+          <span className={styles.description}>/100</span>
         </div>
         <div className={styles.nextLevel}>{level + 1}</div>
       </div>

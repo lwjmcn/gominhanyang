@@ -23,12 +23,10 @@
   line-height: 0;
 }
 
-.emotion {
-  padding: 2rem 2rem;
-  background-color: var(--orange-base-color);
-  border-radius: 0.8rem;
-  font-size: 1.6rem;
-  color: var(--text-secondary-color);
+.emotionIcon {
+  width: 5rem;
+  height: 5rem;
+  object-fit: cover;
 }
 
 .title {
