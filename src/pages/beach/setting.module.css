@@ -78,7 +78,7 @@
   color: var(--text-primary-color);
   cursor: pointer;
   position: absolute;
-  bottom: 0;
+  bottom: 1rem;
   right: 2rem;
 }
 
