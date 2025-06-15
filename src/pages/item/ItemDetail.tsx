@@ -125,24 +125,35 @@ export default function ItemDetailModal() {
           onClick={handleUnuse}
           disabled={isLoading}
         >
-          <img
-            src="/image/item/check.svg"
-            alt="사용중"
-            className={styles.checkImage}
-            style={{ height: '3.5rem' }}
-          />
-          {isLoading ? <LoadingSpinner spinnerSize={2} /> : '해제하기'}
+          {isLoading ? (
+            <LoadingSpinner spinnerSize={2} />
+          ) : (
+            <>
+              <img
+                src="/image/item/check.svg"
+                alt="사용중"
+                className={styles.checkImage}
+                style={{ height: '3.5rem' }}
+              />
+              '해제하기'
+            </>
+          )}
         </button>
       ) : (
         <button className={styles.chip} onClick={handleUse} disabled={isLoading}>
-          <img
-            src="/image/item/circle.svg"
-            alt="사용가능"
-            className={styles.circleImage}
-            style={{ height: '2.5rem' }}
-          />
-
-          {isLoading ? <LoadingSpinner spinnerSize={2} /> : '사용하기'}
+          {isLoading ? (
+            <LoadingSpinner spinnerSize={2} />
+          ) : (
+            <>
+              <img
+                src="/image/item/circle.svg"
+                alt="사용가능"
+                className={styles.circleImage}
+                style={{ height: '2.5rem' }}
+              />
+              '사용하기'
+            </>
+          )}
         </button>
       )}
     </Modal>
