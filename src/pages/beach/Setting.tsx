@@ -82,7 +82,12 @@ export default function SettingPage() {
           />
         }
         onBackPress={() => navigate(-1)}
-        onNextPress={() => window.open('https://surl.lu/kokxkt', '_blank')}
+        onNextPress={() =>
+          window.open(
+            'https://tough-damselfly-926.notion.site/Tutorial-209b4ecebe2f80e0beedf1789078f3c6',
+            '_blank',
+          )
+        }
       />
       <div className={styles.container}>
         {/* 내 정보 수정 섹션 */}

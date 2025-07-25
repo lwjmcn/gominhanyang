@@ -85,6 +85,14 @@ export default function MainPage() {
         </div>
       </div>
 
+      <button
+        className={styles.feedbackButton}
+        onClick={() =>
+          window.open(
+            'https://docs.google.com/forms/d/e/1FAIpQLSfijEcr5j69TI3wnrauX9tjm9kw5a4e5pLKkLRHbwaZbPjeXg/viewform?usp=dialog',
+          )
+        }
+      ></button>
       <button className={styles.settingButton} onClick={() => navigate('/settings')} />
 
       <div className={styles.roadSignContainer}>
