@@ -3,7 +3,6 @@ import { ActionType, RewardItem } from '../type/reward.type';
 
 export interface GrantRewardRequestDto {
   action: ActionType;
-  content: string;
 }
 
 export interface GrantRewardResponseDto extends BaseResponse {
