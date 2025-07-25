@@ -59,6 +59,20 @@
   border-bottom-right-radius: 3.6rem;
 }
 
+.feedbackButton {
+  position: absolute;
+  top: 0;
+  right: 10rem;
+  margin: 2rem;
+  width: 10rem;
+  height: 8rem;
+  opacity: 0.8;
+  cursor: pointer;
+  background-image: url('/image/main/help.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 .settingButton {
   position: absolute;
   top: 0;
