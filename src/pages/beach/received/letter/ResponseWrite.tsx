@@ -19,14 +19,14 @@ import { useItemStore } from '@/store/item';
 import { usePointStore } from '@/store/point';
 
 export default function ResponseWritePage() {
-  // const nextButtonIcon = (
-  //   <img
-  //     src="/image/write/otter_help.webp"
-  //     alt="question"
-  //     object-fit="cover"
-  //     style={{ width: 'auto', height: '100%' }}
-  //   />
-  // );
+  const nextButtonIcon = (
+    <img
+      src="/image/write/otter_help.webp"
+      alt="question"
+      object-fit="cover"
+      style={{ width: 'auto', height: '100%' }}
+    />
+  );
 
   const { letterId } = useParams();
 
@@ -35,7 +35,7 @@ export default function ResponseWritePage() {
   const [isLoading, setIsLoading] = useState(false);
   const { showToast } = useToastStore();
 
-  // const [openSpeech, setOpenSpeech] = useState(false);
+  const [openSpeech, setOpenSpeech] = useState(false);
   const [openStopWrite, setOpenStopWrite] = useState(false);
   const [openCompleteWrite, setOpenCompleteWrite] = useState(false);
 
@@ -58,7 +58,7 @@ export default function ResponseWritePage() {
   const { fetchPoint } = usePointStore();
   const { fetchItems } = useItemStore();
 
-  // const [helpMessages, setHelpMessages] = useState<string[]>([]);
+  const [helpMessages, setHelpMessages] = useState<string[]>([]);
 
   const handleReply = async () => {
     if (!letterId) {
@@ -123,35 +123,35 @@ export default function ResponseWritePage() {
     }
   };
 
-  // const fetchReplyOptions = async () => {
-  //   if (!letterId || helpMessages.length > 0) return;
+  const fetchReplyOptions = async () => {
+    if (!letterId || helpMessages.length > 0) return;
 
-  //   const response = await getReplyOptions(letterId);
+    const response = await getReplyOptions(letterId);
 
-  //   if (isErrorResponse(response)) {
-  //     showToast(response.error);
-  //     return;
-  //   }
+    if (isErrorResponse(response)) {
+      showToast(response.error);
+      return;
+    }
 
-  //   setHelpMessages(response.questions);
-  // };
+    setHelpMessages(response.questions);
+  };
 
-  // useEffect(() => {
-  //   if (openSpeech) {
-  //     fetchReplyOptions();
-  //   }
-  // }, [openSpeech]);
+  useEffect(() => {
+    if (openSpeech) {
+      fetchReplyOptions();
+    }
+  }, [openSpeech]);
 
   return (
     <div className={styles.page}>
-      {/* {openSpeech && (
+      {openSpeech && (
         <SpeechModal
           onClose={() => setOpenSpeech(false)}
           type="reply"
           helpMessages={helpMessages}
           onRefresh={() => {}}
         />
-      )} */}
+      )}
       {openStopWrite && <StopWriteModal onClose={() => setOpenStopWrite(false)} type="reply" />}
       {openCompleteWrite && (
         <CompleteWriteModal
@@ -166,13 +166,13 @@ export default function ResponseWritePage() {
       <Appbar
         title="답장하기"
         onBackPress={() => setOpenStopWrite(true)}
-        // nextButtonIcon={nextButtonIcon}
-        // onNextPress={() => {
-        //   setOpenSpeech(true);
-        //   ReactGA.event('ai_help', {
-        //     category: 'response write',
-        //   });
-        // }}
+        nextButtonIcon={nextButtonIcon}
+        onNextPress={() => {
+          setOpenSpeech(true);
+          ReactGA.event('ai_help', {
+            category: 'response write',
+          });
+        }}
       />
       <div className={styles.container}>
         <div className={styles.letterSection}>
