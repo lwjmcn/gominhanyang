@@ -27,8 +27,10 @@ export type LoginResponseDto = AuthResponseDto;
 
 export interface UpdateUserRequestDto {
   nickname: string;
-  address: string;
-  phone: string;
+  status: JobType;
+  email: string;
+  address?: string;
+  phone?: string;
 }
 
 export interface UserMeResponseDto {

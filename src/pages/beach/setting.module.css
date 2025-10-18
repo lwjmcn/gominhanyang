@@ -7,7 +7,12 @@
   min-height: 100dvh;
   box-sizing: border-box;
 }
-
+.genderStatusRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
 .labelContainer {
   width: 100%;
   display: flex;

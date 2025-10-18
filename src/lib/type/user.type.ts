@@ -3,6 +3,8 @@ export interface User {
   nickname: string;
   age: number;
   gender: GenderType;
+  status: JobType;
+  email: string;
   address: string;
   phone: string;
   point: number;

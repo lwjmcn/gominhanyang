@@ -2,7 +2,7 @@ import Appbar from '@/components/Appbar';
 import styles from './setting.module.css';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GenderType } from '@/lib/type/user.type';
+import { GenderType, JobType } from '@/lib/type/user.type';
 import { useToastStore } from '@/store/toast';
 import { useAuthStore } from '@/store/auth';
 import { useUserStore } from '@/store/user';
@@ -19,6 +19,8 @@ export default function SettingPage() {
     nickname: '',
     gender: GenderType.MALE,
     age: '',
+    status: JobType.UNEMPLOYED,
+    email: '',
     address: '',
     phone: '',
   });
@@ -48,6 +50,12 @@ export default function SettingPage() {
   };
 
   const handleUpdate = async () => {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(formData.email)) {
+      showToast('유효한 이메일 주소를 입력해주세요');
+      return;
+    }
+
     try {
       await updateUserInfo({
         ...formData,
@@ -100,33 +108,52 @@ export default function SettingPage() {
               disabled={isLoading}
             />
           </div>
-          <div className={styles.labelContainer}>
-            <label className={styles.label}>성별 </label>
-            <div className={styles.radioContainer}>
-              <div className={styles.radioLabelContainer}>
-                <input
-                  type="radio"
-                  name="gender"
-                  value={GenderType.MALE}
-                  checked={formData.gender === GenderType.MALE}
-                  onChange={handleInputChange}
-                  disabled={true}
-                  className={styles.radioInput}
-                />
-                <label className={styles.ageLabel}>남</label>
+          <div className={styles.genderStatusRow}>
+            <div className={styles.labelContainer}>
+              <label className={styles.label}>성별 </label>
+              <div className={styles.radioContainer}>
+                <div className={styles.radioLabelContainer}>
+                  <input
+                    type="radio"
+                    name="gender"
+                    value={GenderType.MALE}
+                    checked={formData.gender === GenderType.MALE}
+                    onChange={handleInputChange}
+                    disabled={true}
+                    className={styles.radioInput}
+                  />
+                  <label className={styles.ageLabel}>남</label>
+                </div>
+                <div className={styles.radioLabelContainer}>
+                  <input
+                    type="radio"
+                    name="gender"
+                    value={GenderType.FEMALE}
+                    checked={formData.gender === GenderType.FEMALE}
+                    onChange={handleInputChange}
+                    disabled={true}
+                    className={styles.radioInput}
+                  />
+                  <label className={styles.ageLabel}>여</label>
+                </div>
               </div>
-              <div className={styles.radioLabelContainer}>
-                <input
-                  type="radio"
-                  name="gender"
-                  value={GenderType.FEMALE}
-                  checked={formData.gender === GenderType.FEMALE}
-                  onChange={handleInputChange}
-                  disabled={true}
-                  className={styles.radioInput}
-                />
-                <label className={styles.ageLabel}>여</label>
-              </div>
+            </div>
+
+            <div className={styles.labelContainer}>
+              <label className={styles.label}>직업</label>
+              <select
+                className={styles.input}
+                name="status"
+                value={formData.status}
+                onChange={handleInputChange}
+                disabled
+              >
+                {Object.values(JobType).map(jt => (
+                  <option key={jt} value={jt}>
+                    {jt}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
           <div className={styles.labelContainer}>
@@ -142,6 +169,18 @@ export default function SettingPage() {
             />
           </div>
           <div className={styles.labelContainer}>
+            <label className={styles.label}>이메일</label>
+            <input
+              className={styles.input}
+              name="email"
+              type="email"
+              placeholder="example@domain.com"
+              value={formData.email}
+              onChange={handleInputChange}
+              disabled={isLoading}
+            />
+          </div>
+          {/* <div className={styles.labelContainer}>
             <label className={styles.label}>주소</label>
             <input
               className={styles.input}
@@ -151,7 +190,7 @@ export default function SettingPage() {
               onChange={handleInputChange}
               disabled={isLoading}
             />
-          </div>
+          </div> */}
           <button className={styles.saveButton} onClick={handleUpdate} disabled={isLoading}>
             {isLoading ? <LoadingSpinner spinnerSize={2} /> : '저장하기'}
           </button>

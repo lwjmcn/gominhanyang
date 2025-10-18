@@ -1,11 +1,13 @@
 import { create } from 'zustand';
 import { getMyInfo, updateUser } from '@/lib/api/user';
-import { GenderType } from '@/lib/type/user.type';
+import { GenderType, JobType } from '@/lib/type/user.type';
 import { isErrorResponse } from '@/lib/response_dto';
 
 export interface UserInfo {
   nickname: string;
   gender: GenderType;
+  status: JobType;
+  email: string;
   age?: number;
   address: string;
   phone: string;
@@ -24,6 +26,8 @@ export const useUserStore = create<UserStore>((set, get) => ({
   userInfo: {
     nickname: '',
     gender: GenderType.OTHER,
+    status: JobType.OTHER,
+    email: '',
     age: undefined,
     address: '',
     phone: '',
@@ -35,6 +39,8 @@ export const useUserStore = create<UserStore>((set, get) => ({
       userInfo: {
         nickname: '',
         gender: GenderType.OTHER,
+        status: JobType.OTHER,
+        email: '',
         age: undefined,
         address: '',
         phone: '',
@@ -51,6 +57,8 @@ export const useUserStore = create<UserStore>((set, get) => ({
         userInfo: {
           nickname: response.user.nickname,
           gender: response.user.gender,
+          status: response.user.status,
+          email: response.user.email,
           age: response.user.age,
           address: response.user.address || '',
           phone: response.user.phone || '',
