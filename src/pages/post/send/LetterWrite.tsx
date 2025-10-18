@@ -281,7 +281,10 @@ export default function LetterWritePage() {
               name="options"
               value={SendType.VOLUNTEER}
               checked={sendType === SendType.VOLUNTEER}
-              onChange={e => setSendType(e.target.value as SendType)}
+              onChange={
+                e => showToast('아직 준비 중인 서비스예요!')
+                // setSendType(e.target.value as SendType)
+              }
               disabled={isLoading}
             />
             <label htmlFor="option3">

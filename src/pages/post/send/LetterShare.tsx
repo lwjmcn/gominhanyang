@@ -3,11 +3,15 @@ import styles from './lettershare.module.css';
 import { useNavigate } from 'react-router-dom';
 import { SendType } from '@/lib/type/letter.type';
 import Caution from './components/Caution';
+import { useToastStore } from '@/store/toast';
 
 export default function LetterSharePage() {
+  const { showToast } = useToastStore();
   const navigate = useNavigate();
   const handleNextPage = (type: string) => {
-    navigate('/letter/emotion', { state: { sendType: type } });
+    if (type === SendType.VOLUNTEER) {
+      showToast('아직 준비 중인 서비스예요!');
+    } else navigate('/letter/emotion', { state: { sendType: type } });
   };
 
   return (
