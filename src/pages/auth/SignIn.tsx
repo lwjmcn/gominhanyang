@@ -11,8 +11,7 @@ import { useUserStore } from '@/store/user';
 import { usePointStore } from '@/store/point';
 import { useLetterStore } from '@/store/letter';
 import { useItemStore } from '@/store/item';
-import visibilitySvg from '../../../public/image/login_setting/visibility.svg';
-import visibilityOffSvg from '../../../public/image/login_setting/visibility_off.svg';
+
 export default function SignInPage() {
   const navigate = useNavigate();
   const { setLogin } = useAuthStore();
@@ -105,7 +104,14 @@ export default function SignInPage() {
               onClick={() => setShowPassword(v => !v)}
               aria-label={showPassword ? '비밀번호 숨기기' : '비밀번호 표시'}
             >
-              <img src={showPassword ? visibilityOffSvg : visibilitySvg} alt="toggle password" />
+              <img
+                src={
+                  showPassword
+                    ? 'image/login_setting/visibility_off.svg'
+                    : 'image/login_setting/visibility.svg'
+                }
+                alt="toggle password"
+              />
             </button>
           </div>
         </div>

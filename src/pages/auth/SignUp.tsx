@@ -8,8 +8,6 @@ import { isErrorResponse } from '@/lib/response_dto';
 import { useAuthStore } from '@/store/auth';
 import ReactGA from 'react-ga4';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
-import visibilitySvg from '../../../public/image/login_setting/visibility.svg';
-import visibilityOffSvg from '../../../public/image/login_setting/visibility_off.svg';
 
 export default function SignUpPage() {
   const navigate = useNavigate();
@@ -132,7 +130,14 @@ export default function SignUpPage() {
               onClick={() => setShowPassword(v => !v)}
               aria-label={showPassword ? '비밀번호 숨기기' : '비밀번호 표시'}
             >
-              <img src={showPassword ? visibilityOffSvg : visibilitySvg} alt="toggle password" />
+              <img
+                src={
+                  showPassword
+                    ? 'image/login_setting/visibility_off.svg'
+                    : 'image/login_setting/visibility.svg'
+                }
+                alt="toggle password"
+              />
             </button>
           </div>
         </div>
