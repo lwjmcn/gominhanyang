@@ -8,8 +8,8 @@ import { isErrorResponse } from '@/lib/response_dto';
 import { useAuthStore } from '@/store/auth';
 import ReactGA from 'react-ga4';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
-import visibilitySvg from './visibility.svg';
-import visibilityOffSvg from './visibility_off.svg';
+import visibilitySvg from '../../../public/image/login_setting/visibility.svg';
+import visibilityOffSvg from '../../../public/image/login_setting/visibility_off.svg';
 
 export default function SignUpPage() {
   const navigate = useNavigate();
