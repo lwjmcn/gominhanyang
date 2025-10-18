@@ -32,12 +32,14 @@ export default function LetterWriteForm({
       <Textarea
         type={type}
         placeholder="편지 내용을 입력하세요."
-        maxLength={type === 'letter' ? 1000 : 500}
+        maxLength={type === 'letter' ? 500 : 300}
         value={content}
         onChange={handleContentChange}
         disabled={disabled}
       >
-        <p className={styles.letterInputCount}>{length} / 1000</p>
+        <p className={styles.letterInputCount}>
+          {length} / {type === 'letter' ? 500 : 300}
+        </p>
       </Textarea>
       <div className={styles.completeContainer}>
         <p className={styles.rewardInfo}>

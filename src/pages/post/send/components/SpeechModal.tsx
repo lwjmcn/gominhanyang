@@ -1,6 +1,7 @@
 import { LoadingSpinner } from '@/components/LoadingSpinner';
 import styles from './speechmodal.module.css';
 import { EmotionType } from '@/lib/type/letter.type';
+import TypeIt from 'typeit-react';
 
 interface SpeechModalProps {
   onClose?: () => void;
@@ -31,18 +32,20 @@ export default function SpeechModal({ onClose, type, helpMessages, onRefresh }: 
           object-fit="cover"
         />
       )}
-      <div>
-        {helpMessages.length === 0 ? (
-          <LoadingSpinner spinnerSize={2} containerStyle={{ height: '4rem' }} />
-        ) : (
-          <p className={styles.cautionText}>{'이런 식으로 작성해볼 수 있어요.\n'}</p>
-        )}
-        {helpMessages.map((msg, index) => (
-          <p key={`msg-${index}`} className={styles.recommendedText}>
-            "{msg}"
-          </p>
-        ))}
-      </div>
+      <TypeIt
+        key={helpMessages.join('')}
+        options={{
+          cursor: false,
+          speed: 30,
+        }}
+        style={{ whiteSpace: 'pre-line' }}
+      >
+        {helpMessages.length === 0
+          ? '잠시만 기다려주세요...'
+          : `이런 식으로 작성해볼 수 있어요.\n\n${helpMessages
+              .map((m, i) => `${i + 1}. ${m}`)
+              .join('\n\n')}`}
+      </TypeIt>
     </div>
   );
 }

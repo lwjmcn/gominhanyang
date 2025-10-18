@@ -25,12 +25,12 @@ export default function LetterWritePage() {
   const [content, setContent] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const [firstTime, setFirstTime] = useState(true);
   const [openStopWrite, setOpenStopWrite] = useState(false);
   const [openCompleteWrite, setOpenCompleteWrite] = useState(false);
   const [showAddressModal, setShowAddressModal] = useState(false);
 
   const [helpMessages, setHelpMessages] = useState<string[]>([]);
+  const [helpCount, setHelpCount] = useState(0);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -158,20 +158,27 @@ export default function LetterWritePage() {
 
     setHelpMessages([response.help_question]);
   };
+
   const onRefresh = async () => {
     ReactGA.event('ai_help', {
       category: 'letter write',
     });
 
+    if (helpCount >= 5) {
+      setHelpMessages(['제 도움은 여기까지예요. 이제 편지를 완성해볼까요?']);
+      return;
+    }
+
     setHelpMessages(['잠시만 기다려주세요...']);
 
-    if (firstTime && content.length == 0) {
+    if (helpCount === 0 && content.length == 0) {
       fetchInitialQuestion();
-      setFirstTime(false);
+      setHelpCount(prev => prev + 1);
       return;
     }
 
     fetchHelpQuestion();
+    setHelpCount(prev => prev + 1);
   };
 
   const handleCompleteWrite = () => {
@@ -202,7 +209,7 @@ export default function LetterWritePage() {
 
   const handleChangeEmotion = (newEmotion: EmotionType) => {
     setEmotion(newEmotion);
-    setFirstTime(true);
+    setHelpCount(0);
   };
 
   return (
