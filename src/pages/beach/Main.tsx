@@ -39,7 +39,7 @@ export default function MainPage() {
     return () => clearInterval(interval);
   }, []);
 
-  const usedItems = items.filter(item => item.used);
+  // const usedItems = items.filter(item => item.used);
 
   // const allItems: Item[] = [
   //   { item_id: 'i1', name: '푸른 나무', used: true, category: CategoryType.BEACH },
@@ -51,7 +51,7 @@ export default function MainPage() {
 
   return (
     <div className={styles.container}>
-      {usedItems.map(item => {
+      {/* {usedItems.map(item => {
         const position = ITEM_POSITIONS[item.name] || {
           left: '50%',
           top: '50%',
@@ -72,9 +72,12 @@ export default function MainPage() {
             }}
           />
         );
-      })}
+      })} */}
 
-      <div onClick={() => navigate('/items')} className={styles.pointContainer}>
+      <div
+        // onClick={() => navigate('/items')}
+        className={styles.pointContainer}
+      >
         <button className={styles.shellButton} />
         <p className={styles.level}>Lv.{level}</p>
         <div className={styles.cylinder}>

@@ -56,8 +56,8 @@ export default function AppRoutes() {
           <Route path="/received/letters/:letterId/write" element={<ResponseWritePage />} />
           <Route path="/received/letters/:letterId/complete" element={<ResponseCompletePage />} />
 
-          <Route path="/items" element={<ItemListPage />} />
-          <Route path="/items/:itemId" element={<Navigate to="/items" replace />} />
+          {/* <Route path="/items" element={<ItemListPage />} />
+          <Route path="/items/:itemId" element={<Navigate to="/items" replace />} /> */}
 
           <Route path="/post" element={<PostOfficePage />} />
           <Route path="/letter/share" element={<LetterSharePage />} />
@@ -71,11 +71,11 @@ export default function AppRoutes() {
       </Routes>
 
       {/* 모달 라우트 */}
-      {backgroundLocation && (
+      {/* {backgroundLocation && (
         <Routes>
           <Route path="/items/:itemId" element={<ItemDetailModal />} />
         </Routes>
-      )}
+      )} */}
     </>
   );
 }

@@ -26,14 +26,14 @@ export default function ResponseCompletePage() {
       </div>
 
       <div className={styles.navButtonContainer}>
-        {state.rewardItems.length > 0 && (
+        {/* {state.rewardItems.length > 0 && (
           <button onClick={() => navigate('/items')} className={styles.navButton}>
             <img src="/image/common/item.webp" className={styles.navIcon} alt="아이템보관함" />
             <div className={styles.yellowBoxButton}>
               <span className={styles.buttonLabel}>아이템 보관함 가기</span>
             </div>
           </button>
-        )}
+        )} */}
         <button onClick={() => navigate('/')} className={styles.navButton}>
           <img src="/image/common/main.webp" className={styles.navIcon} alt="메인화면" />
           <div className={styles.yellowBoxButton}>
