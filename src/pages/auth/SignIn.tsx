@@ -11,11 +11,14 @@ import { useUserStore } from '@/store/user';
 import { usePointStore } from '@/store/point';
 import { useLetterStore } from '@/store/letter';
 import { useItemStore } from '@/store/item';
-
+import visibilitySvg from '../../../public/image/login_setting/visibility.svg';
+import visibilityOffSvg from '../../../public/image/login_setting/visibility_off.svg';
 export default function SignInPage() {
   const navigate = useNavigate();
   const { setLogin } = useAuthStore();
   const [nickname, setNickname] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { showToast } = useToastStore();
 
@@ -32,9 +35,14 @@ export default function SignInPage() {
       return;
     }
 
+    if (!password) {
+      showToast('비밀번호를 입력해주세요.');
+      return;
+    }
+
     setIsLoading(true);
 
-    const response = await login({ nickname });
+    const response = await login({ nickname, password });
 
     if (!response) {
       showToast('알 수 없는 오류가 발생했습니다.');
@@ -79,6 +87,27 @@ export default function SignInPage() {
             onChange={e => setNickname(e.target.value)}
             disabled={isLoading}
           />
+        </div>
+        <div className={styles.labelContainer}>
+          <label className={styles.label}>비밀번호</label>
+          <div className={styles.inputWithToggle}>
+            <input
+              className={styles.input}
+              type={showPassword ? 'text' : 'password'}
+              placeholder="비밀번호"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              disabled={isLoading}
+            />
+            <button
+              type="button"
+              className={styles.toggleButton}
+              onClick={() => setShowPassword(v => !v)}
+              aria-label={showPassword ? '비밀번호 숨기기' : '비밀번호 표시'}
+            >
+              <img src={showPassword ? visibilityOffSvg : visibilitySvg} alt="toggle password" />
+            </button>
+          </div>
         </div>
         <button className={styles.loginButton} onClick={handleLogin} disabled={isLoading}>
           {isLoading ? <LoadingSpinner spinnerSize={2} /> : '로그인 하기'}

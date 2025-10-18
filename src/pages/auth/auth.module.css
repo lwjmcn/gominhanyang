@@ -52,18 +52,33 @@ a {
 }
 
 .labelContainer {
-  width: 100%;
+  /* width: 100%; */
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
-  margin-top: 5rem;
+  margin-top: 2rem;
 }
 
 .label {
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
   align-self: flex-start;
+}
+
+/* group for gender + status to sit in a single row */
+.genderStatusRow {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: flex-start;
+  margin-top: 2rem;
+}
+
+.genderStatusRow > .labelContainer {
+  flex: 1 1 0;
 }
 
 .ageLabel {
@@ -77,11 +92,41 @@ a {
   align-items: center;
   justify-content: start;
   gap: 3rem;
+  margin-top: 2rem;
 }
 .radioLabelContainer {
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+
+.inputWithToggle {
+  position: relative;
+  width: 100%;
+}
+
+.inputWithToggle > .input {
+  padding-right: 6rem; /* leave space for the toggle */
+}
+
+.toggleButton {
+  position: absolute;
+  right: 1rem;
+  top: 1.5rem;
+  /* top: 50%; */
+  /* transform: translateY(-50%); */
+  background: transparent;
+  border: none;
+  /* padding: 0.4rem; */
+  /* display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer; */
+}
+
+.toggleButton svg {
+  width: 2.4rem;
+  height: 2.4rem;
 }
 
 .link {

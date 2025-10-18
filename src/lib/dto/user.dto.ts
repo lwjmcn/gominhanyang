@@ -1,16 +1,20 @@
 import { BaseResponse } from '../response_dto';
-import { GenderType, User } from '../type/user.type';
+import { GenderType, JobType, User } from '../type/user.type';
 
 export interface SignupRequestDto {
   nickname: string;
-  age: number;
+  age: number | undefined;
   gender: GenderType;
+  status: JobType;
+  email: string;
+  password: string;
   address?: string;
   phone?: string;
 }
 
 export interface LoginRequestDto {
   nickname: string;
+  password: string;
 }
 
 export interface AuthResponseDto extends BaseResponse {
