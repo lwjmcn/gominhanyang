@@ -5,6 +5,7 @@ import { usePointStore } from '@/store/point';
 import { useToastStore } from '@/store/toast';
 import { useItemStore } from '@/store/item';
 import { ITEM_IMAGE_URL, ITEM_POSITIONS } from '@/lib/constants/items';
+import AttendanceModal from '@/components/AttendanceModal';
 
 export default function MainPage() {
   const navigate = useNavigate();
@@ -51,6 +52,7 @@ export default function MainPage() {
 
   return (
     <div className={styles.container}>
+      <AttendanceModal />
       {/* {usedItems.map(item => {
         const position = ITEM_POSITIONS[item.name] || {
           left: '50%',

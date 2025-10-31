@@ -37,7 +37,7 @@
 .closeButton {
   position: absolute;
   top: 2rem;
-  left: 2rem;
+  right: 2rem;
   cursor: pointer;
   height: 4rem;
   width: 4rem;

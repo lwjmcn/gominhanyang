@@ -11,6 +11,7 @@ import { useUserStore } from '@/store/user';
 import { usePointStore } from '@/store/point';
 import { useLetterStore } from '@/store/letter';
 import { useItemStore } from '@/store/item';
+import { useAttendanceStore } from '@/store/attendance';
 
 export default function SignInPage() {
   const navigate = useNavigate();
@@ -59,6 +60,7 @@ export default function SignInPage() {
     setIsLoading(false);
     setLogin();
 
+    useAttendanceStore.getState().showAttendanceModal();
     // 조회 API 호출
     Promise.all([fetchPoint(), fetchUserInfo(), fetchSavedLetters(), fetchItems()]);
 
