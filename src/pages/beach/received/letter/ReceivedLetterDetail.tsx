@@ -16,6 +16,12 @@ export default function ReceivedLetterDetailPage() {
   const [letter, setLetter] = useState<LetterDetail | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
+  const handleReport = () => {
+    window.open(
+      'https://docs.google.com/forms/d/e/1FAIpQLSfijEcr5j69TI3wnrauX9tjm9kw5a4e5pLKkLRHbwaZbPjeXg/viewform?usp=dialog',
+    );
+  };
+
   const fetchLetterDetail = async () => {
     if (!letterId) {
       showToast('편지 ID가 없습니다.');
@@ -86,6 +92,14 @@ export default function ReceivedLetterDetailPage() {
           <p className={styles.helperText}>
             {'당신의 한 마디가 큰 힘이 돼요.\n답장으로 마음을 전해보세요.'}
           </p>
+          <button
+            type="button"
+            className={styles.reportButton}
+            onClick={handleReport}
+            aria-label="신고하기"
+          >
+            <img src="/image/beach/emergency.svg" alt="신고" className={styles.reportIcon} />
+          </button>
           <button
             className={styles.replyButton}
             onClick={() =>

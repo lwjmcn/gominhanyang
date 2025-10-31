@@ -42,3 +42,16 @@
   font-size: 3rem;
   color: var(--green-border-color);
 }
+
+.reportButton {
+  background-color: var(--error-color);
+  padding: 2rem;
+  height: 7rem;
+  margin-right: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.reportButton:hover {
+  filter: brightness(0.95);
+}

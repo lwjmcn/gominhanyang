@@ -43,6 +43,8 @@
   --apricot-background-color: #fce89c;
   --green-background-color: #e6f0cb;
   --blue-background-color: #cae3e2;
+
+  --error-color: #ee6366;
 }
 
 .layout {
