@@ -15,6 +15,11 @@ export default function SignUpPage() {
   const { showToast } = useToastStore();
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [isSendingCode, setIsSendingCode] = useState(false);
+  const [isVerifyingCode, setIsVerifyingCode] = useState(false);
+  const [emailCode, setEmailCode] = useState('');
+  const [emailVerified, setEmailVerified] = useState(false);
+  const [receiveNotifications, setReceiveNotifications] = useState(false);
   const [formData, setFormData] = useState({
     nickname: '',
     gender: GenderType.OTHER,
@@ -37,6 +42,44 @@ export default function SignUpPage() {
           [name]: name === 'age' ? (value ? parseInt(value, 10) : undefined) : value,
         }) as any,
     );
+  };
+
+  const sendVerificationCode = async () => {
+    if (!formData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      showToast('유효한 이메일을 입력한 다음 인증메일을 보내주세요.');
+      return;
+    }
+
+    try {
+      setIsSendingCode(true);
+      // TODO: call backend API to send verification email
+      await new Promise(res => setTimeout(res, 800));
+      showToast('인증 메일이 발송되었습니다. 이메일의 인증코드를 확인하세요.');
+    } catch (e: any) {
+      showToast('인증 메일 발송 중 오류가 발생했습니다.');
+    } finally {
+      setIsSendingCode(false);
+    }
+  };
+
+  const verifyEmailCode = async () => {
+    if (!emailCode) {
+      showToast('인증코드를 입력해주세요.');
+      return;
+    }
+
+    try {
+      setIsVerifyingCode(true);
+      // TODO: call backend API to verify code
+      await new Promise(res => setTimeout(res, 700));
+      // Simulate success
+      setEmailVerified(true);
+      showToast('이메일 인증이 완료되었습니다.');
+    } catch (e: any) {
+      showToast('인증코드 확인 중 오류가 발생했습니다.');
+    } finally {
+      setIsVerifyingCode(false);
+    }
   };
 
   const handleSignup = async () => {
@@ -204,15 +247,61 @@ export default function SignUpPage() {
 
         <div className={styles.labelContainer}>
           <label className={styles.label}>이메일*</label>
-          <input
-            className={styles.input}
-            name="email"
-            type="email"
-            placeholder="example@domain.com"
-            value={formData.email}
-            onChange={handleInputChange}
-            disabled={isLoading}
-          />
+          <div className={styles.verifyRow}>
+            <input
+              className={styles.input}
+              name="email"
+              type="email"
+              placeholder="example@domain.com"
+              value={formData.email}
+              onChange={handleInputChange}
+              disabled={isLoading}
+            />
+            <button
+              type="button"
+              className={styles.smallButton}
+              onClick={sendVerificationCode}
+              disabled={isSendingCode || isLoading}
+            >
+              {isSendingCode ? <LoadingSpinner spinnerSize={2} /> : '인증'}
+            </button>
+          </div>
+        </div>
+
+        <div className={styles.labelContainer}>
+          <div className={styles.verifyRow}>
+            <input
+              className={styles.input}
+              name="emailCode"
+              type="text"
+              placeholder="인증코드 입력"
+              value={emailCode}
+              onChange={e => setEmailCode(e.target.value)}
+              disabled={emailVerified || isLoading}
+            />
+            <button
+              type="button"
+              className={styles.smallButton}
+              onClick={verifyEmailCode}
+              disabled={emailVerified || isVerifyingCode || isLoading}
+            >
+              {isVerifyingCode ? <LoadingSpinner spinnerSize={2} /> : '확인'}
+            </button>
+          </div>
+        </div>
+
+        <div className={styles.labelContainer}>
+          <label className={styles.checkboxLabel}>
+            <input
+              type="checkbox"
+              checked={receiveNotifications}
+              onChange={e => setReceiveNotifications(e.target.checked)}
+            />
+            <span>
+              편지나 답장을 수신했을 때 알림을 받아보실래요?{' '}
+              <small style={{ color: '#8b7f7a' }}>(권장)</small>
+            </span>
+          </label>
         </div>
         <div className={styles.labelContainer}>
           <label className={styles.label}>전화번호 (선택)</label>
