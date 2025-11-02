@@ -118,6 +118,7 @@ export default function LetterWritePage() {
           message: rewardResponse.message,
           leveled_up: rewardResponse.leveled_up,
           rewardItems: rewardResponse.new_items,
+          letterId: response.letter_id,
         },
         replace: true,
       });

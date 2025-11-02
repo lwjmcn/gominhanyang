@@ -29,9 +29,11 @@
 .content h2 {
   font-size: 3rem;
   margin-bottom: 1rem;
+  line-height: 1;
 }
 .content p {
   font-size: 2rem;
+  line-height: 1;
 }
 
 .closeButton {

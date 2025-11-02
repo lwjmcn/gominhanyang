@@ -2,20 +2,26 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { RewardItem } from '@/lib/type/reward.type';
 import styles from './lettercomplete.module.css';
 import { SendType } from '@/lib/type/letter.type';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useLetterStore } from '@/store/letter';
+import { Satisfaction } from '@/pages/beach/received/response/component/Satisfaction';
+import Modal from '@/components/Modal';
 
 interface LocationState {
   sendType: SendType;
   message: string;
   leveled_up: boolean;
   rewardItems: RewardItem[];
+  letterId?: string;
 }
 
 export default function LetterCompletePage() {
   const navigate = useNavigate();
   const location = useLocation();
   const state = location.state as LocationState;
+  const [showSatisfactionModal, setShowSatisfactionModal] = useState<boolean>(
+    () => !!state?.letterId,
+  );
 
   return (
     <div className={styles.container}>
@@ -31,13 +37,20 @@ export default function LetterCompletePage() {
         alt="letter"
       />
 
-      <div className={styles.rewardSection}>
+      {/* <div className={styles.rewardSection}>
         <p className={styles.text}>
           {state.rewardItems.length > 0
             ? '새로운 아이템이 도착했어요.\n어서 확인해보세요!'
             : state.message}
         </p>
-      </div>
+      </div> */}
+
+      {/* Satisfaction survey for the sent letter, shown as a modal when letterId was provided */}
+      {state?.letterId && showSatisfactionModal && (
+        <Modal onClose={() => setShowSatisfactionModal(false)}>
+          <Satisfaction letterId={state.letterId} />
+        </Modal>
+      )}
 
       <div className={styles.navButtonContainer}>
         {/* {state.rewardItems.length > 0 ? (

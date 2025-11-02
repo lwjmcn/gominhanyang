@@ -7,7 +7,7 @@ import { isErrorResponse } from '@/lib/response_dto';
 import { useToastStore } from '@/store/toast';
 import styles from './receivedresponsedetail.module.css';
 import { Textarea } from '@/components/Textarea';
-import { Satisfaction } from './component/Satisfaction';
+// import { Satisfaction } from './component/Satisfaction';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
 import { Nothing } from '@/components/Nothing';
 import { useLetterStore } from '@/store/letter';
@@ -102,7 +102,7 @@ export default function ReceivedResponseDetailPage() {
                 <Textarea type="reply" value={comment.content} disabled />
               </div>
             ))}
-            <Satisfaction letterId={comments[0]._id} />
+            {/* <Satisfaction letterId={comments[0]._id} /> */}
           </>
         )}
       </div>

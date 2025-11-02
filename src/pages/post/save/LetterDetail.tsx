@@ -5,7 +5,7 @@ import { useToastStore } from '@/store/toast';
 import { useLetterStore } from '@/store/letter';
 import styles from './letterdetail.module.css';
 import { Textarea } from '@/components/Textarea';
-import { Satisfaction } from '@/pages/beach/received/response/component/Satisfaction';
+// import { Satisfaction } from '@/pages/beach/received/response/component/Satisfaction';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
 import { Nothing } from '@/components/Nothing';
 import { EmotionIcon } from '@/lib/type/letter.type';
@@ -80,7 +80,7 @@ export default function LetterDetailPage() {
                   <Textarea type="reply" value={comment.content} disabled />
                 </div>
               ))}
-              <Satisfaction letterId={comments[0]._id} />
+              {/* <Satisfaction letterId={comments[0]._id} /> */}
             </div>
           </>
         )}
