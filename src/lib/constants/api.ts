@@ -25,6 +25,11 @@ export const API_ENDPOINTS = {
   SATISFACTION: {
     BASE: '/satisfaction',
   },
+  // 출석 관련
+  ATTENDANCE: {
+    TODAY: '/attendance/today',
+    MONTH: '/attendance/calendar',
+  },
   // 아이템 관련
   ITEM: {
     BASE: '/item',

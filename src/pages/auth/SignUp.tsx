@@ -6,7 +6,7 @@ import { signup } from '@/lib/api/user';
 import { GenderType, JobType } from '@/lib/type/user.type';
 import { isErrorResponse } from '@/lib/response_dto';
 import { useAuthStore } from '@/store/auth';
-import { useAttendanceStore } from '@/store/attendance';
+import { getTodayAttendance } from '@/lib/api/attendance';
 import ReactGA from 'react-ga4';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
 
@@ -132,7 +132,7 @@ export default function SignUpPage() {
       setLogin();
       ReactGA.set({ user_id: response.nickname });
       showToast('가입이 완료되었습니다.');
-      useAttendanceStore.getState().showAttendanceModal();
+
       navigate('/', { replace: true });
     } catch (error) {
       showToast('회원가입 중 오류가 발생했습니다.');

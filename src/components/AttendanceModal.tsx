@@ -1,39 +1,55 @@
 import { useEffect, useMemo, useState } from 'react';
 import Modal from './Modal';
 import styles from './attendance.module.css';
-import { useAttendanceStore } from '@/store/attendance';
+import { getMonthAttendance } from '@/lib/api/attendance';
 
-export default function AttendanceModal() {
-  const { showModal, hideAttendanceModal, attendance, setAttendance } = useAttendanceStore();
+interface AttendanceModalProps {
+  open?: boolean;
+  onClose?: () => void;
+}
 
-  const [localStamped, setLocalStamped] = useState<number[]>(attendance);
+export default function AttendanceModal({ open = false, onClose }: AttendanceModalProps) {
+  const [localStamped, setLocalStamped] = useState<number[]>([]);
   const [animatingDay, setAnimatingDay] = useState<number | null>(null);
 
   const now = new Date();
   const year = now.getFullYear();
-  const monthIndex = 10; // November
+  const monthIndex = now.getMonth();
 
-  const daysInMonth = 30; // November has 30 days
-
-  // weekday of the 1st (0=Sun...6=Sat)
+  const daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
   const firstWeekday = useMemo(() => new Date(year, monthIndex, 1).getDay(), [year]);
 
   useEffect(() => {
-    // sync local with store when modal opens
-    if (showModal) {
-      setLocalStamped(attendance || []);
+    if (open) {
+      const month = `${year}-${String(monthIndex + 1).padStart(2, '0')}`;
+      getMonthAttendance({ month }).then((res: any) => {
+        if (!res) return;
+
+        const attendedDates: string[] = (res as any).attended || [];
+        // convert YYYY-MM-DD to day numbers for the current month
+        const attendedDays = attendedDates
+          .map(d => {
+            try {
+              const parts = d.split('-');
+              const dd = parseInt(parts[2], 10);
+              return Number.isNaN(dd) ? null : dd;
+            } catch {
+              return null;
+            }
+          })
+          .filter(Boolean) as number[];
+
+        setLocalStamped(attendedDays);
+      });
 
       const today = new Date();
       if (today.getMonth() === monthIndex && today.getFullYear() === year) {
         const todayDay = today.getDate();
-        if (!attendance.includes(todayDay)) {
-          // animate stamping today's day
+        if (!localStamped.includes(todayDay)) {
           setAnimatingDay(todayDay);
-          // after animation, add to localStamped and update store
           const t = setTimeout(() => {
             setLocalStamped(prev => {
               const next = [...prev, todayDay];
-              setAttendance(next);
               return next;
             });
             setAnimatingDay(null);
@@ -43,26 +59,26 @@ export default function AttendanceModal() {
         }
       }
     }
-  }, [showModal]);
+  }, [open]);
 
-  if (!showModal) return null;
+  if (!open) return null;
 
   const cells: Array<null | number> = [];
   for (let i = 0; i < firstWeekday; i++) cells.push(null);
   for (let d = 1; d <= daysInMonth; d++) cells.push(d);
 
   return (
-    <Modal contentStyles={{}} onClose={() => hideAttendanceModal()}>
+    <Modal contentStyles={{}} onClose={onClose}>
       <div className={styles.container}>
         <div className={styles.header}>
           <img src="/image/main/otter.webp" alt="otter" style={{ width: 'auto', height: '5rem' }} />
           <div>
-            <div className={styles.title}>11월 출석 체크</div>
+            <div className={styles.title}>{monthIndex + 1}월 출석 체크</div>
             <div className={styles.sub}>귀여운 오터 발자국으로 출석을 모아요 💛</div>
           </div>
         </div>
         <div className={styles.calendarContainer}>
-          <div className={styles.month}>11月</div>
+          <div className={styles.month}>{monthIndex + 1}月</div>
           <div className={styles.calendar}>
             {['일', '월', '화', '수', '목', '금', '토'].map(w => (
               <div key={w} className={styles.weekday}>

@@ -6,6 +6,8 @@ import { useToastStore } from '@/store/toast';
 import { useItemStore } from '@/store/item';
 import { ITEM_IMAGE_URL, ITEM_POSITIONS } from '@/lib/constants/items';
 import AttendanceModal from '@/components/AttendanceModal';
+import { getTodayAttendance } from '@/lib/api/attendance';
+import { isErrorResponse } from '@/lib/response_dto';
 
 export default function MainPage() {
   const navigate = useNavigate();
@@ -21,6 +23,23 @@ export default function MainPage() {
     '조개를 클릭하면\n아이템을 확인할 수 있어요!',
   ];
   const [otterIndex, setOtterIndex] = useState(() => Math.floor(Math.random() * otterTexts.length));
+  const [showAttendanceModal, setShowAttendanceModal] = useState<boolean>(false);
+
+  useEffect(() => {
+    const checkAttendance = async () => {
+      const response = await getTodayAttendance();
+      if (!response || isErrorResponse(response)) {
+        showToast('출석 정보를 불러오는데 실패했습니다.');
+        return;
+      }
+
+      if (!response.attended) {
+        setShowAttendanceModal(true);
+      }
+    };
+
+    checkAttendance();
+  }, []);
 
   useEffect(() => {
     if (level === 0 && !isPointLoading)
@@ -52,7 +71,7 @@ export default function MainPage() {
 
   return (
     <div className={styles.container}>
-      <AttendanceModal />
+      <AttendanceModal open={showAttendanceModal} onClose={() => setShowAttendanceModal(false)} />
       {/* {usedItems.map(item => {
         const position = ITEM_POSITIONS[item.name] || {
           left: '50%',
@@ -77,7 +96,10 @@ export default function MainPage() {
       })} */}
 
       <div
-        // onClick={() => navigate('/items')}
+        onClick={
+          () => showToast('포인트 기능은 준비 중입니다!')
+          // navigate('/items')
+        }
         className={styles.pointContainer}
       >
         <button className={styles.shellButton} />
