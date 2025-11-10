@@ -20,7 +20,6 @@ export interface MonthAttendanceDetailItem {
 }
 
 export interface MonthAttendanceResponseDto extends BaseResponse {
-  dates: string[]; // all dates in requested range (YYYY-MM-DD)
   attended: string[]; // attended dates as strings YYYY-MM-DD
   detail: Record<string, MonthAttendanceDetailItem>; // YYYY-MM-DD -> detail
 }

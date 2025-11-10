@@ -16,7 +16,9 @@ export const getTodayAttendance = async (): Promise<ApiResponse<TodayAttendanceR
   return result;
 };
 
-export const getMonthAttendance = async (params: MonthAttendanceRequestDto) => {
+export const getMonthAttendance = async (
+  params: MonthAttendanceRequestDto,
+): Promise<ApiResponse<MonthAttendanceResponseDto>> => {
   const result = await axiosInstance
     .get(API_ENDPOINTS.ATTENDANCE.MONTH, { params })
     .then(responseHandler<ApiResponse<MonthAttendanceResponseDto>>)

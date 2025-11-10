@@ -23,23 +23,23 @@ export default function MainPage() {
     '조개를 클릭하면\n아이템을 확인할 수 있어요!',
   ];
   const [otterIndex, setOtterIndex] = useState(() => Math.floor(Math.random() * otterTexts.length));
-  const [showAttendanceModal, setShowAttendanceModal] = useState<boolean>(false);
+  const [showAttendanceModal, setShowAttendanceModal] = useState<boolean>(true);
 
-  useEffect(() => {
-    const checkAttendance = async () => {
-      const response = await getTodayAttendance();
-      if (!response || isErrorResponse(response)) {
-        showToast('출석 정보를 불러오는데 실패했습니다.');
-        return;
-      }
+  // useEffect(() => {
+  //   const checkAttendance = async () => {
+  //     const response = await getTodayAttendance();
+  //     if (!response || isErrorResponse(response)) {
+  //       showToast('출석 정보를 불러오는데 실패했습니다.');
+  //       return;
+  //     }
 
-      if (!response.attended) {
-        setShowAttendanceModal(true);
-      }
-    };
+  //     if (response.attended) {
+  //       setShowAttendanceModal(true);
+  //     }
+  //   };
 
-    checkAttendance();
-  }, []);
+  //   checkAttendance();
+  // }, []);
 
   useEffect(() => {
     if (level === 0 && !isPointLoading)

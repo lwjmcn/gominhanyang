@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import Modal from './Modal';
 import styles from './attendance.module.css';
 import { getMonthAttendance } from '@/lib/api/attendance';
+import { isErrorResponse } from '@/lib/response_dto';
 
 interface AttendanceModalProps {
   open?: boolean;
@@ -22,10 +23,10 @@ export default function AttendanceModal({ open = false, onClose }: AttendanceMod
   useEffect(() => {
     if (open) {
       const month = `${year}-${String(monthIndex + 1).padStart(2, '0')}`;
-      getMonthAttendance({ month }).then((res: any) => {
-        if (!res) return;
+      getMonthAttendance({ month }).then(response => {
+        if (!response || isErrorResponse(response)) return;
 
-        const attendedDates: string[] = (res as any).attended || [];
+        const attendedDates: string[] = response.attended || [];
         // convert YYYY-MM-DD to day numbers for the current month
         const attendedDays = attendedDates
           .map(d => {
