@@ -1,12 +1,12 @@
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './auth.module.css';
 import { useToastStore } from '@/store/toast';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { signup } from '@/lib/api/user';
+import { sendVerificationCode, verifyCode } from '@/lib/api/email';
 import { GenderType, JobType } from '@/lib/type/user.type';
 import { isErrorResponse } from '@/lib/response_dto';
 import { useAuthStore } from '@/store/auth';
-import { getTodayAttendance } from '@/lib/api/attendance';
 import ReactGA from 'react-ga4';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
 
@@ -19,7 +19,9 @@ export default function SignUpPage() {
   const [isVerifyingCode, setIsVerifyingCode] = useState(false);
   const [emailCode, setEmailCode] = useState('');
   const [emailVerified, setEmailVerified] = useState(false);
-  const [receiveNotifications, setReceiveNotifications] = useState(false);
+  const [emailVerificationToken, setEmailVerificationToken] = useState<string | null>(null);
+  const [cooldownSeconds, setCooldownSeconds] = useState(0);
+  const [emailNotifyEnabled, setEmailNotifyEnabled] = useState(false);
   const [formData, setFormData] = useState({
     nickname: '',
     gender: GenderType.OTHER,
@@ -29,6 +31,7 @@ export default function SignUpPage() {
     password: '',
     address: '',
     phone: '',
+    email_notify_enabled: false,
   });
 
   const { setLogin } = useAuthStore();
@@ -42,25 +45,58 @@ export default function SignUpPage() {
           [name]: name === 'age' ? (value ? parseInt(value, 10) : undefined) : value,
         }) as any,
     );
+
+    // reset email-related status when email input changes
+    if (name === 'email') {
+      setCooldownSeconds(0);
+      setEmailVerified(false);
+      setEmailVerificationToken(null);
+    }
   };
 
-  const sendVerificationCode = async () => {
-    if (!formData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      showToast('유효한 이메일을 입력한 다음 인증메일을 보내주세요.');
+  const handleSendVerificationCode = async () => {
+    const email = String(formData.email || '')
+      .trim()
+      .toLowerCase();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showToast('유효한 이메일을 입력해주세요.');
       return;
     }
 
     try {
       setIsSendingCode(true);
-      // TODO: call backend API to send verification email
-      await new Promise(res => setTimeout(res, 800));
-      showToast('인증 메일이 발송되었습니다. 이메일의 인증코드를 확인하세요.');
+      const response = await sendVerificationCode({ email });
+      if (!response) {
+        showToast('인증 메일 발송 중 오류가 발생했습니다.');
+        return;
+      } else if (isErrorResponse(response)) {
+        showToast(response.error);
+        // if server returns retry_after info, it may be included in message - not standardized here
+        return;
+      }
+
+      showToast(response.message || '인증 메일이 발송되었습니다. 이메일의 인증코드를 확인하세요.');
+      setCooldownSeconds(response.cooldown_seconds || 60);
     } catch (e: any) {
       showToast('인증 메일 발송 중 오류가 발생했습니다.');
     } finally {
       setIsSendingCode(false);
     }
   };
+  // cooldown timer for resend
+  useEffect(() => {
+    if (cooldownSeconds <= 0) return;
+    const t = setInterval(() => {
+      setCooldownSeconds(s => {
+        if (s <= 1) {
+          clearInterval(t);
+          return 0;
+        }
+        return s - 1;
+      });
+    }, 1000);
+    return () => clearInterval(t);
+  }, [cooldownSeconds]);
 
   const verifyEmailCode = async () => {
     if (!emailCode) {
@@ -70,11 +106,23 @@ export default function SignUpPage() {
 
     try {
       setIsVerifyingCode(true);
-      // TODO: call backend API to verify code
-      await new Promise(res => setTimeout(res, 700));
-      // Simulate success
+      const email = String(formData.email || '')
+        .trim()
+        .toLowerCase();
+      const response = await verifyCode({ email, code: emailCode });
+      if (!response) {
+        showToast('인증 실패: 응답이 없습니다.');
+        return;
+      } else if (isErrorResponse(response)) {
+        showToast(response.error);
+        return;
+      }
+
+      // success -> store token
+      const token = response.email_verification_token;
+      setEmailVerificationToken(token);
       setEmailVerified(true);
-      showToast('이메일 인증이 완료되었습니다.');
+      showToast(response.message || '이메일 인증이 완료되었습니다.');
     } catch (e: any) {
       showToast('인증코드 확인 중 오류가 발생했습니다.');
     } finally {
@@ -104,9 +152,10 @@ export default function SignUpPage() {
     } else if (!formData.password || formData.password.length < 8) {
       showToast('비밀번호는 최소 8자 이상이어야 합니다.');
       return;
-    }
-
-    setIsLoading(true);
+    } else if (!emailVerified || !emailVerificationToken) {
+      showToast('이메일 인증을 완료해주세요.');
+      return;
+    } else setIsLoading(true);
 
     try {
       const response = await signup({
@@ -118,7 +167,10 @@ export default function SignUpPage() {
         password: formData.password,
         address: formData.address,
         phone: formData.phone,
+        email_verification_token: emailVerificationToken,
+        email_notify_enabled: formData.email_notify_enabled,
       });
+      // TODO: email 인증코드 검증 로직 추가
 
       if (!response) {
         showToast('알 수 없는 오류가 발생했습니다.');
@@ -260,8 +312,8 @@ export default function SignUpPage() {
             <button
               type="button"
               className={styles.smallButton}
-              onClick={sendVerificationCode}
-              disabled={isSendingCode || isLoading}
+              onClick={handleSendVerificationCode}
+              disabled={isSendingCode || isLoading || cooldownSeconds > 0}
             >
               {isSendingCode ? <LoadingSpinner spinnerSize={2} /> : '인증'}
             </button>
@@ -294,8 +346,8 @@ export default function SignUpPage() {
           <label className={styles.checkboxLabel}>
             <input
               type="checkbox"
-              checked={receiveNotifications}
-              onChange={e => setReceiveNotifications(e.target.checked)}
+              checked={emailNotifyEnabled}
+              onChange={e => setEmailNotifyEnabled(e.target.checked)}
             />
             <span>
               편지나 답장을 수신했을 때 알림을 받아보실래요?{' '}

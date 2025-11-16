@@ -8,6 +8,8 @@ export interface SignupRequestDto {
   status: JobType;
   email: string;
   password: string;
+  email_verification_token: string;
+  email_notify_enabled: boolean | string;
   address?: string;
   phone?: string;
 }
@@ -26,9 +28,10 @@ export type SignupResponseDto = AuthResponseDto;
 export type LoginResponseDto = AuthResponseDto;
 
 export interface UpdateUserRequestDto {
-  nickname: string;
-  status: JobType;
-  email: string;
+  nickname?: string;
+  status?: JobType;
+  email?: string;
+  email_notify_enabled?: boolean | string;
   address?: string;
   phone?: string;
 }

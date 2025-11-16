@@ -11,6 +11,7 @@ export interface UserInfo {
   age?: number;
   address: string;
   phone: string;
+  email_notify_enabled: boolean;
 }
 
 interface UserStore {
@@ -31,6 +32,7 @@ export const useUserStore = create<UserStore>((set, get) => ({
     age: undefined,
     address: '',
     phone: '',
+    email_notify_enabled: false,
   },
   isLoading: false,
   setUserInfo: info => set({ userInfo: info }),
@@ -44,6 +46,7 @@ export const useUserStore = create<UserStore>((set, get) => ({
         age: undefined,
         address: '',
         phone: '',
+        email_notify_enabled: false,
       },
     }),
   fetchUserInfo: async () => {
@@ -62,6 +65,7 @@ export const useUserStore = create<UserStore>((set, get) => ({
           age: response.user.age,
           address: response.user.address || '',
           phone: response.user.phone || '',
+          email_notify_enabled: response.user.email_notify_enabled ?? false,
         },
       });
     } catch (error) {

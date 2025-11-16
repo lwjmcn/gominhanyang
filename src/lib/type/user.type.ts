@@ -10,6 +10,7 @@ export interface User {
   point: number;
   level: number;
   limited_access: boolean;
+  email_notify_enabled: boolean;
 }
 
 export enum GenderType {

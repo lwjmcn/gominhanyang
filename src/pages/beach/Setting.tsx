@@ -15,6 +15,7 @@ export default function SettingPage() {
   const { setLogout } = useAuthStore();
   const { userInfo, isLoading, fetchUserInfo, updateUserInfo } = useUserStore();
   const { audioOn, setAudioOn } = useAudioStore();
+
   const [formData, setFormData] = useState({
     nickname: '',
     gender: GenderType.MALE,
@@ -23,6 +24,7 @@ export default function SettingPage() {
     email: '',
     address: '',
     phone: '',
+    email_notify_enabled: false,
   });
 
   useEffect(() => {
@@ -42,10 +44,13 @@ export default function SettingPage() {
   }, [userInfo]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
+    const target = e.target as HTMLInputElement;
+    const { name, value, type, checked } = target;
+    console.log(name, type, value, checked);
+    const newValue: any = type === 'checkbox' ? checked : value;
     setFormData(prev => ({
       ...prev,
-      [name]: value,
+      [name]: newValue,
     }));
   };
 
@@ -177,8 +182,20 @@ export default function SettingPage() {
               placeholder="example@domain.com"
               value={formData.email}
               onChange={handleInputChange}
-              disabled={isLoading}
+              disabled={true}
             />
+          </div>
+          <div className={styles.bgmRow}>
+            <label style={{ fontSize: '2.5rem' }}>이메일 수신 동의</label>
+            <label className={styles.toggleSwitch}>
+              <input
+                type="checkbox"
+                name="email_notify_enabled"
+                checked={!!formData.email_notify_enabled}
+                onChange={handleInputChange}
+              />
+              <span className={styles.slider}></span>
+            </label>
           </div>
           {/* <div className={styles.labelContainer}>
             <label className={styles.label}>주소</label>

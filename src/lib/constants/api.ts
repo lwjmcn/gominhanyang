@@ -8,6 +8,10 @@ export const API_ENDPOINTS = {
     SIGNUP: '/api/users/signup',
     ME: '/api/users/me',
     UPDATE: '/api/users/update',
+    EMAIL: {
+      SEND_CODE: '/api/users/email/send-code',
+      VERIFY_CODE: '/api/users/email/verify-code',
+    },
   },
   // 편지 관련
   LETTER: {
