@@ -23,7 +23,7 @@ export default function MainPage() {
     '조개를 클릭하면\n아이템을 확인할 수 있어요!',
   ];
   const [otterIndex, setOtterIndex] = useState(() => Math.floor(Math.random() * otterTexts.length));
-  const [showAttendanceModal, setShowAttendanceModal] = useState<boolean>(true);
+  const [showAttendanceModal, setShowAttendanceModal] = useState<boolean>(false);
 
   // useEffect(() => {
   //   const checkAttendance = async () => {
@@ -33,7 +33,7 @@ export default function MainPage() {
   //       return;
   //     }
 
-  //     if (response.attended) {
+  //     if (!response.attended) {
   //       setShowAttendanceModal(true);
   //     }
   //   };
@@ -51,6 +51,28 @@ export default function MainPage() {
       fetchItems().catch(error => {
         showToast(error.message || '아이템 정보를 불러오는데 실패했습니다.');
       });
+    }
+
+    // Show attendance modal only if last saved attendance date is not today.
+    try {
+      const now = new Date();
+      const yyyy = now.getFullYear();
+      const mm = String(now.getMonth() + 1).padStart(2, '0');
+      const dd = String(now.getDate()).padStart(2, '0');
+      const todayStr = `${yyyy}-${mm}-${dd}`;
+      const last = localStorage.getItem('lastAttendanceDate');
+
+      if (last !== todayStr) {
+        setShowAttendanceModal(true);
+        // Save today's date so the modal won't reappear again today
+        localStorage.setItem('lastAttendanceDate', todayStr);
+      }
+    } catch (e) {
+      // localStorage might be unavailable in some environments; ignore failures
+      // and don't block the rest of the page.
+      // eslint-disable-next-line no-console
+      console.warn('Could not access localStorage for attendance check', e);
+      setShowAttendanceModal(true);
     }
 
     const interval = setInterval(() => {
