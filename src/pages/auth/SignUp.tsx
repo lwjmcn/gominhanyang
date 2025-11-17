@@ -76,7 +76,7 @@ export default function SignUpPage() {
       }
 
       showToast(response.message || '인증 메일이 발송되었습니다. 이메일의 인증코드를 확인하세요.');
-      setCooldownSeconds(response.cooldown_seconds || 60);
+      setCooldownSeconds(60); // 60초 재전송 쿨타임
     } catch (e: any) {
       showToast('인증 메일 발송 중 오류가 발생했습니다.');
     } finally {

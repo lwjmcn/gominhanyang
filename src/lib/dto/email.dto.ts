@@ -6,7 +6,6 @@ export interface SendCodeRequestDto {
 
 export interface SendCodeResponseDto extends BaseResponse {
   expire_minutes: number;
-  cooldown_seconds: number;
 }
 
 export interface VerifyCodeRequestDto {
