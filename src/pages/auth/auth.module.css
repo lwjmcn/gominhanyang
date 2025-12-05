@@ -164,3 +164,25 @@ a {
   gap: 0.75rem;
   font-size: 2rem;
 }
+
+.audioToggleButton {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: transparent;
+  border: none;
+  padding: 0;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.audioToggleButton img,
+.audioToggleButton svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

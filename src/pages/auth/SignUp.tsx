@@ -9,10 +9,12 @@ import { isErrorResponse } from '@/lib/response_dto';
 import { useAuthStore } from '@/store/auth';
 import ReactGA from 'react-ga4';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
+import { useAudioStore } from '@/store/audio';
 
 export default function SignUpPage() {
   const navigate = useNavigate();
   const { showToast } = useToastStore();
+  const { audioOn, toggleAudio } = useAudioStore();
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [isSendingCode, setIsSendingCode] = useState(false);
@@ -195,6 +197,19 @@ export default function SignUpPage() {
 
   return (
     <div className={styles.container}>
+      <button
+        type="button"
+        onClick={() => toggleAudio()}
+        title={audioOn ? '사운드 끄기' : '사운드 켜기'}
+        aria-label={audioOn ? '음소거' : '소리 켬'}
+        className={styles.audioToggleButton}
+      >
+        {audioOn ? (
+          <img src="/image/login_setting/music_note.svg" alt="Sound On" />
+        ) : (
+          <img src="/image/login_setting/music_off.svg" alt="Sound Off" />
+        )}
+      </button>
       <h1>회원가입</h1>
       <div className={styles.formContainer}>
         <div className={styles.labelContainer}>

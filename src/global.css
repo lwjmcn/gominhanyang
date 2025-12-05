@@ -295,11 +295,11 @@ option {
   line-height: 6rem;
   align-items: center;
   padding: 0 2rem;
-  background-color: var(--orange-base-color);
-  color: var(--text-primary-color);
+  background-color: var(--background-color);
+  border: 0.3rem solid (--orange-active-color);
   &:nth-of-type(2) {
-    background-color: var(--background-color);
-    border: 0.3rem solid (--orange-active-color);
+    background-color: var(--orange-base-color);
+    color: var(--text-primary-color);
   }
 }
 .nav-button-container {

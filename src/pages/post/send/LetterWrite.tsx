@@ -241,7 +241,7 @@ export default function LetterWritePage() {
         }}
       />
       <div className={styles.container}>
-        <div className={styles.radioContainer}>
+        {/* <div className={styles.radioContainer}>
           <div>
             <input
               type="radio"
@@ -345,7 +345,7 @@ export default function LetterWritePage() {
             onClick={() => handleChangeEmotion(EmotionType.SAD)}
             className={emotion === EmotionType.SAD ? styles.selected : ''}
           />
-        </div>
+        </div> */}
 
         <div className={styles.writeSection}>
           <div className={styles.helpContainer}>

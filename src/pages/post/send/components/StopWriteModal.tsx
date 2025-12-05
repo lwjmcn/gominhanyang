@@ -16,6 +16,7 @@ export default function StopWriteModal({ onClose, type }: StopWriteModalProps) {
         <h2>정말 {modalType}를 그만 쓰시겠어요?</h2>
         <p>지금까지 쓴 내용이 사라져요.</p>
         <div className="modal-button-container">
+          <button onClick={onClose}>✍️계속 쓰기</button>
           <button
             onClick={() => {
               onClose();
@@ -24,7 +25,6 @@ export default function StopWriteModal({ onClose, type }: StopWriteModalProps) {
           >
             ✖️나가기
           </button>
-          <button onClick={onClose}>✍️계속 쓰기</button>
         </div>
       </div>
     </Modal>

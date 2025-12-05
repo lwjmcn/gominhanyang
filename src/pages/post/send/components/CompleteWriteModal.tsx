@@ -45,11 +45,11 @@ export default function CompleteWriteModal({
           message={`❗개인정보나 욕설은 포함되지 않았나요?\n✅ ${modalType}를 전송하면 수정할 수 없어요.`}
         />
         <div className="modal-button-container">
-          <button onClick={onConfirm} disabled={isLoading}>
-            {isLoading ? <LoadingSpinner spinnerSize={2} /> : '✅작성 완료'}
-          </button>
           <button onClick={onClose} disabled={isLoading}>
             ✍️다시 확인
+          </button>
+          <button onClick={onConfirm} disabled={isLoading}>
+            {isLoading ? <LoadingSpinner spinnerSize={2} /> : '✅작성 완료'}
           </button>
         </div>
       </div>

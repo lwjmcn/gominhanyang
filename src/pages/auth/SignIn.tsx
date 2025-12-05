@@ -12,10 +12,12 @@ import { usePointStore } from '@/store/point';
 import { useLetterStore } from '@/store/letter';
 import { useItemStore } from '@/store/item';
 import { getTodayAttendance } from '@/lib/api/attendance';
+import { useAudioStore } from '@/store/audio';
 
 export default function SignInPage() {
   const navigate = useNavigate();
   const { setLogin } = useAuthStore();
+  const { audioOn, toggleAudio } = useAudioStore();
   const [nickname, setNickname] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -71,6 +73,19 @@ export default function SignInPage() {
 
   return (
     <div className={styles.container}>
+      <button
+        type="button"
+        onClick={() => toggleAudio()}
+        title={audioOn ? '사운드 끄기' : '사운드 켜기'}
+        aria-label={audioOn ? '음소거' : '소리 켬'}
+        className={styles.audioToggleButton}
+      >
+        {audioOn ? (
+          <img src="/image/login_setting/music_note.svg" alt="Sound On" />
+        ) : (
+          <img src="/image/login_setting/music_off.svg" alt="Sound Off" />
+        )}
+      </button>
       <h1>마음의 항해</h1>
       <img
         className={styles.logoImage}

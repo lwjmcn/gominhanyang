@@ -12,7 +12,7 @@ import { isErrorResponse } from '@/lib/response_dto';
 export default function MainPage() {
   const navigate = useNavigate();
   const { showToast } = useToastStore();
-  const { level, point, isLoading: isPointLoading, fetchPoint } = usePointStore();
+  // const { level, point, isLoading: isPointLoading, fetchPoint } = usePointStore();
   const { items, isLoading: isItemsLoading, fetchItems } = useItemStore();
 
   const [otterClicked, setOtterClicked] = useState(false);
@@ -42,16 +42,16 @@ export default function MainPage() {
   // }, []);
 
   useEffect(() => {
-    if (level === 0 && !isPointLoading)
-      fetchPoint().catch(error => {
-        showToast(error.message || '포인트 정보를 불러오는데 실패했습니다.');
-      });
+    // if (level === 0 && !isPointLoading)
+    //   fetchPoint().catch(error => {
+    //     showToast(error.message || '포인트 정보를 불러오는데 실패했습니다.');
+    //   });
 
-    if (items.length === 0 && !isItemsLoading) {
-      fetchItems().catch(error => {
-        showToast(error.message || '아이템 정보를 불러오는데 실패했습니다.');
-      });
-    }
+    // if (items.length === 0 && !isItemsLoading) {
+    //   fetchItems().catch(error => {
+    //     showToast(error.message || '아이템 정보를 불러오는데 실패했습니다.');
+    //   });
+    // }
 
     // Show attendance modal only if last saved attendance date is not today.
     try {
@@ -117,7 +117,7 @@ export default function MainPage() {
         );
       })} */}
 
-      <div
+      {/* <div
         onClick={
           () => showToast('포인트 기능은 준비 중입니다!')
           // navigate('/items')
@@ -132,7 +132,7 @@ export default function MainPage() {
             style={{ '--fill-level': `${point}%` } as React.CSSProperties}
           />
         </div>
-      </div>
+      </div> */}
 
       <button
         className={styles.feedbackButton}
@@ -152,7 +152,7 @@ export default function MainPage() {
           object-fit="cover"
         />
         <button onClick={() => navigate('/post')} className={styles.signHouseText}>
-          집 가는 길
+          편지 쓰기
         </button>
       </div>
       <div className={styles.roadSignContainer}>
@@ -163,7 +163,7 @@ export default function MainPage() {
           object-fit="cover"
         />
         <button onClick={() => navigate('/beach')} className={styles.signOceanText}>
-          해변 가는 길
+          편지 받기
         </button>
       </div>
 

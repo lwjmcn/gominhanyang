@@ -10,7 +10,7 @@
 .letterInputCount {
   text-align: right;
   color: var(--text-secondary-color);
-  font-size: 1.4rem;
+  font-size: 2rem;
   flex-shrink: 0;
   margin: 0;
 }
